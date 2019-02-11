@@ -16,18 +16,18 @@ Auth::routes();
 Route::get('/','PagesController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-
+// Admin routes
 Route::prefix('admin')->group(function() {
-  Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-  Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-  Route::get('/', 'AdminController@index')->name('admin.dashboard');
-  Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+Route::get('/', 'AdminController@index')->name('admin.dashboard');
+Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
-  // Password reset routes
-  Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-  Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-  Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
-  Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+// Password reset routes
+Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
+Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
-
+// email verification
 Route::get('/verify/{token}','VerifyController@Verify')->name('verify');
