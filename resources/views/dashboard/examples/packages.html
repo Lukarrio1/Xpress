@@ -1,6 +1,7 @@
-@extends('layouts.app')
-@section('content')
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -12,11 +13,11 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- Nucleo Icons -->
-    <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="{{ asset('css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, dont include it in your project -->
-    <link href="{{ asset('css/demo.css')}}" rel="stylesheet" />
+    <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -28,8 +29,8 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="javascript:void(0)" class="simple-text logo-normal">
-            Menu
-          </a>
+                        Xpress Logistics
+                    </a>
                 </div>
                 <ul class="nav">
                     <li class="active ">
@@ -39,15 +40,9 @@
                         </a>
                     </li>
                     <li>
-                        <li>
-                            <a href="./packages.html">
-                                <i class="tim-icons icon-app"></i>
-                                <p>Packages</p>
-                            </a>
-                        </li>
-                        <a href="./icons.html">
+                        <a href="./packages.html">
                             <i class="tim-icons icon-atom"></i>
-                            <p>Icons</p>
+                            <p>Packages</p>
                         </a>
                     </li>
                     <li>
@@ -102,24 +97,25 @@
                     <div class="navbar-wrapper">
                         <div class="navbar-toggle d-inline">
                             <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
                         </div>
-                        <a class="navbar-brand" href="javascript:void(0)">Xpress Logistics</a>
+                        <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                    </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto">
                             <li class="search-bar input-group">
-                                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
+                                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i
+                                        class="tim-icons icon-zoom-split"></i>
+                                    <span class="d-lg-none d-md-block">Search</span>
+                                </button>
                             </li>
                             <li class="dropdown nav-item">
                                 <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -134,13 +130,16 @@
                                         <a href="#" class="nav-item dropdown-item">Mike John responded to your email</a>
                                     </li>
                                     <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a>
+                                        <a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more
+                                            tasks</a>
                                     </li>
                                     <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a>
+                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael
+                                            is in town</a>
                                     </li>
                                     <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a>
+                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Another
+                                            notification</a>
                                     </li>
                                     <li class="nav-link">
                                         <a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a>
@@ -181,8 +180,8 @@
                         <div class="modal-header">
                             <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
+                                <i class="tim-icons icon-simple-remove"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -201,26 +200,26 @@
                                     <div class="col-sm-6">
                                         <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                                             <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                        <input type="radio" name="options" checked>
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Accounts</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-single-02"></i>
-                        </span>
-                      </label>
+                                                <input type="radio" name="options" checked>
+                                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Accounts</span>
+                                                <span class="d-block d-sm-none">
+                                                    <i class="tim-icons icon-single-02"></i>
+                                                </span>
+                                            </label>
                                             <label class="btn btn-sm btn-primary btn-simple" id="1">
-                        <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-gift-2"></i>
-                        </span>
-                      </label>
+                                                <input type="radio" class="d-none d-sm-none" name="options">
+                                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
+                                                <span class="d-block d-sm-none">
+                                                    <i class="tim-icons icon-gift-2"></i>
+                                                </span>
+                                            </label>
                                             <label class="btn btn-sm btn-primary btn-simple" id="2">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                      </label>
+                                                <input type="radio" class="d-none" name="options">
+                                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
+                                                <span class="d-block d-sm-none">
+                                                    <i class="tim-icons icon-tap-02"></i>
+                                                </span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -282,8 +281,8 @@
                                 <p class="card-category d-inline">today</p>
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
-                    <i class="tim-icons icon-settings-gear-63"></i>
-                  </button>
+                                        <i class="tim-icons icon-settings-gear-63"></i>
+                                    </button>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" href="#pablo">Action</a>
                                         <a class="dropdown-item" href="#pablo">Another action</a>
@@ -299,11 +298,11 @@
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="">
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -312,19 +311,20 @@
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
+                                                        <i class="tim-icons icon-pencil"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
+                                                            <input class="form-check-input" type="checkbox" value=""
+                                                                checked="">
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -334,19 +334,19 @@
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
+                                                        <i class="tim-icons icon-pencil"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="">
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -355,19 +355,19 @@
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
+                                                        <i class="tim-icons icon-pencil"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="">
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -376,19 +376,19 @@
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
+                                                        <i class="tim-icons icon-pencil"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="">
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -397,19 +397,19 @@
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
+                                                        <i class="tim-icons icon-pencil"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <div class="form-check">
                                                         <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
+                                                            <input class="form-check-input" type="checkbox" value="">
+                                                            <span class="form-check-sign">
+                                                                <span class="check"></span>
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -418,8 +418,8 @@
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
+                                                        <i class="tim-icons icon-pencil"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -564,18 +564,18 @@
                     <ul class="nav">
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
-                Creative Tim
-              </a>
+                                Creative Tim
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
-                About Us
-              </a>
+                                About Us
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link">
-                Blog
-              </a>
+                                Blog
+                            </a>
                         </li>
                     </ul>
                     <div class="copyright">
@@ -614,10 +614,10 @@
                 </li>
                 <li class="button-container">
                     <a href="https://www.creative-tim.com/product/black-dashboard" target="_blank" class="btn btn-primary btn-block btn-round">Download
-            Now</a>
+                        Now</a>
                     <a href="https://demos.creative-tim.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
-            Documentation
-          </a>
+                        Documentation
+                    </a>
                 </li>
                 <li class="header-title">Thank you for 95 shares!</li>
                 <li class="button-container text-center">
@@ -644,8 +644,8 @@
     <script src="../assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script>
-    <!-- Black Dashboard DEMO methods, dont include it in your project! -->
-    <script src="{{ asset('js/demo.js') }}"></script>
+    <!-- Black Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../assets/demo/demo.js"></script>
     <script>
         $(document).ready(function() {
             $().ready(function() {
@@ -767,4 +767,3 @@
 </body>
 
 </html>
-@endsection
