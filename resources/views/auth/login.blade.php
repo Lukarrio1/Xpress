@@ -1,8 +1,17 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container login">
-        <div class="row">
+@section('content') 
+
+<form class="box" action="index.html" method="post">
+    <h1>Login</h1>
+    <input type="text" name="" placeholder="Username">
+    <input type="password" name="" placeholder="Password">
+    <input type="submit" name="" value="Login">
+  </form>
+
+{{--  <div class="container">  --}}
+
+        {{--  <div class="row">
         <div class="col
         -md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -63,6 +72,6 @@
                 </div>
             </div>
         </div>
-        </div>
-</div>
+        </div> --}}
+{{--  </div>   --}}
 @endsection

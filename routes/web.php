@@ -14,6 +14,7 @@
 
 // page controller
 Route::get('/','PagesController@index');
+Route::get('/Notifications','NotificationController@all_notification')->name('notifications');
 Route::get('/home', 'HomeController@index')->name('home');
 // email verification
 Route::get('/verify/{token}','VerifyController@Verify')->name('verify');

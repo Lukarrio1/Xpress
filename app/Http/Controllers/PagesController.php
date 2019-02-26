@@ -16,4 +16,9 @@ class PagesController extends Controller
         
         return view('index');
     }
+
+    //Notifications routes for now .. 
+    public function all_notification(){
+        return view('xpress.notification');
+    } 
 }
