@@ -43,7 +43,7 @@
                             <a href="./packages.html">
                                 <i class="tim-icons icon-app"></i>
                                 <p>Packages</p>
-                            </a>
+                            </a>  
                         </li>
                         <a href="./icons.html">
                             <i class="tim-icons icon-atom"></i>
