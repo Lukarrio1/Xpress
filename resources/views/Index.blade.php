@@ -40,12 +40,12 @@
                     </li>
                     <li>
                         <li>
-                            <a href="./packages.html">
+                            <a href="./packages.html"> 
                                 <i class="tim-icons icon-app"></i>
                                 <p>Packages</p>
                             </a>
                         </li>
-                        <a href="./icons.html">
+                        <a href="./icons.html"> here
                             <i class="tim-icons icon-atom"></i>
                             <p>Icons</p>
                         </a>
