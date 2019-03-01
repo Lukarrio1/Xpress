@@ -57,7 +57,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./notifications.html">
+                    <a href="{{route('notifications')}}">
                             <i class="tim-icons icon-bell-55"></i>
                             <p>Notifications</p>
                         </a>
