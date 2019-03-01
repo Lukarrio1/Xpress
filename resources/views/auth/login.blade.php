@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.forms')
 
 @section('content') 
 <form class="box" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
-    <h1>Login</h1>
+    <h1>Xpress Logistics Login</h1>
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     <input type="email" name="email" id="email" placeholder="Email" value="{{ old('email') }}" required autofocus autocomplete="off">
     @if ($errors->has('email'))
@@ -20,8 +20,14 @@
 @endif
 
     <input type="submit" name="" value="Login">
-    <a class="forget" href="{{ route('password.request') }}">
+    <a class="" href="{{ route('password.request') }}">
             Forgot Your Password?
+        </a>
+        <br>
+        <br>
+        
+          <a class="alink" href="{{ route('register') }}">
+            If you do not have an account please register here.
         </a>
   </form>
 @endsection
