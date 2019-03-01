@@ -2,11 +2,17 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: white;
+    background-color: rgba(203, 202, 206, 0.794);
 }
+
 a:link {
+    color: rgb(58, 57, 57);
     text-decoration: none;
-  }
+}
+
+a:visited {
+    color: rgb(58, 57, 57);
+}
 
 .box {
     width: 34%;
@@ -17,6 +23,10 @@ a:link {
     transform: translate(-50%, -50%);
     background: white;
     text-align: center;
+    border-radius: 6px;
+    box-shadow: inset 0 -10px -10px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
 .box h1 {
@@ -31,7 +41,7 @@ a:link {
     display: block;
     margin: 5% auto;
     text-align: center;
-    border: 2px solid  rgb(58, 57, 57);
+    border: 2px solid rgb(58, 57, 57);
     padding: 14px 10px;
     width: 70%;
     outline: none;
@@ -43,7 +53,7 @@ a:link {
 .box input[type="email"]:focus,
 .box input[type="password"]:focus {
     width: 100%;
-    border-color: #2ecc71;
+    border-color: red;
 }
 
 .box input[type="submit"] {
@@ -52,7 +62,7 @@ a:link {
     display: block;
     margin: 5% auto;
     text-align: center;
-    border: 2px solid  rgb(58, 57, 57);
+    border: 2px solid rgb(58, 57, 57);
     padding: 14px 40px;
     outline: none;
     color: black;
@@ -62,11 +72,11 @@ a:link {
 }
 
 .box input[type="submit"]:hover {
-    background: #2ecc71;
-    color:white;
+    background: red;
+    color: white;
 }
 
-@media(max-width:700px){
+@media(max-width:700px) {
     .box {
         width: 100%;
         padding: 40px;
@@ -77,12 +87,14 @@ a:link {
         background: white;
         text-align: center;
     }
-
     .box h1 {
-        color:#777;
+        color: #777;
         font-weight: 250;
         font-size: 3em;
     }
-    
+}
 
+.register {
+    colour: grey;
+    text-decoration-color: grey;
 }
