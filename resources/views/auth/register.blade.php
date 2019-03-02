@@ -24,7 +24,7 @@
 
       <div class="row">
           <div class="input-field col s12">
-            <input id="telephone" type="tel" class="validate">
+            <input id="telephone" type="number" class="validate">
           <label for="telephone">Telephone</label>
         </div>
       </div>

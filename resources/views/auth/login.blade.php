@@ -1,5 +1,4 @@
 @extends('layouts.forms')
-
 @section('content') 
 <form class="box" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
