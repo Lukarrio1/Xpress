@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="container">
+  <div class="card blue-grey darken-1">
+        <div class="card-content blue-text">
   <h2>Xpress Logistics Registration</h2>
   <div class="row">
     <form class="col s12">
@@ -38,16 +39,48 @@
           <label for="confirmpassword">Confirm Password </label>
         </div>
       </div>
+      <div class="row">
+                  <div class="input-field col s6">
+          <input placeholder="City" id="city" type="text" class="validate">
+          <label for="city">City</label>
+                  </div>
+                  {{--  <div class="input-field col s12 m6 ">  --}}
+                        <label>Select Parish</label>
+                <select class="browser-default col s6">
+                <option value="" disabled selected>Choose your Parish</option>
+                <option value="1">Manchester</option>
+                <option value="2">Clarendon</option>
+                <option value="3">St.Catherine</option>
+                <option value="4">St.Andrew</option>
+                <option value="5">Kingston</option>
+                <option value="6">St.Thomas</option>
+                <option value="7">Portland</option>
+                <option value="8">St.Mary</option>
+                <option value="9">St.Ann</option>
+                <option value="10">Trelawny</option>
+                <option value="11">St.James</option>
+                <option value="12">Hanover</option>
+                <option value="13">Westmoreland</option>
+                <option value="14">St.Elizabeth</option>
+                </select>
+
+             
+  </div>
+              </div>
+      <div class="row">
+        <div class="input-field col s12">
+              <input placeholder="Country" id="country" type="text" class="validate">
+          <label for="country">Country</label>
+        </div>
+        
+      </div>
        <a class="waves-effect waves-light btn"type="submit" name="action">Submit</a>
     </form>
   </div>
 </div>
-<footer id="footer">
-  <div class="container center">
-  
   </div>
-</footer>
-
+  </div>
+  </div>
 {{--  <div class="row">
     <div class=" col s6 offset-s3">
         <div class="card grey lighten-2">
