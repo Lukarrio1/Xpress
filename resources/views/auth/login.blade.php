@@ -1,4 +1,5 @@
 @extends('layouts.forms')
+<<<<<<< HEAD
 
 @section('content')
 <div class="valign-wrapper row login-box">
@@ -37,6 +38,10 @@
   </div>
 </div>
 {{--  <form class="box" method="POST" action="{{ route('login') }}">
+=======
+@section('content') 
+<form class="box" method="POST" action="{{ route('login') }}">
+>>>>>>> 3aca45a73586d9d8085ff36bfe62ec535a527ed1
         {{ csrf_field() }}
     <h1>Xpress Logistics Login</h1>
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

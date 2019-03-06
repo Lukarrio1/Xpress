@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-  <div class="card blue-grey darken-1">
+  <div class="card  hoverable   blue-grey lighten-3">
         <div class="card-content blue-text">
   <h2>Xpress Logistics Registration</h2>
   <div class="row">
@@ -25,7 +25,7 @@
 
       <div class="row">
           <div class="input-field col s12">
-            <input id="telephone" type="tel" class="validate">
+            <input id="telephone" type="number" class="validate">
           <label for="telephone">Telephone</label>
         </div>
       </div>
@@ -72,9 +72,15 @@
               <input placeholder="Country" id="country" type="text" class="validate">
           <label for="country">Country</label>
         </div>
-        
+         <p>
+      <label>
+        <input type="checkbox" />
+        <span>I accept the terms & conditions of Xpress Logistics</span>
+      </label>
+    </p>
       </div>
        <a class="waves-effect waves-light btn"type="submit" name="action">Submit</a>
+      
     </form>
   </div>
 </div>

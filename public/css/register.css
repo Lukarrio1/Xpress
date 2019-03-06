@@ -62,13 +62,13 @@ h2 {
     text-transform: uppercase;
     text-align: center;
     -webkit-font-smoothing: antialiased;
-    color: #ffffff;
+    color: black;
 }
 
 btn {
     font-family: 'Segoe UI', sans-serif;
     font-weight: 600;
-    color: #212121;
+    color: red;
 }
 
 
