@@ -1,11 +1,12 @@
 html,
 body {
-    margin-top: 60px;
-    /* background-image: url("/storage/img/hallpackage.jpg"); */
+    margin-top: 65px;
+    background-image: url("/storage/img/hallpackage.jpg");
     background-color: linear-gradient(to right, #6061b1, hsl(221, 75%, 47%));
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 }
 
 .login-box {
@@ -20,11 +21,4 @@ a:link {
 
 a:visited {
     color: #db5270;
-<<<<<<< HEAD
-}
-
-.btn {
-    color: white;
-=======
->>>>>>> 463d423629cefdd98d166dc7f5091ea0276d7241
 }

@@ -32,16 +32,11 @@
               </div>
             </div>
           </div>
-          <div class=" center">
+          <div class="center">
             <button type="reset" id="reset" class="btn green waves-effect">Reset</button>
             <button class="btn red waves-effect waves-light" type="submit">Login</button>
           </div>
         </div>
-      </div>
-        
-      <div class="card-action center-align">
-        <input type="reset" id="reset" class="btn green white-text waves-effect center">
-        <input type="submit" class="btn red waves-effect waves-light white-text center" value="Login">
       </div>
     </form>
     <a class="" href="{{ route('password.request') }}">
@@ -49,10 +44,11 @@
   </a>
   <br>
   <br>
-  
     <a class="alink" href="{{ route('register') }}">
       Need an account? Register here.
   </a>
+  <br>
+  <br>
   </div>
 </div>
 {{--  <form class="box" method="POST" action="{{ route('login') }}">
