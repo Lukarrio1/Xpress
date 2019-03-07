@@ -1,7 +1,7 @@
 html,
 body {
-    margin-top: 100px;
-    background-image: url("/storage/img/hallpackage.jpg");
+    margin-top: 60px;
+    /* background-image: url("/storage/img/hallpackage.jpg"); */
     background-color: linear-gradient(to right, #6061b1, hsl(221, 75%, 47%));
     background-position: center;
     background-repeat: no-repeat;
@@ -10,7 +10,7 @@ body {
 
 .login-box {
     height: 100%;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 a:link {
@@ -20,5 +20,8 @@ a:link {
 
 a:visited {
     color: #db5270;
-    1
+}
+
+.btn {
+    color: white;
 }

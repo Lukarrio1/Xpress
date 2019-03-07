@@ -73,16 +73,16 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        'pgsql_xpress' => [
-            'driver' => 'pgsql',
-            'host' => $host,
-            'database' =>$database,
-            'username' =>$username,
-            'password' =>$password,
-            'charset' => 'utf8',
-            'prefix' => '',
-            'schema' => 'public',
-        ],
+        // 'pgsql_xpress' => [
+        //     'driver' => 'pgsql',
+        //     'host' => $host,
+        //     'database' =>$database,
+        //     'username' =>$username,
+        //     'password' =>$password,
+        //     'charset' => 'utf8',
+        //     'prefix' => '',
+        //     'schema' => 'public',
+        // ],
 
     ],
 

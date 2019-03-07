@@ -1,10 +1,8 @@
 @extends('layouts.forms')
-<<<<<<< HEAD
-
 @section('content')
 <div class="valign-wrapper row login-box">
   <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
-    <form>
+    <form method="POST">
       <div class="card-content">
         <h3 class="card-title  red-text">Xpress 
           Logistics Login</h3>
@@ -19,22 +17,21 @@
           </div>
         </div>
       </div>
-     
-    <a class="" href="{{ route('password.request') }}">
-            Forgot Your Password?
-        </a>
-        <br>
-        <br>
         
-          <a class="alink" href="{{ route('register') }}">
-            Need an account? Register here.
-        </a>
-      <div class="card-action right-align">
-        <input type="reset" id="reset" class="btn green blue-text waves-effect" value="Reset">
-        <input type="submit" class="btn red waves-effect waves-light" value="Login">
+      <div class="card-action center-align">
+        <input type="reset" id="reset" class="btn green white-text waves-effect center">
+        <input type="submit" class="btn red waves-effect waves-light white-text center" value="Login">
       </div>
-      
     </form>
+    <a class="" href="{{ route('password.request') }}">
+      Forgot Your Password?
+  </a>
+  <br>
+  <br>
+  
+    <a class="alink" href="{{ route('register') }}">
+      Need an account? Register here.
+  </a>
   </div>
 </div>
 {{--  <form class="box" method="POST" action="{{ route('login') }}">
