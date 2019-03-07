@@ -1,5 +1,4 @@
 @extends('layouts.forms')
-
 @section('content')
 <div class="valign-wrapper row login-box">
   <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
@@ -33,22 +32,23 @@
               </div>
             </div>
           </div>
-          <div class=" center">
+          <div class="center">
             <button type="reset" id="reset" class="btn green waves-effect">Reset</button>
             <button class="btn red waves-effect waves-light" type="submit">Login</button>
           </div>
+        </div>
+      </div>
     </form>
-    <br>
-    <div class="card-action">
-      <a href="{{ route('password.request')}}">
-        Forgot Your Password?
-      </a>
-      <br>
-      <br>
-      <a href="{{ route('register')}}">
-        Need an account? Register here.
-      </a>
-    </div>
+    <a class="" href="{{ route('password.request') }}">
+      Forgot Your Password?
+  </a>
+  <br>
+  <br>
+    <a class="alink" href="{{ route('register') }}">
+      Need an account? Register here.
+  </a>
+  <br>
+  <br>
   </div>
 </div>
 {{--  <form class="box" method="POST" action="{{ route('login') }}">

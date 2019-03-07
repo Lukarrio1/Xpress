@@ -1,10 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-  <div class="card  hoverable   blue-grey lighten-3">
-        <div class="card-content blue-text">
-  <h2>Xpress Logistics Registration</h2>
-  <div class="row">
+
+<div class="valign-wrapper row login-box">
+  <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+    <form method="POST">
+      <div class="card-content">
+        <h3 class="card-title  red-text">Xpress 
+          Logistics Register</h3>
+          <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
@@ -72,121 +75,42 @@
               <input placeholder="Country" id="country" type="text" class="validate">
           <label for="country">Country</label>
         </div>
-         <p>
-      <label>
-        <input type="checkbox" />
-        <span>I accept the terms & conditions of Xpress Logistics</span>
-      </label>
-    </p>
       </div>
-       <a class="waves-effect waves-light btn"type="submit" name="action">Submit</a>
-      
-    </form>
-  </div>
-</div>
-  </div>
-  </div>
-  </div>
-{{--  <div class="row">
-    <div class=" col s6 offset-s3">
-        <div class="card grey lighten-2">
-        <div class="card-content blue-text">
-    <form class="col s12">
       <div class="row">
-        <div class="input-field col s6">
-            <input id="firstname" type="text" class="validate">
-          <label for="firstname">First Name</label>
-        </div>
-            <div class="input-field col s6">
-          <input id="lastname" type="text" class="validate">
-          <label for="lastname">Last Name</label>
-        </div>
-      </div>
-       <div class="row">
-        <div class="input-field col s6">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-                </div>
-        <div class="input-field col s6">
-            <input id="telephone" type="tel" class="validate">
-          <label for="telephone">Telephone</label>
-        </div>
-      </div>
-        <div class="row">
-        <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="confirmpassword" type="password" class="validate">
-          <label for="confirmpassword">Confirm Password</label>
-                  </div>
-      </div>
-<div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Street Address" id="streetaddress" type="text" class="validate">
-          <label for="streetaddress">Address</label>
-        </div>
-              </div>
-              <div class="row">
-                  <div class="input-field col s6">
-          <input placeholder="City" id="city" type="text" class="validate">
-          <label for="city">City</label>
-                  </div>
-                  <div class="input-field col s6">
-                <select>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Manchester</option>
-                <option value="2">Clarendon</option>
-                <option value="3">St.Catherine</option>
-                <option value="4">St.Andrew</option>
-                <option value="5">Kingston</option>
-                <option value="6">St.Thomas</option>
-                <option value="7">Portland</option>
-                <option value="8">St.Mary</option>
-                <option value="9">St.Ann</option>
-                <option value="10">Trelawny</option>
-                <option value="11">St.James</option>
-                <option value="12">Hanover</option>
-                <option value="13">Westmoreland</option>
-                <option value="14">St.Elizabeth</option>
-                </select>
-    <label>Select Parish</label>
-             
-  </div>
-              </div>
-      <div class="row">
-        <div class="input-field col s12">
-              <input placeholder="Country" id="country" type="text" class="validate">
-          <label for="country">Country</label>
-        </div>
-        
-      </div>
-      <div class="row"> 
+         <label>Preferred Pick Up Location</label> 
            <div class="input-field col s12">
-    <select>
+            
+    <select class="browser-default col 12">
       <option value="" disabled selected>Select Pick Up Location</option>
       <option value="1">Home Deivery</option>
       <option value="2">Office Pick Up</option>
      
     </select>
-    <label>Preferred Pick Up Location</label>
+    
   </div>
-  <a class="alink" href="{{ route('login') }}">
-            Already have an account? Login Here.
-        </a>
+        <p>
+      <label>
+        <input for="termscheckbox" id="termscheckbox" type="checkbox" checked="checked" disabled="disabled" />
+        <span></span>
+      </label>
+    </p>
+        </form>
       </div>
-        </div>
-        </div>
-      </div>
-    </div>
-    </form>
-</div>
-</div>
-  </div>
-</div>
-          --}}
 
+          <div class="card-action center-align">
+           <input type="submit" class="btn red waves-effect waves-light white-text center" value="Submit">
+      </div>
+      <a class="alink" href="{{ route('register') }}">
+      Already have an account? Login here.
+  </a>          
+         </form>
+        </div>
+      </div>
+</div>
+        
+      </div>
+</div>
+</div>
 
 
 
