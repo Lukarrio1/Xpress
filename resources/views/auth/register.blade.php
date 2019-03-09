@@ -99,7 +99,7 @@
              Submit
            </button>
       </div>
-      <a class="alink" href="{{ route('login') }}">
+      <a class="alink center" href="{{ route('login') }}">
       Already have an account? Login here.
   </a>          
          </form>
