@@ -4,7 +4,7 @@
   <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
     <form method="POST">
       <div class="card-content">
-        <h3 class="card-title red-text">Xpress 
+        <h3 class="card-title red-text center">Xpress 
           Logistics Register</h3>
           <div class="row">
     <div class="col s12">
