@@ -14,7 +14,7 @@
               <input type="email" class="validate" name="email" id="email" value="{{ old('email') }}" required
                 autofocus>
               @if ($errors->has('email'))
-              <span class="help-block">
+              <span style="color:red">
                 <strong>{{ $errors->first('email') }}</strong>
               </span>
               @endif
