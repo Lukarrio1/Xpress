@@ -86,10 +86,10 @@
     </select>
     
   </div>
-        <p>
+        <p class="center">
       <label>
         <input for="termscheckbox" id="termscheckbox" type="checkbox"/>
-        <span>aondnaidnawd</span>
+        <span>Terms and conditions</span>
       </label>
     </p>
       </div>
