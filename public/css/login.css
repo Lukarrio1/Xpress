@@ -1,6 +1,6 @@
 html,
 body {
-    margin-top: 35px;
+    margin-top: 60px;
     background-image: url("/storage/img/hallpackage.jpg") ;
     background-color: linear-gradient(to right, #6061b1, hsl(221, 75%, 47%));
     background-position: center;
