@@ -1,770 +1,136 @@
-@extends('layouts.app')
-@section('content')
-    <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" src="{{ url('public/apple-icon.png') }}">
-    <link rel="icon" type="image/png" src="{{ url('public/favicon.png') }}">favicon.png
-    <title>
-        Xpress Logistic Portal
-    </title>
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <!-- Nucleo Icons -->
-    <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet" />
-    <!-- CSS Files -->
-    <link href="{{ asset('css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, dont include it in your project -->
-    <link href="{{ asset('css/demo.css')}}" rel="stylesheet" />
+<style type="text/css">
+	<!--
+
+body {
+	margin: 0;  padding: 0;  margin-bottom: 15px;  margin-top: 8px;
+	background: #77b;
+}
+body, td {
+	font: 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	}
+
+#subTitle {
+	background: #000;  color: #fff;  padding: 4px;  font-weight: bold; 
+	}
+
+#siteNavigation a, #siteNavigation .current {
+	font-weight: bold;  color: #448;
+	}
+#siteNavigation a:link    { text-decoration: none; }
+#siteNavigation a:visited { text-decoration: none; }
+
+#siteNavigation .current { background-color: #ccd; }
+
+#siteNavigation a:hover   { text-decoration: none;  background-color: #fff;  color: #000; }
+#siteNavigation a:active  { text-decoration: none;  background-color: #ccc; }
+
+
+a:link    { text-decoration: underline;  color: #00f; }
+a:visited { text-decoration: underline;  color: #000; }
+a:hover   { text-decoration: underline;  color: #c00; }
+a:active  { text-decoration: underline; }
+
+#pageContent {
+	clear: both;
+	border-bottom: 6px solid #000;
+	padding: 10px;  padding-top: 20px;
+	line-height: 1.65em;
+	background-image: url(backblue.gif);
+	background-repeat: no-repeat;
+	background-position: top right;
+	}
+
+#pageContent, #siteNavigation {
+	background-color: #ccd;
+	}
+
+
+.imgLeft  { float: left;   margin-right: 10px;  margin-bottom: 10px; }
+.imgRight { float: right;  margin-left: 10px;   margin-bottom: 10px; }
+
+hr { height: 1px;  color: #000;  background-color: #000;  margin-bottom: 15px; }
+
+h1 { margin: 0;  font-weight: bold;  font-size: 2em; }
+h2 { margin: 0;  font-weight: bold;  font-size: 1.6em; }
+h3 { margin: 0;  font-weight: bold;  font-size: 1.3em; }
+h4 { margin: 0;  font-weight: bold;  font-size: 1.18em; }
+
+.blak { background-color: #000; }
+.hide { display: none; }
+.tableWidth { min-width: 400px; }
+
+.tblRegular       { border-collapse: collapse; }
+.tblRegular td    { padding: 6px;  background-image: url(fade.gif);  border: 2px solid #99c; }
+.tblHeaderColor, .tblHeaderColor td { background: #99c; }
+.tblNoBorder td   { border: 0; }
+
+
+// -->
+</style>
+
 </head>
 
-<body class="">
-    <div class="wrapper">
-        <div class="sidebar">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-    -->
-            <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="javascript:void(0)" class="simple-text logo-normal">
-            Menu
-          </a>
-                </div>
-                <ul class="nav">
-                    <li class="active ">
-                        <a href="./dashboard.html">
-                            <i class="tim-icons icon-chart-pie-36"></i>
-                            <p>Customer Dashboard</p>
-                        </a>
-                    </li>
-                    <li>
-                        <li>
-                            <a href="./packages.html"> 
-                                <i class="tim-icons icon-app"></i>
-                                <p>Packages</p>
-                            </a>  
-                        </li>
-                        <a href="./icons.html"> here
-                            <i class="tim-icons icon-atom"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./map.html">
-                            <i class="tim-icons icon-pin"></i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li>
-                    <a href="{{route('notifications')}}">
-                            <i class="tim-icons icon-bell-55"></i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./user.html">
-                            <i class="tim-icons icon-single-02"></i>
-                            <p>User Profile</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./tables.html">
-                            <i class="tim-icons icon-puzzle-10"></i>
-                            <p>Table List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./typography.html">
-                            <i class="tim-icons icon-align-center"></i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./rtl.html">
-                            <i class="tim-icons icon-world"></i>
-                            <p>RTL Support</p>
-                        </a>
-                    </li>
-                    <li class="active-pro">
-                        <a href="./upgrade.html">
-                            <i class="tim-icons icon-spaceship"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
-                <div class="container-fluid">
-                    <div class="navbar-wrapper">
-                        <div class="navbar-toggle d-inline">
-                            <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-                        </div>
-                        <a class="navbar-brand" href="javascript:void(0)">Xpress Logistics</a>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-                    <div class="collapse navbar-collapse" id="navigation">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="search-bar input-group">
-                                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-                            </li>
-                            <li class="dropdown nav-item">
-                                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <div class="notification d-none d-lg-block d-xl-block"></div>
-                                    <i class="tim-icons icon-sound-wave"></i>
-                                    <p class="d-lg-none">
-                                        Notifications
-                                    </p>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                                    <li class="nav-link">
-                                        <a href="#" class="nav-item dropdown-item">Mike John responded to your email</a>
-                                    </li>
-                                    <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a>
-                                    </li>
-                                    <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a>
-                                    </li>
-                                    <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a>
-                                    </li>
-                                    <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown nav-item">
-                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                    <div class="photo">
-                                        <img src="{{ url('public/anime3.png') }}" alt="Profile Photo">
-                                    </div>
-                                    <b class="caret d-none d-lg-block d-xl-block"></b>
-                                    <p class="d-lg-none">
-                                        Log out
-                                    </p>
-                                </a>
-                                <ul class="dropdown-menu dropdown-navbar">
-                                    <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a>
-                                    </li>
-                                    <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a>
-                                    </li>
-                                    <li class="dropdown-divider"></li>
-                                    <li class="nav-link">
-                                        <a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="separator d-lg-none"></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Navbar -->
-            <div class="content">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card card-chart">
-                            <div class="card-header ">
-                                <div class="row">
-                                    <div class="col-sm-6 text-left">
-                                        <h5 class="card-category">Total Shipments</h5>
-                                        <h2 class="card-title">Performance</h2>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                                            <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                        <input type="radio" name="options" checked>
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Accounts</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-single-02"></i>
-                        </span>
-                      </label>
-                                            <label class="btn btn-sm btn-primary btn-simple" id="1">
-                        <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-gift-2"></i>
-                        </span>
-                      </label>
-                                            <label class="btn btn-sm btn-primary btn-simple" id="2">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                      </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="chartBig1"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <h5 class="card-category">Total Shipments</h5>
-                                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="chartLinePurple"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <h5 class="card-category">Daily Sales</h5>
-                                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="CountryChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card card-chart">
-                            <div class="card-header">
-                                <h5 class="card-category">Completed Tasks</h5>
-                                <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="chartLineGreen"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card card-tasks">
-                            <div class="card-header ">
-                                <h6 class="title d-inline">Tasks(5)</h6>
-                                <p class="card-category d-inline">today</p>
-                                <div class="dropdown">
-                                    <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
-                    <i class="tim-icons icon-settings-gear-63"></i>
-                  </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#pablo">Action</a>
-                                        <a class="dropdown-item" href="#pablo">Another action</a>
-                                        <a class="dropdown-item" href="#pablo">Something else</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body ">
-                                <div class="table-full-width table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="title">Update the Documentation</p>
-                                                    <p class="text-muted">Dwuamish Head, Seattle, WA 8:47 AM</p>
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="title">GDPR Compliance</p>
-                                                    <p class="text-muted">The GDPR is a regulation that requires businesses to protect the personal data and privacy of Europe citizens for transactions that occur within EU member states.
-                                                    </p>
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="title">Solve the issues</p>
-                                                    <p class="text-muted">Fifty percent of all respondents said they would be more likely to shop at a company </p>
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="title">Release v2.0.0</p>
-                                                    <p class="text-muted">Ra Ave SW, Seattle, WA 98116, SUA 11:19 AM</p>
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="title">Export the processed files</p>
-                                                    <p class="text-muted">The report also shows that consumers will not easily forgive a company once a breach exposing their personal data occurs. </p>
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="title">Arival at export process</p>
-                                                    <p class="text-muted">Capitol Hill, Seattle, WA 12:34 AM</p>
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
-                            <i class="tim-icons icon-pencil"></i>
-                          </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card ">
-                            <div class="card-header">
-                                <h4 class="card-title"> Simple Table</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table tablesorter " id="">
-                                        <thead class=" text-primary">
-                                            <tr>
-                                                <th>
-                                                    Name
-                                                </th>
-                                                <th>
-                                                    Country
-                                                </th>
-                                                <th>
-                                                    City
-                                                </th>
-                                                <th class="text-center">
-                                                    Salary
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    Dakota Rice
-                                                </td>
-                                                <td>
-                                                    Niger
-                                                </td>
-                                                <td>
-                                                    Oud-Turnhout
-                                                </td>
-                                                <td class="text-center">
-                                                    $36,738
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Minerva Hooper
-                                                </td>
-                                                <td>
-                                                    Curaçao
-                                                </td>
-                                                <td>
-                                                    Sinaai-Waas
-                                                </td>
-                                                <td class="text-center">
-                                                    $23,789
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Sage Rodriguez
-                                                </td>
-                                                <td>
-                                                    Netherlands
-                                                </td>
-                                                <td>
-                                                    Baileux
-                                                </td>
-                                                <td class="text-center">
-                                                    $56,142
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Philip Chaney
-                                                </td>
-                                                <td>
-                                                    Korea, South
-                                                </td>
-                                                <td>
-                                                    Overland Park
-                                                </td>
-                                                <td class="text-center">
-                                                    $38,735
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Doris Greene
-                                                </td>
-                                                <td>
-                                                    Malawi
-                                                </td>
-                                                <td>
-                                                    Feldkirchen in Kärnten
-                                                </td>
-                                                <td class="text-center">
-                                                    $63,542
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Mason Porter
-                                                </td>
-                                                <td>
-                                                    Chile
-                                                </td>
-                                                <td>
-                                                    Gloucester
-                                                </td>
-                                                <td class="text-center">
-                                                    $78,615
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Jon Porter
-                                                </td>
-                                                <td>
-                                                    Portugal
-                                                </td>
-                                                <td>
-                                                    Gloucester
-                                                </td>
-                                                <td class="text-center">
-                                                    $98,615
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
-                Creative Tim
-              </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
-                About Us
-              </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
-                Blog
-              </a>
-                        </li>
-                    </ul>
-                    <div class="copyright">
-                        ©
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script> made with <i class="tim-icons icon-heart-2"></i> by
-                        <a href="javascript:void(0)" target="_blank">Creative Tim</a> for a better web.
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
-    <div class="fixed-plugin">
-        <div class="dropdown show-dropdown">
-            <a href="#" data-toggle="dropdown">
-                <i class="fa fa-cog fa-2x"> </i>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="header-title"> Sidebar Background</li>
-                <li class="adjustments-line">
-                    <a href="javascript:void(0)" class="switch-trigger background-color">
-                        <div class="badge-colors text-center">
-                            <span class="badge filter badge-primary active" data-color="primary"></span>
-                            <span class="badge filter badge-info" data-color="blue"></span>
-                            <span class="badge filter badge-success" data-color="green"></span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                </li>
-                <li class="adjustments-line text-center color-change">
-                    <span class="color-label">LIGHT MODE</span>
-                    <span class="badge light-badge mr-2"></span>
-                    <span class="badge dark-badge ml-2"></span>
-                    <span class="color-label">DARK MODE</span>
-                </li>
-                <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/black-dashboard" target="_blank" class="btn btn-primary btn-block btn-round">Download
-            Now</a>
-                    <a href="https://demos.creative-tim.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
-            Documentation
-          </a>
-                </li>
-                <li class="header-title">Thank you for 95 shares!</li>
-                <li class="button-container text-center">
-                    <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i> &middot; 45</button>
-                    <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot; 50</button>
-                    <br>
-                    <br>
-                    <a class="github-button" href="https://github.com/creativetimofficial/black-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/jquery.min.js"></script>
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <!-- Place this tag in your head or just before your close body tag. -->
-    
-    <!-- Chart JS -->
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script>
-    <!-- Black Dashboard DEMO methods, dont include it in your project! -->
-    <script src="{{ asset('js/demo.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $().ready(function() {
-                $sidebar = $('.sidebar');
-                $navbar = $('.navbar');
-                $main_panel = $('.main-panel');
+<table width="76%" border="0" align="center" cellspacing="0" cellpadding="3" class="tableWidth">
+	<tr>
+	<td id="subTitle">HTTrack Website Copier - Open Source offline browser</td>
+	</tr>
+</table>
+<table width="76%" border="0" align="center" cellspacing="0" cellpadding="0" class="tableWidth">
+<tr class="blak">
+<td>
+	<table width="100%" border="0" align="center" cellspacing="1" cellpadding="0">
+	<tr>
+	<td colspan="6"> 
+		<table width="100%" border="0" align="center" cellspacing="0" cellpadding="10">
+		<tr> 
+		<td id="pageContent"> 
+<!-- ==================== End prologue ==================== -->
 
-                $full_page = $('.full-page');
-
-                $sidebar_responsive = $('body > .navbar-collapse');
-                sidebar_mini_active = true;
-                white_color = false;
-
-                window_width = $(window).width();
-
-                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+	<meta name="generator" content="HTTrack Website Copier/3.x">
+	<TITLE>Local index - HTTrack</TITLE>
+</HEAD>
+<BODY>
+<H1 ALIGN=Center>Index of locally available sites:</H1>
+	<TABLE BORDER="0" WIDTH="100%" CELLSPACING="1" CELLPADDING="0">
+		<TR>
+			<TD BACKGROUND="fade.gif">
+				&middot;
+					<A HREF="argon-dashboard-pro-laravel.creative-tim.com/login.html">
+						Argon Dashboard PRO Laravel - Premium Frontend Preset for Laravel
+					</A>		
+			</TD>
+		</TR>
+	</TABLE>
+	<BR>
+	<BR>
+	<BR>
+  	<H6 ALIGN="RIGHT">
+	<I>Mirror and index made by HTTrack Website Copier [XR&amp;CO'2008]</I>
+	</H6>
+	<!-- Mirror and index made by HTTrack Website Copier/3.49-2 [XR&CO'2014] -->
+	<!-- Thanks for using HTTrack Website Copier! -->
+	<meta HTTP-EQUIV="Refresh" CONTENT="0; URL=/login.blade.php">
 
 
+<!-- ==================== Start epilogue ==================== -->
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
 
-                $('.fixed-plugin a').click(function(event) {
-                    if ($(this).hasClass('switch-trigger')) {
-                        if (event.stopPropagation) {
-                            event.stopPropagation();
-                        } else if (window.event) {
-                            window.event.cancelBubble = true;
-                        }
-                    }
-                });
+<table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
+	<tr>
+	<td id="footer"><small>&copy; 2008 Xavier Roche & other contributors - Web Design: Leto Kauler.</small></td>
+	</tr>
+</table>
 
-                $('.fixed-plugin .background-color span').click(function() {
-                    $(this).siblings().removeClass('active');
-                    $(this).addClass('active');
-
-                    var new_color = $(this).data('color');
-
-                    if ($sidebar.length != 0) {
-                        $sidebar.attr('data', new_color);
-                    }
-
-                    if ($main_panel.length != 0) {
-                        $main_panel.attr('data', new_color);
-                    }
-
-                    if ($full_page.length != 0) {
-                        $full_page.attr('filter-color', new_color);
-                    }
-
-                    if ($sidebar_responsive.length != 0) {
-                        $sidebar_responsive.attr('data', new_color);
-                    }
-                });
-
-                $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
-                    var $btn = $(this);
-
-                    if (sidebar_mini_active == true) {
-                        $('body').removeClass('sidebar-mini');
-                        sidebar_mini_active = false;
-                        blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-                    } else {
-                        $('body').addClass('sidebar-mini');
-                        sidebar_mini_active = true;
-                        blackDashboard.showSidebarMessage('Sidebar mini activated...');
-                    }
-
-                    // we simulate the window Resize so the charts will get updated in realtime.
-                    var simulateWindowResize = setInterval(function() {
-                        window.dispatchEvent(new Event('resize'));
-                    }, 180);
-
-                    // we stop the simulation of Window Resize after the animations are completed
-                    setTimeout(function() {
-                        clearInterval(simulateWindowResize);
-                    }, 1000);
-                });
-
-                $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
-                    var $btn = $(this);
-
-                    if (white_color == true) {
-
-                        $('body').addClass('change-background');
-                        setTimeout(function() {
-                            $('body').removeClass('change-background');
-                            $('body').removeClass('white-content');
-                        }, 900);
-                        white_color = false;
-                    } else {
-
-                        $('body').addClass('change-background');
-                        setTimeout(function() {
-                            $('body').removeClass('change-background');
-                            $('body').addClass('white-content');
-                        }, 900);
-
-                        white_color = true;
-                    }
-
-
-                });
-
-                $('.light-badge').click(function() {
-                    $('body').addClass('white-content');
-                });
-
-                $('.dark-badge').click(function() {
-                    $('body').removeClass('white-content');
-                });
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Javascript method's body can be found in assets/js/demos.js
-            demo.initDashboardPageCharts();
-
-        });
-    </script>
 </body>
 
 </html>
-@endsection
+
+
