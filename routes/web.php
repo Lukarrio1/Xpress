@@ -14,8 +14,6 @@
 
 // page controller
 Route::get('/','PagesController@index');
-// this is the notification controller 
-Route::get('/Notifications','NotificationController@all_notification')->name('notifications');
 // this is the home route
 Route::get('/home', 'HomeController@index')->name('home');
 // email verification
@@ -35,4 +33,17 @@ Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLink
 Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
 Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
 Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+});
+
+Route::get('/Reg',function(){
+    return view('register');
+});
+Route::get('/Price',function(){
+    return view('pricing');
+});
+Route::get('/log',function(){
+    return view('login');
+});
+Route::get('/Lock',function(){
+    return view('lock');
 });

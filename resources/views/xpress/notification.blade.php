@@ -1,1 +1,0 @@
-<h1>this is the first notification {{$notification}}</h1>
