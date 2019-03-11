@@ -53,7 +53,8 @@
         
                 
         <!-- Argon CSS -->
-        <link type="text/css" href="../argon/css/argone209.css?v=1.0.0" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/argone209.css')}}" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/app.css')}}" rel="stylesheet">
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -151,14 +152,6 @@
                     <a class="nav-link nav-link-icon" href="https://github.com/creativetimofficial" target="_blank" data-toggle="tooltip" title="" data-original-title="Star us on Github">
                         <i class="fab fa-github"></i>
                         <span class="nav-link-inner--text d-lg-none">Github</span>
-                    </a>
-                </li>
-                <li class="nav-item d-none d-lg-block ml-lg-4">
-                    <a href="https://www.creative-tim.com/product/argon-dashboard-pro" target="_blank" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon">
-                            <i class="fas fa-shopping-cart mr-2"></i>
-                        </span>
-                        <span class="nav-link-inner--text">Purchase now</span>
                     </a>
                 </li>
             </ul>

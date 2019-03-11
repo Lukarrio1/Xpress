@@ -47,3 +47,7 @@ Route::get('/log',function(){
 Route::get('/Lock',function(){
     return view('lock');
 });
+
+Route::get('/Rset',function(){
+return view('reset');
+});

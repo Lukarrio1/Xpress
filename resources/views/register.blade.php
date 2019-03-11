@@ -48,7 +48,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=OpenSans:300,400,600,700" rel="stylesheet">
         <!-- Icons -->
-        <link href="argon/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+        <link href="{{asset('css/nucleo.css')}}" rel="stylesheet">
         <link href="argon/vendor/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     
         <!-- Argon CSS -->
@@ -150,14 +150,6 @@
                     <a class="nav-link nav-link-icon" href="https://github.com/creativetimofficial" target="_blank" data-toggle="tooltip" title="" data-original-title="Star us on Github">
                         <i class="fab fa-github"></i>
                         <span class="nav-link-inner--text d-lg-none">Github</span>
-                    </a>
-                </li>
-                <li class="nav-item d-none d-lg-block ml-lg-4">
-                    <a href="https://www.creative-tim.com/product/argon-dashboard-pro" target="_blank" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon">
-                            <i class="fas fa-shopping-cart mr-2"></i>
-                        </span>
-                        <span class="nav-link-inner--text">Purchase now</span>
                     </a>
                 </li>
             </ul>
