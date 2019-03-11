@@ -34,7 +34,7 @@ Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkReques
 Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
 Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
-
+// New routes for now 
 Route::get('/Reg',function(){
     return view('register');
 });
