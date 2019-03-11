@@ -50,10 +50,9 @@
         <!-- Icons -->
         <link href="argon/vendor/nucleo/css/nucleo.css" rel="stylesheet">
         <link href="argon/vendor/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-        
-                
+    
         <!-- Argon CSS -->
-        <link type="text/css" href="argon/css/argone209.css?v=1.0.0" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/argone209.css')}}" rel="stylesheet">
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
