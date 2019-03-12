@@ -41,9 +41,6 @@ Route::get('/Reg',function(){
 Route::get('/Price',function(){
     return view('pricing');
 });
-Route::get('/log',function(){
-    return view('login');
-});
 Route::get('/Lock',function(){
     return view('lock');
 });
