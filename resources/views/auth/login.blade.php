@@ -27,7 +27,7 @@
                                      </div>
                                      <input class="form-control" placeholder="Email" type="email" name="email" value="{{ old('email') }}" required autofocus>
                                      @if ($errors->has('email'))
-                                     <span class="text-danger">
+                                     <span class="text-danger pt-1">
                                        <strong>{{ $errors->first('email') }}</strong>
                                      </span>
                                      @endif
@@ -40,7 +40,7 @@
                                      </div>
                                      <input class="form-control" name="password" placeholder="Password" type="password" required>
                                      @if ($errors->has('password'))
-                                     <span class="text-danger">
+                                     <span class="text-danger pt-1">
                                        <strong>{{ $errors->first('password') }}</strong>
                                      </span>
                                      @endif
@@ -54,12 +54,12 @@
                  </div>
                  <div class="row mt-3">
                      <div class="col-6">
-                     <a href="{{route('password.request')}}" class="text-light">
+                     <a href="{{route('password.request')}}" class="text-white">
                                  <small>Forgot password?</small>
                              </a>
                                              </div>
                      <div class="col-6 text-right">
-                     <a href="{{route('register')}}" class="text-light">
+                     <a href="{{route('register')}}" class="text-white">
                              <small>Create new account</small>
                          </a>
                      </div>

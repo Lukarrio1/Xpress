@@ -14,11 +14,8 @@ class PagesController extends Controller
     
     public function index(){
         
-        return view('Dashboard');
+        return view('home');
     }
 
-    //Notifications routes for now .. 
-    public function all_notification(){
-        return view('xpress.notification');
-    } 
+
 }

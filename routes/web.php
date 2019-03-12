@@ -11,6 +11,8 @@
 |
 */
 
+// User auth routes
+Auth::routes();
 
 // page controller
 Route::get('/','PagesController@index');
@@ -20,8 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/verify/{token}','VerifyController@Verify')->name('verify');
 // auth user routes
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-// User auth routes
-Auth::routes();
+
 // Admin routes
 Route::prefix('admin')->group(function() {
 Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -35,16 +36,16 @@ Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
 Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
 // New routes for now 
-Route::get('/Reg',function(){
-    return view('register');
-});
-Route::get('/Price',function(){
-    return view('pricing');
-});
-Route::get('/Lock',function(){
-    return view('lock');
-});
+// Route::get('/Reg',function(){
+//     return view('register');
+// });
+// Route::get('/Price',function(){
+//     return view('pricing');
+// });
+// Route::get('/Lock',function(){
+//     return view('lock');
+// });
 
-Route::get('/Rset',function(){
-return view('reset');
-});
+// Route::get('/Rset',function(){
+// return view('reset');
+// });
