@@ -59,10 +59,7 @@
       $('[data-toggle="tooltip"]').tooltip()
     })
 
-  </script>
-
   <!-- Charts -->
-  <script>
     // Small chart
     $(function () {
       $('.min-chart#chart-sales').easyPieChart({
@@ -117,6 +114,6 @@
       }
     });
 
-  </script>
+ </script>
 </body>
 </html>
