@@ -22,6 +22,9 @@
                         {{ csrf_field() }}
                              <div class="form-group mb-3">
                                  <div class="input-group input-group-alternative">
+                                     <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                     </div>
                                      <input class="form-control" placeholder="Email" type="email" name="email" value="{{ old('email') }}" required autofocus>
                                      @if ($errors->has('email'))
                                      <span class="text-danger pt-1">
@@ -32,6 +35,9 @@
                             </div>
                              <div class="form-group">
                                  <div class="input-group input-group-alternative">
+                                     <div class="input-group-prepend">
+                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                     </div>
                                      <input class="form-control" name="password" placeholder="Password" type="password" required>
                                      @if ($errors->has('password'))
                                      <span class="text-danger pt-1">
