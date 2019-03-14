@@ -18,6 +18,6 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
   <!-- Argon JS -->
-  <script src="{{ asset('js/argone209.js') }}"></script>
+  <script src="{{ asset('js/forms.js') }}"></script>
 </body>
 </html>
