@@ -18,7 +18,7 @@
                      </div>
                      <div class="card-body px-lg-5 py-lg-5">
  
-                     <form role="form" method="POST" action="{{route('login')}}">
+                     <form role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                              <div class="form-group mb-3">
                                  <div class="input-group input-group-alternative">
