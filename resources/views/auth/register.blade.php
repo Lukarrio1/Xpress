@@ -99,6 +99,12 @@
                         </form>
                             <br>
                                    <span class="text-muted">Already have an account?<a href="{{route('login')}}">Login Here</a></span>
+                     </div>
+                    
+                 </div>
+             </div>
+             </div>
+             </div>
                                         
                      
  

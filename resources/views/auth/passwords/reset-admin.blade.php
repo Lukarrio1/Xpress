@@ -77,7 +77,7 @@
                            <a href="{{route('admin.login')}}" class="text-white">
                                        <small>Login</small>
                                    </a>
-                                                   </div
+                                                
                        </div>
                    </div>
                </div>
