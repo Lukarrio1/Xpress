@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'telephone'=>$data['telephone'],
             'city'=>$data['city'],
             'parish'=>$data['parish'],
-            'country'=>$data['country'],
+            'Country'=>$data['country'],
         ]);
        $user->sendverificationemail();
         return $user;
