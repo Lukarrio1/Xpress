@@ -13,7 +13,7 @@
      <div class="container mt--8 pb-5">
          <div class="row justify-content-center">
              <div class="col-lg-5 col-md-7">
-                 <div class="card hoverable bg-secondary shadow border-0">
+                 <div class="card hoverable bg-secondary shadow border-0 pb-5">
                      <div class="card-header bg-transparent pb-5 text-center text-muted h1">
                      Xpress Logistics Register
                      </div>
@@ -27,7 +27,7 @@
                                     </div>
                                     <input class="form-control" placeholder="Name" type="text" name="name" value="" required autofocus>
                                 </div>
-                                                            </div>
+                                  </div>
                             <div class="form-group">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
