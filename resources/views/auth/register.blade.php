@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="main-content">
-  <div class="header bg-gradient-danger py-9 py-lg-12 pt-lg-4">
+  <div class="header bg-gradient-danger py-9 py-lg-12 pt-lg-12">
  
      <div class="separator separator-bottom separator-skew zindex-100">
          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
