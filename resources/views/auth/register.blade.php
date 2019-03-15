@@ -15,7 +15,7 @@
          <div class="row justify-content-center">
              <div class="col-lg-5 col-md-7">
                  <div class="card hoverable bg-secondary shadow border-0">
-                     <div class="card-header bg-transparent pb-5 text-center text-color blue text-muted h1">
+                     <div class="card-header bg-transparent pb-5 text-center text-muted h1">
                      Xpress Logistics Register
                      </div>
                      <div class="card-body px-lg-5 py-lg-5">
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-danger mt-4">Create account</button>
+                                <button type="submit" class="btn btn-primary mt-4">Create account</button>
                             </div>
                             <br>
                                    <span class="text-muted">Already have an account?<a href="{{route('login')}}">Login Here</a></span>
