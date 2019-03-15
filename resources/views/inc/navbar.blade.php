@@ -62,19 +62,19 @@
         <!-- Logo -->
         <li class="logo-sn waves-effect">
           <div class="text-center">
-            <a href="#" class="pl-0"><img src="../../../../../img/logo/mdb-transaprent-noshadows.png" class=""></a>
+            <a href="#" class="pl-0"><img src="" class=""></a>
           </div>
         </li>
         <!--/. Logo -->
 
         <!--Search Form-->
-        <li>
+        {{-- <li>
           <form class="search-form" role="search">
             <div class="form-group md-form mt-0 pt-1 waves-light">
               <input type="text" class="form-control" placeholder="Search">
             </div>
           </form>
-        </li>
+        </li> --}}
         <!--/.Search Form-->
         <!-- Side navigation links -->
         <li>
@@ -100,7 +100,7 @@
             </li>
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-image"></i> Pages<i class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
-                <ul>
+                {{-- <ul>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/pages/login.html" class="waves-effect">Login</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/pages/register.html" class="waves-effect">Register</a>
@@ -125,24 +125,24 @@
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/pages/chat.html" class="waves-effect">Chat</a>
                   </li>
-                </ul>
+                </ul> --}}
               </div>
             </li>
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-user"></i> Profile<i class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
-                <ul>
+                {{-- <ul>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/profile/basic-1.html" class="waves-effect">Basic 1</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/profile/basic-2.html" class="waves-effect">Basic 2</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/profile/extended.html" class="waves-effect">Extended</a>
                   </li>
-                </ul>
+                </ul> --}}
               </div>
             </li>
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fab fa-css3"></i> CSS<i class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
-                <ul>
+                {{-- <ul>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/css/grid.html" class="waves-effect">Grid system</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/css/media.html" class="waves-effect">Media object</a>
@@ -169,12 +169,12 @@
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/css/skins.html" class="waves-effect">Skins</a>
                   </li>
-                </ul>
+                </ul> --}}
               </div>
             </li>
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-th"></i> Components<i class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
-                <ul>
+                {{-- <ul>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/components/buttons.html" class="waves-effect">Buttons</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/components/cards.html" class="waves-effect">Cards</a>
@@ -203,42 +203,42 @@
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/components/tooltips.html" class="waves-effect">Tooltips</a>
                   </li>
-                </ul>
+                </ul> --}}
               </div>
             </li>
             <li><a class="collapsible-header waves-effect arrow-r"><i class="far fa-check-square"></i> Forms<i
                   class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
-                <ul>
+                {{-- <ul>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/forms/basic.html" class="waves-effect">Basic</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/forms/extended.html" class="waves-effect">Extended</a>
                   </li>
-                </ul>
+                </ul> --}}
               </div>
             </li>
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-table"></i> Tables<i class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
-                <ul>
+                {{-- <ul>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/tables/basic.html" class="waves-effect">Basic</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/tables/extended.html" class="waves-effect">Extended</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/tables/datatables.html" class="waves-effect">DataTables.net</a>
                   </li>
-                </ul>
+                </ul> --}}
               </div>
             </li>
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-map"></i> Maps<i class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
-                <ul>
+                {{-- <ul>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/maps/google.html" class="waves-effect">Google Maps</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/maps/full.html" class="waves-effect">Full screen map</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/maps/vector.html" class="waves-effect">Vector world map</a>
                   </li>
-                </ul>
+                </ul> --}}
               </div>
             </li>
             <!-- Simple link -->
@@ -273,7 +273,7 @@
       </div>
       <!-- Breadcrumb-->
       <div class="breadcrumb-dn mr-auto">
-        <p>Dashboard v.1</p>
+        <p>Xpress Logisticsja</p>
       </div>
 
       <!--Navbar links-->
@@ -313,10 +313,15 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle waves-effect" href="#" id="userDropdown" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span></a>
+        <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">{{Auth::user()->name}}</span></a>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="#" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">Log Out 
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form> 
             <a class="dropdown-item" href="#">My account</a>
           </div>
         </li>
