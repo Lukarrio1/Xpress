@@ -17,6 +17,7 @@
                      <div class="card-header bg-transparent pb-5 text-center text-muted h1">
                      Xpress Logistics Register
                      </div>
+                     @include('inc.alert')
                      <div class="card-body px-lg-5 py-lg-5">
                             <form role="form" method="POST" action="{{route('register')}}">
                                     {{ csrf_field() }}
@@ -85,7 +86,7 @@
                             <div class="row my-4">
                                 <div class="col-12">
                                     <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox" name="terms">
                                         <label class="custom-control-label" for="customCheckRegister">
                                             <span class="text-muted">I agree with the <a href="#">Privacy Policy</a></span>
                                         </label>
