@@ -2554,14 +2554,14 @@ fieldset:disabled a.btn {
 
 .btn-danger {
     color: #fff;
-    border-color: #f5365c;
-    background-color: #f5365c;
+    border-color: #f53636;
+    background-color: #fa2525;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
 
 .btn-danger:hover {
     color: #fff;
-    border-color: #f5365c;
+    border-color: #66575a;
     background-color: #f5365c;
 }
 
@@ -6774,7 +6774,7 @@ button.bg-warning:focus {
 }
 
 .bg-danger {
-    background-color: #f5365c !important;
+    background-color: #f53636 !important;
 }
 
 a.bg-danger:hover,
