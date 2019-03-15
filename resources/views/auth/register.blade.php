@@ -1,9 +1,8 @@
 @extends('layouts.forms')
 @section('content')
-<form role="form" method="POST" action="{{route('register')}}">
-                        {{ csrf_field() }}
+
 <div class="main-content">
-  <div class="header bg-gradient-g1rey py-9 py-lg-12 pt-lg-12">
+  <div class="header bg-gradient-danger py-9 py-lg-12 pt-lg-12">
  
      <div class="separator separator-bottom separator-skew zindex-100">
          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -19,6 +18,8 @@
                      Xpress Logistics Register
                      </div>
                      <div class="card-body px-lg-5 py-lg-5">
+                            <form role="form" method="POST" action="{{route('register')}}">
+                                    {{ csrf_field() }}
                        <div class="form-group">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -50,9 +51,6 @@
                                     </div>
                                     <input class="form-control" placeholder="Confirm Password" type="password" name="password_confirmation" required>
                                 </div>
-                            </div>
-                            <div class="text-muted font-italic">
-                                <small>password strength: <span class="text-success font-weight-700">strong</span></small>
                             </div>
                               <div class="form-group">
                                 <div class="input-group input-group-alternative">
@@ -89,7 +87,7 @@
                                     <div class="custom-control custom-control-alternative custom-checkbox">
                                         <input class="custom-control-input" id="customCheckRegister" type="checkbox">
                                         <label class="custom-control-label" for="customCheckRegister">
-                                            <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
+                                            <span class="text-muted">I agree with the <a href="#">Privacy Policy</a></span>
                                         </label>
                                     </div>
                                 </div>
@@ -97,10 +95,11 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary mt-4">Create account</button>
                             </div>
+                        </form>
                             <br>
                                    <span class="text-muted">Already have an account?<a href="{{route('login')}}">Login Here</a></span>
                                         
-                        </form>
+                     
  
                     
                             
