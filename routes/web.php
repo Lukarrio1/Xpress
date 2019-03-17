@@ -13,7 +13,8 @@
 
 // User auth routes
 Auth::routes();
-
+// nottification
+Route::get('/Notifications','NotificationController@all_notification');
 // page controller
 Route::get('/','PagesController@index');
 // this is the home route
