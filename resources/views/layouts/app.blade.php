@@ -112,7 +112,6 @@ $('.button-collapse').sideNav('hide');
  <script>
   // runs notification at start up..
   $( document ).ready(function() { 
-   
     $.get( "/Notifications", function( data ) {
       var obj = jQuery.parseJSON(data);
       $('#notificount').html(""+obj.length+"");
@@ -134,7 +133,7 @@ window.setInterval(function(){
      }
      $("#notify").html(""+text+"");
 });
-    },6000);
+    },20000);
  </script>
 </body>
 </html>
