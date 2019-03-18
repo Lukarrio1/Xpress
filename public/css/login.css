@@ -1,0 +1,24 @@
+html,
+body {
+    margin-top: 100px;
+    background-image: url("/storage/img/hallpackage.jpg") ;
+    background-color: linear-gradient(to right, #6061b1, hsl(221, 75%, 47%));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.login-box {
+    height: 100%;
+    opacity: 0.6;
+}
+
+a:link {
+    color: rgb(240, 122, 161);
+    text-decoration: none;
+}
+
+a:visited {
+    color: #db5270;
+}

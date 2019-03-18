@@ -57,7 +57,7 @@
   <header>
 
     <!-- Sidebar navigation -->
-    <div id="slide-out" class="side-nav sn-bg-4 fixed">
+    <div id="slide-out" data-activates="slide-out" class="side-nav sn-bg-4 fixed">
       <ul class="custom-scrollbar">
         <!-- Logo -->
         <li class="logo-sn waves-effect">
