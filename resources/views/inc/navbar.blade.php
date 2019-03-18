@@ -1,4 +1,4 @@
-{{--  <nav class="navbar navbar-default navbar-static-top">
+ {{-- <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -57,7 +57,7 @@
   <header>
 
     <!-- Sidebar navigation -->
-    <div id="slide-out" class="side-nav sn-bg-4 fixed">
+    <div id="slide-out" data-activates="slide-out" class="side-nav sn-bg-4 fixed">
       <ul class="custom-scrollbar">
         <!-- Logo -->
         <li class="logo-sn waves-effect">
