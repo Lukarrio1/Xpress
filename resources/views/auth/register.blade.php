@@ -1,7 +1,6 @@
 @extends('layouts.forms')
 @section('content')
-<form role="form" method="POST" action="{{route('register')}}">
-                        {{ csrf_field() }}
+
 <div class="main-content">
   <div class="header bg-gradient-danger py-9 py-lg-12 pt-lg-12">
  
@@ -14,11 +13,14 @@
      <div class="container mt--8 pb-5">
          <div class="row justify-content-center">
              <div class="col-lg-5 col-md-7">
-                 <div class="card hoverable bg-secondary shadow border-0">
+                 <div class="card hoverable bg-secondary shadow border-0 pb-5">
                      <div class="card-header bg-transparent pb-5 text-center text-muted h1">
                      Xpress Logistics Register
                      </div>
+                     @include('inc.alert')
                      <div class="card-body px-lg-5 py-lg-5">
+                            <form role="form" method="POST" action="{{route('register')}}">
+                                    {{ csrf_field() }}
                        <div class="form-group">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -26,7 +28,7 @@
                                     </div>
                                     <input class="form-control" placeholder="Name" type="text" name="name" value="" required autofocus>
                                 </div>
-                                                            </div>
+                                  </div>
                             <div class="form-group">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
@@ -50,9 +52,6 @@
                                     </div>
                                     <input class="form-control" placeholder="Confirm Password" type="password" name="password_confirmation" required>
                                 </div>
-                            </div>
-                            <div class="text-muted font-italic">
-                                <small>password strength: <span class="text-success font-weight-700">strong</span></small>
                             </div>
                               <div class="form-group">
                                 <div class="input-group input-group-alternative">
@@ -87,9 +86,9 @@
                             <div class="row my-4">
                                 <div class="col-12">
                                     <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox">
+                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox" name="terms">
                                         <label class="custom-control-label" for="customCheckRegister">
-                                            <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
+                                            <span class="text-muted">I agree with the <a href="#">Privacy Policy</a></span>
                                         </label>
                                     </div>
                                 </div>
@@ -97,10 +96,17 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary mt-4">Create account</button>
                             </div>
+                        </form>
                             <br>
                                    <span class="text-muted">Already have an account?<a href="{{route('login')}}">Login Here</a></span>
+                     </div>
+                    
+                 </div>
+             </div>
+             </div>
+             </div>
                                         
-                        </form>
+                     
  
                     
                             
