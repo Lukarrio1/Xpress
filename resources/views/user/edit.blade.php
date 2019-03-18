@@ -1,0 +1,11 @@
+{{$user->name}}
+<br>
+{{$user->Country}}
+<br>
+{{$user->city}}
+<br>
+{{$user->parish}}
+<br>
+{{$user->telephone}}
+<br>
+{{$user->create_at}}

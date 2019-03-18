@@ -308,7 +308,7 @@
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               {{ csrf_field() }}
           </form> 
-            <a class="dropdown-item" href="#">My account</a>
+        <a class="dropdown-item" href="/Profile/{{Auth::user()->id}}/edit">My account</a>
           </div>
         </li>
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Notification;
 
 class NotificationController extends Controller
 {
@@ -15,8 +15,13 @@ class NotificationController extends Controller
     //Notifications routes for now ..
     public function all_notification()
     {
-    $users = User::all();
-    
-        return json_encode($users); // Make sure we return json 
+        return json_encode( Notification::orderBy('created_at', 'DESC')->get());
     }
+
+    // to show a single notification for now..
+    public function show($id){
+        return User::find($id);
+    }
+
+
 }

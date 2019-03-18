@@ -14,7 +14,12 @@
 // User auth routes
 Auth::routes();
 // nottification
-Route::get('/Notifications','NotificationController@all_notification');
+Route::prefix('Notifications')->group(function () { 
+Route::get('/','NotificationController@all_notification');
+//Show one notification..
+Route::get('/{id}','NotificationController@show'); 
+});
+
 // page controller
 Route::get('/','PagesController@index');
 // this is the home route
@@ -23,7 +28,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/verify/{token}','VerifyController@Verify')->name('verify');
 // auth user routes
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-
+// user edit 
+Route::resource('Profile','User\UserController');
 // Admin routes
 Route::prefix('admin')->group(function() {
 Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
