@@ -12,14 +12,20 @@ class NotificationController extends Controller
         $this->middleware('auth');
     }
 
-    //Notifications routes for now ..
+    //Notifications function for now ..
     public function all_notification()
     {
-        return json_encode( User::orderBy('created_at', 'DESC')->get());
+        return json_encode(User::orderBy('created_at', 'DESC')->get());
     }
 
     // to show a single notification for now..
     public function show($id){
-        return User::find($id);
+
+        $user= User::find($id);
+        return json_encode([
+        'name'=>$user->name,
+        'emai'=>$user->email,
+        'phone'=>$user->telephone,
+        ]);
     }
 }

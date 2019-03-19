@@ -139,6 +139,8 @@ $('.button-collapse').sideNav('hide');
 window.setInterval(function(){
   $.get( "/Notifications", function( data ) {
       var notification = jQuery.parseJSON(data);
+      // this is a new way to console log data ... 
+      // console.table([notification]);
       $('#notificount').html(""+notification.length+"");
       var text = "";
      for(i = 0; i<notification.length; i++){
