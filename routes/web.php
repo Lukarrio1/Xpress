@@ -13,13 +13,14 @@
 
 // User auth routes
 Auth::routes();
-// nottification
+// notification
 Route::prefix('Notifications')->group(function () { 
 Route::get('/','NotificationController@all_notification');
 //Show one notification..
 Route::get('/{id}','NotificationController@show'); 
 });
-
+// All users
+Route::get('/All_user','AdminController@all_users');
 // page controller
 Route::get('/','PagesController@index');
 // this is the home route

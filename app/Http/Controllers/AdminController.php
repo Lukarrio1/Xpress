@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -26,4 +27,7 @@ class AdminController extends Controller
         return view('admin.admin');
     }
 
+    public function all_users(){
+        return json_encode(User::orderBy('created_at', 'DESC')->get());
+    }
 }
