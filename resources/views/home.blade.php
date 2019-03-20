@@ -29,7 +29,7 @@
             <div class="modal-content">
               <!-- Header -->
               <div class="modal-header">
-                <p class="heading lead">Welcome Tim</p>
+              <p class="heading lead">Welcome {{Auth::user()->name}}</p>
               </div>
 
               <!-- Body -->
@@ -51,7 +51,7 @@
 </ul>
 <!-- Overseas address modal content -->
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <div class="tab-pane fade show active text-center" id="home" role="tabpanel" aria-labelledby="home-tab">
     <i class="fas fa-globe-americas fa-5x blue-text"></i><br>
     <h2>Overseas Address</h2><br>
     Name : Timothy Russell<br>
@@ -61,10 +61,9 @@
     Zipcode : 33311    
   </div>
   <!-- Pre alert modal content -->
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-   <div class ="center">
+  <div class="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  
   <i class="far fa-bell fa-5x blue-text text-center"></i>   
-  </div> 
     <h2>How To Create A Pre Alert</h2><br>
       As soon as you receive your tracking number, create a pre alert.
       This allows us to be able to to give you updates on your package as soon as it reaches our warehouse. 
@@ -73,7 +72,7 @@
       Please ensure the purchase invoice is uploaded when creating the pre alert.
   </div>
   <!-- Overseas address modal content -->
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+  <div class="tab-pane fade text-center" id="contact" role="tabpanel" aria-labelledby="contact-tab">
     <i class="far fa-envelope fa-5x blue-text"></i><br>
     <h2>Notifications</h2><br>
     Track your package on your customer dashboard at every stage until it reaches you.

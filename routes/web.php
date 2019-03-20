@@ -20,10 +20,9 @@ Route::prefix('Notifications')->group(function () {
 });
 
 // How it works modal token 
-Route::prefix('modal')->group(function () {
-    Route::get('', 'User\UserController@Modaltoken');
-    ROute::post('','User\UserController@modaltokenupdate');
-});
+Route::get('/modal', 'User\UserController@Modaltoken');
+Route::post('/modal','User\UserController@modaltokenupdate');
+
 
 // All users
 Route::get('/All_user','AdminController@all_users');

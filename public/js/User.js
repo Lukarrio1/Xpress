@@ -49,10 +49,7 @@ $.ajax({
     },
     dataType: 'text',
     success: (data)=> {
-    if(response.indexOf('false')>=0){
-        window.location="../user/login.php";
-        }
-
+ 
     }
 }); 
 });
