@@ -8,6 +8,6 @@
 <br>
 {{$user->telephone}}
 <br>
-{{$user->create_at}}
+{{$user->created_at}}
 <br>
 {{$user->address}}

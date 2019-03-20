@@ -22,10 +22,15 @@ class NotificationController extends Controller
     public function show($id){
 
         $user= User::find($id);
+
         return json_encode([
         'name'=>$user->name,
-        'emai'=>$user->email,
+        'email'=>$user->email,
         'phone'=>$user->telephone,
+        'address'=>$user->address,
+        'city'=>$user->city,
+        'parish'=>$user->parish,
+        'country'=>$user->Country,
         ]);
     }
 }
