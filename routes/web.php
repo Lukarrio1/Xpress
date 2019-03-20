@@ -21,6 +21,7 @@ Route::get('/{id}','NotificationController@show');
 });
 // login_modal token 
 Route::get('/modal', 'User\UserController@currentuser');
+ROute::post('/modal','User\UserController@modaltokenupdate');
 // All users
 Route::get('/All_user','AdminController@all_users');
 // page controller

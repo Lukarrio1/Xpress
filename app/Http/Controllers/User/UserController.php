@@ -90,6 +90,17 @@ class UserController extends Controller
         $token= User::find(Auth::user()->id);
         return json_encode([
         'token'=>$token->login_modal,
+        'id'=>$token->id,
         ]);
     }
+
+    public function modaltokenupdate(Request $request){
+    $this->validate($request,[
+    'id'=>'required',
+    ]);
+    $token = User::find($request->id);
+    $token->login_modal="";
+    $token->save();
+    }
+   
 }

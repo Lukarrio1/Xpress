@@ -52,8 +52,8 @@
 
               <!-- Footer -->
               <div class="modal-footer">
-                <a type="button" class="btn btn-info">Get it now <i class="far fa-gem ml-1"></i></a>
-                <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No, thanks</a>
+                <a type="button" class="btn btn-info" id="learned">Get it now <i class="far fa-gem ml-1"></i></a>
+                <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal" id="cancel">No, thanks</a>
               </div>
             </div>
             <!-- Content -->
