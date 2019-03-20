@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -83,5 +84,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function currentuser(){
+        $token= User::find(Auth::user()->id);
+        return json_encode([
+        'token'=>$token->login_modal,
+        ]);
     }
 }

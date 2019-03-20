@@ -18,6 +18,50 @@
 
       <!--Section: Main panel-->
 <main>
+  <!-- Central Modal Large Info -->
+  
+<button type="button" class="btn btn-primary waves-effect waves-light " data-toggle="modal" data-target="#centralModalLGInfoDemo" id="modal" style="display:none;">
+              </button>
+        <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+            <!-- Content -->
+            <div class="modal-content">
+              <!-- Header -->
+              <div class="modal-header">
+                <p class="heading lead">Modal Info</p>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+              </div>
+
+              <!-- Body -->
+              <div class="modal-body">
+                <div class="text-center">
+                  <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iusto nulla aperiam
+                    blanditiis ad consequatur in dolores culpa, dignissimos, eius non possimus fugiat.
+                    Esse ratione fuga, enim, ab officiis totam.
+                  </p>
+                </div>
+                <img src="https://mdbootstrap.com/wp-content/uploads/2016/11/admin-dashboard-bootstrap.jpg" alt="Sample image"
+                  class="img-fluid">
+
+              </div>
+
+              <!-- Footer -->
+              <div class="modal-footer">
+                <a type="button" class="btn btn-info">Get it now <i class="far fa-gem ml-1"></i></a>
+                <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No, thanks</a>
+              </div>
+            </div>
+            <!-- Content -->
+          </div>
+        </div>
+        <!-- Central Modal Large Info -->
+
+
       <!--Section: Cascading panels-->
       <section class="mb-3">
 
@@ -39,7 +83,7 @@
                 <div class="card-body text-center">
 
                   <div class="list-group list-panel">
-                    <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Cras justo odio
+                    <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Car car
                       <i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top" title="Click to fix"></i></a>
                     <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Dapibus ac
                       facilisi<i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top" title="Click to fix"></i></a>
