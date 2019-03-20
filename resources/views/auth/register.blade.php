@@ -64,6 +64,13 @@
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                               </div>
+                                    <input class="form-control" placeholder="Address" type="text" name="address" required>
+                                </div>
+                                      </div>
+                                      <div class="form-group">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                              </div>
                                     <input class="form-control" placeholder="City" type="text" name="city" required>
                                 </div>
                                       </div>

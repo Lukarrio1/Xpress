@@ -56,7 +56,8 @@ class RegisterController extends Controller
             'city'=> 'required|min:3',
             'parish'=>'required|min:3',
             'country'=>'required|min:3',
-            'terms'=>'required'
+            'terms'=>'required',
+            'address'=>'min:3|required'
         ]);
     }
 
@@ -77,6 +78,7 @@ class RegisterController extends Controller
             'city'=>$data['city'],
             'parish'=>$data['parish'],
             'Country'=>$data['country'],
+            'address'=>$data['address'],
         ]);
        $user->sendverificationemail();
         return $user;

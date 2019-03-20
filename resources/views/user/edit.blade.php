@@ -9,3 +9,5 @@
 {{$user->telephone}}
 <br>
 {{$user->create_at}}
+<br>
+{{$user->address}}
