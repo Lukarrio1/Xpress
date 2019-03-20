@@ -19,6 +19,8 @@ Route::get('/','NotificationController@all_notification');
 //Show one notification..
 Route::get('/{id}','NotificationController@show'); 
 });
+// login_modal token 
+Route::get('/modal', 'User\UserController@currentuser');
 // All users
 Route::get('/All_user','AdminController@all_users');
 // page controller

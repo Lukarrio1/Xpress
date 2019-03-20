@@ -124,5 +124,12 @@ $('.button-collapse').sideNav('hide');
  </script>
 <script src="{{asset('js/User.js')}}"></script>
 <script type="text/javascript" src="{{ asset ('js/app.js') }}"></script>
+<script>
+$.get("/modal",(data)=>{
+  var token = jQuery.parseJSON(data);
+  console.log(token);
+});
+$('#modal').click();
+</script>
  </body>
 </html>

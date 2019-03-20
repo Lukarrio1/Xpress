@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('token')->nullable(); 
             $table->string('telephone');
             $table->string('city');
+            $table->string('login_modal')->nullable();
             $table->string('parish');
             $table->string('Country');
             $table->string('address');
