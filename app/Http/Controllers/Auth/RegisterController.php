@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'parish'=>$data['parish'],
             'Country'=>$data['country'],
             'address'=>$data['address'],
-            'login_modal'=>str_random(10)
+            'login_modal'=> str_random(10)
         ]);
     //    $user->sendverificationemail();
         return $user;

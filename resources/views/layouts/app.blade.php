@@ -127,9 +127,15 @@ $('.button-collapse').sideNav('hide');
 <script>
 $.get("/modal",(data)=>{
   var token = jQuery.parseJSON(data);
-  console.log(token);
+  console.log(token.token);
+  if(token.token==""){
+
+  }else{
+    $('#modal').click();
+  }
+  
 });
-$('#modal').click();
+
 </script>
  </body>
 </html>
