@@ -90,7 +90,7 @@ class UserController extends Controller
         //
     }
 
-    public function currentuser(){
+    public function Modaltoken(){
         $token= User::find(Auth::user()->id);
         return json_encode([
         'token'=>$token->login_modal,
