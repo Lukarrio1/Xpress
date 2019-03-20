@@ -131,7 +131,7 @@ $(document).ready(function () {
 
 window.setInterval(() => {
   timer();
-}, 60000);
+}, 360000);
 
 
 function timer(){
