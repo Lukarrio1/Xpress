@@ -126,13 +126,11 @@ $('.button-collapse').sideNav('hide');
 <script type="text/javascript" src="{{ asset ('js/app.js') }}"></script>
 <script>
 $(document).ready(function () {
-  timer();
+ timer();
 });
-
-window.setInterval(() => {
-  timer();
-}, 360000);
-
+window.setInterval(()=>{
+timer();
+}, 60000);
 
 function timer(){
 $.get("/modal",(data)=>{
@@ -143,12 +141,11 @@ $.get("/modal",(data)=>{
   }else{
     $('#modal').click();
   }
- 
 });
 }
 
 $(document).ready(function () {
-$("#learned").add("#cancel").click(function(){
+$("#update_login_token").click(function(){
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
   var id = {{Auth::user()->id}};
       $.ajax({
