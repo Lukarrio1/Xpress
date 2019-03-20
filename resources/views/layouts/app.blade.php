@@ -25,7 +25,9 @@
 <body class="fixed-sn white-skin">
     <div id="app">
       @include('inc.navbar')
+      <main>
         @yield('content')
+      </main>
     </div>   
    <script
   src="http://code.jquery.com/jquery-3.3.1.min.js"
@@ -125,47 +127,8 @@ $('.button-collapse').sideNav('hide');
 <script src="{{asset('js/User.js')}}"></script>
 <script type="text/javascript" src="{{ asset ('js/app.js') }}"></script>
 <script>
-$(document).ready(function () {
- timer();
-});
-window.setInterval(()=>{
-timer();
-}, 60000);
-
-function timer(){
-$.get("/modal",(data)=>{
-  var token = jQuery.parseJSON(data);
-  var modal =token.token;
-  if(modal==""){
-
-  }else{
-    $('#modal').click();
-  }
-});
-}
-
-$(document).ready(function () {
-$("#update_login_token").click(function(){
+  var id ={{Auth::user()->id}};
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-  var id = {{Auth::user()->id}};
-      $.ajax({
-          /* the route pointing to the post function */
-          url: '/modal',
-          type: 'POST',
-          /* send the csrf-token and the input to the controller */
-          data: {
-          _token: CSRF_TOKEN, 
-          id:id
-          },
-          dataType: 'text',
-          /* remind that 'data' is the response of the AjaxController */
-          success: function (data) { 
-          }
-      }); 
-  });
-});
-
-
 </script>
  </body>
 </html>

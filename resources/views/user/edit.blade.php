@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 {{$user->name}}
 <br>
 {{$user->Country}}
@@ -11,3 +13,4 @@
 {{$user->created_at}}
 <br>
 {{$user->address}}
+@endsection

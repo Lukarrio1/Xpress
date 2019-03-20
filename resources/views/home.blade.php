@@ -17,7 +17,7 @@
                   <!--/Pagination -->
 
       <!--Section: Main panel-->
-<main>
+
   <!-- Central Modal Large Info -->
   
 <button type="button" class="btn btn-primary waves-effect waves-light " data-toggle="modal" data-target="#centralModalLGInfoDemo" id="modal" style="display:none;">
@@ -30,10 +30,6 @@
               <!-- Header -->
               <div class="modal-header">
                 <p class="heading lead">Modal Info</p>
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" class="white-text">&times;</span>
-                </button>
               </div>
 
               <!-- Body -->
@@ -300,5 +296,4 @@
       <!--Section: Classic admin cards-->
 
     </div>
-  </main>
 @endsection
