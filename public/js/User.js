@@ -1,21 +1,21 @@
 // runs  at start up..
-$( document ).ready(function() { 
+$( document ).ready(()=>{ 
     Notification();
-    timer();
+    Modaltimer();
     });
 
 // runs every 20 seconds
-window.setInterval(function(){
+window.setInterval(()=>{
     Notification();
     },20000);
 
 //runs ever mininute 
 window.setInterval(()=>{
-    timer();
+    Modaltimer();
     }, 60000);
 
 Notification=()=>{
-$.get( "/Notifications", function( data ) {
+$.get( "/Notifications",( data )=>{
     var notification = jQuery.parseJSON(data);
     $('#notificount').html(""+notification.length+"");
     var text = "";
@@ -26,7 +26,7 @@ $.get( "/Notifications", function( data ) {
 });
 }
 
-function timer(){
+ Modaltimer=()=>{
 $.get("/modal",(data)=>{
     var token = jQuery.parseJSON(data);
     var modal =token.token;
@@ -37,20 +37,17 @@ $.get("/modal",(data)=>{
 });
 }
 
-
-$("#update_login_token").click(function(){
+// this function sends an ajax request to the back end of this application
+$("#update_login_token").click(()=>{
 $.ajax({
-    /* the route pointing to the post function */
     url: '/modal',
     type: 'POST',
-    /* send the csrf-token and the input to the controller */
     data: {
     _token: CSRF_TOKEN, 
     id:id
     },
     dataType: 'text',
-    /* remind that 'data' is the response of the AjaxController */
-    success: function (data) { 
+    success: (data)=> { 
     }
 }); 
 });

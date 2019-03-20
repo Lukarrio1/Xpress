@@ -1,5 +1,5 @@
 // Loads  at start up ..
-$(document).ready(function () {
+$(document).ready(()=>{
     all_user();
   });
   // Checks every 10 seconds
@@ -8,7 +8,7 @@ $(document).ready(function () {
   },10000);
   
   all_user=()=>{
-       $.get( "/All_user", function( data ) {
+       $.get( "/All_user", ( data )=>{
         var users = jQuery.parseJSON(data);
         // this is a new way to console log data ... 
         // console.table([users]);
