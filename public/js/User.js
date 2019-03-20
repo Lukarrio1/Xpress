@@ -14,6 +14,7 @@ window.setInterval(()=>{
     Modaltimer();
     }, 60000);
 
+// checks if there is any new notification
 Notification=()=>{
 $.get( "/Notifications",( data )=>{
     var notification = jQuery.parseJSON(data);
@@ -25,7 +26,7 @@ $.get( "/Notifications",( data )=>{
     $("#notify").html(""+text+"");
 });
 }
-
+// check to see if the modal has been clicked before
  Modaltimer=()=>{
 $.get("/modal",(data)=>{
     var token = jQuery.parseJSON(data);
@@ -47,7 +48,11 @@ $.ajax({
     id:id
     },
     dataType: 'text',
-    success: (data)=> { 
+    success: (data)=> {
+    if(response.indexOf('false')>=0){
+        window.location="../user/login.php";
+        }
+
     }
 }); 
 });
