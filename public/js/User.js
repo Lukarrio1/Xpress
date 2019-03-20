@@ -8,8 +8,6 @@ window.setInterval(function(){
     Notification();
     },20000);
 
-
-
 Notification=()=>{
 $.get( "/Notifications", function( data ) {
     var notification = jQuery.parseJSON(data);
