@@ -17,7 +17,7 @@ class NotificationController extends Controller
     public function all_notification()
     {
         $user = User::find(Auth::user()->id);
-        if($user->token=""){
+        if(empty($user->token)){
         }else{
         return json_encode([
         'notification'=>'Your email is not verified.',
