@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -15,7 +16,13 @@ class NotificationController extends Controller
     //Notifications function for now ..
     public function all_notification()
     {
-        return json_encode(User::orderBy('created_at', 'DESC')->get());
+        $user = User::find(Auth::user()->id);
+        if($user->token=""){
+        }else{
+        return json_encode([
+        'notification'=>'Your email is not verified.',
+        ]);
+        }
     }
 
     // to show a single notification for now..

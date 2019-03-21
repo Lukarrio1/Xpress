@@ -28,7 +28,7 @@ class UserController extends Controller
         'city'=>$user->city,
         'parish'=>$user->parish,
         'telephone'=>$user->telephone,
-        'email'=>$user->email
+        'email'=>$user->email,
         ]);
     }
 

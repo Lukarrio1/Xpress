@@ -19,12 +19,11 @@ window.setInterval(()=>{
 Notification=()=>{
     $.get( "/Notifications",( data )=>{
     var notification = jQuery.parseJSON(data);
-    $('#notificount').html(""+notification.length+"");
-    var text = "";
-    for(i = 0; i<notification.length; i++){
-    text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
-    }
-    $("#notify").html(""+text+"");
+    $('#notificount').html("1");
+    // for(i = 0; i<notification.length; i++){
+    // text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
+    // }
+    $("#notify").html(`${notification}`);
 });
 }
 // check to see if the modal has been clicked before
