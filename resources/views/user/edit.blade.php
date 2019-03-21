@@ -11,7 +11,7 @@
         <div class="row text-center">
 
           <!-- Grid column -->
-          <div class="col-md-8 mb-4">
+          <div class="col-md-8">
 
             <!-- Card -->
             <div class="card card-cascade cascading-admin-card user-card">
@@ -33,33 +33,36 @@
                 <div class="row">
 
                   <!-- Grid column -->
-                  <div class="col-lg-4">
+                  <div class="col-lg-6 col-md-12">
                     <form action="" method="POST">
                     <div class="md-form form-sm mb-0">
-                         <input type="text" id="form12" class="form-control form-control-sm">
-                      <label for="form12" class="">Username</label>
+                         <input type="text" id="name" class="form-control form-control-sm" value="">
+                         <span id="errorname" class="text-danger"></span>
+                      <label for="name" class="">Name</label>
                     </div>
 
                   </div>
                   <!-- Grid column -->
 
                   <!-- Grid column -->
-                  <div class="col-lg-4">
+                  {{-- <div class="col-lg-4">
 
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form3" class="form-control form-control-sm">
-                      <label for="form3" class="">Email address</label>
+                      <input type="text" id="email" class="form-control form-control-sm" value="">
+                      <span id="erroremail" class="text-danger"></span>
+                      <label for="email" class="">Email address</label>
                     </div>
 
-                  </div>
+                  </div> --}}
                   <!-- Grid column -->
 
                   <!-- Grid column -->
-                  <div class="col-lg-4">
+                  <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form4" class="form-control form-control-sm" disabled>
-                      <label for="form4" class="disabled">Company</label>
+                      <input type="number" id="telephone" class="form-control form-control-sm" vaule="">
+                       <span id="errorphone" class="text-danger"></span>
+                      <label for="telephone" class="">Telephone</label>
                     </div>
 
                   </div>
@@ -75,8 +78,9 @@
                   <div class="col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form5" class="form-control form-control-sm">
-                      <label for="form5" class="">First name</label>
+                      <input type="text" id="city" class="form-control form-control-sm" value="">
+                      <span id="errorcity" class="text-danger"></span>
+                      <label for="city" class="">City</label>
                     </div>
 
                   </div>
@@ -86,8 +90,9 @@
                   <div class="col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form5" class="form-control form-control-sm">
-                      <label for="form5" class="">Last name</label>
+                      <input type="text" id="parish" class="form-control form-control-sm" value="">
+                      <span id="errorparish" class="text-danger"></span>
+                      <label for="parish" class="">Parish</label>
                     </div>
 
                   </div>
@@ -100,55 +105,40 @@
                 <div class="row">
 
                   <!-- Grid column -->
-                  <div class="col-md-12">
+                  <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form6" class="form-control form-control-sm">
-                      <label for="form6" class="">Address</label>
+                      <input type="text" id="country" class="form-control form-control-sm" value="">
+                      <span id="errorcountry" class="text-danger"></span>
+                      <label for="country" class="">Country</label>
                     </div>
 
                   </div>
                   <!-- Grid column -->
 
-                </div>
-                <!-- Grid row -->
-
-                <!-- Grid row -->
-                <div class="row">
 
                   <!-- Grid column -->
-                  <div class="col-lg-4 col-md-12">
+                  <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form7" class="form-control form-control-sm">
-                      <label for="form7" class="">City</label>
+                      <input type="text" id="address" class="form-control form-control-sm" value="">
+                      <span id="erroraddress" class="text-danger"></span>
+                      <label for="address" class="">Address</label>
                     </div>
 
                   </div>
                   <!-- Grid column -->
 
                   <!-- Grid column -->
-                  <div class="col-lg-4 col-md-6">
+                  {{-- <div class="col-lg-4 col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form8" class="form-control form-control-sm">
+                      <input type="text" id="form8" class="form-control form-control-sm" value="">
                       <label for="form8" class="">Country</label>
                     </div>
 
-                  </div>
+                  </div> --}}
                   <!-- Grid column -->
-
-                  <!-- Grid column -->
-                  <div class="col-lg-4 col-md-6">
-
-                    <div class="md-form form-sm mb-0">
-                      <input type="text" id="form9" class="form-control form-control-sm">
-                      <label for="form9" class="">Postal Code</label>
-                    </div>
-
-                  </div>
-                  <!-- Grid column -->
-
                 </div>
                 <!-- Grid row -->
 
@@ -158,16 +148,14 @@
                   <!-- Grid column -->
                   <div class="col-md-12">
 
-                    <h4 class="text-muted text-left my-4">About me</h4>
-
                     <!-- Basic textarea -->
                     <div class="md-form mb-0">
-                      <textarea type="text" id="form10" class="md-textarea form-control" rows="3"></textarea>
-                      <label for="form10">Basic textarea</label>
+                    <a class="btn btn-success" href="#" id="update">
+                      Update
+                    </a>
                     </div>
 
                   </div>
-                  </form>
                   <!-- Grid column -->
 
                 </div>
@@ -196,15 +184,15 @@
               <div class="card-body pt-0 mt-0">
 
                 <!-- Name -->
-                <h3 class="mb-3 font-weight-bold"><strong>Anna Deynah</strong></h3>
-                <h6 class="font-weight-bold cyan-text mb-4">Web Designer</h6>
-
-                <p class="mt-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip consequat.</p>
-
-                <a class="btn btn-info btn-rounded"> Follow</a>
+                <h3 class="mb-3 font-weight-bold"><strong><span id="usercardname"></span></strong></h3>
+                <p class="mt-4 text-muted">  
+                  Email:<span id="usercardemail"></span><br>
+                  Address:<span id="usercardaddress"></span><br>
+                  Parish: <span id="usercardparish"></span><br>
+                  City:<span id="usercardcity"></span><br>
+                  Country: <span id="usercardcountry"></span><br>
+                  Telephone:<span id="usercardphone"></span><br></p>
+                <a class="btn btn-danger btn-rounded"   data-toggle="modal" data-target="#basicExampleModal">Delete Account</a>
 
               </div>
 
@@ -221,6 +209,23 @@
       <!-- Section: Team v.1 -->
 
     </div>
+  <!-- Button trigger modal -->
+
   
+  <!-- Modal -->
+  <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+            <i class="fa fa-trash" aria-hidden="true"></i> Are you sure you want to delete your Account?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="accountdel">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Main layout -->
 @endsection
