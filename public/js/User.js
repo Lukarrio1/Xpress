@@ -57,6 +57,7 @@ $("#update_login_token").click(()=>{
 
 
 //  this function sends an ajax request to the back end of this application
+$("#updatebtn").html("Update");
 $("#update").click(()=>{
     // let image = document.getElementById("userimage").files[0]; 
     let name = $("#name").val();
@@ -65,6 +66,7 @@ $("#update").click(()=>{
     let parish=$("#parish").val();
     let country = $("#country").val();
     let address= $("#address").val();
+ 
     // Update  form validations
     if(name.length<3){
     $("#errorname").html("Name is too short");
@@ -80,6 +82,8 @@ $("#update").click(()=>{
         $("#erroraddress").html("Address is too short");
     }else{
     // empties the error messages if validate is successfull
+    $("#updatebtn").html("<div class='spinner-grow text-success' role='status'></div>");
+    $("#update").removeClass("btn btn-success");
     $("#errorname").html("");
     $("#errorphone").html("");
     // $("#erroremail").html("");
@@ -102,6 +106,10 @@ $("#update").click(()=>{
         dataType: 'text',
         success: (data)=> {
         Userinfo();
+        $("#updatesuccess").html("Updated Successfully.");
+        setTimeout(function(){ $("#updatesuccess").html(""); }, 5000);
+        $("#updatebtn").html("Update");
+        $("#update").addClass("btn btn-success");
         }
     });
     }

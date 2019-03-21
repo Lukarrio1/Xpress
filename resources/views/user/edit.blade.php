@@ -22,6 +22,9 @@
                 <div class="data">
                   <h5 class="font-weight-bold dark-grey-text">Edit Profile - <span class="text-muted">Complete your
                       profile</span></h5>
+                      <br>
+                      <span class="text-success tex-center" id="updatesuccess"></span>
+                         
                 </div>
               </div>
               <!-- Card Data -->
@@ -151,7 +154,7 @@
                     <!-- Basic textarea -->
                     <div class="md-form mb-0">
                     <a class="btn btn-success" href="#" id="update">
-                      Update
+                       <span id="updatebtn"></span>
                     </a>
                     </div>
 
@@ -178,7 +181,7 @@
 
               <!-- Avatar -->
               <div class="avatar z-depth-1-half mb-4">
-                <img src="https://images.unsplash.com/photo-1550613097-fe6c2c321cd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80" class="rounded-circle" alt="First sample avatar image">
+                <img src="https://images.unsplash.com/photo-1550613097-fe6c2c321cd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80" class="rounded-circle" alt="First sample avatar image">  
               </div>
 
               <div class="card-body pt-0 mt-0">
