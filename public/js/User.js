@@ -83,11 +83,7 @@ $("#update").click(()=>{
     }else{
     // empties the error messages if validate is successfull
     // $("#updatebtn").html("<div class='spinner-grow text-success' role='status'></div>");
-    iziToast.success({
-        position:'topCenter',
-        // title:'',
-        message:'Updated Successfully..',
-    });
+  
     // $("#update").removeClass("btn btn-success");
     $("#errorname").html("");
     $("#errorphone").html("");
@@ -115,10 +111,11 @@ $("#update").click(()=>{
         // setTimeout(function(){ $("#updatesuccess").html(""); }, 5000);
         // $("#updatebtn").html("Update");
         // $("#update").addClass("btn btn-success");
-        },
-        error:()=>{
-        $("#updatebtn").html("Update");
-        $("#update").addClass("btn btn-success");
+        iziToast.success({
+            position:'topCenter',
+            // title:'',
+            message:'Updated Successfully..',
+        });
         }
     });
     }

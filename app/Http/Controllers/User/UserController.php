@@ -98,7 +98,7 @@ class UserController extends Controller
         $user->parish= $request->parish;
         $user->city = $request->city;
         $user->address= $request->address;
-        $user->country =$request->country;
+        $user->Country =$request->country;
         $user->save();
         return "updated";
 
