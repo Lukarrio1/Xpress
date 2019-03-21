@@ -81,7 +81,7 @@
           
           <ul class="collapsible collapsible-accordion">
             <!-- Simple link -->
-            <li><a href="" class="collapsible-header waves-effect">
+            <li><a href="{{ route('home') }}" class="collapsible-header waves-effect">
               <i class="fas fa-tachometer-alt"></i>
                 Dashboard</a></li>
 
@@ -92,6 +92,17 @@
                 <li><a href="" class="collapsible-header waves-effect">
                     <i class="fas fa-bell"></i>
                 Pre Alert</a></li>
+
+                <li><a href="" class="collapsible-header waves-effect">
+                    <i class="fas fa-calculator"></i>
+                Shipping Calculator</a></li>
+
+                <li><a href="" class="collapsible-header waves-effect">
+                    <i class="fas fa-truck"></i>
+                Schedule Delivery</a></li>
+
+
+
 {{--  
 
 
@@ -120,7 +131,7 @@
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/pages/login.html" class="waves-effect">Login</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/pages/register.html" class="waves-effect">Register</a>
-                  </li>
+                  </li>{{  }}
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/pages/pricing.html" class="waves-effect">Pricing</a>
                   </li>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/pages/about.html" class="waves-effect">About us</a>
@@ -142,10 +153,10 @@
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/pages/chat.html" class="waves-effect">Chat</a>
                   </li>
                 </ul> --}}
-              </div>
+              {{--  </div>
             </li>
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-user"></i> Profile<i class="fas fa-angle-down rotate-icon"></i></a>
-              <div class="collapsible-body">
+              <div class="collapsible-body">  --}}
                 {{-- <ul>
                   <li><a href="https://mdbootstrap.com/previews/templates/admin-dashboard/html/profile/basic-1.html" class="waves-effect">Basic 1</a>
                   </li>
