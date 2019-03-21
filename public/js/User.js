@@ -82,9 +82,8 @@ $("#update").click(()=>{
         $("#erroraddress").html("Address is too short");
     }else{
     // empties the error messages if validate is successfull
-    // $("#updatebtn").html("<div class='spinner-grow text-success' role='status'></div>");
-  
-    // $("#update").removeClass("btn btn-success");
+    $("#update").removeClass("btn btn-success");
+    $("#updatebtn").html("<div class='spinner-grow text-success' role='status'></div>");
     $("#errorname").html("");
     $("#errorphone").html("");
     // $("#erroremail").html("");
@@ -109,8 +108,8 @@ $("#update").click(()=>{
         Userinfo();
         // $("#updatesuccess").html("Updated Successfully.");
         // setTimeout(function(){ $("#updatesuccess").html(""); }, 5000);
-        // $("#updatebtn").html("Update");
-        // $("#update").addClass("btn btn-success");
+        $("#updatebtn").html("Update");
+        $("#update").addClass("btn btn-success");
         iziToast.success({
             position:'topCenter',
             // title:'',
