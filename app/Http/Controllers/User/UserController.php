@@ -20,7 +20,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user= User::find(Auth::user()->id);
+        return json_encode([
+        'name' => $user->name,
+        'country'=> $user->Country,
+        'address'=>$user->address,
+        'city'=>$user->city,
+        'parish'=>$user->parish,
+        'telephone'=>$user->telephone,
+        'email'=>$user->email
+        ]);
     }
 
     /*
@@ -61,10 +70,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $user = User::find($id);
-        return view('user.edit')->with('user',$user);
+        return view('user.edit');
     }
 
     /**
@@ -74,9 +82,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|min:3',
+            'country'=>'required|min:3',
+            'address'=>'required|min:3',
+            'city'=>'required|min:3',
+            'parish'=>'required|min:3',
+            'telephone'=>'required|min:7',
+        ]);
+        $user= User::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->telephone = $request->telephone;
+        $user->parish= $request->parish;
+        $user->city = $request->city;
+        $user->address= $request->address;
+        $user->country =$request->country;
+        $user->save();
+        return "updated";
+
+       
     }
 
     /**
@@ -85,9 +111,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $this->validate($request,[
+        'delete'=>'required',
+        ]);
+            if($request->delete ==true){
+                $user = User::find(Auth::user()->id);
+                $user->delete();
+                return 1;
+            }
+
     }
 
     public function Modaltoken(){
