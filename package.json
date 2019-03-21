@@ -16,6 +16,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
+    "izitoast": "^1.4.0",
     "materialize-css": "^1.0.0-rc.2"
   }
 }

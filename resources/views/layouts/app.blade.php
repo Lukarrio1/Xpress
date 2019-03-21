@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
+<link rel="stylesheet" href="{{asset('css/iziToast.css')}}">
    
     <!-- Scripts -->
     <script>
@@ -125,6 +126,7 @@ $('.button-collapse').sideNav('hide');
     );
  </script>
 <script type="text/javascript" src="{{ asset ('js/app.js') }}"></script>
+<script src="{{asset('js/iziToast.js')}}"></script>
 {{-- do not touch here wihout asking me  --}}
 <script src="{{asset('js/User.js')}}"></script>
 <script>
