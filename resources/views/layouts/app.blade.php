@@ -127,7 +127,7 @@ $('.button-collapse').sideNav('hide');
 <script src="{{asset('js/User.js')}}"></script>
 <script type="text/javascript" src="{{ asset ('js/app.js') }}"></script>
 <script>
-  var id ={{Auth::user()->id}};
+  var id ={{ Auth::user()->id }};
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 </script>
  </body>
