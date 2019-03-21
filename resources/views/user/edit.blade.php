@@ -34,7 +34,7 @@
 
                   <!-- Grid column -->
                   <div class="col-lg-6 col-md-12">
-                    <form action="" method="POST">
+                   
                     <div class="md-form form-sm mb-0">
                          <input type="text" id="name" class="form-control form-control-sm" value="">
                          <span id="errorname" class="text-danger"></span>

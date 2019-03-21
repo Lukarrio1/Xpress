@@ -35,7 +35,7 @@ Route::get('/verify/{token}','VerifyController@Verify')->name('verify');
 // auth user routes
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 // user edit 
-Route::get('/Profile','User\UserController@edit');
+Route::get('/MyAccount','User\UserController@edit')->name('account.edit');
 Route::get('/Userinfo','User\UserController@index');
 Route::post('/Userinfo','User\UserController@update');
 Route::post('/Useraccountdel','User\UserController@destroy');
