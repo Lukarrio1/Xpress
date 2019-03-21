@@ -25,18 +25,18 @@
                 </div>
               </div>
               <!-- Card Data -->
-
+        
               <!-- Card content -->
               <div class="card-body card-body-cascade">
-
+                <form>
                 <!-- Grid row -->
                 <div class="row">
 
                   <!-- Grid column -->
                   <div class="col-lg-4">
-                    <form action="">
+                    <form action="" method="POST">
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form12" class="form-control form-control-sm">
+                         <input type="text" id="form12" class="form-control form-control-sm">
                       <label for="form12" class="">Username</label>
                     </div>
 
@@ -167,6 +167,7 @@
                     </div>
 
                   </div>
+                  </form>
                   <!-- Grid column -->
 
                 </div>
