@@ -137,6 +137,7 @@ Userinfo=()=>{
     //   $("#address").val(user.address);
 
       
+      $("#usercardname").html(`${user.name}`);
       $("#usercardemail").html(`${user.email}`);
       $("#usercardphone").html(`${user.telephone}`);
       $("#usercardcity").html(`${user.city}`);
