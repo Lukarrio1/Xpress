@@ -110,6 +110,7 @@ $("#update").click(()=>{
         // setTimeout(function(){ $("#updatesuccess").html(""); }, 5000);
         $("#updatebtn").html("Update");
         $("#update").addClass("btn btn-success");
+        // iziToast 
         iziToast.success({
             position:'topCenter',
             // title:'',
@@ -123,15 +124,19 @@ $("#update").click(()=>{
 Userinfo=()=>{
     $.get("/Userinfo",(data)=>{
         let user = jQuery.parseJSON(data);
-      $("#name").val(user.name);
-      $("#email").val(user.email);
-      $("#telephone").val(user.telephone);
-      $("#city").val(user.city);
-      $("#parish").val(user.parish);
-      $("#country").val(user.country);
-      $("#address").val(user.address);
+        Object.keys(user).forEach((key)=>{
+            $(`#${key}`).val(user[key]);
+            // $(`#usercard${name}`).html(`${user[key]}`);
+        })
+      
+    //   $("#email").val(user.email);
+    //   $("#telephone").val(user.telephone);
+    //   $("#city").val(user.city);
+    //   $("#parish").val(user.parish);
+    //   $("#country").val(user.country);
+    //   $("#address").val(user.address);
 
-      $("#usercardname").html(`${user.name}`);
+      
       $("#usercardemail").html(`${user.email}`);
       $("#usercardphone").html(`${user.telephone}`);
       $("#usercardcity").html(`${user.city}`);
@@ -140,21 +145,45 @@ Userinfo=()=>{
       $("#usercardaddress").html(`${user.address}`);
     }); 
     }
-
-   $("#accountdel").click(()=>{
-        $.ajax({
-            type: "Post",
-            url: "/Useraccountdel",
-            data:{
-             _token: CSRF_TOKEN, 
-            delete:true,
-            },
-            dataType: "text",
-            success: function (response) {
-            window.location.href = "/";
-            }
+    $("#Deletebtn").click(()=>{
+        iziToast.question({
+            backgroundColor:'red',
+            messageColor:'white',
+            titleColor:'white',
+            timeout: 10000,
+            close: false,
+            overlay: true,
+            displayMode: 'once',
+            id: 'question',
+            zindex: 999,
+            title: 'Hey',
+            message: 'Are you sure about that?',
+            position: 'center',
+            buttons: [
+                ['<button style="color:white;"><b>YES</b></button>', function (instance, toast) {
+                    $.ajax({
+                        type: "Post",
+                        url: "/Useraccountdel",
+                        data:{
+                         _token: CSRF_TOKEN, 
+                        delete:true,
+                        },
+                        dataType: "text",
+                        success: function (response) {
+                        window.location.href = "/";
+                        }
+                    });
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+         
+                }, true],
+                ['<button style="color:white;">NO</button>', function (instance, toast) {
+         
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+         
+                }],
+            ],
         });
-   });
+    });
 
 
    

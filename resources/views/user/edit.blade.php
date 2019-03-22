@@ -195,7 +195,8 @@
                   City:<span id="usercardcity"></span><br>
                   Country: <span id="usercardcountry"></span><br>
                   Telephone:<span id="usercardphone"></span><br></p>
-                <a class="btn btn-danger btn-rounded"   data-toggle="modal" data-target="#basicExampleModal">Delete Account</a>
+                {{-- <a class="btn btn-danger btn-rounded"   data-toggle="modal" data-target="#basicExampleModal">Delete Account</a> --}}
+                <a class="btn btn-danger btn-rounded"  id="Deletebtn">Delete Account</a>
 
               </div>
 
@@ -215,7 +216,7 @@
   <!-- Button trigger modal -->
 
   
-  <!-- Modal -->
+  {{-- <!-- Modal -->
   <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -229,6 +230,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
   <!-- Main layout -->
 @endsection
