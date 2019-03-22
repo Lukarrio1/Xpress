@@ -19,11 +19,16 @@ window.setInterval(()=>{
 Notification=()=>{
     $.get( "/Notifications",( data )=>{
     var notification = jQuery.parseJSON(data);
+    if(notification==""){
+
+    }else{
+     $("#notify").html(`${notification.icon} ${notification.notification}`);
+    }
     $('#notificount').html("1");
     // for(i = 0; i<notification.length; i++){
     // text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
     // }
-    $("#notify").html(`${notification.icon} ${notification.notification}`);
+   
 });
 }
 // check to see if the modal has been clicked before
@@ -161,27 +166,27 @@ Userinfo=()=>{
             message: 'Are you sure about that?',
             position: 'center',
             buttons: [
-                ['<button style="color:white;"><b>YES</b></button>', function (instance, toast) {
-                    $.ajax({
-                        type: "Post",
-                        url: "/Useraccountdel",
-                        data:{
-                         _token: CSRF_TOKEN, 
-                        delete:true,
-                        },
-                        dataType: "text",
-                        success: function (response) {
-                        window.location.href = "/";
-                        }
-                    });
-                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-         
-                }, true],
-                ['<button style="color:white;">NO</button>', function (instance, toast) {
-         
-                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-         
-                }],
+            ['<button style="color:white;"><b>YES</b></button>', function (instance, toast) {
+            $.ajax({
+            type: "Post",
+            url: "/Useraccountdel",
+            data:{
+                _token: CSRF_TOKEN, 
+            delete:true,
+            },
+            dataType: "text",
+            success: function (response) {
+            window.location.href = "/";
+            }
+            });
+            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+            }, true],
+            ['<button style="color:white;">NO</button>', function (instance, toast) {
+
+            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+            }],
             ],
         });
     });

@@ -313,7 +313,7 @@
             <span class="badge red"><span id="notificount"></span></span> <i class="fas fa-bell"></i>
             <span class="d-none d-md-inline-block">Notifications</span>
           </a>
-          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" id="notificationcenter">
             <span id="notify"></span>
           </div>
         </li>
