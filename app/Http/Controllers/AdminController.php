@@ -27,7 +27,5 @@ class AdminController extends Controller
         return view('admin.admin');
     }
 
-    public function all_users(){
-        return json_encode(User::orderBy('created_at', 'DESC')->get());
-    }
+   
 }

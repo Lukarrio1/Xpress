@@ -15,17 +15,15 @@
 Auth::routes();
 // notification
 Route::prefix('Notifications')->group(function () { 
-    Route::get('/','NotificationController@all_notification');
+    Route::get('/','NotificationController@Token');
     Route::get('/{id}','NotificationController@show'); 
 });
+Route::get('/Allusers', 'NotificationController@Allusers');
 
 // How it works modal token 
 Route::get('/modal', 'User\UserController@Modaltoken');
 Route::post('/modal','User\UserController@modaltokenupdate');
 
-
-// All users
-Route::get('/All_user','AdminController@all_users');
 // page controller
 Route::get('/','PagesController@index');
 // this is the home route

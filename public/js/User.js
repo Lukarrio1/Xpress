@@ -19,18 +19,43 @@ window.setInterval(()=>{
 Notification=()=>{
     $.get( "/Notifications",( data )=>{
     var notification = jQuery.parseJSON(data);
-    if(notification==""){
-
+    if(notification.notification==""){
+      $("#emailnotify").html("");
+    var verify =0;
+     Allusers(verify);
     }else{
-     $("#notify").html(`${notification.icon} ${notification.notification}`);
+     $("#emailnotify").html(`<a href='${notification.url}'>${notification.icon} ${notification.notification}</a>`);
+      verify =1;
+     Allusers(verify);
     }
-    $('#notificount').html("1");
+   
+    
+   
     // for(i = 0; i<notification.length; i++){
     // text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
     // }
    
 });
+
 }
+
+// testings 
+Allusers=(verify)=>{
+    $.get("/Allusers",( data )=>{
+    let text = "";
+    var user = jQuery.parseJSON(data);
+    var number = user.length;
+    NotificationCounter(number,verify);
+    for(i = 0; i<user.length; i++){
+    text +=`<a class='dropdown-item' href='/Notifications/${user[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${user[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
+    }
+    $("#allusersnotify").html(`${text}`);
+
+       
+    });
+}
+
+
 // check to see if the modal has been clicked before
 Modaltimer=()=>{
     $.get("/modal",(data)=>{
@@ -190,6 +215,11 @@ Userinfo=()=>{
             ],
         });
     });
-
-
-   
+// window.onunload
+// counts all notification;
+NotificationCounter=(number, verify)=>{
+    // console.log(number);
+    console.log(verify);
+    let sum = Number(number)+Number(verify);
+     $('#notificount').html(`${sum}`);
+}

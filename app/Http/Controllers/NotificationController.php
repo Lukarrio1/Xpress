@@ -13,24 +13,35 @@ class NotificationController extends Controller
         $this->middleware('auth');
     }
 
+
+    public function Allusers(){
+        return json_encode(User::all());
+    }
+
     //Notifications function for now ..
-    public function all_notification()
+    public function Token()
     {
         $user = User::find(Auth::user()->id);
         if(empty($user->token)){
+        return json_encode([
+        'notification'=>'',
+        'icon'=>'',
+        'id'=>'',
+        'url'=>''
+        ]);
         }else{
         return json_encode([
         'notification'=>'Your email is not verified.',
-        'icon'=>'<i class="fa fa-envelope-square">'
+        'icon'=>'<i class="fa fa-envelope-square">',
+        'id'=>'1',
+        'url'=>'/home',
         ]);
         }
     }
 
-    // to show a single notification for now..
+    // // to show a single notification for now..
     public function show($id){
-
         $user= User::find($id);
-
         return json_encode([
         'name'=>$user->name,
         'email'=>$user->email,

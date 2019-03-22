@@ -140,5 +140,7 @@ class UserController extends Controller
     $token->login_modal="";
     $token->save();
     }
-   
+    public function all_users(){
+        return json_encode(User::orderBy('created_at', 'DESC')->get());
+    }
 }

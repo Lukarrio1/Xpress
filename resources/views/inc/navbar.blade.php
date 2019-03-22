@@ -314,7 +314,8 @@
             <span class="d-none d-md-inline-block">Notifications</span>
           </a>
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" id="notificationcenter">
-            <span id="notify"></span>
+            <span id="emailnotify"></span>
+            <span id="allusersnotify"></span>
           </div>
         </li>
         <li class="nav-item">
