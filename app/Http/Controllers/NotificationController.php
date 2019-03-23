@@ -31,7 +31,7 @@ class NotificationController extends Controller
         ]);
         }else{
         return json_encode([
-        'notification'=>'Your email is not verified.',
+        'notification'=>'Please verify your email address..',
         'icon'=>'<i class="fa fa-envelope-square">',
         'id'=>'1',
         'url'=>'/home',
