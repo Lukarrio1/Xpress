@@ -1,13 +1,13 @@
 // runs  at start up..
 $( document ).ready(()=>{ 
-    Notification();
+    TokenCheck();
     Modaltimer();
     Userinfo();
 });
 
 // runs every 20 seconds
 window.setInterval(()=>{
-    Notification();
+    TokenCheck();
  },20000);
 
 //runs ever mininute 
@@ -15,8 +15,8 @@ window.setInterval(()=>{
     Modaltimer();
 }, 60000);
 
-// checks if there is any new notification
-Notification=()=>{
+// checks to see if the user verified there email ('/','NotificationController@Token')
+TokenCheck=()=>{
     $.get( "/Notifications",( data )=>{
     var notification = jQuery.parseJSON(data);
     if(notification.notification==""){
@@ -39,7 +39,7 @@ Notification=()=>{
 
 }
 
-// testings 
+// testings: this get all the users in the database  ('/Allusers', 'NotificationController@Allusers')
 Allusers=(verify)=>{
     $.get("/Allusers",( data )=>{
     let text = "";
@@ -56,7 +56,7 @@ Allusers=(verify)=>{
 }
 
 
-// check to see if the modal has been clicked before
+// check to see if the modal has been clicked /modal ('/modal', 'User\UserController@Modaltoken')
 Modaltimer=()=>{
     $.get("/modal",(data)=>{
     var token = jQuery.parseJSON(data);
@@ -68,7 +68,7 @@ Modaltimer=()=>{
 });
 }
 
-// this function sends an ajax request to the back end of this application
+// this function updates the login modal /modal ('/modal','User\UserController@modaltokenupdate')
 $("#update_login_token").click(()=>{
     $.ajax({
     url: '/modal',
@@ -84,12 +84,9 @@ $("#update_login_token").click(()=>{
 }); 
 });
 
-
-
-//  this function sends an ajax request to the back end of this application
+//  this function updates the users information on the user/edit page ('/MyAccount','User\UserController@edit')->name('account.edit')
 $("#updatebtn").html("Update");
 $("#update").click(()=>{
-    // let image = document.getElementById("userimage").files[0]; 
     let name = $("#name").val();
     let telephone=$("#telephone").val();
     let city=$("#city").val();
@@ -97,7 +94,7 @@ $("#update").click(()=>{
     let country = $("#country").val();
     let address= $("#address").val();
  
-    // Update  form validations
+    // Validates the update user form
     if(name.length<3){
     $("#errorname").html("Name is too short");
     }else if(telephone.length<10 || telephone.length>11){
@@ -116,11 +113,11 @@ $("#update").click(()=>{
     $("#updatebtn").html("<div class='spinner-grow text-success' role='status'></div>");
     $("#errorname").html("");
     $("#errorphone").html("");
-    // $("#erroremail").html("");
     $("#errorcity").html("");
     $("#errorparish").html("");
     $("#errorcountry").html("");
     $("#erroraddress").html("");
+    // if validation is successfull then an ajax request is sent to /Userinfo (/Userinfo','User\UserController@update)
     $.ajax({
         url: '/Userinfo',
         type: 'Post',
@@ -150,7 +147,7 @@ $("#update").click(()=>{
     });
     }
     });
-
+// this function upates and sends a request to ('/Userinfo','User\UserController@index')
 Userinfo=()=>{
     $.get("/Userinfo",(data)=>{
         let user = jQuery.parseJSON(data);
@@ -215,10 +212,9 @@ Userinfo=()=>{
             ],
         });
     });
-// window.onunload
-// counts all notification;
+
+// this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter=(number, verify)=>{
-    // console.log(number);
     console.log(verify);
     let sum = Number(number)+Number(verify);
      $('#notificount').html(`${sum}`);
