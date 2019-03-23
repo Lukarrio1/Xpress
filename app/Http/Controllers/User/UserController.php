@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PasswordUpdatedEmail;
 
 class UserController extends Controller
 {
@@ -18,6 +21,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // this function send a single user to the
     public function SingleUser()
     {
         $user= User::find(Auth::user()->id);
@@ -29,19 +33,43 @@ class UserController extends Controller
         'parish'=>$user->parish,
         'telephone'=>$user->telephone,
         'email'=>$user->email,
+        'data'=>$user->password,
         ]);
     }
 
     /*
-     * Show the form for creating a new resource.
+     * Updates the users password
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // this function updates the pasword
+    public function PasswordUpdate(Request $request){
+        $this->validate($request,[
+        'newpass'=>'required|min:6',
+        ]);
+    $password =User::find(Auth::user()->id);
+    $password->password = Hash::make($request->newpass);
+    $this->PasswordEmailNotification();
+    $password->save();
 
+    } 
+// this function checks the the oldpassword form the from and compare it with the password from the database
+    public function Pdata(Request $request){
+        $this->validate($request,[
+        'data'=>'required|min:6',
+        ]);
+    $p= User::find(Auth::user()->id);
+    if (Hash::check($request->data,$p->password)) {
+        return json_encode([
+            'passed'=>1,
+           ]);
+    }else{
+    return json_encode([
+        'passed'=>0,
+        ]);
+    }
+      
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -123,7 +151,7 @@ class UserController extends Controller
             }
 
     }
-
+// this function returns the modal token
     public function Modaltoken(){
         $token= User::find(Auth::user()->id);
         return json_encode([
@@ -131,7 +159,7 @@ class UserController extends Controller
         'id'=>$token->id,
         ]);
     }
-
+    // this function updates the token for the modal
     public function modaltokenupdate(Request $request){
     $this->validate($request,[
     'id'=>'required',
@@ -140,7 +168,15 @@ class UserController extends Controller
     $token->login_modal="";
     $token->save();
     }
+    // this function returns all the user in the database will remove later this is for the admin section..
     public function all_users(){
         return json_encode(User::orderBy('created_at', 'DESC')->get());
     }
+// this function sends an email to the user as soon as they change there password
+    public function PasswordEmailNotification(){
+    $person = User::find(Auth::user()->id);
+    $name =$person->name;
+    $mail = 'your password has been updated successfully';
+    Mail::to($person->email)->send(new PasswordUpdatedEmail($name,$mail));
+        }
 }

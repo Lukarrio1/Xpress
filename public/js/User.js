@@ -28,17 +28,12 @@ TokenCheck=()=>{
       verify =1;
      Allusers(verify);
     }
-   
-    
-   
     // for(i = 0; i<notification.length; i++){
     // text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
     // }
    
 });
-
 }
-
 // testings: this get all the users in the database  ('/Allusers', 'NotificationController@Allusers')
 Allusers=(verify)=>{
     $.get("/Allusers",( data )=>{
@@ -50,12 +45,8 @@ Allusers=(verify)=>{
     text +=`<a class='dropdown-item' href='/Notifications/${user[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${user[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
     }
     $("#allusersnotify").html(`${text}`);
-
-       
     });
 }
-
-
 // check to see if the modal has been clicked /modal ('/modal', 'User\UserController@Modaltoken')
 Modaltimer=()=>{
     $.get("/modal",(data)=>{
@@ -67,7 +58,6 @@ Modaltimer=()=>{
     }
 });
 }
-
 // this function updates the login modal /modal ('/modal','User\UserController@modaltokenupdate')
 $("#update_login_token").click(()=>{
     $.ajax({
@@ -79,11 +69,9 @@ $("#update_login_token").click(()=>{
     },
     dataType: 'text',
     success: (data)=> {
- 
     }
 }); 
 });
-
 //  this function updates the users information on the user/edit page ('/MyAccount','User\UserController@edit')->name('account.edit')
 $("#updatebtn").html("Update");
 $("#update").click(()=>{
@@ -151,11 +139,12 @@ $("#update").click(()=>{
 Userinfo=()=>{
     $.get("/Userinfo",(data)=>{
         let user = jQuery.parseJSON(data);
+        var data = user.data;
+        Pdata(data);
         Object.keys(user).forEach((key)=>{
             $(`#${key}`).val(user[key]);
             // $(`#usercard${name}`).html(`${user[key]}`);
         })
-      
     //   $("#email").val(user.email);
     //   $("#telephone").val(user.telephone);
     //   $("#city").val(user.city);
@@ -173,6 +162,7 @@ Userinfo=()=>{
       $("#usercardaddress").html(`${user.address}`);
     }); 
     }
+// this funtion deletes user
     $("#Deletebtn").click(()=>{
         iziToast.question({
             backgroundColor:'red',
@@ -213,9 +203,68 @@ Userinfo=()=>{
         });
     });
 
+//  all you need to know is that this function goes to the Pdata in UserController
+    Pdata=(data)=>{
+    $("#oldpass").val("");
+    $("#pschbtn").click(()=>{
+     if($("#oldpass").val().length<6){
+        $("#oldpassword").html("Must be at least 6 characters");
+        }else{
+    $.ajax({
+        type: "POST",
+        url: "/pdata",
+        data:{
+         _token: CSRF_TOKEN, 
+         data: $("#oldpass").val(),
+        },
+        dataType: "text",
+        success: function (response) {
+        var something = jQuery.parseJSON(response)
+        if(something.passed ==0){
+        $("#oldpassword").html("Password doesn`t match");
+        }else if($("#newpass").val().length<6){
+        $("#newpassword").html("Must be at least 6 characters");
+        }else if($("#confirmpass").val().length<6){
+        $("#confirmpassword").html("Must be at least 6 characters");
+        }else if($("#newpass").val()!=$("#confirmpass").val()){
+            $("#confirmpassword").html("Password dont match");
+        }else{
+        $("#pschbtn").addClass("disabled");
+        $.ajax({
+            type: "POST",
+            url: "/passwordUpdate",
+            data:{
+             _token: CSRF_TOKEN, 
+            newpass: $("#newpass").val(),
+            },
+            dataType: "text",
+            success: function (response) {
+             $("#pschbtn").removeClass("disabled");
+             $("#oldpassword").html("");
+             $("#newpassword").html("");
+            $("#confirmpassword").html("")
+            $("#oldpass").val("")
+            $("#newpass").val("")
+            $("#confirmpass").val("")
+            $('#closepasswordmodal').click();
+        iziToast.success({
+            position:'topCenter',
+            // title:'',
+            message:'Password Changed ..',
+           });
+         }
+        });
+        }
+        }
+        });
+        }
+        });
+         }
+
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter=(number, verify)=>{
-    console.log(verify);
     let sum = Number(number)+Number(verify);
      $('#notificount').html(`${sum}`);
 }
+
+

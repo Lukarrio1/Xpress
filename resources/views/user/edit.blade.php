@@ -99,7 +99,6 @@
         
               <!-- Card content -->
               <div class="card-body card-body-cascade">
-                <form>
                 <!-- Grid row -->
                 <div class="row">
 
@@ -265,70 +264,10 @@
                   Telephone:<span id="usercardphone"></span><br></p>
                 {{-- <a class="btn btn-danger btn-rounded"   data-toggle="modal" data-target="#basicExampleModal">Delete Account</a> --}}
                 <a class="btn btn-danger btn-rounded"  id="Deletebtn">Delete Account</a>
-                
-                    <!--Change Password Modal-->
-                <!-- Modal -->
-          <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog form-dark" role="document">
-              <!--Content-->
-              <div class="modal-content card card-image" style="background-image: url('https://images.unsplash.com/photo-1508345228704-935cc84bf5e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80');">
-                <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-                  <!--Header-->
-                  <div class="modal-header text-center pb-4">
-                    <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Change</strong> <a
-                        class="blue-text font-weight-bold"><strong>Password</strong></a></h3>
-                    <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <!--Body-->
-                  <div class="modal-body">
-                    <!--Body-->
-                    <div class="md-form mb-5">
-                      <input type="password" id="Form-pass-5" class="form-control validate white-text">
-                      <label data-error="wrong" data-success="right" for="Form-pass5">Old Password</label>
-                    </div>
-
-                    <div class="md-form mb-5">
-                      <input type="password" id="Form-pass5" class="form-control validate white-text">
-                      <label data-error="wrong" data-success="right" for="Form-pass5">New Password</label>
-                              </div>
-                    <div class="md-form mb-5">
-                      <input type="password" id="Form-pass5" class="form-control validate white-text">
-                      <label data-error="wrong" data-success="right" for="Form-pass5">Confirm Password</label>
-                      
-                    </div>
-                      
-          <!--Grid row-->
-          <div class="row d-flex align-items-center mb-4">
-
-            <!--Grid column-->
-            <div class="text-center mb-3 col-md-12">
-              <button type="button" class="btn btn-blue btn-block btn-rounded z-depth-1">Change Password</button>
-            </div>
-            <!--Grid column-->
-
-          </div>
-          <!--Grid row-->
-
-         
-          </div>
-          <!--Grid row-->
-
-        </div>
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-
-<!--Change Picture Modal-->
-            <!-- Modal -->
-
-            <div class="text-center">
-              <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#darkModalForm">
+              
+              <a href="" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#darkModalForm">
                 Change Password</a>
-            </div>
+  
                 <!--Change Picture Modal-->
 
           <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -342,61 +281,32 @@
                     <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Change</strong> <a
                         class="blue-text font-weight-bold"><strong>Password</strong></a></h3>
                     <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+                      <span id="closepasswordmodal" aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <!--Body-->
                   <div class="modal-body">
-                    <!--Body-->
                     <div class="md-form mb-5">
-                      <input type="password" id="Form-pass-5" class="form-control validate white-text">
-                      <label data-error="wrong" data-success="right" for="Form-pass5">Old Password</label>
+                      <input type="password"  class="form-control validate white-text" id="oldpass">
+                      <label  for="Form-pass5">Old Password</label>
+                      <span id="oldpassword"></span>
                     </div>
-
                     <div class="md-form mb-5">
-                      <input type="password" id="Form-pass5" class="form-control validate white-text">
-                      <label data-error="wrong" data-success="right" for="Form-pass5">New Password</label>
-                              </div>
+                      <input type="password"  class="form-control validate white-text" id="newpass">
+                      <label  for="Form-pass5" >New Password</label>
+                      <span id="newpassword"></span>
+                        </div>
                     <div class="md-form mb-5">
-                     <form class="md-form">
-                    <div class="file-field">
-                      <div class="btn btn-primary btn-sm float-left">
-                        <span>Choose file</span>
-                        <input type="file">
-                      </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload your file">
-                      </div>
+                      <input type="password"  class="form-control validate white-text" id="confirmpass">
+                      <label  for="Form-pass5" >Confirm Password</label>
+                      <span id="confirmpassword"></span>
+                        </div>
+                    <div class="text-center mb-3 col-md-12">
+                      <button class="btn btn-blue btn-block btn-rounded z-depth-1" id="pschbtn">Change</button>
                     </div>
-                  </form>
-                    </div>
-                    <form class="md-form">
-                    <div class="file-field">
-                      <div class="btn btn-primary btn-sm float-left">
-                        <span>Choose file</span>
-                        <input type="file">
-                      </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload your file">
-                      </div>
-                    </div>
-                  </form>
-                      
-          <!--Grid row-->
-          <div class="row d-flex align-items-center mb-4">
-
-            <!--Grid column-->
-            <div class="text-center mb-3 col-md-12">
-              <button type="button" class="btn btn-blue btn-block btn-rounded z-depth-1">Change Picture</button>
-            </div>
-            <!--Grid column-->
-
-          </div>
-          <!--Grid row-->
-
+                
+               </div>
          
-          </div>
-          <!--Grid row-->
 
         </div>
       </div>
@@ -404,15 +314,53 @@
     <!--/.Content-->
   </div>
             <div class="text-center">
-              <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#darkModalForm">
+              <a href="" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#darkchangepicsForm">
                 Change Picture</a>
             </div>
+
+            
+          <div class="modal fade" id="darkchangepicsForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog form-dark" role="document">
+            <!--Content-->
+            <div class="modal-content card card-image" style="background-image: url('https://images.unsplash.com/photo-1508345228704-935cc84bf5e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80');">
+              <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                <!--Header-->
+                <div class="modal-header text-center pb-4">
+                  <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Change Profile</strong> <a
+                      class="blue-text font-weight-bold"><strong>Picture</strong></a></h3>
+                  <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                  <form class="md-form" action="" method="Post">
+                    <div class="file-field">
+                      <div class="btn btn-primary btn-sm float-left">
+                        <span>Choose file</span>
+                        <input type="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload your file">
+                      </div>
+                    </div>
+            </div>
+        <!--Grid row-->
+
+      </div>
+    </div>
+  </div>
+  <!--/.Content-->
+</div>
                 
                         <!-- Card -->
 
                       </div>
                       <!-- Grid column -->
 
+                    </div>
+                    </div>
                     </div>
                     <!-- Grid row -->
 
@@ -423,35 +371,5 @@
               <!-- Button trigger modal -->
 
   
-                        <!-- Card -->
-
-                      </div>
-                      <!-- Grid column -->
-
-                    </div>
-                    <!-- Grid row -->
-
-                  </section>
-                  <!-- Section: Team v.1 -->
-
-                </div>
-              <!-- Button trigger modal -->
-
-
-  {{-- <!-- Modal -->
-  <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body text-center">
-            <i class="fa fa-trash" aria-hidden="true"></i> Are you sure you want to delete your Account?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" id="accountdel">Delete</button>
-        </div>
-      </div>
-    </div>
-    
   <!-- Main layout -->
 @endsection

@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 // User auth routes
 Auth::routes();
 // notification
@@ -35,8 +34,10 @@ Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logou
 // user edit 
 Route::get('/MyAccount','User\UserController@edit')->name('account.edit');
 Route::get('/Userinfo','User\UserController@SingleUser');
+Route::post('/pdata','User\UserController@Pdata');
 Route::post('/Userinfo','User\UserController@update');
 Route::post('/Useraccountdel','User\UserController@destroy');
+Route::post('/passwordUpdate','User\UserController@PasswordUpdate');
 // Admin routes
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
