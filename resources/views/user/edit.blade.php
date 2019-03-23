@@ -1,8 +1,76 @@
 @extends('layouts.app')
 @section('content')
 <!-- Main layout -->
+<style>
+.form-dark .font-small {
+  font-size: 0.8rem; }
+
+.form-dark [type="radio"] + label,
+.form-dark [type="checkbox"] + label {
+  font-size: 0.8rem; }
+
+.form-dark [type="checkbox"] + label:before {
+  top: 2px;
+  width: 15px;
+  height: 15px; }
+
+.form-dark .md-form label {
+  color: #fff; }
+
+.form-dark input[type=email]:focus:not([readonly]) {
+  border-bottom: 1px solid #0984e3;
+  -webkit-box-shadow: 0 1px 0 0 #0984e3;
+  box-shadow: 0 1px 0 0 #0984e3; }
+
+.form-dark input[type=email]:focus:not([readonly]) + label {
+  color: #fff; }
+
+.form-dark input[type=password]:focus:not([readonly]) {
+  border-bottom: 1px solid #0984e3;
+  -webkit-box-shadow: 0 1px 0 0 #0984e3;
+  box-shadow: 0 1px 0 0 #0984e3; }
+
+.form-dark input[type=password]:focus:not([readonly]) + label {
+  color: #fff; }
+
+.form-dark input[type="checkbox"] + label:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 17px;
+  height: 17px;
+  z-index: 0;
+  border: 1.5px solid #fff;
+  border-radius: 1px;
+  margin-top: 2px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s; }
+
+.form-dark input[type="checkbox"]:checked + label:before {
+  top: -4px;
+  left: -3px;
+  width: 12px;
+  height: 22px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent #0984e3 #0984e3 transparent;
+  -webkit-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  transform: rotate(40deg);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%; }
+
+.form-dark .modal-header {
+    border-bottom: none;
+}
+
+
+</style>
   
-    <div class="container-fluid">
+    <div class="container-fluid ">
 
       <!-- Section: Team v.1 -->
       <section class="section team-section">
@@ -197,25 +265,179 @@
                   Telephone:<span id="usercardphone"></span><br></p>
                 {{-- <a class="btn btn-danger btn-rounded"   data-toggle="modal" data-target="#basicExampleModal">Delete Account</a> --}}
                 <a class="btn btn-danger btn-rounded"  id="Deletebtn">Delete Account</a>
+                
+                    <!--Change Password Modal-->
+                <!-- Modal -->
+          <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog form-dark" role="document">
+              <!--Content-->
+              <div class="modal-content card card-image" style="background-image: url('https://images.unsplash.com/photo-1508345228704-935cc84bf5e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80');">
+                <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                  <!--Header-->
+                  <div class="modal-header text-center pb-4">
+                    <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Change</strong> <a
+                        class="blue-text font-weight-bold"><strong>Password</strong></a></h3>
+                    <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <!--Body-->
+                  <div class="modal-body">
+                    <!--Body-->
+                    <div class="md-form mb-5">
+                      <input type="password" id="Form-pass-5" class="form-control validate white-text">
+                      <label data-error="wrong" data-success="right" for="Form-pass5">Old Password</label>
+                    </div>
 
-              </div>
+                    <div class="md-form mb-5">
+                      <input type="password" id="Form-pass5" class="form-control validate white-text">
+                      <label data-error="wrong" data-success="right" for="Form-pass5">New Password</label>
+                              </div>
+                    <div class="md-form mb-5">
+                      <input type="password" id="Form-pass5" class="form-control validate white-text">
+                      <label data-error="wrong" data-success="right" for="Form-pass5">Confirm Password</label>
+                      
+                    </div>
+                      
+          <!--Grid row-->
+          <div class="row d-flex align-items-center mb-4">
 
+            <!--Grid column-->
+            <div class="text-center mb-3 col-md-12">
+              <button type="button" class="btn btn-blue btn-block btn-rounded z-depth-1">Change Password</button>
             </div>
-            <!-- Card -->
+            <!--Grid column-->
 
           </div>
-          <!-- Grid column -->
+          <!--Grid row-->
+
+         
+          </div>
+          <!--Grid row-->
 
         </div>
-        <!-- Grid row -->
-
-      </section>
-      <!-- Section: Team v.1 -->
-
+      </div>
     </div>
-  <!-- Button trigger modal -->
+    <!--/.Content-->
+  </div>
+
+<!--Change Picture Modal-->
+            <!-- Modal -->
+
+            <div class="text-center">
+              <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#darkModalForm">
+                Change Password</a>
+            </div>
+                <!--Change Picture Modal-->
+
+          <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog form-dark" role="document">
+              <!--Content-->
+              <div class="modal-content card card-image" style="background-image: url('https://images.unsplash.com/photo-1508345228704-935cc84bf5e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80');">
+                <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                  <!--Header-->
+                  <div class="modal-header text-center pb-4">
+                    <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Change</strong> <a
+                        class="blue-text font-weight-bold"><strong>Password</strong></a></h3>
+                    <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <!--Body-->
+                  <div class="modal-body">
+                    <!--Body-->
+                    <div class="md-form mb-5">
+                      <input type="password" id="Form-pass-5" class="form-control validate white-text">
+                      <label data-error="wrong" data-success="right" for="Form-pass5">Old Password</label>
+                    </div>
+
+                    <div class="md-form mb-5">
+                      <input type="password" id="Form-pass5" class="form-control validate white-text">
+                      <label data-error="wrong" data-success="right" for="Form-pass5">New Password</label>
+                              </div>
+                    <div class="md-form mb-5">
+                     <form class="md-form">
+                    <div class="file-field">
+                      <div class="btn btn-primary btn-sm float-left">
+                        <span>Choose file</span>
+                        <input type="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload your file">
+                      </div>
+                    </div>
+                  </form>
+                    </div>
+                    <form class="md-form">
+                    <div class="file-field">
+                      <div class="btn btn-primary btn-sm float-left">
+                        <span>Choose file</span>
+                        <input type="file">
+                      </div>
+                      <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload your file">
+                      </div>
+                    </div>
+                  </form>
+                      
+          <!--Grid row-->
+          <div class="row d-flex align-items-center mb-4">
+
+            <!--Grid column-->
+            <div class="text-center mb-3 col-md-12">
+              <button type="button" class="btn btn-blue btn-block btn-rounded z-depth-1">Change Picture</button>
+            </div>
+            <!--Grid column-->
+
+          </div>
+          <!--Grid row-->
+
+         
+          </div>
+          <!--Grid row-->
+
+        </div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+            <div class="text-center">
+              <a href="" class="btn btn-danger btn-rounded" data-toggle="modal" data-target="#darkModalForm">
+                Change Picture</a>
+            </div>
+                
+                        <!-- Card -->
+
+                      </div>
+                      <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                  </section>
+                  <!-- Section: Team v.1 -->
+
+                </div>
+              <!-- Button trigger modal -->
 
   
+                        <!-- Card -->
+
+                      </div>
+                      <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                  </section>
+                  <!-- Section: Team v.1 -->
+
+                </div>
+              <!-- Button trigger modal -->
+
+
   {{-- <!-- Modal -->
   <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -230,6 +452,6 @@
         </div>
       </div>
     </div>
-  </div> --}}
+    
   <!-- Main layout -->
 @endsection
