@@ -11,33 +11,34 @@
 |
 */
 // User auth routes
-Auth::routes();
-// notification
-Route::prefix('Notifications')->group(function () { 
-    Route::get('/','NotificationController@Token');
-    Route::get('/{id}','NotificationController@show'); 
-});
-Route::get('/Allusers', 'NotificationController@Allusers');
-
-// How it works modal token 
-Route::get('/modal', 'User\UserController@Modaltoken');
-Route::post('/modal','User\UserController@modaltokenupdate');
-
-// page controller
-Route::get('/','PagesController@index');
-// this is the home route
-Route::get('/home', 'HomeController@index')->name('home');
-// email verification
-Route::get('/verify/{token}','VerifyController@Verify')->name('verify');
-// auth user routes
-Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-// user edit 
-Route::get('/MyAccount','User\UserController@edit')->name('account.edit');
-Route::get('/Userinfo','User\UserController@SingleUser');
-Route::post('/pdata','User\UserController@Pdata');
-Route::post('/Userinfo','User\UserController@update');
-Route::post('/Useraccountdel','User\UserController@destroy');
-Route::post('/passwordUpdate','User\UserController@PasswordUpdate');
+    Auth::routes();
+    // notification
+ Route::prefix('Notifications')->group(function () { 
+        Route::get('/','NotificationController@Token');
+        Route::get('/{id}','NotificationController@show'); 
+    });
+    // this route goes to the Storeimage function on the usercontroller it is resposible for storing a image
+    Route::post('/store/image','User\Usercontroller@Storeimage')->name('userimage');
+    // this is a tester function for showing all the users in a database
+    Route::get('/Allusers', 'NotificationController@Allusers');
+    // How it works modal token 
+    Route::get('/modal', 'User\UserController@Modaltoken');
+    Route::post('/modal','User\UserController@modaltokenupdate');
+    // page controller
+    Route::get('/','PagesController@index');
+    // this is the home route
+    Route::get('/home', 'HomeController@index')->name('home');
+    // email verification
+    Route::get('/verify/{token}','VerifyController@Verify')->name('verify');
+    // auth user routes
+    Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+    // user edit 
+    Route::get('/MyAccount','User\UserController@edit')->name('account.edit');
+    Route::get('/Userinfo','User\UserController@SingleUser');
+    Route::post('/pdata','User\UserController@Pdata');
+    Route::post('/Userinfo','User\UserController@update');
+    Route::post('/Useraccountdel','User\UserController@destroy');
+    Route::post('/passwordUpdate','User\UserController@PasswordUpdate');
 // Admin routes
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

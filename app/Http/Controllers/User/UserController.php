@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PasswordUpdatedEmail;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -34,6 +35,7 @@ class UserController extends Controller
         'telephone'=>$user->telephone,
         'email'=>$user->email,
         'data'=>$user->password,
+        'image'=>$user->userimage,
         ]);
     }
 
@@ -76,9 +78,27 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function Storeimage(Request $request)
     {
-        //
+        $this->validate($request,[
+        'image'=>'required|max:1999|image',
+        ]);
+
+        //gets the image name with extension.
+        $filenameWithExt= $request->file('image')->getClientOriginalName();
+        //gets the just the file name
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        //gets extension
+        $extension = $request->file('image')->getClientOriginalExtension();
+        //new file name
+        $filenametostore= $filename.'_'.time().'.'.$extension;
+        $path= $request->file('image')->storeAs('public/Userimage', $filenametostore);
+        $image = User::find(Auth::user()->id);
+        $image->userimage = $filenametostore;
+        $image->save();
+        return redirect('/MyAccount');
+
+
     }
 
     /**
@@ -146,8 +166,14 @@ class UserController extends Controller
         ]);
             if($request->delete ==true){
                 $user = User::find(Auth::user()->id);
+                if(empty($user->userimage)){
+                    $user->delete();
+                    return 1;
+                }else{
+                Storage::delete('public/Userimage/'.$user->userimage);
                 $user->delete();
                 return 1;
+                }
             }
 
     }

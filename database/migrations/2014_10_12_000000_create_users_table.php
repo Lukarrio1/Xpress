@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('parish');
             $table->string('Country');
             $table->string('address');
+            $table->string('userimage')->default('noimage.jpg');
             $table->rememberToken();
             $table->timestamps();
         });

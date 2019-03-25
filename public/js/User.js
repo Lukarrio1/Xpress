@@ -24,7 +24,7 @@ TokenCheck=()=>{
     var verify =0;
      Allusers(verify);
     }else{
-     $("#emailnotify").html(`<a href='${notification.url}'>${notification.icon} ${notification.notification}</a>`);
+     $("#emailnotify").html(`<a  class='dropdown-item' href='${notification.url}'>${notification.icon} ${notification.notification}</a>`);
       verify =1;
      Allusers(verify);
     }
@@ -160,6 +160,7 @@ Userinfo=()=>{
       $("#usercardparish").html(`${user.parish}`);
       $("#usercardcountry").html(`${user.country}`);
       $("#usercardaddress").html(`${user.address}`);
+      $("#usercardimage").html(`<img src="/storage/Userimage/${user.image}" class="rounded-circle" alt="First sample avatar image">`);
     }); 
     }
 // this funtion deletes user

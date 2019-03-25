@@ -27,14 +27,14 @@ class NotificationController extends Controller
         return json_encode([
         'notification'=>'',
         'icon'=>'',
-        'id'=>'',
-        'url'=>''
+        'time'=>'',
         ]);
         }else{
         // if there is a token in the database a notification will be passed..
         return json_encode([
         'notification'=>'Please verify your email address..',
         'icon'=>'<i class="fa fa-envelope-square">',
+        'time'=>$user->create_at,
         ]);
         }
     }

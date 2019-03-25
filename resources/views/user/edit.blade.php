@@ -248,7 +248,7 @@
 
               <!-- Avatar -->
               <div class="avatar z-depth-1-half mb-4">
-                <img src="https://images.unsplash.com/photo-1550613097-fe6c2c321cd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80" class="rounded-circle" alt="First sample avatar image">  
+               <span id="usercardimage"></span>
               </div>
 
               <div class="card-body pt-0 mt-0">
@@ -335,16 +335,21 @@
                 </div>
                 <!--Body-->
                 <div class="modal-body">
-                  <form class="md-form" action="" method="Post">
+                <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data>
                     <div class="file-field">
+                        {{ csrf_field() }}
                       <div class="btn btn-primary btn-sm float-left">
                         <span>Choose file</span>
-                        <input type="file">
+                        <input type="file" name="image" required>
                       </div>
                       <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" placeholder="Upload your file">
                       </div>
+                      <div class="text-center mb-3 col-md-12">
+                          <button class="btn btn-blue btn-block btn-rounded z-depth-1" type="submit">upload image</button>
+                        </div>
                     </div>
+                  </form>
             </div>
         <!--Grid row-->
 
