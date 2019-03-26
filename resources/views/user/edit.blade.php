@@ -104,8 +104,7 @@
 
                   <!-- Grid column -->
                   <div class="col-lg-6 col-md-12">
-                   
-                    <div class="md-form form-sm mb-0">
+                      <div class="md-form form-sm mb-0">
                       <label for="name" class="placeholder">Name</label><br>
                          <input type="text" id="name" class="form-control form-control-sm" value="">
                          <span id="errorname" class="text-danger"></span>
@@ -119,7 +118,7 @@
                   {{-- <div class="col-lg-4">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="email" class="">Email address</label>
+                      <label for="email" class="placeholder">Email address</label><br>
                       <input type="text" id="email" class="form-control form-control-sm" value="">
                       <span id="erroremail" class="text-danger"></span>
                       
@@ -132,7 +131,7 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="telephone" class="">Telephone</label><br>
+                      <label for="telephone" class="placeholder">Telephone</label><br>
                       <input type="number" id="telephone" class="form-control form-control-sm" vaule="">
                        <span id="errorphone" class="text-danger"></span>
                       
@@ -151,7 +150,7 @@
                   <div class="col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="city" class="">City</label><br>
+                      <label for="city" class="placeholder">City</label><br>
                       <input type="text" id="city" class="form-control form-control-sm" value="">
                       <span id="errorcity" class="text-danger"></span>
                       
@@ -164,7 +163,7 @@
                   <div class="col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="parish" class="">Parish</label><br>
+                      <label for="parish" class="placeholder">Parish</label><br>
                       <input type="text" id="parish" class="form-control form-control-sm" value="">
                       <span id="errorparish" class="text-danger"></span>
                       
@@ -183,7 +182,7 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="country" class="">Country</label><br>
+                      <label for="country" class="placeholder">Country</label><br>
                       <input type="text" id="country" class="form-control form-control-sm" value="">
                       <span id="errorcountry" class="text-danger"></span>
                       
@@ -197,7 +196,7 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="address" class="">Address</label><br>
+                      <label for="address" class="placeholder">Address</label><br>
                       <input type="text" id="address" class="form-control form-control-sm" value="">
                       <span id="erroraddress" class="text-danger"></span>
                       
@@ -210,7 +209,7 @@
                   {{-- <div class="col-lg-4 col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="form8" class="">Country</label>
+                      <label for="form8" class="placeholder">Country</label><br>
                       <input type="text" id="form8" class="form-control form-control-sm" value="">
                       
                     </div>
