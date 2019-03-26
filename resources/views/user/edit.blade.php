@@ -342,9 +342,6 @@
                         <span>Choose file</span>
                         <input type="file" name="image" required>
                       </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload your file">
-                      </div>
                       <div class="text-center mb-3 col-md-12">
                           <button class="btn btn-blue btn-block btn-rounded z-depth-1" type="submit">upload image</button>
                         </div>
