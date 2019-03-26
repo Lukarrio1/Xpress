@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
 <link rel="stylesheet" href="{{asset('css/iziToast.css')}}">
+
    
     <!-- Scripts -->
     <script>
@@ -40,6 +41,16 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
 <script>
+   
+    $(()=>{
+      //cache dom elements
+      let $fileInput = $('#fileInput')
+      
+      //events
+      $fileInput.on('change', (ev)=>{
+        $('#fileNameOutput').val(ev.target.files[0].name)
+      })
+    })
 // SideNav Button Initialization
 $(".button-collapse").sideNav();
 // SideNav Scrollbar Initialization
@@ -124,7 +135,11 @@ $('.button-collapse').sideNav('hide');
       }
     }
     );
+
+   
+   
  </script>
+
 <script type="text/javascript" src="{{ asset ('js/app.js') }}"></script>
 <script src="{{asset('js/iziToast.js')}}"></script>
 {{-- do not touch here wihout asking me  --}}

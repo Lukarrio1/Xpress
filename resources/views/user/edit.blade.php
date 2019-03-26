@@ -106,9 +106,10 @@
                   <div class="col-lg-6 col-md-12">
                    
                     <div class="md-form form-sm mb-0">
+                      <label for="name" class="placeholder">Name</label><br>
                          <input type="text" id="name" class="form-control form-control-sm" value="">
                          <span id="errorname" class="text-danger"></span>
-                      <label for="name" class="">Name</label>
+                      
                     </div>
 
                   </div>
@@ -118,9 +119,10 @@
                   {{-- <div class="col-lg-4">
 
                     <div class="md-form form-sm mb-0">
+                      <label for="email" class="">Email address</label>
                       <input type="text" id="email" class="form-control form-control-sm" value="">
                       <span id="erroremail" class="text-danger"></span>
-                      <label for="email" class="">Email address</label>
+                      
                     </div>
 
                   </div> --}}
@@ -130,9 +132,10 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
+                      <label for="telephone" class="">Telephone</label>
                       <input type="number" id="telephone" class="form-control form-control-sm" vaule="">
                        <span id="errorphone" class="text-danger"></span>
-                      <label for="telephone" class="">Telephone</label>
+                      
                     </div>
 
                   </div>
@@ -148,9 +151,10 @@
                   <div class="col-md-6">
 
                     <div class="md-form form-sm mb-0">
+                      <label for="city" class="">City</label>
                       <input type="text" id="city" class="form-control form-control-sm" value="">
                       <span id="errorcity" class="text-danger"></span>
-                      <label for="city" class="">City</label>
+                      
                     </div>
 
                   </div>
@@ -160,9 +164,10 @@
                   <div class="col-md-6">
 
                     <div class="md-form form-sm mb-0">
+                      <label for="parish" class="">Parish</label>
                       <input type="text" id="parish" class="form-control form-control-sm" value="">
                       <span id="errorparish" class="text-danger"></span>
-                      <label for="parish" class="">Parish</label>
+                      
                     </div>
 
                   </div>
@@ -178,9 +183,10 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
+                      <label for="country" class="">Country</label>
                       <input type="text" id="country" class="form-control form-control-sm" value="">
                       <span id="errorcountry" class="text-danger"></span>
-                      <label for="country" class="">Country</label>
+                      
                     </div>
 
                   </div>
@@ -191,9 +197,10 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
+                      <label for="address" class="">Address</label>
                       <input type="text" id="address" class="form-control form-control-sm" value="">
                       <span id="erroraddress" class="text-danger"></span>
-                      <label for="address" class="">Address</label>
+                      
                     </div>
 
                   </div>
@@ -203,8 +210,9 @@
                   {{-- <div class="col-lg-4 col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <input type="text" id="form8" class="form-control form-control-sm" value="">
                       <label for="form8" class="">Country</label>
+                      <input type="text" id="form8" class="form-control form-control-sm" value="">
+                      
                     </div>
 
                   </div> --}}
@@ -335,6 +343,13 @@
                 </div>
                 <!--Body-->
                 <div class="modal-body">
+<<<<<<< HEAD
+                  <form class="md-form">
+                  <div class="file-field">
+                    <div class="btn btn-primary btn-sm float-left text-white">
+                      <span>Choose file</span>
+                      <input type="file" id="fileInput">
+=======
                 <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data>
                     <div class="file-field text-center">
                         {{ csrf_field() }}
@@ -345,9 +360,13 @@
                       <div class="text-center mb-3 col-md-12">
                           <button class="btn btn-blue btn-block btn-rounded z-depth-1" type="submit">upload image</button>
                         </div>
+>>>>>>> da0317690a4fa73dd4481275dc4e6e18972ae3ac
                     </div>
-                  </form>
-            </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Upload your file">
+                    </div>
+                  </div>
+                </form>
         <!--Grid row-->
 
       </div>
@@ -374,4 +393,5 @@
 
   
   <!-- Main layout -->
+
 @endsection
