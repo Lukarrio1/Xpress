@@ -342,15 +342,10 @@
                 </div>
                 <!--Body-->
                 <div class="modal-body">
-                  <form class="md-form">
-                  <div class="file-field">
-                    <div class="btn btn-primary btn-sm float-left text-white">
-                      <span>Choose file</span>
-                      <input type="file" id="fileInput">
                 <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data>
-                    <div class="file-field">
+                    <div class="file-field text-center">
                         {{ csrf_field() }}
-                      <div class="btn btn-primary btn-sm text-center">
+                      <div class="btn btn-primary btn-sm ">
                         <span>Choose file</span>
                         <input type="file" name="image" required>
                       </div>
@@ -359,7 +354,7 @@
                         </div>
                     </div>
                     <div class="file-path-wrapper">
-                      <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Upload your file">
+                      <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Upload your file" value="">
                     </div>
                   </div>
                 </form>

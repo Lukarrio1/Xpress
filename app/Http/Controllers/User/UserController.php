@@ -83,7 +83,7 @@ class UserController extends Controller
         $this->validate($request,[
         'image'=>'required|max:1999|image',
         ]);
-
+            
         //gets the image name with extension.
         $filenameWithExt= $request->file('image')->getClientOriginalName();
         //gets the just the file name
@@ -92,11 +92,20 @@ class UserController extends Controller
         $extension = $request->file('image')->getClientOriginalExtension();
         //new file name
         $filenametostore= $filename.'_'.time().'.'.$extension;
-        $path= $request->file('image')->storeAs('public/Userimage', $filenametostore);
         $image = User::find(Auth::user()->id);
-        $image->userimage = $filenametostore;
-        $image->save();
-        return redirect('/MyAccount');
+        if($image->userimage=="noimage.jpg"){
+            $path= $request->file('image')->storeAs('public/Userimage', $filenametostore);  
+            $image->userimage = $filenametostore;
+            $image->save();
+            return redirect('/MyAccount');
+        }else{
+            Storage::delete('public/Userimage/'.$image->userimage);
+            $path= $request->file('image')->storeAs('public/Userimage', $filenametostore);
+            $image->userimage = $filenametostore;
+            $image->save();
+            return redirect('/MyAccount');
+        }
+      
 
 
     }
