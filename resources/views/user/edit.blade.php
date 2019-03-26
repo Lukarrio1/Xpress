@@ -132,7 +132,7 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="telephone" class="">Telephone</label>
+                      <label for="telephone" class="">Telephone</label><br>
                       <input type="number" id="telephone" class="form-control form-control-sm" vaule="">
                        <span id="errorphone" class="text-danger"></span>
                       
@@ -151,7 +151,7 @@
                   <div class="col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="city" class="">City</label>
+                      <label for="city" class="">City</label><br>
                       <input type="text" id="city" class="form-control form-control-sm" value="">
                       <span id="errorcity" class="text-danger"></span>
                       
@@ -164,7 +164,7 @@
                   <div class="col-md-6">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="parish" class="">Parish</label>
+                      <label for="parish" class="">Parish</label><br>
                       <input type="text" id="parish" class="form-control form-control-sm" value="">
                       <span id="errorparish" class="text-danger"></span>
                       
@@ -183,7 +183,7 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="country" class="">Country</label>
+                      <label for="country" class="">Country</label><br>
                       <input type="text" id="country" class="form-control form-control-sm" value="">
                       <span id="errorcountry" class="text-danger"></span>
                       
@@ -197,7 +197,7 @@
                   <div class="col-lg-6 col-md-12">
 
                     <div class="md-form form-sm mb-0">
-                      <label for="address" class="">Address</label>
+                      <label for="address" class="">Address</label><br>
                       <input type="text" id="address" class="form-control form-control-sm" value="">
                       <span id="erroraddress" class="text-danger"></span>
                       
@@ -343,13 +343,6 @@
                 </div>
                 <!--Body-->
                 <div class="modal-body">
-<<<<<<< HEAD
-                  <form class="md-form">
-                  <div class="file-field">
-                    <div class="btn btn-primary btn-sm float-left text-white">
-                      <span>Choose file</span>
-                      <input type="file" id="fileInput">
-=======
                 <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data>
                     <div class="file-field text-center">
                         {{ csrf_field() }}
@@ -360,7 +353,6 @@
                       <div class="text-center mb-3 col-md-12">
                           <button class="btn btn-blue btn-block btn-rounded z-depth-1" type="submit">upload image</button>
                         </div>
->>>>>>> da0317690a4fa73dd4481275dc4e6e18972ae3ac
                     </div>
                     <div class="file-path-wrapper">
                       <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Upload your file">
