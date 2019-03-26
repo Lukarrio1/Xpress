@@ -24,7 +24,7 @@ TokenCheck=()=>{
     var verify =0;
      Allusers(verify);
     }else{
-     $("#emailnotify").html(`<a  class='dropdown-item' href='${notification.url}'>${notification.icon} ${notification.notification}</a>`);
+     $("#emailnotify").html(`<a  class='dropdown-item' href='#'>${notification.icon} ${notification.notification}</a>`);
       verify =1;
      Allusers(verify);
     }

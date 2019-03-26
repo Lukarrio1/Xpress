@@ -336,9 +336,9 @@
                 <!--Body-->
                 <div class="modal-body">
                 <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data>
-                    <div class="file-field">
+                    <div class="file-field text-center">
                         {{ csrf_field() }}
-                      <div class="btn btn-primary btn-sm text-center">
+                      <div class="btn btn-primary btn-sm ">
                         <span>Choose file</span>
                         <input type="file" name="image" required>
                       </div>
