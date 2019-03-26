@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    this is the pre alerts page...
+this is where your code goes
 @endsection

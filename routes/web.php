@@ -12,6 +12,18 @@
 */
 // User auth routes
  Auth::routes();
+//  these are the Schedule Delivery
+Route::prefix('scheduledelivery')->group(function () {
+    Route::get('/','ScheduleDelivery\ScheduleDeliveryController@index')->name('scheduledelivery.home');
+});
+//  these are the Shipping calculator routes
+Route::prefix('shippingcalculator')->group(function () {
+   Route::get('/','ShippingCalculator\ShippingCalculatorController@index')->name('shippingCalculator.home');
+});
+//  these are the Pre-Alerts routes
+ Route::prefix('prealerts')->group(function () {
+   Route::get('/','PreAlerts\PreAlertsController@index')->name('Pre.Alerts.home');
+ });
 //  these are the shipment routes
  Route::prefix('shipments')->group(function () {
   Route::get('/','Shipment\ShipmentsController@index')->name('shipments.home');  
