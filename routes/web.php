@@ -14,7 +14,7 @@
  Auth::routes();
 //  these are the shipment routes
  Route::prefix('shipments')->group(function () {
-  Route::get('/','User\ShipmentsController@index')->name('shipments.home');  
+  Route::get('/','Shipment\ShipmentsController@index')->name('shipments.home');  
 });
     // notification
  Route::prefix('Notifications')->group(function () { 
