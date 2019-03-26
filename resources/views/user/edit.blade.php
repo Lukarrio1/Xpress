@@ -355,7 +355,7 @@
                         </div>
                     </div>
                     <div class="file-path-wrapper">
-                      <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Upload your file">
+                      <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Upload your file" value="">
                     </div>
                   </div>
                 </form>
