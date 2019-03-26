@@ -18,7 +18,7 @@
         Route::get('/{id}','NotificationController@show'); 
     });
     // this route goes to the Storeimage function on the usercontroller it is resposible for storing a image
-    Route::post('/store/image','User\Usercontroller@Storeimage')->name('userimage');
+    Route::post('/store/image','User\UserController@Storeimage')->name('userimage');
     // this is a tester function for showing all the users in a database
     Route::get('/Allusers', 'NotificationController@Allusers');
     // How it works modal token 
