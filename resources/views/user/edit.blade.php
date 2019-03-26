@@ -338,7 +338,7 @@
                 <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data>
                     <div class="file-field">
                         {{ csrf_field() }}
-                      <div class="btn btn-primary btn-sm float-left">
+                      <div class="btn btn-primary btn-sm text-center">
                         <span>Choose file</span>
                         <input type="file" name="image" required>
                       </div>
