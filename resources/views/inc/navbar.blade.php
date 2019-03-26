@@ -85,7 +85,7 @@
               <i class="fas fa-tachometer-alt"></i>
                 Dashboard</a></li>
 
-                <li><a href="" class="collapsible-header waves-effect">
+            <li><a href="{{route('shipments.home')}}" class="collapsible-header waves-effect">
                      <i class="fas fa-box-open"></i>
                 My Shipments</a></li>
 

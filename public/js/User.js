@@ -250,7 +250,6 @@ Userinfo=()=>{
             $('#closepasswordmodal').click();
         iziToast.success({
             position:'topCenter',
-            // title:'',
             message:'Password Changed ..',
            });
          }

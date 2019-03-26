@@ -73,11 +73,12 @@ class UserController extends Controller
       
     }
     /**
-     * Store a newly created resource in storage.
+     * Storeimage a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // this function updates or store a new image for the user..
     public function Storeimage(Request $request)
     {
         $this->validate($request,[
@@ -168,6 +169,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // this function deletes a user from the database 
     public function destroy(Request $request)
     {
         $this->validate($request,[
