@@ -347,14 +347,14 @@
                         {{ csrf_field() }}
                       <div class="btn btn-primary btn-sm ">
                         <span>Choose file</span>
-                        <input type="file" name="image" required>
+                        <input type="file" name="image" required id="fileInput">
                       </div>
                       <div class="text-center mb-3 col-md-12">
                           <button class="btn btn-blue btn-block btn-rounded z-depth-1" type="submit">upload image</button>
                         </div>
                     </div>
                     <div class="file-path-wrapper">
-                      <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Upload your file" value="">
+                      <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Image name.." value="">
                     </div>
                   </div>
                 </form>
