@@ -330,14 +330,14 @@
         <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block"> <span id="authusername"></span> </span></a>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="{{route('account.edit')}}">My Account</a>
             <a class="dropdown-item" href="#" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">Log Out 
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               {{ csrf_field() }}
           </form> 
-        <a class="dropdown-item" href="{{route('account.edit')}}">My account</a>
-          </div>
+            </div>
         </li>
 
       </ul>

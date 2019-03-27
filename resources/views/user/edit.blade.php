@@ -296,17 +296,17 @@
                     <div class="md-form mb-5">
                       <input type="password"  class="form-control validate white-text" id="oldpass" value="">
                       <label  for="Form-pass5">Old Password</label>
-                      <span id="oldpassword"></span>
+                      <span id="oldpassword" class="text-danger"></span>
                     </div>
                     <div class="md-form mb-5">
                       <input type="password"  class="form-control validate white-text" id="newpass">
                       <label  for="Form-pass5" >New Password</label>
-                      <span id="newpassword"></span>
+                      <span id="newpassword"  class="text-danger"></span>
                         </div>
                     <div class="md-form mb-5">
                       <input type="password"  class="form-control validate white-text" id="confirmpass">
                       <label  for="Form-pass5" >Confirm Password</label>
-                      <span id="confirmpassword"></span>
+                      <span id="confirmpassword"  class="text-danger"></span>
                         </div>
                     <div class="text-center mb-3 col-md-12">
                       <button class="btn btn-blue btn-block btn-rounded z-depth-1" id="pschbtn">Change</button>

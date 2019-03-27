@@ -28,10 +28,8 @@
     // How it works modal token 
     Route::get('/modal', 'User\UserController@Modaltoken');
     Route::post('/modal','User\UserController@modaltokenupdate');
-    // page controller
-    Route::get('/','PagesController@index');
     // this is the home route
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
     // email verification
     Route::get('/verify/{token}','VerifyController@Verify')->name('verify');
     // auth user routes
