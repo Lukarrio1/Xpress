@@ -41,49 +41,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
-<script>
-   
-    $(()=>{
-      //cache dom elements
-      let $fileInput = $('#fileInput')
-      let $navbarBtn = $(".button-collapse")
-
-      //initilize module
-      init()
-
-      //events
-      $fileInput.on('change', (ev)=>{
-        $('#fileNameOutput').val(ev.target.files[0].name)
-      })
-
-      function init() {
-        $navbarBtn.sideNav({
-          edge: 'left', // Choose the horizontal origin
-          closeOnClick: true, // Closes side-nav on &lt;a&gt; clicks, useful for Angular/Meteor
-          breakpoint: 1200 // Breakpoint for button collapse
-        });
-      }
-    })
-
-// SideNav Scrollbar Initialization
-var sideNavScrollbar = document.querySelector('.custom-scrollbar');
-Ps.initialize(sideNavScrollbar);
-
-
-
-    // Data Picker Initialization
-    $('.datepicker').pickadate();
-
-    // Material Select Initialization
-    $(document).ready(function () {
-      $('.mdb-select').material_select();
-    });
-
- </script>
-
 <script type="text/javascript" src="{{ asset ('js/app.js') }}"></script>
 <script src="{{asset('js/iziToast.js')}}"></script>
 {{-- do not touch here wihout asking me  --}}
+<script src="{{asset('js/env.js')}}"></script>
 <script src="{{asset('js/User.js')}}"></script>
 <script>
   var id ={{ Auth::user()->id }};
