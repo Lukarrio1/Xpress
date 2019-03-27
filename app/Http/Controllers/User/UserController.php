@@ -177,7 +177,7 @@ class UserController extends Controller
         ]);
             if($request->delete ==true){
                 $user = User::find(Auth::user()->id);
-                if(empty($user->userimage)){
+                if($user->userimage=="noimage.jpg"){
                     $user->delete();
                     return 1;
                 }else{

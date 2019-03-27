@@ -89,15 +89,15 @@
                      <i class="fas fa-box-open"></i>
                 My Shipments</a></li>
 
-            <li><a href="{{route('Pre.Alerts.home')}}" class="collapsible-header waves-effect">
+                <li><a href="" class="collapsible-header waves-effect">
                     <i class="fas fa-bell"></i>
                 Pre Alert</a></li>
 
-            <li><a href="{{route('shippingCalculator.home')}}" class="collapsible-header waves-effect">
+                <li><a href="" class="collapsible-header waves-effect">
                     <i class="fas fa-calculator"></i>
                 Shipping Calculator</a></li>
 
-            <li><a href="{{route('scheduledelivery.home')}}" class="collapsible-header waves-effect">
+                <li><a href="" class="collapsible-header waves-effect">
                     <i class="fas fa-truck"></i>
                 Schedule Delivery</a></li>
 

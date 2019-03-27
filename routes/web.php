@@ -12,19 +12,15 @@
 */
 // User auth routes
  Auth::routes();
- // Admin routes
-Route::prefix('admin')->group(function() {
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
-    // Password reset routes
-    Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-    Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-    Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
-    Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+//  these are the shipment routes
+ Route::prefix('shipments')->group(function () {
+  Route::get('/','User\ShipmentsController@index')->name('shipments.home');  
 });
- 
+    // notification
+ Route::prefix('Notifications')->group(function () { 
+        Route::get('/','NotificationController@Token');
+        Route::get('/{id}','NotificationController@show'); 
+    });
     // this route goes to the Storeimage function on the usercontroller it is resposible for storing a image
     Route::post('/store/image','User\UserController@Storeimage')->name('userimage');
     // this is a tester function for showing all the users in a database
@@ -47,24 +43,15 @@ Route::prefix('admin')->group(function() {
     Route::post('/Userinfo','User\UserController@update');
     Route::post('/Useraccountdel','User\UserController@destroy');
     Route::post('/passwordUpdate','User\UserController@PasswordUpdate');
-// notification
-Route::prefix('Notifications')->group(function () { 
-    Route::get('/','NotificationController@Token');
-    Route::get('/{id}','NotificationController@show'); 
-});
-//  these are the Schedule Delivery
-Route::prefix('scheduledelivery')->group(function () {
-    Route::get('/','ScheduleDelivery\ScheduleDeliveryController@index')->name('scheduledelivery.home');
-});
-//  these are the Shipping calculator routes
-Route::prefix('shippingcalculator')->group(function () {
-   Route::get('/','ShippingCalculator\ShippingCalculatorController@index')->name('shippingCalculator.home');
-});
-//  these are the Pre-Alerts routes
- Route::prefix('prealerts')->group(function () {
-   Route::get('/','PreAlerts\PreAlertsController@index')->name('Pre.Alerts.home');
- });
-//  these are the shipment routes
- Route::prefix('shipments')->group(function () {
-  Route::get('/','Shipment\ShipmentsController@index')->name('shipments.home');  
+// Admin routes
+Route::prefix('admin')->group(function() {
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    // Password reset routes
+    Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+    Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
+    Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
