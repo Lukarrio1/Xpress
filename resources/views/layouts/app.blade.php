@@ -28,6 +28,7 @@
     <div id="app">
       @include('inc.navbar')
       <main>
+        @include('inc.alert')
         @yield('content')
       </main>
     </div>   
