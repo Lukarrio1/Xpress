@@ -44,7 +44,7 @@
    
     $(()=>{
       //cache dom elements
-      let $fileInput = $('#fileInput');
+      let $fileInput = $('#fileInput')
       let $navbarBtn = $(".button-collapse")
 
       //initilize module
@@ -52,7 +52,7 @@
 
       //events
       $fileInput.on('change', (ev)=>{
-        $('#fileNameOutput').val(ev.target.files[0].name);
+        $('#fileNameOutput').val(ev.target.files[0].name)
       })
 
       function init() {

@@ -275,7 +275,7 @@
               <a href="" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#darkModalForm">
                 Change Password</a>
   
-                <!--Change Picture Modal-->
+      
 
           <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
@@ -347,7 +347,7 @@
                         {{ csrf_field() }}
                       <div class="btn btn-primary btn-sm ">
                         <span>Choose file</span>
-                        <input type="file" name="image" required>
+                        <input type="file" name="image" required id="fileInput">
                       </div>
                       <div class="text-center mb-3 col-md-12">
                           <button class="btn btn-blue btn-block btn-rounded z-depth-1" type="submit">upload image</button>
