@@ -25,7 +25,7 @@ TokenCheck=()=>{
      Allusers(verify);
     }else{
      $("#emailnotify").html(`<a  class='dropdown-item' href='#'>${notification.icon} ${notification.notification}</a>`);
-      verify =1;
+     var verify =1;
      Allusers(verify);
     }
     // for(i = 0; i<notification.length; i++){
@@ -81,7 +81,6 @@ $("#update").click(()=>{
     let parish=$("#parish").val();
     let country = $("#country").val();
     let address= $("#address").val();
- 
     // Validates the update user form
     if(name.length<3){
     $("#errorname").html("Name is too short");
@@ -128,7 +127,6 @@ $("#update").click(()=>{
         // iziToast 
         iziToast.success({
             position:'topCenter',
-            // title:'',
             message:'Updated Successfully..',
         });
         }
@@ -139,8 +137,7 @@ $("#update").click(()=>{
 Userinfo=()=>{
     $.get("/Userinfo",(data)=>{
         let user = jQuery.parseJSON(data);
-        var data = user.data;
-        Pdata(data);
+        Pdata();
         Object.keys(user).forEach((key)=>{
             $(`#${key}`).val(user[key]);
             // $(`#usercard${name}`).html(`${user[key]}`);
@@ -205,7 +202,7 @@ Userinfo=()=>{
     });
 
 //  all you need to know is that this function goes to the Pdata in UserController
-    Pdata=(data)=>{
+    Pdata=()=>{
     $("#oldpass").val("");
     $("#pschbtn").click(()=>{
      if($("#oldpass").val().length<6){
@@ -216,7 +213,7 @@ Userinfo=()=>{
         url: "/pdata",
         data:{
          _token: CSRF_TOKEN, 
-         data: $("#oldpass").val(),
+         data:$("#oldpass").val(),
         },
         dataType: "text",
         success: function (response) {

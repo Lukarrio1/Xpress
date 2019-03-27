@@ -43,6 +43,7 @@
     Route::post('/Userinfo','User\UserController@update');
     Route::post('/Useraccountdel','User\UserController@destroy');
     Route::post('/passwordUpdate','User\UserController@PasswordUpdate');
+<<<<<<< HEAD
 // Admin routes
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -55,3 +56,26 @@ Route::prefix('admin')->group(function() {
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
+=======
+// notifications
+Route::prefix('Notifications')->group(function () { 
+    Route::get('/','NotificationController@Token');
+    Route::get('/{id}','NotificationController@show'); 
+});
+//  these are the Schedule Delivery
+Route::prefix('scheduledelivery')->group(function () {
+    Route::get('/','ScheduleDelivery\ScheduleDeliveryController@index')->name('scheduledelivery.home');
+});
+//  these are the Shipping calculator routes
+Route::prefix('shippingcalculator')->group(function () {
+   Route::get('/','ShippingCalculator\ShippingCalculatorController@index')->name('shippingCalculator.home');
+});
+//  these are the Pre-Alerts routes
+ Route::prefix('prealerts')->group(function () {
+   Route::get('/','PreAlerts\PreAlertsController@index')->name('Pre.Alerts.home');
+ });
+//  these are the shipment routes
+ Route::prefix('shipments')->group(function () {
+   Route::get('/','Shipment\ShipmentsController@index')->name('shipments.home');  
+});
+>>>>>>> e9914920eaa0a682a46b2c7c0c1fc86d68bf82ef

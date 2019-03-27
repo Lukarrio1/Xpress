@@ -294,7 +294,7 @@
                   <!--Body-->
                   <div class="modal-body">
                     <div class="md-form mb-5">
-                      <input type="password"  class="form-control validate white-text" id="oldpass">
+                      <input type="password"  class="form-control validate white-text" id="oldpass" value="">
                       <label  for="Form-pass5">Old Password</label>
                       <span id="oldpassword"></span>
                     </div>
