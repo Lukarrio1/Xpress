@@ -44,7 +44,6 @@
     Route::post('/Useraccountdel','User\UserController@destroy');
     Route::post('/passwordUpdate','User\UserController@PasswordUpdate');
 
-// notification
 
 // Admin routes
 Route::prefix('admin')->group(function() {
@@ -58,6 +57,7 @@ Route::prefix('admin')->group(function() {
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
+// notification
 Route::prefix('Notifications')->group(function () { 
     Route::get('/','NotificationController@Token');
     Route::get('/{id}','NotificationController@show'); 
