@@ -47,7 +47,7 @@ Route::prefix('admin')->group(function() {
     Route::post('/Userinfo','User\UserController@update');
     Route::post('/Useraccountdel','User\UserController@destroy');
     Route::post('/passwordUpdate','User\UserController@PasswordUpdate');
-// notifications
+// notification
 Route::prefix('Notifications')->group(function () { 
     Route::get('/','NotificationController@Token');
     Route::get('/{id}','NotificationController@show'); 
