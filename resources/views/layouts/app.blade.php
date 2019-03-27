@@ -45,26 +45,30 @@
     $(()=>{
       //cache dom elements
       let $fileInput = $('#fileInput');
+      let $navbarBtn = $(".button-collapse")
+
+      //initilize module
+      init()
+
       //events
       $fileInput.on('change', (ev)=>{
         $('#fileNameOutput').val(ev.target.files[0].name);
       })
+
+      function init() {
+        $navbarBtn.sideNav({
+          edge: 'left', // Choose the horizontal origin
+          closeOnClick: true, // Closes side-nav on &lt;a&gt; clicks, useful for Angular/Meteor
+          breakpoint: 1200 // Breakpoint for button collapse
+        });
+      }
     })
-// SideNav Button Initialization
-$(".button-collapse").sideNav();
+
 // SideNav Scrollbar Initialization
 var sideNavScrollbar = document.querySelector('.custom-scrollbar');
 Ps.initialize(sideNavScrollbar);
-// SideNav Options
-$('.button-collapse').sideNav({
-  edge: 'left', // Choose the horizontal origin
-  closeOnClick: false, // Closes side-nav on &lt;a&gt; clicks, useful for Angular/Meteor
-  breakpoint: 1200 // Breakpoint for button collapse
-});
-// Show sideNav
-$('.button-collapse').sideNav('show');
-// Hide sideNav
-$('.button-collapse').sideNav('hide');
+
+
 
     // Data Picker Initialization
     $('.datepicker').pickadate();
