@@ -47,7 +47,7 @@ Route::prefix('admin')->group(function() {
     Route::post('/Userinfo','User\UserController@update');
     Route::post('/Useraccountdel','User\UserController@destroy');
     Route::post('/passwordUpdate','User\UserController@PasswordUpdate');
-// notification
+// notifications
 Route::prefix('Notifications')->group(function () { 
     Route::get('/','NotificationController@Token');
     Route::get('/{id}','NotificationController@show'); 
@@ -66,5 +66,5 @@ Route::prefix('shippingcalculator')->group(function () {
  });
 //  these are the shipment routes
  Route::prefix('shipments')->group(function () {
-  Route::get('/','Shipment\ShipmentsController@index')->name('shipments.home');  
+   Route::get('/','Shipment\ShipmentsController@index')->name('shipments.home');  
 });
