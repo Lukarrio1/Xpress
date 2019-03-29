@@ -157,7 +157,7 @@ Userinfo=()=>{
       $("#usercardparish").html(`${user.parish}`);
       $("#usercardcountry").html(`${user.country}`);
       $("#usercardaddress").html(`${user.address}`);
-      $("#usercardimage").html(`<img src="/storage/Userimage/${user.image}" class="rounded-circle" alt="First sample avatar image">`);
+      $("#usercardimage").html(`<img src="/storage/Userimage/${user.image}" class="rounded-circle" alt="${user.image}">`);
     }); 
     }
 // this funtion deletes user
@@ -263,5 +263,7 @@ NotificationCounter=(number, verify)=>{
     let sum = Number(number)+Number(verify);
      $('#notificount').html(`${sum}`);
 }
+// parseInt() this function will convert a string to a int... 
+//  parseFloat() this will convert a string to a float ..
 
 

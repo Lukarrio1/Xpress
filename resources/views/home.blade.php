@@ -79,8 +79,6 @@
      Also, you will be notified about your order status 
      via email notifications and notifications on your dashboard.
 
-
-
   </div>
 </div>
               </div>
