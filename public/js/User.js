@@ -1,109 +1,109 @@
-// runs  at start up..
-$( document ).ready(()=>{ 
-    TokenCheck();
-    Modaltimer();
-    Userinfo();
-});
-
-// runs every 20 seconds
-window.setInterval(()=>{
-    TokenCheck();
- },20000);
-
-//runs ever mininute 
-window.setInterval(()=>{
-    Modaltimer();
-}, 60000);
-
-// checks to see if the user verified there email ('/','NotificationController@Token')
-TokenCheck=()=>{
-    $.get( "/Notifications",( data )=>{
-    var notification = jQuery.parseJSON(data);
-    if(notification.notification==""){
-      $("#emailnotify").html("");
-    var verify =0;
-     Allusers(verify);
-    }else{
-     $("#emailnotify").html(`<a  class='dropdown-item' href='#'>${notification.icon} ${notification.notification}</a>`);
-     var verify =1;
-     Allusers(verify);
-    }
-    // for(i = 0; i<notification.length; i++){
-    // text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
-    // }
-   
-});
-}
-// testings: this get all the users in the database  ('/Allusers', 'NotificationController@Allusers')
-Allusers=(verify)=>{
-    $.get("/Allusers",( data )=>{
-    let text = "";
-    var user = jQuery.parseJSON(data);
-    var number = user.length;
-    NotificationCounter(number,verify);
-    for(i = 0; i<user.length; i++){
-    text +=`<a class='dropdown-item' href='/Notifications/${user[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${user[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
-    }
-    $("#allusersnotify").html(`${text}`);
+    // runs  at start up..
+    $( document ).ready(()=>{ 
+        TokenCheck();
+        Modaltimer();
+        Userinfo();
     });
-}
-// check to see if the modal has been clicked /modal ('/modal', 'User\UserController@Modaltoken')
-Modaltimer=()=>{
-    $.get("/modal",(data)=>{
-    var token = jQuery.parseJSON(data);
-    var modal =token.token;
-    if(modal==""){
-    }else{
-    $('#modal').click();
+
+    // runs every 20 seconds
+    window.setInterval(()=>{
+        TokenCheck();
+    },20000);
+
+    //runs ever mininute 
+    window.setInterval(()=>{
+        Modaltimer();
+    }, 60000);
+
+    // checks to see if the user verified there email ('/','NotificationController@Token')
+    TokenCheck=()=>{
+        $.get( "/Notifications",( data )=>{
+        var notification = jQuery.parseJSON(data);
+        if(notification.notification==""){
+        $("#emailnotify").html("");
+        var verify =0;
+        Allusers(verify);
+        }else{
+        $("#emailnotify").html(`<a  class='dropdown-item' href='#'>${notification.icon} ${notification.notification}</a>`);
+        var verify =1;
+        Allusers(verify);
+        }
+        // for(i = 0; i<notification.length; i++){
+        // text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
+        // }
+    
+    });
     }
-});
-}
+    // testings: this get all the users in the database  ('/Allusers', 'NotificationController@Allusers')
+    Allusers=(verify)=>{
+        $.get("/Allusers",( data )=>{
+        let text = "";
+        var user = jQuery.parseJSON(data);
+        var number = user.length;
+        NotificationCounter(number,verify);
+        for(i = 0; i<user.length; i++){
+        text +=`<a class='dropdown-item' href='/Notifications/${user[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${user[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
+        }
+        $("#allusersnotify").html(`${text}`);
+        });
+    }
+    // check to see if the modal has been clicked /modal ('/modal', 'User\UserController@Modaltoken')
+    Modaltimer=()=>{
+        $.get("/modal",(data)=>{
+        var token = jQuery.parseJSON(data);
+        var modal =token.token;
+        if(modal==""){
+        }else{
+        $('#modal').click();
+        }
+    });
+    }
 // this function updates the login modal /modal ('/modal','User\UserController@modaltokenupdate')
-$("#update_login_token").click(()=>{
-    $.ajax({
-    url: '/modal',
-    type: 'POST',
-    data: {
-    _token: CSRF_TOKEN, 
-    id:id
-    },
-    dataType: 'text',
-    success: (data)=> {
-    }
-}); 
-});
+    $("#update_login_token").click(()=>{
+        $.ajax({
+        url: '/modal',
+        type: 'POST',
+        data: {
+        _token: CSRF_TOKEN, 
+        id:id
+        },
+        dataType: 'text',
+        success: (data)=> {
+        }
+    }); 
+    });
 //  this function updates the users information on the user/edit page ('/MyAccount','User\UserController@edit')->name('account.edit')
-$("#updatebtn").html("Update");
-$("#update").click(()=>{
-    let name = $("#name").val();
-    let telephone=$("#telephone").val();
-    let city=$("#city").val();
-    let parish=$("#parish").val();
-    let country = $("#country").val();
-    let address= $("#address").val();
-    // Validates the update user form
-    if(name.length<3){
-    $("#errorname").html("Name is too short");
-    }else if(telephone.length<10 || telephone.length>11){
-    $("#errorphone").html("Number must be ten numbers");
-    }else if(city.length<3){
-        $("#errorcity").html("City name is too short");
-    }else if(parish.length<3){
-        $("#errorparish").html("Parish name is too short");
-    }else if(country.length<3){
-        $("#errorcountry").html("Country name is too short");
-    }else if(address.length<3){
-        $("#erroraddress").html("Address is too short");
-    }else{
-    // empties the error messages if validate is successfull
-    $("#update").removeClass("btn btn-success");
-    $("#updatebtn").html("<div class='spinner-grow text-success' role='status'></div>");
-    $("#errorname").html("");
-    $("#errorphone").html("");
-    $("#errorcity").html("");
-    $("#errorparish").html("");
-    $("#errorcountry").html("");
-    $("#erroraddress").html("");
+    $("#updatebtn").html("Update");
+    $("#update").click(()=>{
+        let name = $("#name").val();
+        let telephone=$("#telephone").val();
+        let city=$("#city").val();
+        let parish=$("#parish").val();
+        let country = $("#country").val();
+        let address= $("#address").val();
+        // Validates the update user form
+        if(name.length<3){
+        $("#errorname").html("Name is too short");
+        }else if(telephone.length<10 || telephone.length>11){
+        $("#errorphone").html("Number must be ten numbers");
+        }else if(city.length<3){
+            $("#errorcity").html("City name is too short");
+        }else if(parish.length<3){
+            $("#errorparish").html("Parish name is too short");
+        }else if(country.length<3){
+            $("#errorcountry").html("Country name is too short");
+        }else if(address.length<3){
+            $("#erroraddress").html("Address is too short");
+        }else{
+        // empties the error messages if validate is successfull
+        $("#update").removeClass("btn btn-success");
+        $("#updatebtn").html("<div class='spinner-grow text-success' role='status'></div>");
+        $("#errorname").html("");
+        $("#errorphone").html("");
+        $("#errorcity").html("");
+        $("#errorparish").html("");
+        $("#errorcountry").html("");
+        $("#erroraddress").html("");
     // if validation is successfull then an ajax request is sent to /Userinfo (/Userinfo','User\UserController@update)
     $.ajax({
         url: '/Userinfo',
@@ -130,12 +130,12 @@ $("#update").click(()=>{
             message:'Updated Successfully..',
         });
         }
-    });
-    }
-    });
+        });
+        }
+        });
 // this function upates and sends a request to ('/Userinfo','User\UserController@index')
-Userinfo=()=>{
-    $.get("/Userinfo",(data)=>{
+        Userinfo=()=>{
+        $.get("/Userinfo",(data)=>{
         let user = jQuery.parseJSON(data);
         Pdata();
         Object.keys(user).forEach((key)=>{
@@ -148,7 +148,7 @@ Userinfo=()=>{
     //   $("#parish").val(user.parish);
     //   $("#country").val(user.country);
     //   $("#address").val(user.address);
-
+      $("#usercardid").html(`${user.id}`);
       $("#authusername").html(`${user.name}`);
       $("#usercardname").html(`${user.name}`);
       $("#usercardemail").html(`${user.email}`);
@@ -205,10 +205,10 @@ Userinfo=()=>{
     Pdata=()=>{
     $("#oldpass").val("");
     $("#pschbtn").click(()=>{
-     if($("#oldpass").val().length<6){
+        if($("#oldpass").val().length<6){
         $("#oldpassword").html("Must be at least 6 characters");
         }else{
-    $.ajax({
+        $.ajax({
         type: "POST",
         url: "/pdata",
         data:{
@@ -237,15 +237,15 @@ Userinfo=()=>{
             },
             dataType: "text",
             success: function (response) {
-             $("#pschbtn").removeClass("disabled");
-             $("#oldpassword").html("");
-             $("#newpassword").html("");
+            $("#pschbtn").removeClass("disabled");
+            $("#oldpassword").html("");
+            $("#newpassword").html("");
             $("#confirmpassword").html("")
             $("#oldpass").val("")
             $("#newpass").val("")
             $("#confirmpass").val("")
             $('#closepasswordmodal').click();
-        iziToast.success({
+            iziToast.success({
             position:'topCenter',
             message:'Password Changed ..',
            });
@@ -256,7 +256,7 @@ Userinfo=()=>{
         });
         }
         });
-         }
+        }
 
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter=(number, verify)=>{

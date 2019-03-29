@@ -36,6 +36,7 @@ class UserController extends Controller
         'email'=>$user->email,
         'data'=>$user->password,
         'image'=>$user->userimage,
+        'id'=>$user->id,
         ]);
     }
 
