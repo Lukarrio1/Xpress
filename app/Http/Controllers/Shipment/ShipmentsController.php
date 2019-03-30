@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shipment;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Shipments;
 
 class ShipmentsController extends Controller
 {

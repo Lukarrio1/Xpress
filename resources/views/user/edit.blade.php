@@ -211,19 +211,6 @@
                 </div>
 
               </div>
-              <!-- Grid column -->
-
-              <!-- Grid column -->
-              {{-- <div class="col-lg-4 col-md-6">
-
-                    <div class="md-form form-sm mb-0">
-                      <label for="form8" class="placeholder">Country</label><br>
-                      <input type="text" id="form8" class="form-control form-control-sm" value="">
-                      
-                    </div>
-
-                  </div> --}}
-              <!-- Grid column -->
             </div>
             <!-- Grid row -->
 
@@ -283,8 +270,6 @@
 
             <a href="" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#darkModalForm">
               Change Password</a>
-
-
 
             <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
               aria-hidden="true">
@@ -390,12 +375,9 @@
 <!-- Grid row -->
 
 </section>
-<!-- Section: Team v.1 -->
+
 
 </div>
-<!-- Button trigger modal -->
 
-
-<!-- Main layout -->
 
 @endsection
