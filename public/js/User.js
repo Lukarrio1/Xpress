@@ -29,7 +29,7 @@
         var verify =0;
         Allusers(verify);
         }else{
-        $("#emailnotify").html(`<a  class='dropdown-item' href='#'>${notification.icon} ${notification.notification}</a>`);
+        $("#emailnotify").html(`<a  class='dropdown-item' href='#'>${notification.notification}<span class='float-right'>${notification.icon}</span></a>`);
         var verify =1;
         Allusers(verify);
         }
@@ -291,7 +291,7 @@
             var spnotification = jQuery.parseJSON(data);
             let sp = spnotification.number;
             if(sp>0){
-             $("#spnotify").html(`<a class='dropdown-item' href='/shipments'>You have a new shipments</a>`);  
+             $("#spnotify").html(`<a class='dropdown-item' href='/shipments'>New shipment added. <span class='float-right'> <i class="fas fa-box-open"></i></span></a>`);  
             }
            NotificationCounter(number,verify,sp)
         });
