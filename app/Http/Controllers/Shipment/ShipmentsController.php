@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Shipment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Shipments;
-
+use App\spnotify;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class ShipmentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +21,7 @@ class ShipmentsController extends Controller
      */
     public function index()
     {
+
         return view('Shipments.index');
     }
 
@@ -23,9 +30,14 @@ class ShipmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function Shipments()
     {
-        //
+        $user = Auth::user()->id;
+        $shipments = DB::table('shipments')
+        ->where('user_id','=',$user)
+        ->orderBy('created_at', 'desc')
+        ->get(); 
+        return json_encode($shipments);
     }
 
     /**
@@ -34,9 +46,16 @@ class ShipmentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function notification()
     {
-        //
+        $user = Auth::user()->id;
+        $new = DB::table('spnotifies')
+        ->where('user_id','=',$user)
+        ->where('token','=','true')
+        ->count(); 
+        return json_encode([
+        'number'=>$new,
+        ]);
     }
 
     /**
@@ -45,10 +64,6 @@ class ShipmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -68,10 +83,21 @@ class ShipmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request)
+    {   
+        $this->validate($request,[
+            'status'=>'required',
+        ]);
+
+        if($request->status==1){
+        $user = Auth::user()->id;
+        DB::table('spnotifies')
+        ->where('user_id','=',$user)
+        ->where('token','=','true')->update(['token'=>'false']);
+       
+        return json_encode($request->status);
     }
+}
 
     /**
      * Remove the specified resource from storage.
@@ -81,6 +107,6 @@ class ShipmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
 }

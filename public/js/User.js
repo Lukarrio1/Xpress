@@ -3,6 +3,9 @@
         TokenCheck();
         Modaltimer();
         Userinfo();
+        shipments();
+        spnotification();
+
     });
 
     // runs every 20 seconds
@@ -13,6 +16,8 @@
     //runs ever mininute 
     window.setInterval(()=>{
         Modaltimer();
+        shipments();
+        spnotification();
     }, 60000);
 
     // checks to see if the user verified there email ('/','NotificationController@Token')
@@ -40,9 +45,9 @@
         let text = "";
         var user = jQuery.parseJSON(data);
         var number = user.length;
-        NotificationCounter(number,verify);
+        spnotification(number,verify);
         for(i = 0; i<user.length; i++){
-        text +=`<a class='dropdown-item' href='/Notifications/${user[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${user[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
+        text +=`<a class='dropdown-item' href='/Notifications/${user[i].id}'>${user[i].name}</span></a>`;
         }
         $("#allusersnotify").html(`${text}`);
         });
@@ -58,6 +63,7 @@
         }
     });
     }
+
 // this function updates the login modal /modal ('/modal','User\UserController@modaltokenupdate')
     $("#update_login_token").click(()=>{
         $.ajax({
@@ -257,10 +263,58 @@
         }
         });
         }
+    // this is function will show all of the shipments
+    shipments=()=>{
+        $.get("/shipments/all",(data)=>{
+            var shipments = jQuery.parseJSON(data);
+            let all_ship="";
+            for(i = 0; i<shipments.length; i++){
+                all_ship +=`<tr class="">
+                <th>${shipments[i].tracking_no}</th>
+                <td>${shipments[i].reference_no}</td>
+                <td>${shipments[i].recipient}</td>
+                <td>${shipments[i].description}</td>
+                <td>${shipments[i].delivery_date}</td>
+                <td>${shipments[i].spcharge}</td>
+                <td>${shipments[i].status}</td>
+                <td>${shipments[i].created_at}</td>
+                <td>${shipments[i].updated_at}</td>
+              </tr>`;
+               
+            }
+            $("#shipments").html(`${all_ship}`);
+        });
+    }
+
+    spnotification=(number, verify)=>{
+        $.get("/shipments/notification",(data)=>{
+            var spnotification = jQuery.parseJSON(data);
+            let sp = spnotification.number;
+            if(sp>0){
+             $("#spnotify").html(`<a class='dropdown-item' href='/shipments'>You have a new shipments</a>`);  
+            }
+           NotificationCounter(number,verify,sp)
+        });
+    }
+
+
+  $("#spall").add("#spnotify").click(()=>{
+        $.ajax({
+        url: '/shipments/update',
+        type: 'POST',
+        data: {
+        _token: CSRF_TOKEN, 
+        status:1,
+        },
+        dataType: 'text',
+        success: (data)=> {
+        }
+    });
+  });
 
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
-NotificationCounter=(number, verify)=>{
-    let sum = Number(number)+Number(verify);
+NotificationCounter=(number, verify,sp)=>{
+    let sum = Number(number)+Number(verify)+Number(sp);
      $('#notificount').html(`${sum}`);
 }
 // parseInt() this function will convert a string to a int... 

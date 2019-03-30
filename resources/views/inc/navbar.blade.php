@@ -85,7 +85,7 @@
               <i class="fas fa-tachometer-alt"></i>
                 Dashboard</a></li>
 
-            <li><a href="{{route('shipments.home')}}" class="collapsible-header waves-effect">
+            <li><a href="{{route('shipments.home')}}" class="collapsible-header waves-effect" id="spall">
                      <i class="fas fa-box-open"></i>
                 My Shipments</a></li>
 
@@ -316,6 +316,7 @@
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" id="notificationcenter">
             <span id="emailnotify"></span>
             <span id="allusersnotify"></span>
+            <span id="spnotify"></span>
           </div>
         </li>
         <li class="nav-item">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShipmentsTable extends Migration
+class CreateSpnotifiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class CreateShipmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shipments', function (Blueprint $table) {
+        Schema::create('spnotifies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tracking_no');
-            $table->string('reference_no');
-            $table->string('recipient');
-            $table->string('description');
-            $table->string('spcharge');
-            $table->string('status'); 
-            $table->string('delivery_date');
+            $table->string('token')->nullable();
             $table->string('user_id');
             $table->timestamps();
         });
@@ -34,6 +28,6 @@ class CreateShipmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipments');
+        Schema::dropIfExists('spnotifies');
     }
 }
