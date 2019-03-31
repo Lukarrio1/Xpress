@@ -358,7 +358,7 @@
                   </form>
                   <!--Grid row-->
                   <div class="text-center col-md-12">
-                    <button class="btn btn-blue btn-block btn-rounded z-depth-1" id="changeimg">
+                    <button class="btn btn-danger btn-block btn-rounded z-depth-1" id="changeimg">
                       remove image</button>
                   </div>
                 </div>

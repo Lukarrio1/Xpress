@@ -91,10 +91,6 @@
         success: (data)=> {
         $("#imgclose").click();
         $("#update").click();
-          iziToast.success({
-            position:'topCenter',
-            message:'Updated Successfully..',
-        });
         }
     }); 
     });
