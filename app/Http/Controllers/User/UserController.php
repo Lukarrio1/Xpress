@@ -118,9 +118,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function removeimg(Request $request)
     {
-        //
+        $this->validate($request,[
+            'rm'=>'required',
+        ]);
+        if($request->rm =="true"){
+            $user = User::find(Auth::user()->id);
+            if($user->userimage=="noimage.jpg"){
+            }else{
+            Storage::delete('public/Userimage/'.$user->userimage);
+            $user->userimage ="noimage.jpg";
+            $user->save();
+            return 1;
+            }
+        }
     }
 
     /**

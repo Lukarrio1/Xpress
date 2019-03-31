@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <!--Table-->
-
+<div class="table-responsive">
 <table class="table table-striped w-100">
 
   <!--Table head-->
@@ -29,5 +29,5 @@
 
 </table>
 <!--Table-->
-    
+</div>  
 @endsection

@@ -332,7 +332,7 @@
                     <div class="modal-header text-center pb-4">
                       <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Change
                           Profile</strong> <a class="blue-text font-weight-bold"><strong>Picture</strong></a></h3>
-                      <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+                      <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close" id="imgclose">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
@@ -357,7 +357,10 @@
                   </div>
                   </form>
                   <!--Grid row-->
-
+                  <div class="text-center col-md-12">
+                    <button class="btn btn-blue btn-block btn-rounded z-depth-1" id="changeimg">
+                      remove image</button>
+                  </div>
                 </div>
               </div>
             </div>

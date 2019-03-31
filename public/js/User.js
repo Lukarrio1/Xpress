@@ -77,6 +77,26 @@
         success: (data)=> {
         }
     }); 
+
+    });
+    $("#changeimg").click(()=>{
+        $.ajax({
+        url: '/user/imgremove',
+        type: 'POST',
+        data: {
+        _token: CSRF_TOKEN, 
+        rm:'true',
+        },
+        dataType: 'text',
+        success: (data)=> {
+        $("#imgclose").click();
+        $("#update").click();
+          iziToast.success({
+            position:'topCenter',
+            message:'Updated Successfully..',
+        });
+        }
+    }); 
     });
 //  this function updates the users information on the user/edit page ('/MyAccount','User\UserController@edit')->name('account.edit')
     $("#updatebtn").html("Update");

@@ -21,6 +21,7 @@
         Route::get('/','NotificationController@Token');
         Route::get('/{id}','NotificationController@show'); 
     });
+    Route::post('/user/imgremove','User\UserController@removeimg');
     // this route goes to the Storeimage function on the usercontroller it is resposible for storing a image
     Route::post('/store/image','User\UserController@Storeimage')->name('userimage');
     // this is a tester function for showing all the users in a database
