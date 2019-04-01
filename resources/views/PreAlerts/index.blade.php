@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Pre Alerts Form-->
-<div class="card">
+<div class="card col-sm-12 col-md-12">
 
     <h5 class="card-header info-color white-text text-center py-4">
         <strong>Create Pre Alert Notification</strong>
@@ -60,10 +60,10 @@
             <div class="file-field">
         <a class="btn-floating peach-gradient mt-0 float-left">
         <i class="fas fa-paperclip" aria-hidden="true"></i>
-        <input type="file">
+        <input type="file" id="pkg_in">
         </a>
         <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload your file">
+        <input class="file-path validate" type="text" placeholder="Upload your file" id="pkg_out">
     </div>
   </div>
 
