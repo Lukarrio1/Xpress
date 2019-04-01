@@ -57,7 +57,15 @@
                 <input type="number" id="pkg_weight" class="form-control">
                 <label for="pkg_weight">Weight (lbs) </label>
             </div>
-            
+            <div class="file-field">
+        <a class="btn-floating peach-gradient mt-0 float-left">
+        <i class="fas fa-paperclip" aria-hidden="true"></i>
+        <input type="file">
+        </a>
+        <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload your file">
+    </div>
+  </div>
 
             <!-- Submit button -->
             <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Submit Pre Alert</button>
