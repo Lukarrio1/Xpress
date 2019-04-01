@@ -93,9 +93,9 @@
                     <i class="fas fa-bell"></i>
                 Pre Alert</a></li>
 
-            <li><a href="{{route('shippingCalculator.home')}}" class="collapsible-header waves-effect">
+            {{--  <li><a href="{{route('shippingCalculator.home')}}" class="collapsible-header waves-effect">
                     <i class="fas fa-calculator"></i>
-                Shipping Calculator</a></li>
+                Shipping Calculator</a></li>  --}}
 
             <li><a href="{{route('scheduledelivery.home')}}" class="collapsible-header waves-effect">
                     <i class="fas fa-truck"></i>
@@ -353,10 +353,10 @@
       </a>
 
       <ul class="list-unstyled">
-        <li><a class="btn-floating red"><i class="fas fa-star"></i></a></li>
+        <li><a class="btn-floating red"><i class="fas fa-calculator"></i></a></li>
         <li><a class="btn-floating yellow darken-1"><i class="fas fa-user"></i></a></li>
         <li><a class="btn-floating green"><i class="fas fa-envelope"></i></a></li>
-        <li><a class="btn-floating blue"><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a class="btn-floating blue"><i class="fas fa-ship"></i></a></li>
       </ul>
     </div>
     <!-- Fixed button -->
