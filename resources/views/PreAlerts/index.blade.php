@@ -4,51 +4,63 @@
 <div class="card">
 
     <h5 class="card-header info-color white-text text-center py-4">
-        <strong>Contact us</strong>
+        <strong>Create Pre Alert Notification</strong>
     </h5>
 
     <!--Card content-->
-    <div class="card-body px-lg-5 pt-0">
+    <div class="card-body px-lg-5 pt-1">
 
         <!-- Form -->
-        <form class="text-center" style="color: #757575;">
+        <form class="text-left" style="color: #757575;">
 
-            <!-- Name -->
-            <div class="md-form mt-3">
-                <input type="text" id="materialContactFormName" class="form-control">
-                <label for="materialContactFormName">Name</label>
+            <!-- Vendor Name -->
+            <div class="md-form mt-4">
+                <input type="text" id="vendorname" class="form-control">
+                <label for="vendorname"> Vendor Name</label>
             </div>
 
-            <!-- E-mail -->
+            <!-- Tracking Number -->
             <div class="md-form">
-                <input type="email" id="materialContactFormEmail" class="form-control">
-                <label for="materialContactFormEmail">E-mail</label>
+                <input type="number" id="trackingnumber" class="form-control">
+                <label for="trackingnumber">Tracking Number</label>
             </div>
+                      
+        <select class="browser-default custom-select mb-5">
+             <option value="" selected="selected">Select Courier</option>
+                        <option value="DHL">DHL</option>
+                        <option value="FEDEX">FEDEX</option>
+                        <option value="USPS">USPS</option>
+                        <option value="US Postage">US Postage</option>
+                        <option value="UPS">UPS</option>
+                        <option value="Amazon Logistics">Amazon Logistics</option>
+                        <option value="Other">Other</option>
+    </select>
 
-            <!-- Subject -->
-            <span>Subject</span>
-            <select class="mdb-select">
-                <option value="" disabled>Choose option</option>
-                <option value="1" selected>Feedback</option>
-                <option value="2">Report a bug</option>
-                <option value="3">Feature request</option>
-                <option value="4">Feature request</option>
-            </select>
 
-            <!--Message-->
+             <!-- Name on Package -->
+            <div class="md-form mt-5">
+                <input type="text" id="name_pkg" class="form-control"placeholder="John Brown XL0001">
+                <label for="name_pkg"> Name on Package</label>
+            </div>
+            
+            <div class="form-group">
+            <label for="Description">Product Description</label>
+            <textarea class="form-control rounded-0" id="Description" rows="3" placeholder="Product Description"></textarea>
+                </div>
+                <!-- Package Value -->
             <div class="md-form">
-                <textarea id="materialContactFormMessage" class="form-control md-textarea" rows="3"></textarea>
-                <label for="materialContactFormMessage">Message</label>
+                <input type="number" id="itemvalue" class="form-control">
+                <label for="itemvalue">Item Value(USD)$ </label>
             </div>
-
-            <!-- Copy -->
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="materialContactFormCopy">
-                <label class="form-check-label" for="materialContactFormCopy">Send me a copy of this message</label>
+            <!-- Package Weight -->
+            <div class="md-form">
+                <input type="number" id="pkg_weight" class="form-control">
+                <label for="pkg_weight">Weight (lbs) </label>
             </div>
+            
 
-            <!-- Send button -->
-            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Send</button>
+            <!-- Submit button -->
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Submit Pre Alert</button>
 
         </form>
         <!-- Form -->
