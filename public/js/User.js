@@ -336,4 +336,39 @@ NotificationCounter=(number, verify,sp)=>{
 // parseInt() this function will convert a string to a int... 
 //  parseFloat() this will convert a string to a float ..
 
+// $(()=> {
+//     let $createAlertForm = $('#createAlertForm')
+//     let $submitBtn = $('#preAlertSubmit')
 
+//     $submitBtn.on('click', (ev)=>{
+//         ev.preventDefault()
+//         // ev.stopPropagation()
+//         postFormData()
+//     })
+
+//     function postFormData() {
+//         let formData = new FormData()
+//         let file = $('input[name="invoice"]')[0].files[0]
+//         let elements = $createAlertForm.find('.form-control')
+//         for(let i = 0; i < elements.length; i++)
+//             formData.append($(elements[i]).name, $(elements[i]).val())
+        
+//         formData.append('file', file)
+//         console.log(formData)
+//         // $.ajax({
+//         //     url: '/shipments/update',
+//         //     type: 'POST',
+//         //     data: {
+//         //         _token: CSRF_TOKEN, 
+//         //         status:1,
+//         //     },
+//         //     contentType: false,
+//         //     processData: false,
+//         //     dataType: 'text',
+//         //     success: (data)=> {
+    
+//         //     }
+//         // });
+    
+//     }
+// })

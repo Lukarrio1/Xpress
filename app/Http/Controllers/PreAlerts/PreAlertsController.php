@@ -44,7 +44,7 @@ class PreAlertsController extends Controller
             'courier' => 'required|max:256',
             'pkgname' => 'required|max:256',
             'description' => 'required|max:256',
-            'value'=>'required|max:100',
+            'value'=>'required|max:100|min:1',
             'weight'=>'required|max:100',
             'invoice'=>'mimes:pdf,jpeg,jpg,png',
         ]);

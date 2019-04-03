@@ -11,7 +11,7 @@
     <div class="card-body px-lg-5 pt-1">
 
         <!-- Form -->
-        <form class="text-left" style="color: #757575;" action="{{route('Pre.Alerts.store')}}" method="Post" enctype=multipart/form-data>
+        <form id="createAlertForm" class="text-left" style="color: #757575;" action="{{route('Pre.Alerts.store')}}" method="Post" enctype=multipart/form-data>
             {{ csrf_field() }}
             <!-- Vendor Name -->
             <div class="md-form mt-4">
@@ -25,7 +25,7 @@
                 <label for="trackingnumber">Tracking Number</label>
             </div>
                       
-        <select class="browser-default custom-select mb-5" name="courier">
+        <select class="browser-default form-control custom-select mb-5" name="courier">
              <option value="" selected="selected">Select Courier</option>
                         <option value="DHL">DHL</option>
                         <option value="FEDEX">FEDEX</option>
@@ -68,7 +68,7 @@
   </div>
 
             <!-- Submit button -->
-            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Submit Pre Alert</button>
+            <button id="preAlertSubmit" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Submit Pre Alert</button>
 
         </form>
         <!-- Form -->
