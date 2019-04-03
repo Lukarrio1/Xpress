@@ -208,6 +208,7 @@ class UserController extends Controller
         'token'=>$token->login_modal,
         'id'=>$token->id,
         'name'=>$token->name,
+        'user_id'=>$token->id,
         ]);
     }
     // this function updates the token for the modal

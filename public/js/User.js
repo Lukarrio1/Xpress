@@ -61,8 +61,8 @@ Modaltimer = () => {
   $.get("/modal", data => {
     var token = jQuery.parseJSON(data);
     var modal = token.token;
-    $("#modalname").html(`{token.name}`);
-    $("#modalxl").html(`{token.token}`);
+    $("#modalname").html(`${token.name}`);
+    $("#modalxl").html(`${token.user_id}`);
     if (modal == "") {
     } else {
       $("#modal").click();

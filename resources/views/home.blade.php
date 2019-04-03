@@ -59,7 +59,7 @@
     Address line 2: Bldg 13 Lauderdale Lakes,<br>
     City / State : Oakland, Florida<br>
     Zipcode : 33311 <br>
-    Xl #:  <span ="modalxl"></span> 
+    Xl number:<span id="modalxl"></span> 
      
   </div>
   <!-- Pre alert modal content -->
