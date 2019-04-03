@@ -2,7 +2,6 @@ $(()=>{
     //cache dom elements
     let $fileInput = $('#fileInput')
     let $navbarBtn = $(".button-collapse")
-    let $pgkin =$("#pkg_in");
 
     //initilize module
     init()
@@ -11,9 +10,7 @@ $(()=>{
     $fileInput.on('change', (ev)=>{
       $('#fileNameOutput').val(ev.target.files[0].name)
     })
-    $pgkin.on('change',(ev)=>{
-      $("#pkg_out").val(ev.target.files[0].name)
-    })
+
     function init() {
       $navbarBtn.sideNav({
         edge: 'left', // Choose the horizontal origin

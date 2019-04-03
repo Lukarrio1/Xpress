@@ -71,8 +71,7 @@ Route::prefix('shippingcalculator')->group(function () {
 });
 //  these are the Pre-Alerts routes
  Route::prefix('prealerts')->group(function () {
-   Route::get('/','PreAlerts\PreAlertsController@create')->name('Pre.Alerts.home');
-   Route::post('/store','PreAlerts\PreAlertsController@store')->name('Pre.Alerts.store');
+   Route::get('/','PreAlerts\PreAlertsController@index')->name('Pre.Alerts.home');
  });
 //  these are the shipment routes
  Route::prefix('shipments')->group(function () {

@@ -4,9 +4,6 @@ namespace App\Http\Controllers\PreAlerts;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Prealerts;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class PreAlertsController extends Controller
 {
@@ -17,7 +14,7 @@ class PreAlertsController extends Controller
      */
     public function index()
     {
-      
+        return view('PreAlerts.index');
     }
 
     /**
@@ -27,7 +24,7 @@ class PreAlertsController extends Controller
      */
     public function create()
     {
-        return view('PreAlerts.create');
+        //
     }
 
     /**
