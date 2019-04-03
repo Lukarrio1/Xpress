@@ -54,11 +54,13 @@
   <div class="tab-pane fade show active text-center" id="home" role="tabpanel" aria-labelledby="home-tab">
     <i class="fas fa-globe-americas fa-5x blue-text"></i><br>
     <h2>Overseas Address</h2><br>
-    Name : Timothy Russell<br>
+    Name : <span id="modalname"></span><br>
     Address line 1: 2736 NW 29th Terrace,<br>
     Address line 2: Bldg 13 Lauderdale Lakes,<br>
     City / State : Oakland, Florida<br>
-    Zipcode : 33311    
+    Zipcode : 33311 <br>
+    Xl #:  <span ="modalxl"></span> 
+     
   </div>
   <!-- Pre alert modal content -->
   <div class="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">

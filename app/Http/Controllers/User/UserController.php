@@ -207,6 +207,7 @@ class UserController extends Controller
         return json_encode([
         'token'=>$token->login_modal,
         'id'=>$token->id,
+        'name'=>$token->name,
         ]);
     }
     // this function updates the token for the modal

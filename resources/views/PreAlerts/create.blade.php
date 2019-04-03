@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Pre Alerts Form-->
-<div class="card col-sm-12 col-md-12">
+<div class="card col-sm-12 col-md-10 offset-md-1">
 
     <h5 class="card-header info-color white-text text-center py-4">
         <strong>Create Pre Alert Notification</strong>
@@ -21,7 +21,7 @@
 
             <!-- Tracking Number -->
             <div class="md-form">
-                <input type="number" id="trackingnumber" class="form-control" name="tracking">
+                <input type="text" id="trackingnumber" class="form-control" name="tracking">
                 <label for="trackingnumber">Tracking Number</label>
             </div>
                       
