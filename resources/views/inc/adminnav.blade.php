@@ -7,7 +7,7 @@
             <!-- Logo -->
             <li class="logo-sn waves-effect py-3">
               <div class="text-center text-black-50">
-                <a href="#" class="pl-0"><img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png"></a>
+                <a href="#" class="pl-0"><img src="https://images.unsplash.com/photo-1496347326319-2935d381b307?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"></a>
               </div>
             </li>
     
