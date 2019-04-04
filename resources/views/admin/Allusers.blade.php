@@ -17,7 +17,7 @@
               </div>
               <div class="col-md-3">
                 <div class="md-form">
-                  <input placeholder="Search..." type="text" id="form5" class="form-control">
+                  <input placeholder="Search..." type="text" class="form-control" id="usersearch">
                 </div>
               </div>
             </div>
@@ -45,74 +45,15 @@
                         <table class="table">
                           <thead>
                             <tr>
-                              <th>#</th>
+                              <th>XL#:</th>
                               <th>First Name</th>
-                              <th>Last Name</th>
-                              <th>Username</th>
+                              <th>telephone</th>
+                              <th>Email</th>
                               <th>Actions</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>Abby</td>
-                              <td>Barrett</td>
-                              <td>@abbeme</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>Danny</td>
-                              <td>Collins</td>
-                              <td>@dennis</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td>Clara</td>
-                              <td>Ericson</td>
-                              <td>@claris</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">4</th>
-                              <td>Jessie</td>
-                              <td>Doe</td>
-                              <td>@jessiedoeofficial</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">5</th>
-                              <td>Saul</td>
-                              <td>Hudson</td>
-                              <td>@slash</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
+                          <tbody id="alluserbody">
+                          {{-- all the users will show here --}}
                           </tbody>
                         </table>
                       </div>
@@ -201,38 +142,9 @@
           <!-- First column -->
 
           <!-- Second column -->
-          <div class="col-md-4 mb-md-0 mb-5">
+          <div class="col-md-4 mb-md-0 mb-5" id="usercardbody">
 
-            <!-- Card -->
-            <div class="card profile-card">
-
-              <!-- Avatar -->
-              <div class="avatar z-depth-1-half mb-4">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle" alt="First sample avatar image">
-              </div>
-
-              <div class="card-body pt-0 mt-0">
-                <!-- Name -->
-                <div class="text-center">
-                  <h3 class="mb-3 font-weight-bold"><strong>Anna Deynah</strong></h3>
-                  <h6 class="font-weight-bold blue-text mb-4">Web Designer</h6>
-                </div>
-
-                <ul class="striped list-unstyled">
-                  <li><strong>E-mail address:</strong> a.doe@example.com</li>
-
-                  <li><strong>Phone number:</strong> +1 234 5678 90</li>
-
-                  <li><strong>Company:</strong> The Company, Inc</li>
-
-                  <li><strong>Twitter username:</strong> @anna.doe</li>
-
-                  <li><strong>Instagram username:</strong> @anna.doe</li>
-                </ul>
-
-              </div>
-
-            </div>
+          
             <!-- Card -->
 
           </div>

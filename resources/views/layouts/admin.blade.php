@@ -41,5 +41,7 @@
 <script src="{{asset('js/admin.js')}}"></script>
 <script src="{{asset('js/env.js')}}"></script>
 <script>
+  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+</script>
 </body>
 </html>

@@ -58,7 +58,11 @@ Route::prefix('admin')->group(function() {
     // admin user routes
     Route::get('/updateshipments','admin\ShipmentsController@UpdateShipments')->name('admin.shipments');
     Route::get('/news','admin\NewsController@Allnews')->name('admin.news');
-    Route::get('/allusers','admin\UserController@Allusers')->name('admin.allusers');
+    Route::get('/users','admin\UserController@index')->name('admin.allusers');
+    // this is a get request for the all users function
+    Route::get('/allusers','admin\UserController@Allusers');
+    Route::post('/allusers','admin\UserController@Singleuser');
+    Route::post('/search','admin\UserController@Search');
     Route::get('/delivery','admin\DeliveryController@Newdelivery')->name('admin.delivery');
     Route::get('/invoices','admin\InvoiceController@Allinvoices')->name('admin.invoice');
     Route::get('/messages','admin\MessageController@index')->name('admin.message');
