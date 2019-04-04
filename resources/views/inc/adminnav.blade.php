@@ -1,7 +1,7 @@
 <header>
 
         <!-- Sidebar navigation -->
-        <div id="slide-out" class="side-nav sn-bg-4 fixed">
+        <div id="slide-out" class="side-nav sn-bg-4 fixed text-dark">
           <ul class="custom-scrollbar">
     
             <!-- Logo -->
@@ -23,21 +23,21 @@
             <!-- Side navigation links -->
             <li>
               <ul class="collapsible collapsible-accordion">
-              <a href="{{route('admin.shipments')}}" class="collapsible-header waves-effect"><i class="w-fa far fa-box"></i>Update Shipments</a>
+              <a href="{{route('admin.shipments')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-box-open"></i>Update Shipments</a>
                 </li>
                 <li>
-                <a href="{{route('admin.news')}}" class="collapsible-header waves-effect"><i class="w-fa fas fa-newspaper"></i>News Page</a>
+                <a href="{{route('admin.news')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-newspaper"></i>News Page</a>
                 </li>
                 <li>
-                <a href="{{route('admin.allusers')}}" class="collapsible-header waves-effect"><i class="w-fa fas fa-user"></i>All Users</a>
+                <a href="{{route('admin.allusers')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-user"></i>All Users</a>
                 </li>
                 <li>
-                <a href="{{route('admin.delivery')}}" class="collapsible-header waves-effect"><i class="w-fa far fa-calendar-check"></i>Incoming Deliveries</a>
+                <a href="{{route('admin.delivery')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa far fa-calendar-check"></i>Incoming Deliveries</a>
                 </li>
                 <li>
-                <a href="{{route('admin.invoice')}}" class="collapsible-header waves-effect"><i class="w-fa fas fa-file-invoice"></i>Invoices</a>
+                <a href="{{route('admin.invoice')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-file-invoice"></i>Invoices</a>
                 </li>
-              <a href="{{route('admin.message')}}" class="collapsible-header waves-effect text-black"><i class="w-fa fas fa-envelope"></i>Messages</a>
+              <a href="{{route('admin.message')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-envelope"></i>Messages</a>
                 </li>
     
               </ul>
