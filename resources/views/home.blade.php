@@ -93,7 +93,7 @@
             <!-- Content -->
           </div>
         </div>
-        <!-- Central Modal Large Info -->
+        <!-- To Do Modal-->
 
           <!-- Modal -->
           <div class="modal fade" id="taskmodal" tabindex="-1" role="dialog" aria-labelledby="taskmodal"
@@ -109,11 +109,15 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="md-form">
+          <i class="fas fa-pencil prefix grey-text"></i>
+          <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
+          <label data-error="wrong" data-success="right" for="form8">Add New Task Here</label>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Add Task</button>
       </div>
     </div>
   </div>
@@ -313,7 +317,8 @@
             <!--Panel-->
             <div class="card">
               <div class="card-header white-text primary-color">
-                Tasks to do
+                Tasks to do &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <i href="#" class="fas fa-plus align-right text-white" data-toggle="modal" data-target="#taskmodal" id="modal" data-placement="right" title="Add new task"></i>
               </div>
               <!--/.Card-->
               <div class="card-body pt-0 px-1">
@@ -398,86 +403,6 @@
                    
                
 
-                <!-- Panel content -->
-                <div class="card-body pt-0">
-
-                  <!-- Table -->
-                  <div class="table-responsive">
-
-                    <table class="table table-hover">
-
-                      <!-- Table head -->
-                      <thead class="rgba-stylish-strong white-text">
-
-                        <tr>
-                          <th>Queries</th>
-                          <th>Clicks</th>
-                          <th>Impressions</th>
-                          <th>CTR</th>
-                          <th>Position</th>
-                          <th>Day</th>
-                          <th>Week</th>
-                          <th>Month</th>
-                          <th>Local</th>
-                          <th>Global</th>
-                        </tr>
-
-                      </thead>
-                      <!-- Table head -->
-
-                      <!-- Table body -->
-                      <tbody>
-
-                        <tr class="none-top-border">
-
-                          <td>bootstrap material design</td>
-                          <td>1000</td>
-                          <td>10000</td>
-                          <td>5%</td>
-                          <td>3.21</td>
-                          <td>2 <span class="badge primary-color">1 <i class="fas fa-arrow-circle-up"></i></span></td>
-                          <td>2 <span class="badge red accent-2">1 <i class="fas fa-arrow-circle-down"></i></span></td>
-                          <td>2 <span class="badge grey">0 </span></td>
-                          <td>200 (US)</td>
-                          <td>2000</td>
-
-                        </tr>
-
-                        <tr>
-
-                          <td>bootstrap material design</td>
-                          <td>1000</td>
-                          <td>10000</td>
-                          <td>5%</td>
-                          <td>3.21</td>
-                          <td>2 <span class="badge primary-color">1 <i class="fas fa-arrow-circle-up"></i></span></td>
-                          <td>2 <span class="badge red accent-2">1 <i class="fas fa-arrow-circle-down"></i></span></td>
-                          <td>2 <span class="badge grey">0 </span></td>
-                          <td>200 (US)</td>
-                          <td>2000</td>
-
-                        </tr>
-                        <tr>
-
-                          <td>bootstrap material design</td>
-                          <td>1000</td>
-                          <td>10000</td>
-                          <td>5%</td>
-                          <td>3.21</td>
-                          <td>2 <span class="badge primary-color">1 <i class="fas fa-arrow-circle-up"></i></span></td>
-                          <td>2 <span class="badge red accent-2">1 <i class="fas fa-arrow-circle-down"></i></span></td>
-                          <td>2 <span class="badge grey">0 </span></td>
-                          <td>200 (US)</td>
-                          <td>2000</td>
-
-                        </tr>
-
-                      </tbody>
-                      <!-- Table body -->
-                    </table>
-
-                  </div>
-                  <!-- Table -->
                 </div>
                 </div>
       </section>
