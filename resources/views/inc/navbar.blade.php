@@ -320,7 +320,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-effect"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+        <a class="nav-link waves-effect" href="{{route('user.messages')}}"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link waves-effect"><i class="far fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>

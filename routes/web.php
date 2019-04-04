@@ -88,4 +88,7 @@ Route::prefix('shippingcalculator')->group(function () {
    Route::get('/notification','Shipment\ShipmentsController@notification');
    Route::post('/update','Shipment\ShipmentsController@update');
 });
-
+// these are the messages routes
+Route::prefix('Messages')->group(function(){
+    Route::get('/','User\MessagesController@index')->name('user.messages');
+});

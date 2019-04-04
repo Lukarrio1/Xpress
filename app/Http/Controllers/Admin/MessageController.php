@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin',['except'=>['']]);
+    }
     /**
      * Display a listing of the resource.
      *

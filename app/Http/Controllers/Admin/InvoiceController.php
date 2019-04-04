@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 class InvoiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin',['except'=>['']]);
+    }
     public function Allinvoices(){
         return view('admin.invoices');
     }

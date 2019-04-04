@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\ScheduleDelivery;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ScheduleDeliveryController extends Controller
+class MessagesController extends Controller
 {
     public function __construct()
     {
@@ -18,7 +18,7 @@ class ScheduleDeliveryController extends Controller
      */
     public function index()
     {
-        return view('ScheduleDelivery.index');
+        return view('Message.Message');
     }
 
     /**

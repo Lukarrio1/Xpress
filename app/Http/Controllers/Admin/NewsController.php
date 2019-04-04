@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin',['except'=>['']]);
+    }
     public function Allnews(){
         return view('admin.news');
     }
