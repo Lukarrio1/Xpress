@@ -317,8 +317,8 @@
             <!--Panel-->
             <div class="card">
               <div class="card-header white-text primary-color">
-                Tasks to do &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <i href="#" class="fas fa-plus align-right text-white" data-toggle="modal" data-target="#taskmodal" id="modal" data-placement="right" title="Add new task"></i>
+                Tasks to do 
+                <i href="#" class="fas fa-plus fa-pull-right align-right text-white" data-toggle="modal" data-target="#taskmodal" id="modal" data-placement=top title="Add new task"></i>
               </div>
               <!--/.Card-->
               <div class="card-body pt-0 px-1">
