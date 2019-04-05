@@ -46,7 +46,7 @@
                           <thead>
                             <tr>
                               <th>XL#:</th>
-                              <th>First Name</th>
+                              <th>Name</th>
                               <th>telephone</th>
                               <th>Email</th>
                               <th>Actions</th>

@@ -4,7 +4,7 @@
         <!-- Copyright -->
         <div class="footer-copyright py-3 text-center">
           <div class="container-fluid">
-            © 2019 Copyright: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+          © 2019 Copyright: {{config('app.name')}}.com</a>
           </div>
         </div>
     
