@@ -367,21 +367,20 @@ $("#savetodo").click(() => {
 });
 alltodo = () => {
   $.get("/todo", data => {
-    var todo = jQuery.parseJSON(data);
+    let todo = jQuery.parseJSON(data);
     let todobody = "";
     for (let i = 0; i < todo.length; i++) {
-      console.log(todo[i].todo);
-      console.log(todo[i].id);
       todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text ">${
         todo[i].todo
       }
-      <i class="fas fa-trash ml-auto todo" data-toggle="tooltip" data-placement="top" title="Click to fix" id="todo${
+      <i class="fas fa-trash ml-auto todo" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
         todo[i].id
       }"></i></a>`;
     }
     $("#todosection").html(`${todobody}`);
   });
 };
+
 $(document).on("click", ".todo", function() {
   let todo = $(this).attr("id");
   let id = todo.substring(4);
@@ -429,20 +428,20 @@ NotificationCounter = (number, verify, sp) => {
 
 //         formData.append('file', file)
 //         console.log(formData)
-//         // $.ajax({
-//         //     url: '/shipments/update',
-//         //     type: 'POST',
-//         //     data: {
-//         //         _token: CSRF_TOKEN,
-//         //         status:1,
-//         //     },
-//         //     contentType: false,
-//         //     processData: false,
-//         //     dataType: 'text',
-//         //     success: (data)=> {
+//         $.ajax({
+//             url: '/shipments/update',
+//             type: 'POST',
+//             data: {
+//                 _token: CSRF_TOKEN,
+//                 status:1,
+//             },
+//             contentType: false,
+//             processData: false,
+//             dataType: 'JSON',
+//             success: (data)=> {
 
-//         //     }
-//         // });
+//             }
+//         });
 
 //     }
 // })

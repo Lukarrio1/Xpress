@@ -239,7 +239,8 @@ class UserController extends Controller
     // this function return all of the user create taskes
     public function alltodo(){
         $id= Auth::user()->id;
-        $todo = todo::where('user_id',$id)->get();
+        $todo = todo::where('user_id',$id)->orderBy('created_at', 'DESC')
+        ->get();
         return json_encode($todo);
     }
     public function deletetodo(Request $request){
