@@ -105,19 +105,19 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Add New Task</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true" id="closetodo">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="md-form">
           <i class="fas fa-pencil prefix grey-text"></i>
-          <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
+          <textarea type="text" id="todotextarea" class="md-textarea form-control" rows="4"></textarea>
           <label data-error="wrong" data-success="right" for="form8">Add New Task Here</label>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add Task</button>
+        <button type="button" class="btn btn-primary" id="savetodo">Add Task</button>
       </div>
     </div>
   </div>
@@ -326,17 +326,8 @@
                 <!--Card content-->
                 <div class="card-body text-center">
 
-                  <div class="list-group list-panel">
-                    <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Cras justo odio
-                      <i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top" title="Click to fix"></i></a>
-                    <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Dapibus ac
-                      facilisi<i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top" title="Click to fix"></i></a>
-                    <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Morbi leo risus
-                      <i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top" title="Click to fix"></i></a>
-                    <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Porta ac
-                      consectet<i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top" title="Click to fix"></i></a>
-                    <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Vestibulum at
-                      eros <i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top" title="Click to fix"></i></a>
+                  <div class="list-group list-panel" id="todosection">
+                   
                   </div>
 
                 </div>

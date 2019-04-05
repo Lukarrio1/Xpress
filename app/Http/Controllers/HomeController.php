@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $id = User::find(Auth::user()->id);
+        if ($id->xl == "") {
+            $id->xl = 10000 + Auth::user()->id;
+            $id->save();
+            return view('home');
+        }
+
         return view('home');
+
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -19,7 +19,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -52,12 +52,12 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'telephone'=> 'required|min:7',
-            'city'=> 'required|min:3',
-            'parish'=>'required|min:3',
-            'country'=>'required|min:3',
-            'terms'=>'required',
-            'address'=>'min:3|required'
+            'telephone' => 'required|min:7',
+            'city' => 'required|min:3',
+            'parish' => 'required|min:3',
+            'country' => 'required|min:3',
+            'terms' => 'required',
+            'address' => 'min:3|required',
         ]);
     }
 
@@ -68,22 +68,21 @@ class RegisterController extends Controller
      * @return User
      */
     protected function create(array $data)
-    {   
-        $user= User::create([
+    {
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'token' => str_random(20),
-            'telephone'=>$data['telephone'],
-            'city'=>$data['city'],
-            'parish'=>$data['parish'],
-            'Country'=>$data['country'],
-            'address'=>$data['address'],
-            'login_modal'=>str_random(10),
-            'login_modal'=> str_random(10)
-
+            'telephone' => $data['telephone'],
+            'city' => $data['city'],
+            'parish' => $data['parish'],
+            'Country' => $data['country'],
+            'address' => $data['address'],
+            'login_modal' => str_random(10),
+            'login_modal' => str_random(10),
         ]);
-       $user->sendverificationemail();
+        $user->sendverificationemail();
         return $user;
     }
 }

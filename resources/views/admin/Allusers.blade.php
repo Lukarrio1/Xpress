@@ -62,7 +62,7 @@
                     <!-- Panel 2 -->
                     <div class="tab-pane fade" id="panel84" role="tabpanel">
                       <div class="table-responsive">
-                        <table class="table">
+                        <table class="table allusertable">
                           <thead>
                             <tr>
                               <th>#</th>
