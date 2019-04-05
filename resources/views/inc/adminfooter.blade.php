@@ -7,5 +7,4 @@
           © 2019 Copyright: {{config('app.name')}}.com</a>
           </div>
         </div>
-    
       </footer>
