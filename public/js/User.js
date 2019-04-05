@@ -5,6 +5,7 @@ $(document).ready(() => {
   Userinfo();
   shipments();
   spnotification();
+  alltodo();
 });
 
 // runs every 20 seconds
@@ -62,7 +63,7 @@ Modaltimer = () => {
     var token = jQuery.parseJSON(data);
     var modal = token.token;
     $("#modalname").html(`${token.name}`);
-    $("#modalxl").html(`${token.user_id}`);
+    $("#modalxl").html(`${token.xl}`);
     if (modal == "") {
     } else {
       $("#modal").click();
@@ -176,7 +177,7 @@ Userinfo = () => {
     //   $("#parish").val(user.parish);
     //   $("#country").val(user.country);
     //   $("#address").val(user.address);
-    $("#usercardid").html(`${user.id}`);
+    $("#usercardid").html(`${user.xl}`);
     $("#authusername").html(`${user.name}`);
     $("#usercardname").html(`${user.name}`);
     $("#usercardemail").html(`${user.email}`);
@@ -343,6 +344,64 @@ $("#spall")
     });
   });
 
+$("#savetodo").click(() => {
+  let todo = $("#todotextarea").val();
+  $.ajax({
+    url: "/todo",
+    type: "POST",
+    data: {
+      _token: CSRF_TOKEN,
+      todo: todo
+    },
+    dataType: "text",
+    success: data => {
+      $("#todotextarea").val("");
+      $("#closetodo").click();
+      iziToast.success({
+        position: "topCenter",
+        message: "Task added.."
+      });
+      alltodo();
+    }
+  });
+});
+alltodo = () => {
+  $.get("/todo", data => {
+    var todo = jQuery.parseJSON(data);
+    let todobody = "";
+    for (let i = 0; i < todo.length; i++) {
+      console.log(todo[i].todo);
+      console.log(todo[i].id);
+      todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text ">${
+        todo[i].todo
+      }
+      <i class="fas fa-trash ml-auto todo" data-toggle="tooltip" data-placement="top" title="Click to fix" id="todo${
+        todo[i].id
+      }"></i></a>`;
+    }
+    $("#todosection").html(`${todobody}`);
+  });
+};
+$(document).on("click", ".todo", function() {
+  let todo = $(this).attr("id");
+  let id = todo.substring(4);
+  $.ajax({
+    url: "/delete/todo",
+    type: "POST",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id
+    },
+    dataType: "text",
+    success: data => {
+      iziToast.error({
+        position: "topCenter",
+        message: "Task deleted.."
+      });
+      alltodo();
+    }
+  });
+});
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (number, verify, sp) => {
   let sum = Number(number) + Number(verify) + Number(sp);

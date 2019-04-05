@@ -258,7 +258,7 @@
             <!-- Name -->
             <h3 class="mb-3 font-weight-bold"><strong><span id="usercardname"></span></strong></h3>
             <p class="mt-4 text-muted">
-              Account Number:<span id="usercardid"></span><br>
+              XL Number:<span id="usercardid"></span><br>
               Email:<span id="usercardemail"></span><br>
               Address:<span id="usercardaddress"></span><br>
               Parish: <span id="usercardparish"></span><br>
