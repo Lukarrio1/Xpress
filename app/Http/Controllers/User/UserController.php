@@ -54,7 +54,7 @@ class UserController extends Controller
             'newpass' => 'required|min:6',
         ]);
         $password = User::find(Auth::user()->id);
-        $password->password = Hash::make($request->newpass);
+        $password->password = Hash::make( htmlentities($request->newpass));
         $this->PasswordEmailNotification();
         $password->save();
 
@@ -166,12 +166,12 @@ class UserController extends Controller
             'telephone' => 'required|min:7',
         ]);
         $user = User::find(Auth::user()->id);
-        $user->name = $request->name;
-        $user->telephone = $request->telephone;
-        $user->parish = $request->parish;
-        $user->city = $request->city;
-        $user->address = $request->address;
-        $user->Country = $request->country;
+        $user->name = htmlentities($request->name);
+        $user->telephone =  htmlentities($request->telephone);
+        $user->parish =  htmlentities($request->parish);
+        $user->city =  htmlentities($request->city);
+        $user->address =  htmlentities($request->address);
+        $user->Country =  htmlentities($request->country);
         $user->save();
         return "updated";
 
@@ -230,7 +230,7 @@ class UserController extends Controller
             'todo' => 'required:max:200',
         ]);
         $new = new todo;
-        $todo = $request->todo;
+        $todo = htmlentities($request->todo);
         $new->user_id = Auth::user()->id;
         $new->todo = $todo;
         $new->save();
@@ -239,6 +239,7 @@ class UserController extends Controller
     // this function return all of the user create taskes
     public function alltodo(){
         $id= Auth::user()->id;
+        // this is a next way to queryj
         $todo = todo::where('user_id',$id)->orderBy('created_at', 'DESC')
         ->get();
         return json_encode($todo);

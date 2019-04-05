@@ -90,7 +90,6 @@ $(document).on("click", ".userid", function() {
     dataType: "text",
     success: data => {
       let user = jQuery.parseJSON(data);
-      console.log(user.name);
       let usercard = `<!-- Card -->
             <div class="card profile-card">
 

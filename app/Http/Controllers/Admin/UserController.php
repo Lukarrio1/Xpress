@@ -51,7 +51,7 @@ class UserController extends Controller
         $this->validate($request, [
             'search' => 'required',
         ]);
-        $search = $request->search;
+        $search =  htmlentities($request->search);
         $results = DB::table('users')
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('email', 'LIKE', '%' . $search . '%')
@@ -60,6 +60,7 @@ class UserController extends Controller
             ->orWhere('parish', 'LIKE', '%' . $search . '%')
             ->orWhere('Country', 'LIKE', '%' . $search . '%')
             ->orWhere('address', 'LIKE', '%' . $search . '%')
+            ->orWhere('xl', 'LIKE', '%' . $search . '%')
             ->orderby('created_at', 'desc')
             ->get();
         return json_encode($results);
