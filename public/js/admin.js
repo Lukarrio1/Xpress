@@ -11,7 +11,6 @@ Allusers = () => {
     var user = jQuery.parseJSON(data);
     let text = "";
     for (let i = 0; i < user.length; i++) {
-      console.log(user[i].xl);
       text += `
          <tr>
           <th scope="row">${user[i].xl}</th>
@@ -35,7 +34,6 @@ Allusers = () => {
 
   $("#usersearch").on("keyup", () => {
     $("#alluserbody").html("");
-    console.log($("#usersearch").val());
     if ($("#usersearch").val().length > 0) {
       $.ajax({
         url: "/admin/search",
@@ -48,7 +46,6 @@ Allusers = () => {
         success: data => {
           let users = jQuery.parseJSON(data);
           let searchres = "";
-          console.log(users);
           for (let i = 0; i < users.length; i++) {
             searchres += `<tr>
        <th scope="row">${users[i].xl}</th>

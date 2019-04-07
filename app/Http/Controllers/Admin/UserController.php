@@ -53,9 +53,9 @@ class UserController extends Controller
         ]);
         $search =  htmlentities($request->search);
         $results = DB::table('users')
-            ->where('name', 'LIKE', '%' . $search . '%')
-            ->orWhere('email', 'LIKE', '%' . $search . '%')
-            ->orWhere('telephone', 'LIKE', '%' . $search . '%')
+            ->where('name', 'LIKE', '%'.$search.'%')
+            ->orWhere('email', 'LIKE', '%'.$search.'%')
+            ->orWhere('telephone', 'LIKE', '%' .$search.'%')
             ->orWhere('city', 'LIKE', '%' . $search . '%')
             ->orWhere('parish', 'LIKE', '%' . $search . '%')
             ->orWhere('Country', 'LIKE', '%' . $search . '%')
