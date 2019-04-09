@@ -27,13 +27,13 @@ TokenCheck = () => {
 		if (notification.notification == '') {
 			$('#emailnotify').html('');
 			var verify = 0;
-			Allusers(verify);
+			spnotification(verify);
 		} else {
 			$('#emailnotify').html(
 				`<a  class='dropdown-item' href='#'>${notification.notification}<span class='float-right'>${notification.icon}</span></a>`,
 			);
 			var verify = 1;
-			Allusers(verify);
+			spnotification(verify);
 		}
 		// for(i = 0; i<notification.length; i++){
 		// text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
@@ -41,19 +41,19 @@ TokenCheck = () => {
 	});
 };
 // testings: this get all the users in the database  ('/Allusers', 'NotificationController@Allusers')
-Allusers = verify => {
-	$.get('/Allusers', data => {
-		let text = '';
-		var user = jQuery.parseJSON(data);
-		var number = user.length;
-		spnotification(number, verify);
-		for (i = 0; i < user.length; i++) {
-			text += `<a class='dropdown-item' href='/Notifications/${user[i]
-				.id}'>${user[i].name}</span></a>`;
-		}
-		$('#allusersnotify').html(`${text}`);
-	});
-};
+// Allusers = verify => {
+// 	$.get('/Allusers', data => {
+// 		let text = '';
+// 		var user = jQuery.parseJSON(data);
+// 		var number = user.length;
+// 		spnotification(number, verify);
+// 		for (i = 0; i < user.length; i++) {
+// 			text += `<a class='dropdown-item' href='/Notifications/${user[i]
+// 				.id}'>${user[i].name}</span></a>`;
+// 		}
+// 		$('#allusersnotify').html(`${text}`);
+// 	});
+// };
 // check to see if the modal has been clicked /modal ('/modal', 'User\UserController@Modaltoken')
 Modaltimer = () => {
 	$.get('/modal', data => {
@@ -312,7 +312,7 @@ shipments = () => {
 	});
 };
 
-spnotification = (number, verify) => {
+spnotification = verify => {
 	$.get('/shipments/notification', data => {
 		var spnotification = jQuery.parseJSON(data);
 		let sp = spnotification.number;
@@ -321,7 +321,7 @@ spnotification = (number, verify) => {
 				`<a class='dropdown-item' href='/shipments'>New shipment added. <span class='float-right'> <i class="fas fa-box-open"></i></span></a>`,
 			);
 		}
-		NotificationCounter(number, verify, sp);
+		NotificationCounter(verify, sp);
 	});
 };
 
@@ -401,8 +401,8 @@ $(document).on('click', '.todo', function() {
 	});
 });
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
-NotificationCounter = (number, verify, sp) => {
-	let sum = Number(number) + Number(verify) + Number(sp);
+NotificationCounter = (verify, sp) => {
+	let sum = Number(verify) + Number(sp);
 	$('#notificount').html(`${sum}`);
 };
 

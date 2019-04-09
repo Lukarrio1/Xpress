@@ -315,8 +315,8 @@
           </a>
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" id="notificationcenter">
             <span id="emailnotify"></span>
-            <span id="allusersnotify"></span>
             <span id="spnotify"></span>
+            {{-- <span id="allusersnotify"></span> --}}
           </div>
         </li>
         <li class="nav-item">

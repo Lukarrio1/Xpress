@@ -14,9 +14,9 @@ class NotificationController extends Controller
     }
 
 
-    public function Allusers(){
-        return json_encode(User::all());
-    }
+    // public function Allusers(){
+    //     return json_encode(User::all());
+    // }
 
     // this function checks to see if there is an email token in the database
     public function Token()

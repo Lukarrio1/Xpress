@@ -28,7 +28,7 @@ Route::post('/delete/todo', 'User\UserController@deletetodo');
 // this route goes to the Storeimage function on the usercontroller it is resposible for storing a image
 Route::post('/store/image', 'User\UserController@Storeimage')->name('userimage');
 // this is a tester function for showing all the users in a database
-Route::get('/Allusers', 'NotificationController@Allusers');
+// Route::get('/Allusers', 'NotificationController@Allusers');
 // How it works modal token
 Route::get('/modal', 'User\UserController@Modaltoken');
 Route::post('/modal', 'User\UserController@modaltokenupdate');
