@@ -40,20 +40,7 @@ TokenCheck = () => {
 		// }
 	});
 };
-// testings: this get all the users in the database  ('/Allusers', 'NotificationController@Allusers')
-// Allusers = verify => {
-// 	$.get('/Allusers', data => {
-// 		let text = '';
-// 		var user = jQuery.parseJSON(data);
-// 		var number = user.length;
-// 		spnotification(number, verify);
-// 		for (i = 0; i < user.length; i++) {
-// 			text += `<a class='dropdown-item' href='/Notifications/${user[i]
-// 				.id}'>${user[i].name}</span></a>`;
-// 		}
-// 		$('#allusersnotify').html(`${text}`);
-// 	});
-// };
+
 // check to see if the modal has been clicked /modal ('/modal', 'User\UserController@Modaltoken')
 Modaltimer = () => {
 	$.get('/modal', data => {
@@ -405,6 +392,21 @@ NotificationCounter = (verify, sp) => {
 	let sum = Number(verify) + Number(sp);
 	$('#notificount').html(`${sum}`);
 };
+
+// testings: this get all the users in the database  ('/Allusers', 'NotificationController@Allusers')
+// Allusers = verify => {
+// 	$.get('/Allusers', data => {
+// 		let text = '';
+// 		var user = jQuery.parseJSON(data);
+// 		var number = user.length;
+// 		spnotification(number, verify);
+// 		for (i = 0; i < user.length; i++) {
+// 			text += `<a class='dropdown-item' href='/Notifications/${user[i]
+// 				.id}'>${user[i].name}</span></a>`;
+// 		}
+// 		$('#allusersnotify').html(`${text}`);
+// 	});
+// };
 
 // $('#preAlertSubmit').on('click', ev => {
 // 	let name = $('#vendorname').val();

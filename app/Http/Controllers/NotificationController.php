@@ -38,18 +38,4 @@ class NotificationController extends Controller
         ]);
         }
     }
-
-    // // to show a single notification for now..
-    public function show($id){
-        $user= User::find($id);
-        return json_encode([
-        'name'=>$user->name,
-        'email'=>$user->email,
-        'phone'=>$user->telephone,
-        'address'=>$user->address,
-        'city'=>$user->city,
-        'parish'=>$user->parish,
-        'country'=>$user->Country,
-        ]);
-    }
 }
