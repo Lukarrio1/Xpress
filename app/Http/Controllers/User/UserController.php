@@ -240,8 +240,13 @@ class UserController extends Controller
     public function alltodo(){
         $id= Auth::user()->id;
         // this is a next way to queryj
-        $todo = todo::where('user_id',$id)->orderBy('created_at', 'DESC')
-        ->get();
+        $todo = todo::where('user_id',$id)->orderBy('created_at', 'DESC')->get();
+        $count = count($todo);
+        if($count==0){
+            return json_encode([
+            'count'=>$count,
+            ]);  
+        }
         return json_encode($todo);
     }
     public function deletetodo(Request $request){

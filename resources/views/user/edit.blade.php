@@ -338,7 +338,7 @@
                     </div>
                     <!--Body-->
                     <div class="modal-body">
-                      <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data>
+                      <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data id="imgform">
                         <div class="file-field text-center">
                         {{ csrf_field() }}
                         <div class="btn btn-primary btn-sm ">

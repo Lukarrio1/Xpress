@@ -17,15 +17,17 @@
             <div class="md-form mt-4">
                 <input type="text" id="vendorname" class="form-control" name="vender">
                 <label for="vendorname"> Vendor Name</label>
+                <span id="errorvenname" class="text-danger"></span>
             </div>
 
             <!-- Tracking Number -->
             <div class="md-form">
                 <input type="text" id="trackingnumber" class="form-control" name="tracking">
                 <label for="trackingnumber">Tracking Number</label>
+                 <span id="errortnumber" class="text-danger"></span>
             </div>
                       
-        <select class="browser-default form-control custom-select mb-5" name="courier">
+        <select class="browser-default form-control custom-select mb-5" name="courier" id="courier">
              <option value="" selected="selected">Select Courier</option>
                         <option value="DHL">DHL</option>
                         <option value="FEDEX">FEDEX</option>
@@ -36,11 +38,11 @@
                         <option value="Other">Other</option>
     </select>
 
-
              <!-- Name on Package -->
             <div class="md-form mt-5">
                 <input type="text" id="name_pkg" class="form-control"placeholder="John Brown XL0001" name="pkgname">
                 <label for="name_pkg"> Name on Package</label>
+                <span id="errorpkg" class="text-danger"></span>
             </div>
             
             <div class="form-group">
