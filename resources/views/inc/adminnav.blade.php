@@ -7,11 +7,11 @@
             <!-- Logo -->
             <li class="logo-sn waves-effect py-3">
               <div class="text-center text-black-50">
-                <a href="#" class="pl-0"><img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png"></a>
+              <a href="#" class="pl-0"><img src="{{url('storage/xpresslogo.png')}}" style="height:100px;"></a>
               </div>
             </li>
     
-            <!-- Search Form -->
+            {{-- <!-- Search Form -->
             <li>
               <form class="search-form" role="search">
                 <div class="md-form mt-0 waves-light ">
@@ -19,7 +19,7 @@
                 </div>
               </form>
             </li>
-            
+             --}}
             <!-- Side navigation links -->
             <li>
               <ul class="collapsible collapsible-accordion">
@@ -107,7 +107,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                   <a class="dropdown-item" href="#">My Account</a>
-                  <a class="dropdown-item" href="#">Log Out</a>
+                <a class="dropdown-item" href="{{route('admin.logout')}}">Log Out</a>
                       </div>
               </li>
     

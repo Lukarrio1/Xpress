@@ -96,7 +96,7 @@ $('#update').click(() => {
 	// Validates the update user form
 	if (name.length < 3) {
 		$('#errorname').html('Name is too short');
-	} else if (telephone.length < 10 || telephone.length > 11) {
+	} else if (telephone.length < 10 || telephone.length > 12) {
 		$('#errorphone').html('Number must be ten numbers');
 	} else if (city.length < 3) {
 		$('#errorcity').html('City name is too short');

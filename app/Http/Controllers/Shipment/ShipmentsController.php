@@ -15,7 +15,7 @@ class ShipmentsController extends Controller
         $this->middleware('auth');
     }
     /**
-     * Display a listing of the resource.
+     * This function only returns the shipment page for the user...
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,9 +26,9 @@ class ShipmentsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * This function shows all of the shipments thatt belongs to the logged in user via ajax.
      *
-     * @return \Illuminate\Http\Response
+     * @return all shipments
      */
     public function Shipments()
     {
@@ -41,10 +41,10 @@ class ShipmentsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * This function return 1 if the user has unseen shipment package via the Shipment page
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param void
+     * @return number
      */
     public function notification()
     {
@@ -93,7 +93,8 @@ class ShipmentsController extends Controller
         $user = Auth::user()->id;
         DB::table('spnotifies')
         ->where('user_id','=',$user)
-        ->where('token','=','true')->update(['token'=>'false']);
+        ->where('token','=','true')
+        ->update(['token'=>'false']);
        
         return json_encode($request->status);
     }

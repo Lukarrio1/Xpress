@@ -68,6 +68,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/delivery', 'Admin\DeliveryController@Newdelivery')->name('admin.delivery');
     Route::get('/invoices', 'Admin\InvoiceController@Allinvoices')->name('admin.invoice');
     Route::get('/messages', 'Admin\MessageController@index')->name('admin.message');
+    Route::post('/user/delete','Admin\UserController@DeleteUser');
 });
 // notification
 Route::prefix('Notifications')->group(function () {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     public function __construct()
@@ -65,4 +65,20 @@ class UserController extends Controller
             ->get();
         return json_encode($results);
     }
+
+    public function DeleteUser(Request $request){
+        $this->validate($request, [
+            'delete' => 'required',
+        ]);
+            $user = User::find($request->delete);
+            if ($user->userimage == "noimage.jpg") {
+                $user->delete();
+                return 1;
+            } else {
+                Storage::delete('public/Userimage/' . $user->userimage);
+                $user->delete();
+                return 1;
+            }
+    
+}
 }

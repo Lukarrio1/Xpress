@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use spnotify;
+use User;
 
 class ShipmentsController extends Controller
 {
@@ -13,5 +15,10 @@ class ShipmentsController extends Controller
     }
     public function UpdateShipments(){
         return view('admin.Updateshipments');
+    }
+
+
+    public function NewShipment(Request $request,$id){
+        
     }
 }
