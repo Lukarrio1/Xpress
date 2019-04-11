@@ -2,34 +2,51 @@
 $(document).ready(() => {
 	Allusers();
 });
-// Checks every 10 seconds
-window.setInterval(() => {}, 10000);
 
 // this function returns all of the users
 Allusers = () => {
 	$.get('/admin/allusers', data => {
 		var user = jQuery.parseJSON(data);
 		let text = '';
+		let amount = user.length;
+		console.log('Current user' + amount);
+		Newusercheck(amount);
 		for (let i = 0; i < user.length; i++) {
 			text += `
-         <tr>
-          <th scope="row">${user[i].xl}</th>
-          <td>${user[i].name}</td>
-          <td>${user[i].telephone}</td>
-          <td>${user[i].email}</td>
-          <td>
-            <a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="See results" id="user${user[
-							i
-						].id}"><i class="fas fa-user"></i></a>
-            <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-            <a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${user[
-							i
-						].id}"><i class="fas fa-times" ></i></a>
-          </td>
-        </tr>`;
+					<tr>
+					<th scope="row">${user[i].xl}</th>
+					<td>${user[i].name}</td>
+					<td>${user[i].telephone}</td>
+					<td>${user[i].email}</td>
+					<td>
+					<a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="View ${user[
+						i
+					].name}" id="user${user[i].id}"><i class="fas fa-user"></i></a>
+					<a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+					<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${user[
+						i
+					].id}"><i class="fas fa-times" ></i></a>
+					</td>
+					</tr>`;
 		}
 		$('#alluserbody').html(`${text}`);
 	});
+
+	Newusercheck = amount => {
+		$.get('/admin/allusers', data => {
+			let user = jQuery.parseJSON(data);
+			console.log('Newuser=' + user.length);
+			if (amount < user.length) {
+				console.log('you have a new user');
+				// Allusers();
+			} else if (amount > user.length) {
+				console.log('you removed a user');
+				// Allusers();
+			} else if (amount == user.length) {
+				console.log('no new users to show');
+			}
+		});
+	};
 
 	$('#usersearch').on('keyup', () => {
 		$('#alluserbody').html('');
@@ -47,22 +64,22 @@ Allusers = () => {
 					let searchres = '';
 					for (let i = 0; i < users.length; i++) {
 						searchres += `<tr>
-       <th scope="row">${users[i].xl}</th>
-       <td>${users[i].name}</td>
-       <td>${users[i].telephone}</td>
-       <td>${users[i].email}</td>
-       <td>
-         <a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="${users[
-						i
-					].name}" id="user${users[i].id}"><i
-             class="fas fa-user"></i></a>
-         <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-         <a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Delete user" id="del${users[
-						i
-					].id}"><i class="fas fa-times"></i></a>
-       </td>
-     </tr>
-   `;
+								<th scope="row">${users[i].xl}</th>
+								<td>${users[i].name}</td>
+								<td>${users[i].telephone}</td>
+								<td>${users[i].email}</td>
+								<td>
+								<a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="${users[
+									i
+								].name}" id="user${users[i].id}"><i
+								class="fas fa-user"></i></a>
+								<a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+								<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Delete user" id="del${users[
+									i
+								].id}"><i class="fas fa-times"></i></a>
+								</td>
+								</tr>
+								`;
 					}
 
 					$('#alluserbody').html(`${searchres}`);
@@ -89,37 +106,37 @@ $(document).on('click', '.userid', function() {
 		success: data => {
 			let user = jQuery.parseJSON(data);
 			let usercard = `<!-- Card -->
-            <div class="card profile-card">
+				<div class="card profile-card">
 
-              <!-- Avatar -->
-              <div class="avatar z-depth-1-half mb-4">
-                <img src="/storage/Userimage/${user.image}" class="rounded-circle" alt="First sample avatar image">
-              </div>
+				<!-- Avatar -->
+				<div class="avatar z-depth-1-half mb-4">
+				<img src="/storage/Userimage/${user.image}" class="rounded-circle" alt="First sample avatar image">
+				</div>
 
-              <div class="card-body pt-0 mt-0" >
-              <div class="text-center">
-                  <h3 class="mb-3 font-weight-bold"><strong>${user.name}</strong></h3>
-                </div>
+				<div class="card-body pt-0 mt-0" >
+				<div class="text-center">
+				<h3 class="mb-3 font-weight-bold"><strong>${user.name}</strong></h3>
+				</div>
 
-                <ul class="striped list-unstyled">
-                  <li><strong>XL#:</strong> ${user.xl}</li>
+				<ul class="striped list-unstyled">
+				<li><strong>XL#:</strong> ${user.xl}</li>
 
-                  <li><strong>E-mail address:</strong> ${user.email}</li>
+				<li><strong>E-mail address:</strong> ${user.email}</li>
 
-                  <li><strong>Phone number:</strong> ${user.telephone}</li>
+				<li><strong>Phone number:</strong> ${user.telephone}</li>
 
-                  <li><strong>Country:</strong> ${user.country}</li>
+				<li><strong>Country:</strong> ${user.country}</li>
 
-                  <li><strong>City:</strong> ${user.city}</li>
+				<li><strong>City:</strong> ${user.city}</li>
 
-                  <li><strong>Parish:</strong> ${user.parish}</li>
-                </ul>
-                <!-- Name -->
-              
+				<li><strong>Parish:</strong> ${user.parish}</li>
+				</ul>
+				<!-- Name -->
 
-              </div>
 
-            </div>`;
+				</div>
+
+				</div>`;
 			$('#usercardbody').html(`${usercard}`);
 		},
 	});
@@ -139,7 +156,7 @@ $(document).on('click', '.userdel', function() {
 		displayMode: 'once',
 		id: 'question',
 		zindex: 999,
-		message: 'Are you sure about that?',
+		message: 'Are you sure you want to delete this user?',
 		position: 'center',
 		buttons: [
 			[
@@ -169,5 +186,8 @@ $(document).on('click', '.userdel', function() {
 			],
 		],
 	});
-	console.log(id);
 });
+// Checks every 10 seconds
+window.setInterval(() => {
+	Newusercheck();
+}, 10000);
