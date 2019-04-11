@@ -187,7 +187,7 @@ $(document).on('click', '.userdel', function() {
 		],
 	});
 });
-// Checks every 10 seconds
+// Checks every 10 seconds more
 window.setInterval(() => {
 	Newusercheck();
 }, 10000);
