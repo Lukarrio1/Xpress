@@ -66,7 +66,9 @@ Route::prefix('admin')->group(function () {
     Route::post('/allusers', 'Admin\UserController@Singleuser');
     Route::post('/search', 'Admin\UserController@Search');
     Route::get('/delivery', 'Admin\DeliveryController@Newdelivery')->name('admin.delivery');
-    Route::get('/invoices', 'Admin\InvoiceController@Allinvoices')->name('admin.invoice');
+    Route::get('/invoices', 'Admin\InvoiceController@index')->name('admin.invoice');
+    Route::get('/invoices/all', 'Admin\InvoiceController@Allinvoices');
+    Route::post('/invoice/update','Admin\InvoiceController@UpdateInvoice');
     Route::get('/messages', 'Admin\MessageController@index')->name('admin.message');
     Route::post('/user/delete','Admin\UserController@DeleteUser');
 });

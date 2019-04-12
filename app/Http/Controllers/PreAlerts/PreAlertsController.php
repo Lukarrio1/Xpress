@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PreAlerts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Prealerts;
+use Illuminate\Support\Facades\Auth;
 
 class PreAlertsController extends Controller
 {
@@ -61,6 +62,9 @@ class PreAlertsController extends Controller
         $filenametostore = $filename . '_' . time() . '.' . $extension;
         $store = new Prealerts;
         $store->user_id = Auth::user()->id;
+        $store->name= Auth::user()->name;
+        $store->email= Auth::user()->email;
+        $store->xl= Auth::user()->xl;
         $store->vender = htmlentities($request->vender);
         $store->tracking = htmlentities($request->tracking);
         $store->courier = htmlentities($request->courier);
@@ -71,7 +75,7 @@ class PreAlertsController extends Controller
         $path = $request->file('invoice')->storeAs('public/Invoice', $filenametostore);
         $store->invoice = $filenametostore;
         $store->save();
-        return view('/prealerts')->with('success', 'Pre-Alert sent..');
+        return view('PreAlerts.create')->with('success', 'Pre-Alert sent..');
 
     }
 

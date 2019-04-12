@@ -1,6 +1,13 @@
 // Loads  at start up ..
 $(document).ready(() => {
 	Allusers();
+	Allinvoice();
+	$(document).ajaxStart(function() {
+		$('#invloading').css('display', 'block');
+	});
+	$(document).ajaxComplete(function() {
+		$('#invloading').css('display', 'none');
+	});
 });
 
 // this function returns all of the users
@@ -10,7 +17,7 @@ Allusers = () => {
 		let text = '';
 		let amount = user.length;
 		console.log('Current user' + amount);
-		for (let i = 0; i < user.length; i++) {
+		for (let i = 0; i < amount; i++) {
 			text += `
 					<tr>
 					<th scope="row">${user[i].xl}</th>
@@ -45,9 +52,9 @@ $('#usersearch').on('keyup', () => {
 			dataType: 'text',
 			success: data => {
 				let users = jQuery.parseJSON(data);
-				let searchres = '';
+				let searches = '';
 				for (let i = 0; i < users.length; i++) {
-					searchres += `<tr>
+					searches += `<tr>
 								<th scope="row">${users[i].xl}</th>
 								<td>${users[i].name}</td>
 								<td>${users[i].telephone}</td>
@@ -65,7 +72,7 @@ $('#usersearch').on('keyup', () => {
 								</tr>
 								`;
 				}
-				$('#alluserbody').html(`${searchres}`);
+				$('#alluserbody').html(`${searches}`);
 			},
 		});
 	} else {
@@ -171,6 +178,72 @@ $(document).on('click', '.userdel', function() {
 				},
 			],
 		],
+	});
+});
+// this function shows all of the prealerts to the admin
+Allinvoice = () => {
+	$.get('/admin/invoices/all', data => {
+		let inv = jQuery.parseJSON(data);
+		console.log(inv.length);
+		let invoice = '';
+		for (let i = 0; i < inv.length; i++) {
+			if (inv[i].token == 'true') {
+				_class = "<tr class='table-info'>";
+				check = '';
+			} else {
+				_class = '<tr class="">';
+				check = 'checked';
+			}
+			created_at = new Date(`${inv[i].created_at}`);
+			created = created_at.toString().slice(0, 24);
+			updated_at = new Date(`${inv[i].updated_at}`);
+			updated = updated_at.toString().slice(0, 24);
+			invoice += `
+		${_class}
+		<th scope="row">
+		  <input class="form-check-input invoice" type="checkbox"  ${check}  id="inv${inv[
+				i
+			].id}" value="true">
+		  <label class="form-check-label" for="inv${inv[i]
+				.id}" class="label-table"></label>
+		</th>
+		<td>${inv[i].xl}</td>
+		<td>${inv[i].name}</td>
+		<td>${inv[i].email}</td>
+		<td>${inv[i].vender}</td>
+		<td>${inv[i].tracking}</td>
+		<td>${inv[i].courier}</td>
+		<td>${inv[i].description}</td>
+		<td>$${inv[i].value}</td>
+		<td>${inv[i].weight}lbs</td>
+		<td><a href="/storage/invoice/${inv[i].invoice}">${inv[i].invoice}</a></td>
+		<td>${created}</td>
+		<td>${updated}</td>
+	  </tr>`;
+		}
+		$('#invoicebody1').html(`${invoice}`);
+	});
+};
+$(document).on('click', '.invoice', function() {
+	let invoice = $(this).attr('id');
+	let inval = $(this).val();
+	let id = invoice.substring(3);
+	$.ajax({
+		url: '/admin/invoice/update',
+		type: 'POST',
+		data: {
+			_token: CSRF_TOKEN,
+			id: id,
+			inv: inval,
+		},
+		dataType: 'text',
+		success: data => {
+			Allinvoice();
+			iziToast.success({
+				position: 'topCenter',
+				message: 'Invoice viewed',
+			});
+		},
 	});
 });
 // Checks every 10 seconds more

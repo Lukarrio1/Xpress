@@ -15,7 +15,11 @@ class CreatePrealertsTable extends Migration
     {
         Schema::create('prealerts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('token')->default('true');
             $table->string('vender');
+            $table->string("name");
+            $table->string('xl');
+            $table->string('email');
             $table->string('tracking');
             $table->string('courier');
             $table->string('pkgname');
