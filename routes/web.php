@@ -93,7 +93,6 @@ Route::prefix('shipments')->group(function () {
     Route::get('/', 'Shipment\ShipmentsController@index')->name('shipments.home');
     Route::get('/all', 'Shipment\ShipmentsController@shipments')->name('shipments.all');
     Route::get('/notification', 'Shipment\ShipmentsController@notification');
-    Route::post('/update', 'Shipment\ShipmentsController@update');
 });
 // these are the messages routes
 Route::prefix('Messages')->group(function () {

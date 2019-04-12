@@ -311,20 +311,6 @@ spnotification = verify => {
 		NotificationCounter(verify, sp);
 	});
 };
-
-$('#spall').add('#spnotify').click(() => {
-	$.ajax({
-		url: '/shipments/update',
-		type: 'POST',
-		data: {
-			_token: CSRF_TOKEN,
-			status: 1,
-		},
-		dataType: 'text',
-		success: data => {},
-	});
-});
-
 $('#savetodo').click(() => {
 	let todo = $('#todotextarea').val();
 	$.ajax({

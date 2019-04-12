@@ -43,6 +43,8 @@ class UserController extends Controller
             'image' => $user->userimage,
             'xl' => $user->xl,
             'id'=>$user->id,
+            'created'=>date('M j, Y h:ia', strtotime($user->created_at )),
+            'updated'=>date('M j, Y h:ia', strtotime($user->updated_at ))
         ]);
     }
 
@@ -53,17 +55,17 @@ class UserController extends Controller
         ]);
         $search =  htmlentities($request->search);
         $results = DB::table('users')
-            ->where('name', 'LIKE', '%'.$search.'%')
-            ->orWhere('email', 'LIKE', '%'.$search.'%')
-            // ->orWhere('telephone', 'LIKE', '%'.$search.'%')
-            // ->orWhere('city', 'LIKE', '%'.$search.'%')
-            ->orWhere('parish', 'LIKE', '%'.$search.'%')
-            // ->orWhere('Country', 'LIKE', '%'.$search.'%')
-            ->orWhere('address', 'LIKE', '%'.$search.'%')
-            ->orWhere('xl', 'LIKE', '%'.$search.'%')
-            ->orderby('created_at', 'desc')
-            ->get();
-        return json_encode($results);
+                ->where('name', 'LIKE', '%'.$search.'%')
+                ->orWhere('email', 'LIKE', '%'.$search.'%')
+                // ->orWhere('telephone', 'LIKE', '%'.$search.'%')
+                // ->orWhere('city', 'LIKE', '%'.$search.'%')
+                // ->orWhere('parish', 'LIKE', '%'.$search.'%')
+                // ->orWhere('Country', 'LIKE', '%'.$search.'%')
+                // ->orWhere('address', 'LIKE', '%'.$search.'%')
+                ->orWhere('xl', 'LIKE', '%'.$search.'%')
+                ->orderby('created_at', 'desc')
+                ->get();
+            return json_encode($results);
     }
 
     public function DeleteUser(Request $request){

@@ -10,7 +10,6 @@ Allusers = () => {
 		let text = '';
 		let amount = user.length;
 		console.log('Current user' + amount);
-		Newusercheck(amount);
 		for (let i = 0; i < user.length; i++) {
 			text += `
 					<tr>
@@ -31,39 +30,24 @@ Allusers = () => {
 		}
 		$('#alluserbody').html(`${text}`);
 	});
+};
 
-	Newusercheck = amount => {
-		$.get('/admin/allusers', data => {
-			let user = jQuery.parseJSON(data);
-			console.log('Newuser=' + user.length);
-			if (amount < user.length) {
-				console.log('you have a new user');
-				// Allusers();
-			} else if (amount > user.length) {
-				console.log('you removed a user');
-				// Allusers();
-			} else if (amount == user.length) {
-				console.log('no new users to show');
-			}
-		});
-	};
-
-	$('#usersearch').on('keyup', () => {
+$('#usersearch').on('keyup', () => {
+	if ($('#usersearch').val().length > 3) {
 		$('#alluserbody').html('');
-		if ($('#usersearch').val().length > 0) {
-			$.ajax({
-				url: '/admin/search',
-				type: 'POST',
-				data: {
-					_token: CSRF_TOKEN,
-					search: $('#usersearch').val(),
-				},
-				dataType: 'text',
-				success: data => {
-					let users = jQuery.parseJSON(data);
-					let searchres = '';
-					for (let i = 0; i < users.length; i++) {
-						searchres += `<tr>
+		$.ajax({
+			url: '/admin/search',
+			type: 'POST',
+			data: {
+				_token: CSRF_TOKEN,
+				search: $('#usersearch').val(),
+			},
+			dataType: 'text',
+			success: data => {
+				let users = jQuery.parseJSON(data);
+				let searchres = '';
+				for (let i = 0; i < users.length; i++) {
+					searchres += `<tr>
 								<th scope="row">${users[i].xl}</th>
 								<td>${users[i].name}</td>
 								<td>${users[i].telephone}</td>
@@ -80,16 +64,14 @@ Allusers = () => {
 								</td>
 								</tr>
 								`;
-					}
-
-					$('#alluserbody').html(`${searchres}`);
-				},
-			});
-		} else {
-			Allusers();
-		}
-	});
-};
+				}
+				$('#alluserbody').html(`${searchres}`);
+			},
+		});
+	} else {
+		Allusers();
+	}
+});
 
 // this function gets the id of the user on click
 $(document).on('click', '.userid', function() {
@@ -130,6 +112,10 @@ $(document).on('click', '.userid', function() {
 				<li><strong>City:</strong> ${user.city}</li>
 
 				<li><strong>Parish:</strong> ${user.parish}</li>
+
+				<li><strong>Joined:</strong> ${user.created}</li>
+
+				<li><strong>Updated:</strong> ${user.updated}</li>
 				</ul>
 				<!-- Name -->
 
@@ -188,6 +174,4 @@ $(document).on('click', '.userdel', function() {
 	});
 });
 // Checks every 10 seconds more
-window.setInterval(() => {
-	Newusercheck();
-}, 10000);
+window.setInterval(() => {}, 10000);
