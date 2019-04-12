@@ -60,6 +60,12 @@
                     <th class="th-lg"><a>First Name <i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a href="">Last Name<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a href="">Email<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Vendor Name<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Tracking No.<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Courier<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Product<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Value<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Weight<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a href="">Invoice<i class=" ml-1"></i></a></th>
                     </tr>
                 </thead>
@@ -76,6 +82,12 @@
                     <td>Timothy</td>
                     <td>Russell</td>
                     <td>russelltimothy2@gmail.com</td>
+                    <td>Amazon</td>
+                    <td>1wr544dni8shd8s</td>
+                    <td>Fedex</td>
+                    <td>Phone Case for Samsung galaxy s9 plus.</td>
+                    <td>$9.99</td>
+                    <td>1 lbs</td>
                     <td>Invoice.pdf</td>
                    
                   </tr>
@@ -88,6 +100,12 @@
                     <td>Jason</td>
                     <td>Ennis</td>
                     <td>tomennis1997@gmail.com</td>
+                    <td>Swappa</td>
+                    <td>23mdjkjka8ahd8ad676dhasdh</td>
+                    <td>UPS</td>
+                    <td>Google Pixel 3 XL</td>
+                    <td>$700</td>
+                    <td>1 lbs</td>
                     <td>Invoice2.pdf</td>
                     </tr>
                   <tr>
