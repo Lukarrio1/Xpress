@@ -21,7 +21,11 @@ class ShipmentsController extends Controller
      */
     public function index()
     {
-
+        $user = Auth::user()->id;
+        DB::table('spnotifies')
+        ->where('user_id','=',$user)
+        ->where('token','=','true')
+        ->update(['token'=>'false']);
         return view('Shipments.index');
     }
 
@@ -58,47 +62,6 @@ class ShipmentsController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {   
-        $this->validate($request,[
-            'status'=>'required',
-        ]);
-
-        if($request->status==1){
-        $user = Auth::user()->id;
-        DB::table('spnotifies')
-        ->where('user_id','=',$user)
-        ->where('token','=','true')
-        ->update(['token'=>'false']);
-       
-        return json_encode($request->status);
-    }
-}
 
     /**
      * Remove the specified resource from storage.
