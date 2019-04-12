@@ -4,64 +4,9 @@
 
       <!-- Section: Basic examples -->
       <section>
+                <!-- Top Table UI -->
+        <div class=" p-2 mb-5">
 
-        <h5 class="my-4 dark-grey-text font-weight-bold">Responsive table</h5>
-
-        <!-- Top Table UI -->
-        <div class="card p-2 mb-5">
-
-          <!-- Grid row -->
-          <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-lg-3 col-md-12">
-
-              <!-- Name -->
-              <select class="mdb-select colorful-select dropdown-primary mx-2 md-form mt-3 md-dropdown">
-                <option value="" disabled selected>Bulk actions</option>
-                <option value="1">Delate</option>
-                <option value="2">Export</option>
-                <option value="3">Change segment</option>
-              </select>
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-lg-3 col-md-6">
-
-              <!-- Blue select -->
-              <select class="mdb-select colorful-select dropdown-primary mx-2 md-form mt-3 md-dropdown">
-                <option value="" disabled selected>Show only</option>
-                <option value="1">All <span> (2000)</span></option>
-                <option value="2">Never opened <span> (200)</span></option>
-                <option value="3">Opened but unanswered <span> (1800)</span></option>
-                <option value="4">Answered <span> (200)</span></option>
-                <option value="5">Unsunscribed <span> (50)</span></option>
-              </select>
-              <!-- /Blue select -->
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-lg-3 col-md-6">
-
-              <!-- Blue select -->
-              <select class="mdb-select colorful-select dropdown-primary mx-2 md-form mt-3 md-dropdown">
-                <option value="" disabled selected>Filter segments</option>
-                <option value="1">Contacts in no segments <span> (100)</span></option>
-                <option value="1">Segment 1 <span> (2000)</span></option>
-                <option value="2">Segment 2 <span> (1000)</span></option>
-                <option value="3">Segment 3 <span> (4000)</span></option>
-              </select>
-              <!-- /Blue select -->
-
-            </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-lg-3 col-md-6">
 
               <form class="form-inline md-form mt-2 ml-2">
                 <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;">
@@ -83,16 +28,16 @@
           <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
 
             <div>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-th-large mt-0"></i></button>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-columns mt-0"></i></button>
+              {{--  <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-th-large mt-0"></i></button>
+              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-columns mt-0"></i></button>  --}}
             </div>
 
-            <a href="" class="white-text mx-3">Table name</a>
+            <a href="" class="white-text align-content-center mx-3">Invoices</a>
 
             <div>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-pencil-alt mt-0"></i></button>
+              {{--  <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-pencil-alt mt-0"></i></button>
               <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-eraser mt-0"></i></button>
-              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-info-circle mt-0"></i></button>
+              <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-info-circle mt-0"></i></button>  --}}
             </div>
 
           </div>
@@ -111,13 +56,12 @@
                       <input class="form-check-input" type="checkbox" id="checkbox">
                       <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
                     </th>
-                    <th class="th-lg"><a>First Name <i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Last Name<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Username<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Email<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Country<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">City<i class="fas fa-sort ml-1"></i></a></th>
-                  </tr>
+                    <th class="th-lg"><a href="">XL Number<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a>First Name <i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Last Name<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Email<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a href="">Invoice<i class=" ml-1"></i></a></th>
+                    </tr>
                 </thead>
                 <!-- Table head -->
 
@@ -128,61 +72,26 @@
                       <input class="form-check-input" type="checkbox" id="checkbox1">
                       <label class="form-check-label" for="checkbox1" class="label-table"></label>
                     </th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>markotto@gmail.com</td>
-                    <td>USA</td>
-                    <td>San Francisco</td>
+                    <td>10002</td>
+                    <td>Timothy</td>
+                    <td>Russell</td>
+                    <td>russelltimothy2@gmail.com</td>
+                    <td>Invoice.pdf</td>
+                   
                   </tr>
                   <tr>
                     <th scope="row">
                       <input class="form-check-input" type="checkbox" id="checkbox2">
                       <label class="form-check-label" for="checkbox2" class="label-table"></label>
                     </th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>jacobt@gmail.com</td>
-                    <td>France</td>
-                    <td>Paris</td>
-                  </tr>
+                    <td>10003</td>
+                    <td>Jason</td>
+                    <td>Ennis</td>
+                    <td>tomennis1997@gmail.com</td>
+                    <td>Invoice2.pdf</td>
+                    </tr>
                   <tr>
-                    <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox3">
-                      <label class="form-check-label" for="checkbox3" class="label-table"></label>
-                    </th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>larrybird@gmail.com</td>
-                    <td>Germany</td>
-                    <td>Berlin</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox4">
-                      <label class="form-check-label" for="checkbox4" class="label-table"></label>
-                    </th>
-                    <td>Paul</td>
-                    <td>Topolski</td>
-                    <td>@P_Topolski</td>
-                    <td>ptopolski@gmail.com</td>
-                    <td>Poland</td>
-                    <td>Warsaw</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      <input class="form-check-input" type="checkbox" id="checkbox5">
-                      <label class="form-check-label" for="checkbox5" class="label-table"></label>
-                    </th>
-                    <td>Anna</td>
-                    <td>Doe</td>
-                    <td>@andy</td>
-                    <td>annadoe@gmail.com</td>
-                    <td>Spain</td>
-                    <td>Madrid</td>
-                  </tr>
+                             
                 </tbody>
                 <!-- Table body -->
               </table>
@@ -194,14 +103,14 @@
             <!-- Bottom Table UI -->
             <div class="d-flex justify-content-between">
 
-              <!-- Name -->
+              {{--  <!-- Name -->
               <select class="mdb-select colorful-select dropdown-primary mt-2">
                 <option value="" disabled>Rows number</option>
                 <option value="1" selected>5 rows</option>
                 <option value="2">25 rows</option>
                 <option value="3">50 rows</option>
                 <option value="4">100 rows</option>
-              </select>
+              </select>  --}}
 
               <!-- Pagination -->
               <nav class="my-4">
