@@ -5,7 +5,8 @@ namespace App\Http\Controllers\PreAlerts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Prealerts;
-
+use illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 class PreAlertsController extends Controller
 {
     public function __construct()

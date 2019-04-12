@@ -104,7 +104,7 @@
                     <td>23mdjkjka8ahd8ad676dhasdh</td>
                     <td>UPS</td>
                     <td>Google Pixel 3 XL</td>
-                    <td>$700</td>
+                    <td>$750</td>
                     <td>1 lbs</td>
                     <td>Invoice2.pdf</td>
                     </tr>
