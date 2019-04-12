@@ -15,7 +15,7 @@ class InvoiceController extends Controller
     }
 
     public function index(){
-        return view('admin.invoices');
+        return view('admin.Invoices');
     }
 
     public function Allinvoices(){
