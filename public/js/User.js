@@ -1,3 +1,4 @@
+
 // runs  at start up..
 $(document).ready(() => {
 	TokenCheck();
@@ -220,7 +221,6 @@ $('#Deletebtn').click(() => {
 		],
 	});
 });
-
 //  all you need to know is that this function goes to the Pdata in UserController
 Pdata = () => {
 	$('#oldpass').val('');
