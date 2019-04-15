@@ -72,6 +72,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/user/delete','Admin\UserController@DeleteUser');
     Route::get('/invoice/notification','Admin\InvoiceController@invoiceNotification');
     Route::post('/invoice/notification','Admin\InvoiceController@InvoiceNotificationUpdate');
+    Route::post('/invoice/search','Admin\InvoiceController@InvoiceSearch');
     
 });
 

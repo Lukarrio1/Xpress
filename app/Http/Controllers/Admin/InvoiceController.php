@@ -62,4 +62,20 @@ class InvoiceController extends Controller
         $update->save();
         return 1;
     }
+
+    public function InvoiceSearch(Request $request){
+        $this->validate($request,[
+        'search'=>'required'
+        ]);
+        $search = $request->search;
+        $result =Prealerts::where('xl', 'LIKE', '%'.$search.'%')
+        ->orwhere('email','like','%'.$search.'%')
+        ->orwhere('courier','like','%'.$search.'%')
+        ->orwhere('tracking','like','%'.$search.'%')
+        ->orwhere('name','like','%'.$search.'%')
+        ->orderBy('created_at','DESC')
+        ->get();
+        return json_encode($result);
+
+    }
 }

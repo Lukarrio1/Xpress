@@ -3,6 +3,7 @@ $(document).ready(() => {
 	Allusers();
 	Allinvoice();
 	InvoiceNt();
+	InvoiceSearch()
 	$('#invloading').css('display', 'none');
 	// $(document).ajaxStart(function() {
 	// 	$('#invloading').css('display', 'block');
@@ -255,7 +256,6 @@ $(document).on('click', '.invoice', function() {
 		},
 		dataType: 'text',
 		success: data => {
-
 			Allinvoice();
 			iziToast.success({
 				position: 'topCenter',
@@ -313,6 +313,91 @@ let sum=0;
 sum = invoice
 $("#invoicentc").html(`${sum}`);
 }
+
+
+InvoiceSearch=()=>{
+	$("#invoicesearch").on('keyup',function(){
+		let search = $("#invoicesearch").val();
+		if(search.length>0){
+			console.log(search.length)
+			$.ajax({
+				url: '/admin/invoice/search',
+				type: 'POST',
+				data: {
+					_token: CSRF_TOKEN,
+					search:search,
+				},
+				dataType: 'text',
+				success: data => {
+				let inv = jQuery.parseJSON(data)
+				let invoice =""
+				for (let i = 0; i < inv.length; i++) {
+					if (inv[i].token == 'true') {
+						_class = "<tr class='table-info'>";
+						check = '';
+					} else {
+						_class = '<tr class="">';
+						check = 'checked';
+					}
+					created_at = new Date(`${inv[i].created_at}`);
+					created = created_at.toString().slice(0, 24);
+					updated_at = new Date(`${inv[i].updated_at}`);
+					updated = updated_at.toString().slice(0, 24);
+					invoice += `
+				${_class}
+				<th scope="row">
+					<input class="form-check-input searchin" type="checkbox"  ${check}  id="inv${inv[
+						i
+					].id}" value="true">
+					<label class="form-check-label" for="inv${inv[i]
+						.id}" class="label-table"></label>
+				</th>
+				<td>${inv[i].xl}</td>
+				<td>${inv[i].name}</td>
+				<td>${inv[i].email}</td>
+				<td>${inv[i].vender}</td>
+				<td>${inv[i].tracking}</td>
+				<td>${inv[i].courier}</td>
+				<td>${inv[i].description}</td>
+				<td>$${inv[i].value}</td>
+				<td>${inv[i].weight}lbs</td>
+				<td><a href="/storage/invoice/${inv[i].invoice}">${inv[i].invoice}</a></td>
+				<td>${created}</td>
+				<td>${updated}</td>
+				</tr>`;
+				}
+				$('#invoicebody1').html(`${invoice}`);
+				},
+			});
+		
+		}else{
+			Allinvoice();
+		}
+	
+	})
+}
+
+$(document).on('click', '.searchin', function() {
+	let invoice = $(this).attr('id');
+	let inval = $(this).val();
+	let id = invoice.substring(3);
+	$.ajax({
+		url: '/admin/invoice/update',
+		type: 'POST',
+		data: {
+			_token: CSRF_TOKEN,
+			id: id,
+			inv: inval,
+		},
+		dataType: 'text',
+		success: data => {
+			iziToast.success({
+				position: 'topCenter',
+				message: 'Invoice viewed',
+			});
+		},
+	});
+});
 // Checks every 10 seconds more
 window.setInterval(() => {
 	InvoiceNt()
