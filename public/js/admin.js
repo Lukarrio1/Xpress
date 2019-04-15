@@ -319,7 +319,6 @@ InvoiceSearch=()=>{
 	$("#invoicesearch").on('keyup',function(){
 		let search = $("#invoicesearch").val();
 		if(search.length>0){
-			console.log(search.length)
 			$.ajax({
 				url: '/admin/invoice/search',
 				type: 'POST',

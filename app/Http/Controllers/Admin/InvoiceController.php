@@ -21,7 +21,7 @@ class InvoiceController extends Controller
 
     public function Allinvoices(){
     
-    $inv=Prealerts::orderBy('created_at', 'DESC')->get();
+    $inv=Prealerts::orderBy('updated_at', 'DESC')->get();
         return json_encode($inv); 
     }
     
