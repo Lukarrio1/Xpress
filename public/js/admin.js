@@ -184,7 +184,6 @@ $(document).on('click', '.userdel', function() {
 Allinvoice = () => {
 	$.get('/admin/invoices/all', data => {
 		let inv = jQuery.parseJSON(data);
-		console.log(inv.length);
 		let invoice = '';
 		for (let i = 0; i < inv.length; i++) {
 			if (inv[i].token == 'true') {
