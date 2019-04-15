@@ -2,12 +2,14 @@
 $(document).ready(() => {
 	Allusers();
 	Allinvoice();
-	$(document).ajaxStart(function() {
-		$('#invloading').css('display', 'block');
-	});
-	$(document).ajaxComplete(function() {
-		$('#invloading').css('display', 'none');
-	});
+	InvoiceNt();
+	$('#invloading').css('display', 'none');
+	// $(document).ajaxStart(function() {
+	// 	$('#invloading').css('display', 'block');
+	// });
+	// $(document).ajaxComplete(function() {
+	// 	$('#invloading').css('display', 'none');
+	// });
 });
 
 // this function returns all of the users
@@ -16,6 +18,9 @@ Allusers = () => {
 		var user = jQuery.parseJSON(data);
 		let text = '';
 		let amount = user.length;
+		window.setInterval(() => {
+			UserCheck(amount)
+			}, 10000);
 		console.log('Current user' + amount);
 		for (let i = 0; i < amount; i++) {
 			text += `
@@ -38,6 +43,15 @@ Allusers = () => {
 		$('#alluserbody').html(`${text}`);
 	});
 };
+
+UserCheck=(amount)=>{
+	$.get('/admin/allusers', data => {
+		var user = jQuery.parseJSON(data);
+		if(amount != user.length){
+			Allusers();
+		}
+	})
+}
 
 $('#usersearch').on('keyup', () => {
 	if ($('#usersearch').val().length > 3) {
@@ -185,6 +199,10 @@ Allinvoice = () => {
 	$.get('/admin/invoices/all', data => {
 		let inv = jQuery.parseJSON(data);
 		let invoice = '';
+		window.setInterval(() => {
+		InCheck(inv.length);
+		}, 10000);
+
 		for (let i = 0; i < inv.length; i++) {
 			if (inv[i].token == 'true') {
 				_class = "<tr class='table-info'>";
@@ -237,6 +255,7 @@ $(document).on('click', '.invoice', function() {
 		},
 		dataType: 'text',
 		success: data => {
+
 			Allinvoice();
 			iziToast.success({
 				position: 'topCenter',
@@ -245,5 +264,56 @@ $(document).on('click', '.invoice', function() {
 		},
 	});
 });
+
+InvoiceNt=()=>{
+	$.get('/admin/invoice/notification', data => {
+	let notify = jQuery.parseJSON(data);
+	let text=""
+	let invoice = notify.length;
+	NotificationCount(invoice)
+	for(let i =0; i<notify.length;i++){
+	text+=`
+	<a class="dropdown-item" href="invoices">
+	<i class="fas fa-file-invoice mr-2" aria-hidden="true"></i>
+	<span id="nt${notify[i].id}" class="nt">${notify[i].notification}</span>
+    </a>
+	`
+	}
+	$("#invoicent").html(`${text}`)
+	});
+}
+
+$(document).on('click', '.nt', function() {
+	let invoice = $(this).attr('id');
+	let id = invoice.substring(2);
+	$.ajax({
+		url: '/admin/invoice/notification',
+		type: 'POST',
+		data: {
+			_token: CSRF_TOKEN,
+			id: id,
+		},
+		dataType: 'text',
+		success: data => {
+		},
+	});
+});
+
+InCheck=(invlen)=>{
+	$.get('/admin/invoices/all', data => {
+	let inv = jQuery.parseJSON(data);
+	if(invlen!=inv.length){
+		Allinvoice();
+		}
+	})
+}
+
+NotificationCount=(invoice)=>{
+let sum=0;
+sum = invoice
+$("#invoicentc").html(`${sum}`);
+}
 // Checks every 10 seconds more
-window.setInterval(() => {}, 10000);
+window.setInterval(() => {
+	InvoiceNt()
+}, 10000);

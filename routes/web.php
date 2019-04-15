@@ -57,11 +57,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
-    // admin user routes
+
     Route::get('/updateshipments', 'Admin\ShipmentsController@UpdateShipments')->name('admin.shipments');
     Route::get('/news', 'Admin\NewsController@Allnews')->name('admin.news');
     Route::get('/users', 'Admin\UserController@index')->name('admin.allusers');
-    // this is a get request for the all users function
     Route::get('/allusers', 'Admin\UserController@Allusers');
     Route::post('/allusers', 'Admin\UserController@Singleuser');
     Route::post('/search', 'Admin\UserController@Search');
@@ -71,7 +70,11 @@ Route::prefix('admin')->group(function () {
     Route::post('/invoice/update','Admin\InvoiceController@UpdateInvoice');
     Route::get('/messages', 'Admin\MessageController@index')->name('admin.message');
     Route::post('/user/delete','Admin\UserController@DeleteUser');
+    Route::get('/invoice/notification','Admin\InvoiceController@invoiceNotification');
+    Route::post('/invoice/notification','Admin\InvoiceController@InvoiceNotificationUpdate');
+    
 });
+
 // notification
 Route::prefix('Notifications')->group(function () {
     Route::get('/', 'NotificationController@Token');

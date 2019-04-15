@@ -307,6 +307,8 @@ spnotification = verify => {
 			$('#spnotify').html(
 				`<a class='dropdown-item' href='/shipments'>New shipment added. <span class='float-right'> <i class="fas fa-box-open"></i></span></a>`,
 			);
+		}else{
+			sp=0
 		}
 		NotificationCounter(verify, sp);
 	});

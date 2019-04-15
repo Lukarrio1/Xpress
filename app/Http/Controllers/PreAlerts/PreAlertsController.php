@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Prealerts;
 use Illuminate\Support\Facades\Auth;
-
+use App\invoicenf as nt;
 class PreAlertsController extends Controller
 {
     public function __construct()
@@ -64,7 +64,17 @@ class PreAlertsController extends Controller
         $store->user_id = Auth::user()->id;
         $store->name= Auth::user()->name;
         $store->email= Auth::user()->email;
-        $store->xl= Auth::user()->xl;
+        $store->xl= Auth::user()->first()->xl;
+        $notify = nt::where('user_id',Auth::user()->id)->first();
+        if(empty($notify->user_id)){
+        $notify = New nt;
+        $notify->user_id = Auth::user()->id;
+        $notify->notification = "New pre-alert from ".Auth::user()->name."";
+        $notify->save();
+        }else{
+        $notify->clicked="false";
+        $notify->save();
+        }
         $store->vender = htmlentities($request->vender);
         $store->tracking = htmlentities($request->tracking);
         $store->courier = htmlentities($request->courier);
