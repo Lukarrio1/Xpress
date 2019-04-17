@@ -390,6 +390,7 @@ $(document).on('click', '.searchin', function() {
 		},
 		dataType: 'text',
 		success: data => {
+			Allinvoice();
 			iziToast.success({
 				position: 'topCenter',
 				message: 'Invoice viewed',
