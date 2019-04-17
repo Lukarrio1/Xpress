@@ -21,7 +21,7 @@ class InvoiceController extends Controller
 
     public function Allinvoices(){
     
-    $inv=Prealerts::orderBy('updated_at', 'ASC')->get();
+    $inv=Prealerts::orderBy('updated_at', 'DESC')->get();
         return json_encode($inv); 
     }
     
@@ -49,7 +49,7 @@ class InvoiceController extends Controller
     }
 
     public function InvoiceNotification(){
-    $notify = Notify::where('clicked','false')->orderBy('updated_at','ASC')->get();
+    $notify = Notify::where('clicked','false')->orderBy('created_at','DESC')->get();
     return json_encode($notify);
     }
 
