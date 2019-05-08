@@ -55,7 +55,7 @@
                  <div class="row mt-3">
                      <div class="col-6">
                      <a href="{{route('password.request')}}" class="text-white">
-                                 <small>Forgot password?</small>
+                                 <small>Forgot password? hello there thi9s is jason </small>
                              </a>
                                              </div>
                      <div class="col-6 text-right">
