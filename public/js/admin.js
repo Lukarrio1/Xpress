@@ -402,5 +402,3 @@ $(document).on("click", ".searchin", function() {
 window.setInterval(() => {
   InvoiceNt();
 }, 10000);
-
-
