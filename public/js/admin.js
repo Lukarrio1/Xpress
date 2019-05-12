@@ -276,7 +276,7 @@ InvoiceNt = () => {
     NotificationCount(invoice);
     for (let i = 0; i < notify.length; i++) {
       text += `
-	<a class="dropdown-item" href="invoices">
+	<a class="dropdown-item" href="admin/invoices">
 	<i class="fas fa-file-invoice mr-2" aria-hidden="true"></i>
 	<span id="nt${notify[i].id}" class="nt">${notify[i].notification}</span>
     </a>

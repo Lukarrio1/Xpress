@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Auth;
+use App\Admin;
 
 class AdminLoginController extends Controller
 {
@@ -15,6 +17,15 @@ class AdminLoginController extends Controller
 
     public function showLoginForm()
     {
+      $admin = Admin::all()->count();
+      if($admin<1){
+      $ad = new Admin;
+      $ad->name = "Admin";
+      $ad->email = "admin@xpress.com";
+      $ad->password =Hash::make("admin123");
+      $ad->save();
+      return view('auth.admin-login');
+      }
       return view('auth.admin-login');
     }
 
