@@ -310,7 +310,7 @@
         <li class="nav-item dropdown notifications-nav">
           <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <span class="badge red"><span id="notificount"></span></span> <i class="fas fa-bell"></i>
+            <span class="badge red"><span id="notificount">0</span></span> <i class="fas fa-bell"></i>
             <span class="d-none d-md-inline-block">Notifications</span>
           </a>
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" id="notificationcenter">

@@ -205,7 +205,7 @@ Allinvoice = () => {
     window.setInterval(() => {
       InCheck(inv.length);
     }, 10000);
-
+    $("#invcount").html(`${inv.length}`)
     for (let i = 0; i < inv.length; i++) {
       if (inv[i].token == "true") {
         _class = "<tr class='table-info'>";

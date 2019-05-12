@@ -33,7 +33,7 @@
             </div>
 
             <a  class="white-text align-content-center mx-3">Invoices 
-            <span class="spinner-border text-white" role="status" id="invloading">are loading....</span> 
+            <span class="badge red" id="invcount"></span> 
           </a>
 
             <div>
