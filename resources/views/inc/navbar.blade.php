@@ -62,7 +62,7 @@
         <!-- Logo -->
         <li class="logo-sn waves-effect">
           <div class="text-center">
-          <a href="/" class="pl-0"><img src="{{url('storage/xpresslogo.png')}}" style="height:100px;"></a>
+          <a href="/" class="pl-0"><img src="{{url('storage/xpress.png')}}" style="height:100px;"></a>
           </div>
         </li>
         <!--/. Logo -->
@@ -289,7 +289,7 @@
         <!--/. Side navigation links -->
       </ul>
       <div class="sidenav-bg mask-strong"></div>
-    </div>  --}}
+    {{-- </div>  --}} --}}
     <!--/. Sidebar navigation -->
 
     <!-- Navbar -->

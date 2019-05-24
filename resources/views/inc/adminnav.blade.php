@@ -7,7 +7,7 @@
             <!-- Logo -->
             <li class="logo-sn waves-effect py-3">
               <div class="text-center text-black-50">
-              <a href="#" class="pl-0"><img src="{{url('storage/xpresslogo.png')}}" style="height:100px;"></a>
+              <a href="#" class="pl-0"><img src="{{url('storage/xpress.png')}}" style="height:100px;"></a>
               </div>
             </li>
     
