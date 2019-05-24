@@ -22,7 +22,6 @@ Allusers = () => {
     window.setInterval(() => {
       UserCheck(amount);
     }, 10000);
-    console.log("Current user" + amount);
     for (let i = 0; i < amount; i++) {
       text += `
 					<tr>
