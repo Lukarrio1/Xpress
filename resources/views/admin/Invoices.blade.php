@@ -11,6 +11,7 @@
               <form class="form-inline md-form mt-2 ml-2" >
                 <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;" id="invoicesearch">
                 {{--  <button class="btn btn-sm btn-primary ml-2 px-1"><i class="fas fa-search"></i> </button>  --}}
+                    <span class="badge blue" id="searchcount">0</span>
               </form>
 
             </div>
@@ -33,6 +34,8 @@
             </div>
 
             <a  class="white-text align-content-center mx-3">Invoices 
+            <span class="badge green" id="completedinvcount"></span>
+           <span class="badge white-text">/</span>
             <span class="badge red" id="invcount"></span> 
           </a>
 

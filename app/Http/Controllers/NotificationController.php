@@ -34,7 +34,7 @@ class NotificationController extends Controller
         return json_encode([
         'notification'=>'Please verify your email address..',
         'icon'=>'<i class="fa fa-envelope-square">',
-        'time'=>$user->create_at,
+        'time'=>$user->created_at,
         ]);
         }
     }

@@ -18,7 +18,7 @@
               <div class="col-md-3">
                 <div class="md-form">
                 <input placeholder="Search..." type="text" class="form-control" id="usersearch">
-                <button class="fas-fa-search"></button>
+                {{-- <button class="fas-fa-search"></button> --}}
                 </div>
               </div>
             </div>

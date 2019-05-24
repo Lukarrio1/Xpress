@@ -33,12 +33,12 @@ Allusers = () => {
 					<a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="View ${
             user[i].name
           }" id="user${user[i].id}"><i class="fas fa-user"></i></a>
-					<a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 					<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
             user[i].id
           }"><i class="fas fa-times" ></i></a>
 					</td>
-					</tr>`;
+          </tr>`;
+      // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
     }
     $("#alluserbody").html(`${text}`);
   });
@@ -78,14 +78,16 @@ $("#usersearch").on("keyup", () => {
                   users[i].name
                 }" id="user${users[i].id}"><i
 								class="fas fa-user"></i></a>
-								<a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+								
 								<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Delete user" id="del${
                   users[i].id
                 }"><i class="fas fa-times"></i></a>
 								</td>
 								</tr>
-								`;
+                `;
+          // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
         }
+
         $("#alluserbody").html(`${searches}`);
       }
     });
@@ -196,19 +198,20 @@ $(document).on("click", ".userdel", function() {
     ]
   });
 });
-// this function shows all of the prealerts to the admin
+// this function shows all of the pre-alerts to the admin
 Allinvoice = () => {
   $.get("/admin/invoices/all", data => {
     let inv = jQuery.parseJSON(data);
     let invoice = "";
+    let maxinv = 0;
     window.setInterval(() => {
       InCheck(inv.length);
     }, 10000);
-    $("#invcount").html(`${inv.length}`)
     for (let i = 0; i < inv.length; i++) {
       if (inv[i].token == "true") {
         _class = "<tr class='table-info'>";
         check = "";
+        maxinv = maxinv + 1;
       } else {
         _class = '<tr class="">';
         check = "checked";
@@ -241,7 +244,16 @@ Allinvoice = () => {
 		<td>${updated}</td>
 	  </tr>`;
     }
+    if (maxinv == inv.length) {
+      $("#completedinvcount").removeClass("green");
+      $("#completedinvcount").addClass("badge red");
+    } else {
+      $("#completedinvcount").removeClass("red");
+      $("#completedinvcount").addClass("badge green");
+    }
+    $("#completedinvcount").html(`${maxinv}`);
     $("#invoicebody1").html(`${invoice}`);
+    $("#invcount").html(`${inv.length}`);
   });
 };
 $(document).on("click", ".invoice", function() {
@@ -330,6 +342,7 @@ InvoiceSearch = () => {
         success: data => {
           let inv = jQuery.parseJSON(data);
           let invoice = "";
+          $("#searchcount").html(`${inv.length}`);
           for (let i = 0; i < inv.length; i++) {
             if (inv[i].token == "true") {
               _class = "<tr class='table-info'>";
@@ -370,6 +383,7 @@ InvoiceSearch = () => {
         }
       });
     } else {
+      $("#searchcount").html(0);
       Allinvoice();
     }
   });

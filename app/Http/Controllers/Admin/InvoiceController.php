@@ -20,7 +20,6 @@ class InvoiceController extends Controller
     }
 
     public function Allinvoices(){
-    
     $inv=Prealerts::orderBy('updated_at', 'DESC')->get();
         return json_encode($inv); 
     }
@@ -67,7 +66,7 @@ class InvoiceController extends Controller
         $this->validate($request,[
         'search'=>'required'
         ]);
-        $search = $request->search;
+        $search =htmlentities($request->search);
         $result =Prealerts::where('xl', 'LIKE', '%'.$search.'%')
         ->orwhere('email','like','%'.$search.'%')
         ->orwhere('courier','like','%'.$search.'%')

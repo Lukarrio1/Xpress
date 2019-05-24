@@ -239,7 +239,7 @@ class UserController extends Controller
     // this function return all of the user create taskes
     public function alltodo(){
         $id= Auth::user()->id;
-        // this is a next way to queryj
+        // this is a next way to query
         $todo = todo::where('user_id',$id)->orderBy('created_at', 'DESC')->get();
         $count = count($todo);
         if($count==0){
