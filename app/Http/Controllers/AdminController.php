@@ -31,6 +31,7 @@ class AdminController extends Controller
     public function edit(){
         return view('admin.adminMain/edit');
     }
+    
    public function editData(){
        $admin = Admin::find(Auth::user()->id);
        return json_encode([
