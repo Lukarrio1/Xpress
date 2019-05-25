@@ -3,6 +3,13 @@
         "spnotify"
     ],
     "cSpell.ignoreWords": [
-        "prealerts"
+        "allinvoice",
+        "html",
+        "invoicentc",
+        "invoicesearch",
+        "oicentc",
+        "prealerts",
+        "searchcount",
+        "sum"
     ]
 }

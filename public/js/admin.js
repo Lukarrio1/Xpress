@@ -19,6 +19,7 @@ Allusers = () => {
     var user = jQuery.parseJSON(data);
     let text = "";
     let amount = user.length;
+    // $("#allusercount").html(`${user.length}`);
     window.setInterval(() => {
       UserCheck(amount);
     }, 10000);
@@ -33,6 +34,7 @@ Allusers = () => {
 					<a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="View ${
             user[i].name
           }" id="user${user[i].id}"><i class="fas fa-user"></i></a>
+           <a class="teal-text" data-toggle="tooltip" data-placement="top">  </a>
 					<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
             user[i].id
           }"><i class="fas fa-times" ></i></a>
