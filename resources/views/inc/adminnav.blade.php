@@ -92,7 +92,7 @@
                 <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">{{Auth::user()->name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="#">My Account</a>
+                <a class="dropdown-item" href="{{route('admin.edit')}}">My Account</a>
                 <a class="dropdown-item" href="{{route('admin.logout')}}">Log Out</a>
                       </div>
               </li>

@@ -4,6 +4,7 @@ $(document).ready(() => {
   Allinvoice();
   InvoiceNt();
   InvoiceSearch();
+  AdminData();
   $("#invloading").css("display", "none");
   // $(document).ajaxStart(function() {
   // 	$('#invloading').css('display', 'block');
@@ -413,6 +414,13 @@ $(document).on("click", ".searchin", function() {
     }
   });
 });
+
+AdminData = () => {
+  $.get("/admin/edit/data", data => {
+    admin = jQuery.parseJSON(data);
+    console.log(admin);
+  });
+};
 // Checks every 10 seconds more
 window.setInterval(() => {
   InvoiceNt();
