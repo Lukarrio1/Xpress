@@ -19,7 +19,7 @@ Allusers = () => {
     var user = jQuery.parseJSON(data);
     let text = "";
     let amount = user.length;
-    // $("#allusercount").html(`${user.length}`);
+    $("#allusercount").html(`${user.length}`);
     window.setInterval(() => {
       UserCheck(amount);
     }, 10000);

@@ -89,7 +89,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle waves-effect text-dark" href="#" id="userDropdown" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span>
+                <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">{{Auth::user()->name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                   <a class="dropdown-item" href="#">My Account</a>

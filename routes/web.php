@@ -73,7 +73,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/invoice/notification','Admin\InvoiceController@invoiceNotification');
     Route::post('/invoice/notification','Admin\InvoiceController@InvoiceNotificationUpdate');
     Route::post('/invoice/search','Admin\InvoiceController@InvoiceSearch');
-    
+    Route::get('/edit','AdminController@edit');
 });
 
 // notification
