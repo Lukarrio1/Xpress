@@ -88,6 +88,13 @@
                                     <input class="form-control" placeholder="Country" type="text" name="country" required>
                                 </div>
                                       </div>
+                                      <div class="form-group">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                              </div>
+                                    <input class="form-control" placeholder="TRN" type="text" name="trn" required>
+                                </div>
+                                      </div>
 
 
                             <div class="row my-4">
