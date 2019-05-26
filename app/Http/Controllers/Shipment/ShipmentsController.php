@@ -30,7 +30,7 @@ class ShipmentsController extends Controller
     }
 
     /**
-     * This function shows all of the shipments thatt belongs to the logged in user via ajax.
+     * This function shows all of the shipments that belongs to the logged in user via ajax.
      *
      * @return all shipments
      */

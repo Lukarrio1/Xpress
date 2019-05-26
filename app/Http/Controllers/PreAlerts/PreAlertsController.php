@@ -5,8 +5,8 @@ namespace App\Http\Controllers\PreAlerts;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Prealerts;
-use illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\invoicenf as nt;
 class PreAlertsController extends Controller
 {
     public function __construct()
@@ -62,6 +62,19 @@ class PreAlertsController extends Controller
         $filenametostore = $filename . '_' . time() . '.' . $extension;
         $store = new Prealerts;
         $store->user_id = Auth::user()->id;
+        $store->name= Auth::user()->name;
+        $store->email= Auth::user()->email;
+        $store->xl= Auth::user()->first()->xl;
+        $notify = nt::where('user_id',Auth::user()->id)->first();
+        if(empty($notify->user_id)){
+        $notify = New nt;
+        $notify->user_id = Auth::user()->id;
+        $notify->notification = "New pre-alert from ".Auth::user()->name."";
+        $notify->save();
+        }else{
+        $notify->clicked="false";
+        $notify->save();
+        }
         $store->vender = htmlentities($request->vender);
         $store->tracking = htmlentities($request->tracking);
         $store->courier = htmlentities($request->courier);
@@ -72,52 +85,11 @@ class PreAlertsController extends Controller
         $path = $request->file('invoice')->storeAs('public/Invoice', $filenametostore);
         $store->invoice = $filenametostore;
         $store->save();
-        return view('/prealerts')->with('success', 'Pre-Alert sent..');
+        return view('PreAlerts.create')->with('success', 'Pre-Alert sent..');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
+
+// yow mi cah get feh use your powershell terminal 
+// i need some access to your terminal ..

@@ -17,8 +17,8 @@
               </div>
               <div class="col-md-3">
                 <div class="md-form">
-                  <input placeholder="Search..." type="text" class="form-control" id="usersearch">
-                <button class="fas-fa-search"></button>
+                <input placeholder="Search..." type="text" class="form-control" id="usersearch">
+                {{-- <button class="fas-fa-search"></button> --}}
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@
                     <ul class="nav tabs-primary primary-color" role="tablist">
                       <li class="nav-item">
                         <a class="nav-link waves-light active" data-toggle="tab" href="#panel83" role="tab">Personal
-                          Clients</a>
+                          Clients <span class="badge red" id="allusercount"></span></a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link waves-light" data-toggle="tab" href="#panel84" role="tab">Corporate Clients</a>

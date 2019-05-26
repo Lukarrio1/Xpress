@@ -7,7 +7,7 @@
             <!-- Logo -->
             <li class="logo-sn waves-effect py-3">
               <div class="text-center text-black-50">
-              <a href="#" class="pl-0"><img src="{{url('storage/xpresslogo.png')}}" style="height:100px;"></a>
+              <a href="#" class="pl-0"><img src="{{url('storage/xpress.png')}}" style="height:100px;"></a>
               </div>
             </li>
     
@@ -63,7 +63,7 @@
           </div>
     
           <div class="d-flex change-mode">
-    
+           
             {{-- <div class="ml-auto mb-0 mr-3 change-mode-wrapper">
               <button class="btn btn-outline-black btn-sm" id="dark-mode">Change Mode</button>
             </div>   --}}
@@ -74,25 +74,11 @@
               <!-- Dropdown -->
               <li class="nav-item dropdown notifications-nav">
                 <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="badge red">3</span> <i class="fas fa-bell"></i>
+                  <span class="badge red" id="invoicentc"></span> <i class="fas fa-bell"></i>
                   <span class="d-none d-md-inline-block">Notifications</span>
                 </a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">
-                    <i class="far fa-money-bill-alt mr-2" aria-hidden="true"></i>
-                    <span>New order received</span>
-                    <span class="float-right"><i class="far fa-clock" aria-hidden="true"></i> 13 min</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="far fa-money-bill-alt mr-2" aria-hidden="true"></i>
-                    <span>New order received</span>
-                    <span class="float-right"><i class="far fa-clock" aria-hidden="true"></i> 33 min</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>
-                    <span>Your campaign is about to end</span>
-                    <span class="float-right"><i class="far fa-clock" aria-hidden="true"></i> 53 min</span>
-                  </a>
+                <span id="invoicent"></span>
                 </div>
               </li>
               <li class="nav-item">
@@ -103,10 +89,10 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle waves-effect text-dark" href="#" id="userDropdown" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span>
+                <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">{{Auth::user()->name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="#">My Account</a>
+                <a class="dropdown-item" href="{{route('admin.edit')}}">My Account</a>
                 <a class="dropdown-item" href="{{route('admin.logout')}}">Log Out</a>
                       </div>
               </li>
