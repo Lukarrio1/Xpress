@@ -67,9 +67,9 @@
                               <th>Actions</th>
                             </tr>
                           </thead>
-                          <tbody >
+                          <tbody  id="alluserbody">
                           {{-- all the users will show here 
-                            id="alluserbody"
+                           
                             --}}
                           </tbody>
                         </table>
