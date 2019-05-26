@@ -90,6 +90,3 @@ class PreAlertsController extends Controller
     }
 
 }
-
-// yow mi cah get feh use your powershell terminal 
-// i need some access to your terminal ..

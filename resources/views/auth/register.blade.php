@@ -92,7 +92,7 @@
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                               </div>
-                                    <input class="form-control" placeholder="TRN" type="text" name="trn" required>
+                                    <input class="form-control" placeholder="TRN" type="number" name="trn" required>
                                 </div>
                                       </div>
 
