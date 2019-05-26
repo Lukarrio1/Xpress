@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('Country');
             $table->string('address');
             $table->string('userimage')->default('noimage.jpg');
+            $table->integer('trn');
             $table->rememberToken();
             $table->string('xl')->nullable();
             $table->timestamps();

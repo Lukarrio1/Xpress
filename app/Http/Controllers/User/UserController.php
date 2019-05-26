@@ -39,6 +39,7 @@ class UserController extends Controller
             'image' => $user->userimage,
             'id' => $user->id,
             'xl' => $user->xl,
+            'trn'=>$user->trn,
         ]);
     }
 

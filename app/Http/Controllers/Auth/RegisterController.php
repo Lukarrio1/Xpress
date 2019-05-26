@@ -58,6 +58,7 @@ class RegisterController extends Controller
             'country' => 'required|min:3',
             'terms' => 'required',
             'address' => 'min:3|required',
+            'trn'=>'min:9|required|max:9'
         ]);
     }
 
@@ -81,6 +82,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'login_modal' => str_random(10),
             'login_modal' => str_random(10),
+            'trn'=>$data['trn'],
         ]);
         $user->sendverificationemail();
         return $user;

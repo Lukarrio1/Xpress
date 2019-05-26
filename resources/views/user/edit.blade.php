@@ -264,7 +264,8 @@
               Parish: <span id="usercardparish"></span><br>
               City:<span id="usercardcity"></span><br>
               Country: <span id="usercardcountry"></span><br>
-              Telephone:<span id="usercardphone"></span><br></p>
+              Telephone:<span id="usercardphone"></span><br>
+              TRN:<span id="usercardtrn"></span><br></p>
             {{-- <a class="btn btn-danger btn-rounded"   data-toggle="modal" data-target="#basicExampleModal">Delete Account</a> --}}
             <a class="btn btn-danger btn-rounded" id="Deletebtn">Delete Account</a>
 
