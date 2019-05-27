@@ -120,7 +120,7 @@ $("#update").click(() => {
     $("#errorparish").html("");
     $("#errorcountry").html("");
     $("#erroraddress").html("");
-    // if validation is successfull then an ajax request is sent to /Userinfo (/Userinfo','User\UserController@update)
+    // if validation is successfull then ae ajax request is sent to /Userinfo (/Userinfo','User\UserController@update)
     $.ajax({
       url: "/Userinfo",
       type: "Post",
