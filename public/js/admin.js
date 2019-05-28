@@ -247,6 +247,7 @@ Allinvoice = () => {
 		<td>${updated}</td>
 	  </tr>`;
     }
+    
     if (maxinv == inv.length) {
       $("#completedinvcount").removeClass("green");
       $("#completedinvcount").addClass("badge red");
@@ -414,7 +415,7 @@ $(document).on("click", ".searchin", function() {
     }
   });
 });
-
+// this function gets the admin thats currently logged in . 
 AdminData = () => {
   $.get("/admin/edit/data", data => {
     admin = jQuery.parseJSON(data);
