@@ -64,7 +64,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/allusers', 'Admin\UserController@Allusers');
     Route::post('/allusers', 'Admin\UserController@Singleuser');
     Route::post('/search', 'Admin\UserController@Search');
-    Route::get('/delivery', 'Admin\DeliveryController@Newdelivery')->name('admin.delivery');
+    Route::get('/delivery', 'Admin\DeliveryController@index')->name('admin.delivery');
+    Route::get('/sheduledelivery/notification','Admin\DeliveryController@notification');
     Route::get('/invoices', 'Admin\InvoiceController@index')->name('admin.invoice');
     Route::get('/invoices/all', 'Admin\InvoiceController@Allinvoices');
     Route::post('/invoice/file','Admin\InvoiceController@InvFile');
@@ -85,7 +86,8 @@ Route::prefix('Notifications')->group(function () {
 });
 //  these are the Schedule Delivery
 Route::prefix('scheduledelivery')->group(function () {
-    Route::get('/', 'ScheduleDelivery\ScheduleDeliveryController@index')->name('scheduledelivery.home');
+    Route::get('/', 'ScheduleDelivery\ScheduleDeliveryController@create')->name('scheduledelivery.home');
+    Route::post('/','ScheduleDelivery\ScheduleDeliveryController@store');
 });
 //  these are the Shipping calculator routes
 Route::prefix('shippingcalculator')->group(function () {

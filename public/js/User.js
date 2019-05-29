@@ -379,6 +379,64 @@ $(document).on("click", ".todo", function() {
     }
   });
 });
+$("#devsubmit").on("click", () => {
+  MakeDelivery();
+});
+
+MakeDelivery = () => {
+  let firstname = $("#devfname").val();
+  let lastname = $("#devlname").val();
+  let devaddress = $("#deliveryaddress").val();
+  let devphone = $("#devphone").val();
+  let express = $("#expressdelivery").prop("checked");
+  if (firstname.length < 3) {
+    $("#errorfname").html(
+      "Invalid firstname, It should be at least 3 characters."
+    );
+  } else if (lastname.length < 3) {
+    $("#errorlname").html(
+      "Invalid lastname, It should be at least 3 characters."
+    );
+  } else if (devaddress.length < 4) {
+    $("#errordelivery").html(
+      "Invalid delivery address, It should be at least 4 characters."
+    );
+  } else if (devphone.length < 10 || devphone.length >= 11) {
+    $("#errorphone").html(
+      "Invalid phone number, It should be at 10 characters."
+    );
+  } else {
+    // console.log(express);
+    $.ajax({
+      url: "/scheduledelivery",
+      type: "POST",
+      data: {
+        _token: CSRF_TOKEN,
+        firstname: firstname,
+        lastname: lastname,
+        address: devaddress,
+        phone: devphone,
+        express: express
+      },
+      dataType: "text",
+      success: data => {
+        console.log("this is the returned"+data);
+        iziToast.success({
+          position: "topCenter",
+          message: "Shedule delivery submitted."
+        });
+        $("#errorfname").html("");
+        $("#errorlname").html("");
+        $("#errordelivery").html("");
+        $("#errorphone").html("");
+        $("#devfname").val("");
+        $("#devlname").val("");
+        $("#deliveryaddress").val("");
+        $("#devphone").val("");
+      }
+    });
+  }
+};
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
   let sum = Number(verify) + Number(sp);

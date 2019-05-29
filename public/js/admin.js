@@ -285,9 +285,6 @@ $(document).on("click", ".invfile", function() {
           `<embed src="/storage/Invoice/${file.file}" frameborder="0" width="100%" height="450px">`
         );
       }
-      // $("#invfile").html(
-      //   `<img src="/storage/Invoice/${file.file}" style="width:100%">`
-      // );
       $("#modalinv").click();
     }
   });
@@ -321,8 +318,8 @@ InvoiceNt = () => {
     let notify = jQuery.parseJSON(data);
     let text = "";
     let invoice = notify.length;
-    NotificationCount(invoice);
-    for (let i = 0; i < notify.length; i++) {
+    DeliveryNt(invoice);
+    for (let i = 0; i < invoice; i++) {
       text += `
 	<a class="dropdown-item" href="admin/invoices">
 	<i class="fas fa-file-invoice mr-2" aria-hidden="true"></i>
@@ -349,6 +346,39 @@ $(document).on("click", ".nt", function() {
   });
 });
 
+DeliveryNt = (invoice) => {
+  $.get("/admin/sheduledelivery/notification", data => {
+    let notify = jQuery.parseJSON(data);
+    let text = "";
+    let sdnotify = notify.length;
+    NotificationCount(invoice,sdnotify);
+    for (let i = 0; i <sdnotify; i++) {
+      text += `
+	<a class="dropdown-item" href="admin/invoices">
+	<i class="fas fa-calendar-check mr-2" aria-hidden="true"></i>
+	<span id="sdnt${notify[i].id}" class="sdnt">${notify[i].notification}</span>
+    </a>
+	`;
+    }
+    $("#deliverynt").html(`${text}`);
+  });
+};
+
+// $(document).on("click", ".sdnt", function() {
+//   let invoice = $(this).attr("id");
+//   let id = invoice.substring(4);
+//   $.ajax({
+//     url: "/admin/invoice/notification",
+//     type: "POST",
+//     data: {
+//       _token: CSRF_TOKEN,
+//       id: id
+//     },
+//     dataType: "text",
+//     success: data => {}
+//   });
+// });
+
 InCheck = invlen => {
   $.get("/admin/invoices/all", data => {
     let inv = jQuery.parseJSON(data);
@@ -358,9 +388,9 @@ InCheck = invlen => {
   });
 };
 
-NotificationCount = invoice => {
+NotificationCount = (invoice,delivery) => {
   let sum = 0;
-  sum = invoice;
+  sum = invoice+delivery;
   $("#invoicentc").html(`${sum}`);
 };
 
@@ -458,4 +488,5 @@ AdminData = () => {
 // Checks every 10 seconds more
 window.setInterval(() => {
   InvoiceNt();
+
 }, 10000);

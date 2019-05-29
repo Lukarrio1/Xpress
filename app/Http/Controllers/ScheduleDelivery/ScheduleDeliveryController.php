@@ -4,6 +4,9 @@ namespace App\Http\Controllers\ScheduleDelivery;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Sheduledelivery as sd;
+use App\Sdnotify as sn;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleDeliveryController extends Controller
 {
@@ -18,7 +21,7 @@ class ScheduleDeliveryController extends Controller
      */
     public function index()
     {
-        return view('ScheduleDelivery.index');
+        
     }
 
     /**
@@ -28,7 +31,7 @@ class ScheduleDeliveryController extends Controller
      */
     public function create()
     {
-        //
+        return view('ScheduleDelivery.create');
     }
 
     /**
@@ -39,7 +42,37 @@ class ScheduleDeliveryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate($request,[
+        'firstname'=>"required",
+        'lastname'=>"required",
+        'address'=>"required",
+        'phone'=>"required",
+        'express'=>"required"
+       ]);
+        
+       $delivery = new sd;
+       $notify =  sn::where('user_id',Auth::user()->id)->first();;
+       $delivery->user_id =Auth::user()->id;
+       $delivery->firstname = htmlentities($request->firstname);
+       $delivery->lastname =htmlentities($request->lastname);
+       $delivery->address = htmlentities($request->address);
+       $delivery->phone = htmlentities($request->phone);
+       if($request->express=="false"){ 
+        $delivery->save();
+       }else{
+        $delivery->express="true"; 
+        $delivery->save();
+       }
+       if(empty($notify)){
+        $notify= new sn;
+        $notify->user_id=Auth::user()->id;
+        $notify->notification = "New schedule delivery from ".Auth::user()->name."";
+        $notify->save();
+       }else{
+        $notify->clicked ="false";
+        $notify->save(); 
+       }
+       return 200;
     }
 
     /**

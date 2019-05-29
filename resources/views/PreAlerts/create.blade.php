@@ -65,7 +65,7 @@
         <input type="file" id="pkg_in" name="invoice">
         </a>
         <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload your file" id="pkg_out" >
+        <input class="file-path validate" type="text" placeholder="Upload your file" id="pkg_out" autocomplete="off">
     </div>
   </div>
 

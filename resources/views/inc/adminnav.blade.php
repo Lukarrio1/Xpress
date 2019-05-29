@@ -79,6 +79,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                 <span id="invoicent"></span>
+                <span id="deliverynt"></span>
                 </div>
               </li>
               <li class="nav-item">

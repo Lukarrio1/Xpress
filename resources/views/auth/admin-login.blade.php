@@ -18,7 +18,7 @@
                            Xpress Logistics Admin Login
                            </div>
                            <div class="card-body px-lg-5 py-lg-5">
-                            @include('inc.alert')
+                            @include('inc.message')
                            <form role="form" method="POST" action="{{route('admin.login.submit')}}">
                               {{ csrf_field() }}
                                    <div class="form-group mb-3">
