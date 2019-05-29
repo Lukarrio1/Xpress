@@ -4,6 +4,29 @@
 
       <!-- Section: Basic examples -->
       <section>
+          
+<button type="button" class="btn btn-primary waves-effect waves-light " data-toggle="modal" data-target="#centralModalSm" id="modalinv" style="display: none">
+</button>
+          <div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+        
+          <!-- Change class .modal-sm to change the size of the modal -->
+          <div class="modal-dialog modal-lg" role="document">
+        
+        
+            <div class="modal-content">
+              <div class="modal-header">
+              </div>
+                <div class="modal-body">
+              <span id="invfile"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{-- end off  invoice modal --}}
                 <!-- Top Table UI -->
         <div class=" p-2 mb-5">
 

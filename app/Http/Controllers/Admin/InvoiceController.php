@@ -21,7 +21,6 @@ class InvoiceController extends Controller
 
     public function Allinvoices(){
     $inv=Prealerts::orderBy('updated_at', 'ASC')->get();
-    // $inv=Prealerts::all();
         return json_encode($inv); 
     }
     
@@ -77,5 +76,18 @@ class InvoiceController extends Controller
         ->get();
         return json_encode($result);
 
+    }
+
+
+    public function InvFile(Request $request){
+        $this->validate($request,[
+            'id'=>'required'
+        ]);
+        $inv = Prealerts::find($request->id);
+        $ext = substr_count($inv->invoice,".pdf");
+        return json_encode([
+            'file'=>$inv->invoice,
+            'ext'=>$ext
+        ]);
     }
 }

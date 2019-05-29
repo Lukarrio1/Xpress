@@ -242,12 +242,11 @@ Allinvoice = () => {
 		<td>${inv[i].description}</td>
 		<td>$${inv[i].value}</td>
 		<td>${inv[i].weight}lbs</td>
-		<td><a href="/storage/invoice/${inv[i].invoice}">${inv[i].invoice}</a></td>
+		<td><a class="invfile" id="invfile${inv[i].id}">${inv[i].invoice}</a></td>
 		<td>${created}</td>
 		<td>${updated}</td>
 	  </tr>`;
     }
-    
     if (maxinv == inv.length) {
       $("#completedinvcount").removeClass("green");
       $("#completedinvcount").addClass("badge red");
@@ -260,6 +259,38 @@ Allinvoice = () => {
     $("#invcount").html(`${inv.length}`);
   });
 };
+// this function is responsible for displaying the file inside of the modal
+$(document).on("click", ".invfile", function() {
+  let invc = $(this).attr("id");
+  let id = invc.substring(7);
+  $.ajax({
+    url: "/admin/invoice/file",
+    type: "POST",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id
+    },
+    dataType: "text",
+    success: data => {
+      let file = jQuery.parseJSON(data);
+      let ext = file.ext;
+      if (ext < 1) {
+        $("#invfile").html(
+          `<img src="/storage/Invoice/${file.file}" style="width:100%">`
+        );
+      } else {
+        $("#invfile").html(
+          `<embed src="/storage/Invoice/${file.file}" frameborder="0" width="100%" height="450px">`
+        );
+      }
+      // $("#invfile").html(
+      //   `<img src="/storage/Invoice/${file.file}" style="width:100%">`
+      // );
+      $("#modalinv").click();
+    }
+  });
+});
+
 $(document).on("click", ".invoice", function() {
   let invoice = $(this).attr("id");
   let inval = $(this).val();
@@ -415,7 +446,7 @@ $(document).on("click", ".searchin", function() {
     }
   });
 });
-// this function gets the admin thats currently logged in . 
+// this function gets the admin thats currently logged in .
 AdminData = () => {
   $.get("/admin/edit/data", data => {
     admin = jQuery.parseJSON(data);
