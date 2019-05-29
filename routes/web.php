@@ -58,14 +58,15 @@ Route::prefix('admin')->group(function () {
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 
-    Route::get('/updateshipments', 'Admin\ShipmentsController@UpdateShipments')->name('admin.shipments');
+    Route::get('/update/shipments', 'Admin\ShipmentsController@UpdateShipments')->name('admin.shipments');
+    Route::get('/sent/shipments', 'Admin\ShipmentsController@SentShipment')->name('admin.sent.shipments');
     Route::get('/news', 'Admin\NewsController@Allnews')->name('admin.news');
     Route::get('/users', 'Admin\UserController@index')->name('admin.allusers');
     Route::get('/allusers', 'Admin\UserController@Allusers');
     Route::post('/allusers', 'Admin\UserController@Singleuser');
     Route::post('/search', 'Admin\UserController@Search');
     Route::get('/delivery', 'Admin\DeliveryController@index')->name('admin.delivery');
-    Route::get('/all/delivery', 'Admin\DeliveryController@index')->name('admin.alldelivery');
+    Route::get('/all/delivery', 'Admin\DeliveryController@AllSdelivery');
     Route::get('/sheduledelivery/notification','Admin\DeliveryController@notification');
     Route::get('/invoices', 'Admin\InvoiceController@index')->name('admin.invoice');
     Route::get('/invoices/all', 'Admin\InvoiceController@Allinvoices');

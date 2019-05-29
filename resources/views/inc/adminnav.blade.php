@@ -28,13 +28,14 @@
                   class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
                 <ul class="list-unstyled">
-                <li><a href="{{route('admin.alldelivery')}}" class="waves-effect">Update Shipments</a>
+                <li><a href="{{ route('admin.shipments') }}" class="waves-effect">Update Shipments</a>
                   </li>
-                  <li><a href="{{ route('admin.shipments') }}" class="waves-effect">View all Shipments</a>
+                  <li><a href="{{ route('admin.sent.shipments') }}" class="waves-effect">View all Shipments</a>
                   </li>
                 </ul>
               </div>
             </li>
+            
                 <a href="{{route('admin.news')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-newspaper"></i>News Page</a>
                 </li>
                 <li>

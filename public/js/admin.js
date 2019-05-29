@@ -354,7 +354,7 @@ DeliveryNt = (invoice) => {
     NotificationCount(invoice,sdnotify);
     for (let i = 0; i <sdnotify; i++) {
       text += `
-	<a class="dropdown-item" href="admin/invoices">
+	<a class="dropdown-item" href="/admin/delivery">
 	<i class="fas fa-calendar-check mr-2" aria-hidden="true"></i>
 	<span id="sdnt${notify[i].id}" class="sdnt">${notify[i].notification}</span>
     </a>

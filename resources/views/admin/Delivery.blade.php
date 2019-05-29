@@ -63,7 +63,8 @@
                       {{-- <input class="form-check-input" type="checkbox" id="checkbox">
                       <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label> --}}
                     </th>
-                    <th class="th-lg"><a>First Nmae <i class=" ml-1"></i></a></th>
+                    <th></th>
+                    <th class="th-lg"><a>First Name <i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Last Name<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Delivery Address<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Phone Number<i class=" ml-1"></i></a></th>
@@ -73,7 +74,8 @@
                 </thead>
                 <!-- Table head -->
                 <!-- Table body -->
-                <tbody id="">
+                <tbody id="deliverytb">
+                  
                   </tbody>
                 <!-- Table body -->
               </table>
