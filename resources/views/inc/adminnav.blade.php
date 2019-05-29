@@ -20,12 +20,21 @@
               </form>
             </li>
              --}}
+             
             <!-- Side navigation links -->
             <li>
-              <ul class="collapsible collapsible-accordion">
-              <a href="{{route('admin.shipments')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-box-open"></i>Update Shipments</a>
-                </li>
-                <li>
+          <ul class="collapsible collapsible-accordion">
+            <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-box-open"></i>Update Shipments<i
+                  class="fas fa-angle-down rotate-icon"></i></a>
+              <div class="collapsible-body">
+                <ul class="list-unstyled">
+                  <li><a href="{{ route('admin.shipments') }}" class="waves-effect">Update</a>
+                  </li>
+                  <li><a href="#" class="waves-effect">View all Shipments</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
                 <a href="{{route('admin.news')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-newspaper"></i>News Page</a>
                 </li>
                 <li>
@@ -37,9 +46,17 @@
                 <li>
                 <a href="{{route('admin.invoice')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-file-invoice"></i>Invoices</a>
                 </li>
-              <a href="{{route('admin.message')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-envelope"></i>Messages</a>
-                </li>
-    
+                <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-envelope"></i>Messages<i
+                  class="fas fa-angle-down rotate-icon"></i></a>
+              <div class="collapsible-body">
+                <ul class="list-unstyled">
+                  <li><a href="{{ route('admin.message') }}" class="waves-effect">Inbox</a>
+                  </li>
+                  <li><a href="#" class="waves-effect">Compose Message</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
               </ul>
             </li>
             <!-- Side navigation links -->
