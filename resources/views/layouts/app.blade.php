@@ -28,7 +28,7 @@
     <div id="app">
       @include('inc.navbar')
       <main>
-        @include('inc.alert')
+        @include('inc.message')
         @yield('content')
       </main>
       @include('inc.adminfooter')
