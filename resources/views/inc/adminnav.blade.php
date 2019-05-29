@@ -28,9 +28,9 @@
                   class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
                 <ul class="list-unstyled">
-                  <li><a href="{{ route('admin.shipments') }}" class="waves-effect">Update</a>
+                <li><a href="{{route('admin.alldelivery')}}" class="waves-effect">Update Shipments</a>
                   </li>
-                  <li><a href="#" class="waves-effect">View all Shipments</a>
+                  <li><a href="{{ route('admin.shipments') }}" class="waves-effect">View all Shipments</a>
                   </li>
                 </ul>
               </div>

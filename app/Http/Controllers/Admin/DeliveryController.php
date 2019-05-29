@@ -13,13 +13,18 @@ class DeliveryController extends Controller
     }
 
     public function index(){
-      return view('admin.Delivery');
+     return view('admin.updateshipment/Delivery');
    }
+
 
   public function notification(){
   $notify = sn::where('clicked', "false")
   ->orderBy('created_at', 'DESC')
   ->get();
   return json_encode($notify);
+  }
+
+  public function UpdateShipment(){
+      return view('admin.updateshipment/updateShipment');
   }
 }

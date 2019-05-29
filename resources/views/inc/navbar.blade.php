@@ -285,11 +285,11 @@
                 Sections</a></li>
 
           </ul>
-        </li>  --}}  --}}
+        </li>  --}}  
         <!--/. Side navigation links -->
       </ul>
       <div class="sidenav-bg mask-strong"></div>
-    </div>  --}}
+    </div>  
     <!--/. Sidebar navigation -->
 
     <!-- Navbar -->
