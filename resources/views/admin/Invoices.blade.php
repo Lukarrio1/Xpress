@@ -90,7 +90,8 @@
                     <th class="th-lg"><a>Vendor Name<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Tracking No.<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Courier<i class=" ml-1"></i></a></th>
-                    <th class="th-lg"><a>Product<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a>Product Name<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a>Product Description<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Value<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Weight<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Invoice<i class=" ml-1"></i></a></th>

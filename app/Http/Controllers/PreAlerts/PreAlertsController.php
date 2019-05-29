@@ -85,7 +85,9 @@ class PreAlertsController extends Controller
         $path = $request->file('invoice')->storeAs('public/Invoice', $filenametostore);
         $store->invoice = $filenametostore;
         $store->save();
-        return view('PreAlerts.create')->with('success', 'Pre-Alert sent..');
+        return view('PreAlerts.create')->json_encode([
+            'success'=>true
+        ]);
 
     }
 

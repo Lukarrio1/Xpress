@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Material form register -->
+<section>
 <div class="card">
 
     <h5 class="card-header info-color white-text text-center py-4">
@@ -58,7 +58,7 @@
     </div>
 
 </div>
-<!-- Material form register
+<section>
 
     
 @endsection

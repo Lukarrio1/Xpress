@@ -238,7 +238,8 @@ Allinvoice = () => {
 		<td>${inv[i].email}</td>
 		<td>${inv[i].vender}</td>
 		<td>${inv[i].tracking}</td>
-		<td>${inv[i].courier}</td>
+    <td>${inv[i].courier}</td>
+    <td>${inv[i].pkgname}</td>
 		<td>${inv[i].description}</td>
 		<td>$${inv[i].value}</td>
 		<td>${inv[i].weight}lbs</td>
