@@ -248,6 +248,7 @@ Allinvoice = () => {
 		<td>${updated}</td>
 	  </tr>`;
     }
+    // changes made here
     if (maxinv == inv.length) {
       $("#completedinvcount").removeClass("green");
       $("#completedinvcount").addClass("badge red");
