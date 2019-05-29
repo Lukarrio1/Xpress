@@ -47,10 +47,7 @@
                         <a class="nav-link waves-light active" data-toggle="tab" href="#panel83" role="tab">Personal
                           Clients</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link waves-light" data-toggle="tab" href="#panel84" role="tab">Corporate Clients</a>
-                      </li>
-                    </ul>
+                                          </ul>
                   </div>
                   <!-- Tab panels -->
                   <div class="tab-content card">
@@ -67,88 +64,25 @@
                               <th>Actions</th>
                             </tr>
                           </thead>
-                          <tbody  id="alluserbody">
-                          {{-- all the users will show here 
-                           
-                            --}}
-                          </tbody>
+                          <tbody >
+                          	<tr>
+	                     	<th scope="row">xl0002</th>
+				          	<td>Hello</td>
+				        	<td>2122122233</td>
+				           	<td>hello there</td>
+				    	<td>
+				      	<a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="View" id=""><i class="fas fa-user"></i></a>
+                  <a class="teal-text" data-toggle="modal" data-target ="#editShipments" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+				        	<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id=""><i class="fas fa-times" ></i></a>
+				    	</td>
+               </tr>
+                       </tbody>
                         </table>
                       </div>
                     </div>
                     <!-- /.Panel 1 -->
-                    <!-- Panel 2 -->
-                    <div class="tab-pane fade" id="panel84" role="tabpanel">
-                      <div class="table-responsive">
-                        <table class="table allusertable">
-                          <thead>
-                            <tr>
-                              <th>XL#:</th>
-                              <th>Company Name</th>
-                              <th>Username</th>
-                              <th>Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td></td>
-                              <td></td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>Github, Inc</td>
-                              <td>@github</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td>Twitter, Inc</td>
-                              <td>@twitter</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">4</th>
-                              <td>Alphabet, Inc</td>
-                              <td>@alphabet</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                            <tr>
-                              <th scope="row">5</th>
-                              <td>Adobe Corporation</td>
-                              <td>@adobe</td>
-                              <td>
-                                <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
-                                    class="fas fa-user"></i></a>
-                                <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                <a class="red-text" data-toggle="tooltip" data-placement="top" title="Remove"><i class="fas fa-times"></i></a>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <!-- /.Panel 2 -->
+                    
+             
                   </div>
                   <!-- /.Tabs -->
                 </div>
@@ -169,11 +103,82 @@
 
         </div>
         <!-- First row -->
+<!-- Edit Shipment Modal -->
+<div class="modal fade" id="editShipments" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
 
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100 align-center" id="myModalLabel">Add Shipments Form</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--Body-->
+      <div class="modal-body mx-4">
+        <!--Body-->
+        <div class="md-form mb-5">
+          <input type="text" id="trackingno" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="trackingno">Tracking No.</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <input type="text" id="referenceno" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="referenceno">Reference No.</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <input type="text" id="recipient" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="recipient">Recipient</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <input type="text" id="description" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="description">Description</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <input type="text" id="deliverydate" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="deliverydate">Delivery Date</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <input type="text" id="shippingcharge" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="shippingcharge">Shipping Charge</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <input type="text" id="status" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="status">Status</label>
+        </div>
+
+        <div class="text-center mb-3">
+          <button type="button" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Add Shipments</button>
+        </div>
+              
+    <!--/.Content-->
+  </div>
+</div>
+      </div>
+      
+    </div>
+  
+</div>
+<!-- Central Modal Small -->
       </section>
       <!-- Section: Customers -->
+      
 
     </div>
   
+
+
+
+
   <!-- Main layout -->
 @endsection
