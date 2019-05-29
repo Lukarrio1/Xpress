@@ -65,6 +65,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/allusers', 'Admin\UserController@Singleuser');
     Route::post('/search', 'Admin\UserController@Search');
     Route::get('/delivery', 'Admin\DeliveryController@index')->name('admin.delivery');
+    Route::get('/all/delivery', 'Admin\DeliveryController@index')->name('admin.alldelivery');
     Route::get('/sheduledelivery/notification','Admin\DeliveryController@notification');
     Route::get('/invoices', 'Admin\InvoiceController@index')->name('admin.invoice');
     Route::get('/invoices/all', 'Admin\InvoiceController@Allinvoices');
