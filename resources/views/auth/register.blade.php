@@ -17,7 +17,7 @@
                      <div class="card-header bg-transparent pb-5 text-center text-muted h1">
                      Xpress Logistics Register
                      </div>
-                     @include('inc.alert')
+                     @include('inc.message')
                      <div class="card-body px-lg-5 py-lg-5">
                             <form role="form" method="POST" action="{{route('register')}}">
                                     {{ csrf_field() }}

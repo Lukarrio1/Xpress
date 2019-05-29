@@ -62,7 +62,7 @@
                             <tr>
                               <th>XL#:</th>
                               <th>Name</th>
-                              <th>telephone</th>
+                              <th>Telephone</th>
                               <th>Email</th>
                               <th>Actions</th>
                             </tr>
@@ -82,7 +82,7 @@
                         <table class="table allusertable">
                           <thead>
                             <tr>
-                              <th>#</th>
+                              <th>XL#:</th>
                               <th>Company Name</th>
                               <th>Username</th>
                               <th>Actions</th>
@@ -91,8 +91,8 @@
                           <tbody>
                             <tr>
                               <th scope="row">1</th>
-                              <td>PiedPiper</td>
-                              <td>@piedpiper</td>
+                              <td></td>
+                              <td></td>
                               <td>
                                 <a class="blue-text" data-toggle="tooltip" data-placement="top" title="See results"><i
                                     class="fas fa-user"></i></a>

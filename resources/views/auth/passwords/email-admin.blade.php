@@ -19,7 +19,7 @@
                                 Admin Reset Password
                            </div>
                            <div class="card-body px-lg-5 py-lg-5">
-                               @include('inc.alert')
+                               @include('inc.message')
                                 @if (session('status'))
                                 <div class="alert text-center alert-success">
                                     {{ session('status') }}
