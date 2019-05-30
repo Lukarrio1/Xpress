@@ -13,7 +13,7 @@
               <form class="form-inline md-form mt-2 ml-2" >
                 <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;" id="deliverysearch">
                 {{--  <button class="btn btn-sm btn-primary ml-2 px-1"><i class="fas fa-search"></i> </button>  --}}
-                    <span class="badge blue" id="searchcount">0</span>
+                    <span class="badge blue" id="devsearchcount">0</span>
               </form>
 
             </div>

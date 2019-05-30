@@ -60,6 +60,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/update/shipments', 'Admin\ShipmentsController@UpdateShipments')->name('admin.shipments');
     Route::get('/sent/shipments', 'Admin\ShipmentsController@SentShipment')->name('admin.sent.shipments');
+
     Route::get('/news', 'Admin\NewsController@Allnews')->name('admin.news');
 
     Route::get('/users', 'Admin\UserController@index')->name('admin.allusers');
@@ -72,6 +73,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/sheduledelivery/notification','Admin\DeliveryController@notification');
     Route::post('/delivery/view','Admin\DeliveryController@DeliveryUpdate');
     Route::post('/delivery/update','Admin\DeliveryController@TokenUpdate');
+    Route::post('/delivery/search','Admin\DeliveryController@DeliverySearch');
 
     Route::get('/invoices', 'Admin\InvoiceController@index')->name('admin.invoice');
     Route::get('/invoices/all', 'Admin\InvoiceController@Allinvoices');

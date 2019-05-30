@@ -70,4 +70,19 @@ class DeliveryController extends Controller
     return 0;
    }
     }
+
+    public function DeliverySearch(Request $request){
+      $this->validate($request,[
+      'search'=>'required'
+      ]);
+      $search =htmlentities($request->search);
+      $result =sd::where('firstname', 'LIKE', '%'.$search.'%')
+      ->orwhere('lastname','like','%'.$search.'%')
+      ->orwhere('address','like','%'.$search.'%')
+      ->orwhere('phone','like','%'.$search.'%')
+      ->orderBy('created_at','DESC')
+      ->get();
+      return json_encode($result);
+
+  }
 }

@@ -5,6 +5,7 @@ $(document).ready(() => {
   InvoiceNt();
   InvoiceSearch();
   AdminData();
+  DeliverySearch();
   Alldeliveries();
   $("#invloading").css("display", "none");
   // $(document).ajaxStart(function() {
@@ -440,6 +441,7 @@ $(document).on("click", ".devcheck", function() {
   let devid = $(this).attr("id");
   let dev = $(this).val();
   let id = devid.substring(3);
+  $("#devsearchcount").html(0);
   $.ajax({
     url: "/admin/delivery/update",
     type: "POST",
@@ -567,6 +569,76 @@ $(document).on("click", ".searchin", function() {
     }
   });
 });
+
+DeliverySearch = () => {
+  $("#deliverysearch").on("keyup", function() {
+    let search = $("#deliverysearch").val();
+    if (search.length > 0) {
+      console.log(search);
+      $.ajax({
+        url: "/admin/delivery/search",
+        type: "POST",
+        data: {
+          _token: CSRF_TOKEN,
+          search: search
+        },
+        dataType: "text",
+        success: data => {
+          let dev = jQuery.parseJSON(data);
+          $("#devsearchcount").html(`${dev.length}`);
+          let check = "";
+          let mindev = 0;
+          let express = "";
+          let text = "";
+          for (i = 0; i < dev.length; i++) {
+            if (dev[i].token == "true") {
+              _class = "<tr class='table-info'>";
+              check = "";
+              mindev = mindev + 1;
+            } else {
+              _class = '<tr class="">';
+              check = "checked";
+            }
+
+            if (dev[i].express == "true") {
+              express = "Yes";
+            } else {
+              express = "No";
+            }
+            created_at = new Date(`${dev[i].created_at}`);
+            created = created_at.toString().slice(0, 24);
+            updated_at = new Date(`${dev[i].updated_at}`);
+            updated = updated_at.toString().slice(0, 24);
+            text += `
+            ${_class}
+            <th scope="row">
+            <input class="form-check-input devcheck" type="checkbox" id="dev${
+              dev[i].id
+            }" value="true" ${check}>
+            <label class="form-check-label" for="dev${
+              dev[i].id
+            }" class="label-table"></label>
+          </th>
+          <td>${dev[i].firstname}</td>
+          <td>${dev[i].lastname}</td>
+          <td>${dev[i].address}</td>
+          <td>${dev[i].phone}</td>
+          <td>${express}</td>
+          <td>${created}</td>
+          <td>${updated}</td>
+          </tr>`;
+          }
+          $("#deliverytb").html(`${text}`);
+          $("#mindev").html(`${mindev}`);
+          $("#maxdev").html(`${dev.length}`);
+        }
+      });
+    } else {
+      Alldeliveries();
+      $("#devsearchcount").html(0);
+    }
+  });
+};
 // this function gets the admin thats currently logged in .
 AdminData = () => {
   $.get("/admin/edit/data", data => {
