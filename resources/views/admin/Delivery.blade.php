@@ -36,9 +36,9 @@
             </div>
 
             <a  class="white-text align-content-center mx-3">All Deliveries 
-            <span class="badge green" id=""></span>
+            <span class="badge green" id="mindev"></span>
            <span class="badge white-text">/</span>
-            <span class="badge red" id=""></span> 
+            <span class="badge red" id="maxdev"></span> 
           </a>
 
             <div>
@@ -63,13 +63,13 @@
                       {{-- <input class="form-check-input" type="checkbox" id="checkbox">
                       <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label> --}}
                     </th>
-                    <th></th>
                     <th class="th-lg"><a>First Name <i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Last Name<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Delivery Address<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Phone Number<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Express Delivery<i class=" ml-1"></i></a></th>
-                    
+                    <th class="th-lg"><a>Delivery created date<i class=" ml-1"></i></a></th>
+                    <th class="th-lg"><a>Delivery completed date<i class=" ml-1"></i></a></th>
                     </tr>
                 </thead>
                 <!-- Table head -->

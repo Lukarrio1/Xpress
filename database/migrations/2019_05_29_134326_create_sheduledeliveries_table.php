@@ -16,6 +16,7 @@ class CreateSheduledeliveriesTable extends Migration
         Schema::create('sheduledeliveries', function (Blueprint $table) {
             $table->increments('id');
             $table->string("user_id");
+            $table->string('token')->default('true');
             $table->string("firstname");
             $table->string("lastname");
             $table->string("address");

@@ -42,6 +42,7 @@
                 <a href="{{route('admin.allusers')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-user"></i>All Users</a>
                 </li>
                 <li>
+                    
                 <a href="{{route('admin.delivery')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa far fa-calendar-check"></i>Incoming Deliveries</a>
                 </li>
                 <li>

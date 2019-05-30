@@ -5,6 +5,7 @@ $(document).ready(() => {
   InvoiceNt();
   InvoiceSearch();
   AdminData();
+  Alldeliveries();
   $("#invloading").css("display", "none");
   // $(document).ajaxStart(function() {
   // 	$('#invloading').css('display', 'block');
@@ -282,7 +283,9 @@ $(document).on("click", ".invfile", function() {
         );
       } else {
         $("#invfile").html(
-          `<embed src="/storage/Invoice/${file.file}" frameborder="0" width="100%" height="450px">`
+          `<embed src="/storage/Invoice/${
+            file.file
+          }" frameborder="0" width="100%" height="450px">`
         );
       }
       $("#modalinv").click();
@@ -346,13 +349,13 @@ $(document).on("click", ".nt", function() {
   });
 });
 
-DeliveryNt = (invoice) => {
+DeliveryNt = invoice => {
   $.get("/admin/sheduledelivery/notification", data => {
     let notify = jQuery.parseJSON(data);
     let text = "";
     let sdnotify = notify.length;
-    NotificationCount(invoice,sdnotify);
-    for (let i = 0; i <sdnotify; i++) {
+    NotificationCount(invoice, sdnotify);
+    for (let i = 0; i < sdnotify; i++) {
       text += `
 	<a class="dropdown-item" href="/admin/delivery">
 	<i class="fas fa-calendar-check mr-2" aria-hidden="true"></i>
@@ -364,20 +367,97 @@ DeliveryNt = (invoice) => {
   });
 };
 
-// $(document).on("click", ".sdnt", function() {
-//   let invoice = $(this).attr("id");
-//   let id = invoice.substring(4);
-//   $.ajax({
-//     url: "/admin/invoice/notification",
-//     type: "POST",
-//     data: {
-//       _token: CSRF_TOKEN,
-//       id: id
-//     },
-//     dataType: "text",
-//     success: data => {}
-//   });
-// });
+$(document).on("click", ".sdnt", function() {
+  let delivery = $(this).attr("id");
+  let id = delivery.substring(4);
+  $.ajax({
+    url: "/admin/delivery/view",
+    type: "POST",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id
+    },
+    dataType: "text",
+    success: data => {}
+  });
+});
+
+Alldeliveries = () => {
+  $.get("/admin/all/delivery", data => {
+    let dev = jQuery.parseJSON(data);
+    window.setInterval(() => {
+      DevCheck(dev.length);
+    }, 10000);
+    let check = "";
+    let mindev = 0;
+    let express = "";
+    let text = "";
+    for (i = 0; i < dev.length; i++) {
+      if (dev[i].token == "true") {
+        _class = "<tr class='table-info'>";
+        check = "";
+        mindev = mindev + 1;
+      } else {
+        _class = '<tr class="">';
+        check = "checked";
+      }
+
+      if (dev[i].express == "true") {
+        express = "Yes";
+      } else {
+        express = "No";
+      }
+      created_at = new Date(`${dev[i].created_at}`);
+      created = created_at.toString().slice(0, 24);
+      updated_at = new Date(`${dev[i].updated_at}`);
+      updated = updated_at.toString().slice(0, 24);
+      text += `
+      ${_class}
+      <th scope="row">
+		  <input class="form-check-input devcheck" type="checkbox" id="dev${
+        dev[i].id
+      }" value="true" ${check}>
+		  <label class="form-check-label" for="dev${
+        dev[i].id
+      }" class="label-table"></label>
+		</th>
+		<td>${dev[i].firstname}</td>
+		<td>${dev[i].lastname}</td>
+		<td>${dev[i].address}</td>
+		<td>${dev[i].phone}</td>
+    <td>${express}</td>
+    <td>${created}</td>
+    <td>${updated}</td>
+	  </tr>`;
+    }
+    $("#deliverytb").html(`${text}`);
+    $("#mindev").html(`${mindev}`);
+    $("#maxdev").html(`${dev.length}`);
+  });
+};
+
+$(document).on("click", ".devcheck", function() {
+  let devid = $(this).attr("id");
+  let dev = $(this).val();
+  let id = devid.substring(3);
+  $.ajax({
+    url: "/admin/delivery/update",
+    type: "POST",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id,
+      value: dev
+    },
+    dataType: "text",
+    success: data => {
+      Alldeliveries();
+      iziToast.success({
+        position: "topCenter",
+        message: "Schedule delivery delivered."
+      });
+    }
+  });
+});
 
 InCheck = invlen => {
   $.get("/admin/invoices/all", data => {
@@ -388,9 +468,18 @@ InCheck = invlen => {
   });
 };
 
-NotificationCount = (invoice,delivery) => {
+DevCheck = devlen => {
+  $.get("/admin/all/delivery", data => {
+    let dev = jQuery.parseJSON(data);
+    if (devlen != dev.length) {
+      Alldeliveries();
+    }
+  });
+};
+
+NotificationCount = (invoice, delivery) => {
   let sum = 0;
-  sum = invoice+delivery;
+  sum = invoice + delivery;
   $("#invoicentc").html(`${sum}`);
 };
 
@@ -488,5 +577,4 @@ AdminData = () => {
 // Checks every 10 seconds more
 window.setInterval(() => {
   InvoiceNt();
-
 }, 10000);
