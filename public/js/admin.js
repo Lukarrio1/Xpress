@@ -639,6 +639,40 @@ DeliverySearch = () => {
     }
   });
 };
+
+$("#newsendbtn").on("click", () => {
+  NewsCreate();
+});
+
+NewsCreate = () => {
+  let subject = $("#newsubject").val();
+  let body = $("#newsbody").val();
+  if (subject.length < 3) {
+    $("#errorsubject").html(`Error subject must be at least 3 character.`);
+  } else if (body.length<3) {
+    $("#errorbody").html(`Error body must be at least 3 character.`);
+  } else {
+    $("#newsubject").val("");
+    $("#newsbody").val("");
+    $.ajax({
+      url: "/admin/news",
+      type: "POST",
+      data: {
+        _token: CSRF_TOKEN,
+        subject: subject,
+        body: body
+      },
+      dataType: "text",
+      success: data => {
+        Allinvoice();
+        iziToast.success({
+          position: "topCenter",
+          message: "New news posted"
+        });
+      }
+    });
+  }
+};
 // this function gets the admin thats currently logged in .
 AdminData = () => {
   $.get("/admin/edit/data", data => {
