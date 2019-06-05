@@ -1,12 +1,7 @@
 @extends('layouts.admin')
 @section('content')
-<div class="container-fluid">
-
-      <!-- Section: Basic examples -->
       <section>
-          
-
-                <!-- Top Table UI -->
+          <div class="container-fluid">
         <div class=" p-2 mb-5">
 
 
@@ -101,22 +96,6 @@
 
           </div>
         </div>
-
+      </div>
       </section>
-      <!-- Section: Basic examples -->
-
-    </div>
-
-    
-
-    </section>
-    <!-- Section: Docs link -->
-
-  
-
-
-
-
-
-
 @endsection
