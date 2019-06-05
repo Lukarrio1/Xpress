@@ -43,6 +43,7 @@ class UserController extends Controller
             'image' => $user->userimage,
             'xl' => $user->xl,
             'id'=>$user->id,
+            'trn'=>$user->trn,
             'created'=>date('M j, Y h:ia', strtotime($user->created_at )),
             'updated'=>date('M j, Y h:ia', strtotime($user->updated_at ))
         ]);

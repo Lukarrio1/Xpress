@@ -7,7 +7,7 @@ $(document).ready(() => {
   AdminData();
   DeliverySearch();
   Alldeliveries();
-footerDate();
+  footerDate();
 
   $("#invloading").css("display", "none");
   // $(document).ajaxStart(function() {
@@ -18,7 +18,7 @@ footerDate();
   // });
 });
 
-footerDate=()=>{
+footerDate = () => {
   var date = new Date();
   var year = date.getFullYear();
   $("#footerdate").html(`${year}`);
@@ -122,6 +122,7 @@ $(document).on("click", ".userid", function () {
     dataType: "text",
     success: data => {
       let user = jQuery.parseJSON(data);
+      console.log(user)
       let usercard = `<!-- Card -->
 				<div class="card profile-card">
 
@@ -142,7 +143,9 @@ $(document).on("click", ".userid", function () {
 
 				<li><strong>E-mail address:</strong> ${user.email}</li>
 
-				<li><strong>Phone number:</strong> ${user.telephone}</li>
+        <li><strong>Phone number:</strong> ${user.telephone}</li>
+
+        <li><strong>TRN:</strong> ${user.trn}</li>
 
 				<li><strong>Country:</strong> ${user.country}</li>
 
