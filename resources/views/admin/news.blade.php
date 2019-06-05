@@ -1,12 +1,11 @@
 @extends('layouts.admin')
 @section('content')
 <section>
+    <div class="card pt-5 my-5">
 <div class="text-center border border-light p-5">
 
-    <p class="h4 mb-5">News Form</p>
-    <br>
-    <br>
-    <br>
+    <p class="h3 mb-1">News Form</p>
+    
     <!-- Heading -->
     <div class="form-group">
         <input type="text" id="newsubject" class="form-control mb-4" placeholder="Subject">
@@ -22,6 +21,7 @@
     <!-- Send button -->
     <button class="btn btn-info btn-block" id="newsendbtn">Send</button>
 
+</div>
 </div>
 </section>
 @endsection
