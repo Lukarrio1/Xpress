@@ -64,7 +64,7 @@
                     <th class="th-lg"><a>Phone Number<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Express Delivery<i class=" ml-1"></i></a></th>
                     <th class="th-lg"><a>Delivery created date<i class=" ml-1"></i></a></th>
-                    <th class="th-lg"><a>Delivery completed date<i class=" ml-1"></i></a></th>
+                    <th class="th-lg" id="dcd"><a>Delivery completed date<i class=" ml-1"></i></a></th>
                     </tr>
                 </thead>
                 <!-- Table head -->

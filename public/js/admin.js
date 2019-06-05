@@ -408,8 +408,13 @@ Alldeliveries = () => {
     let express = "";
     let text = "";
     for (i = 0; i < dev.length; i++) {
+      created_at = new Date(`${dev[i].created_at}`);
+      created = created_at.toString().slice(0, 24);
+      updated_at = new Date(`${dev[i].updated_at}`);
+      updated = updated_at.toString().slice(0, 24);
       if (dev[i].token == "true") {
         _class = "<tr class='table-info'>";
+        updated = "";
         check = "";
         mindev = mindev + 1;
       } else {
@@ -422,10 +427,6 @@ Alldeliveries = () => {
       } else {
         express = "No";
       }
-      created_at = new Date(`${dev[i].created_at}`);
-      created = created_at.toString().slice(0, 24);
-      updated_at = new Date(`${dev[i].updated_at}`);
-      updated = updated_at.toString().slice(0, 24);
       text += `
       ${_class}
       <th scope="row">

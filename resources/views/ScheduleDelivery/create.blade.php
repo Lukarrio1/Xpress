@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <section>
-<div class="card">
+<div class="card mt-4">
 
     <h5 class="card-header info-color white-text text-center py-4">
         <strong>Schedule Delivery Form</strong>

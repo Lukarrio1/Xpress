@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="{{ asset('css/iziToast.css')}}">
 <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/env.css')}}">
 {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"> --}}
     <!-- Scripts -->
     <script>
