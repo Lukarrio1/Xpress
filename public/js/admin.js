@@ -227,18 +227,19 @@ Allinvoice = () => {
       InCheck(inv.length);
     }, 10000);
     for (let i = 0; i < inv.length; i++) {
+      created_at = new Date(`${inv[i].created_at}`);
+      created = created_at.toString().slice(0, 24);
+      updated_at = new Date(`${inv[i].updated_at}`);
+      updated = updated_at.toString().slice(0, 24);
       if (inv[i].token == "true") {
         _class = "<tr class='table-info'>";
+        updated = ""
         check = "";
         maxinv = maxinv + 1;
       } else {
         _class = '<tr class="">';
         check = "checked";
       }
-      created_at = new Date(`${inv[i].created_at}`);
-      created = created_at.toString().slice(0, 24);
-      updated_at = new Date(`${inv[i].updated_at}`);
-      updated = updated_at.toString().slice(0, 24);
       invoice += `
 		${_class}
 		<th scope="row">
