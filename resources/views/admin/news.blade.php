@@ -1,14 +1,13 @@
 @extends('layouts.admin')
 @section('content')
 <!-- Default form contact -->
+<div class="card pt-5 my-5">
+ 
+
 <form class="text-center border border-light p-5">
 
     <p class="h4 mb-5">News Form</p>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    
    
 
     <!-- Heading -->
@@ -26,8 +25,9 @@
     <button class="btn btn-info btn-block" type="submit">Send</button>
 
 </form>
-<!-- Default form contact -->    
-
+<!-- Default form contact -->
+   
+</div>
 
 
 
