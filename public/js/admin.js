@@ -7,6 +7,8 @@ $(document).ready(() => {
   AdminData();
   DeliverySearch();
   Alldeliveries();
+footerDate();
+
   $("#invloading").css("display", "none");
   // $(document).ajaxStart(function() {
   // 	$('#invloading').css('display', 'block');
@@ -16,6 +18,11 @@ $(document).ready(() => {
   // });
 });
 
+footerDate=()=>{
+  var date = new Date();
+  var year = date.getFullYear();
+  $("#footerdate").html(`${year}`);
+}
 // this function returns all of the users
 Allusers = () => {
   $.get("/admin/allusers", data => {

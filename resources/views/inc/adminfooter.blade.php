@@ -3,7 +3,7 @@
         <!-- Copyright -->
         <div class="footer-copyright py-3 text-center">
           <div class="container-fluid">
-          © 2019 Copyright: {{config('app.name')}}.com</a>
+          © <span id="footerdate"></span> Copyright: {{config('app.name')}}.com</a>
           </div>
         </div>
   </footer>

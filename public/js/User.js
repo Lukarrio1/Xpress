@@ -7,8 +7,14 @@ $(document).ready(() => {
   spnotification();
   task();
   News();
+  footerDate();
 });
-
+// this function updates the date of the footer every year .
+footerDate = () => {
+  var date = new Date();
+  var year = date.getFullYear();
+  $("#footerdate").html(`${year}`);
+}
 // runs every 20 seconds
 window.setInterval(() => {
   TokenCheck();
@@ -52,8 +58,7 @@ Modaltimer = () => {
     var modal = token.token;
     $("#modalname").html(`${token.name}`);
     $("#modalxl").html(`${token.xl}`);
-    if (modal == "") {
-    } else {
+    if (modal == "") {} else {
       $("#modal").click();
     }
   });
@@ -201,7 +206,7 @@ $("#Deletebtn").click(() => {
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
-        function(instance, toast) {
+        function (instance, toast) {
           $.ajax({
             type: "Post",
             url: "/Useraccountdel",
@@ -210,18 +215,22 @@ $("#Deletebtn").click(() => {
               delete: true
             },
             dataType: "text",
-            success: function(response) {
+            success: function (response) {
               window.location.href = "/";
             }
           });
-          instance.hide({ transitionOut: "fadeOut" }, toast, "button");
+          instance.hide({
+            transitionOut: "fadeOut"
+          }, toast, "button");
         },
         true
       ],
       [
         '<button style="color:white;">NO</button>',
-        function(instance, toast) {
-          instance.hide({ transitionOut: "fadeOut" }, toast, "button");
+        function (instance, toast) {
+          instance.hide({
+            transitionOut: "fadeOut"
+          }, toast, "button");
         }
       ]
     ]
@@ -242,7 +251,7 @@ Pdata = () => {
           data: $("#oldpass").val()
         },
         dataType: "text",
-        success: function(response) {
+        success: function (response) {
           var something = jQuery.parseJSON(response);
           if (something.passed == 0) {
             $("#oldpassword").html("Password doesn`t match");
@@ -262,7 +271,7 @@ Pdata = () => {
                 newpass: $("#newpass").val()
               },
               dataType: "text",
-              success: function(response) {
+              success: function (response) {
                 $("#pschbtn").removeClass("disabled");
                 $("#oldpassword").html("");
                 $("#newpassword").html("");
@@ -361,7 +370,7 @@ task = () => {
   });
 };
 
-$(document).on("click", ".todo", function() {
+$(document).on("click", ".todo", function () {
   let todo = $(this).attr("id");
   let id = todo.substring(4);
   $.ajax({
@@ -453,7 +462,7 @@ News = () => {
   });
 };
 
-$(document).on("click", ".newsmodal", function() {
+$(document).on("click", ".newsmodal", function () {
   let news = $(this).attr("id");
   let id = news.substring(4);
   $.ajax({
@@ -465,15 +474,15 @@ $(document).on("click", ".newsmodal", function() {
     },
     dataType: "text",
     success: data => {
-     let singlenews = jQuery.parseJSON(data);
-     $("#newmessage").html(`
+      let singlenews = jQuery.parseJSON(data);
+      $("#newmessage").html(`
      <div class="text-center">
      <span class="h2">${singlenews.subject}</span>
      </div>
      <br>
     <span class="h5">${singlenews.body}</span>
      `);
-     $("#newsbtn").click();
+      $("#newsbtn").click();
     }
   });
 });
