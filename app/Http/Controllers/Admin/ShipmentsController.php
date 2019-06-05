@@ -14,11 +14,11 @@ class ShipmentsController extends Controller
         $this->middleware('auth:admin',['except'=>['']]);
     }
     public function UpdateShipments(){
-        return view('admin.Updateshipments');
+        return view('admin.updateshipment/Updateshipments');
     }
 
 
-    public function NewShipment(Request $request,$id){
-        
+    public function SentShipment(){
+        return view('admin.updateshipment/Sentshipments');
     }
 }

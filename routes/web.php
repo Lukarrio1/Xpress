@@ -46,6 +46,8 @@ Route::post('/Userinfo', 'User\UserController@update');
 Route::post('/Useraccountdel', 'User\UserController@destroy');
 Route::post('/passwordUpdate', 'User\UserController@PasswordUpdate');
 
+Route::get('/news', 'User\NewsController@index');
+Route::post('/news','User\NewsController@SingleNews');
 // Admin routes
 Route::prefix('admin')->group(function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
@@ -58,24 +60,36 @@ Route::prefix('admin')->group(function () {
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
     Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 
-    Route::get('/updateshipments', 'Admin\ShipmentsController@UpdateShipments')->name('admin.shipments');
-    Route::get('/news', 'Admin\NewsController@Allnews')->name('admin.news');
+    Route::get('/update/shipments', 'Admin\ShipmentsController@UpdateShipments')->name('admin.shipments');
+    Route::get('/sent/shipments', 'Admin\ShipmentsController@SentShipment')->name('admin.sent.shipments');
+
+    Route::get('/news', 'Admin\NewsController@create')->name('admin.news');
+    Route::post('/news','Admin\NewsController@store');
+
     Route::get('/users', 'Admin\UserController@index')->name('admin.allusers');
     Route::get('/allusers', 'Admin\UserController@Allusers');
     Route::post('/allusers', 'Admin\UserController@Singleuser');
     Route::post('/search', 'Admin\UserController@Search');
+
     Route::get('/delivery', 'Admin\DeliveryController@index')->name('admin.delivery');
-    Route::get('/all/delivery', 'Admin\DeliveryController@index')->name('admin.alldelivery');
+    Route::get('/all/delivery', 'Admin\DeliveryController@AllSdelivery');
     Route::get('/sheduledelivery/notification','Admin\DeliveryController@notification');
+    Route::post('/delivery/view','Admin\DeliveryController@DeliveryUpdate');
+    Route::post('/delivery/update','Admin\DeliveryController@TokenUpdate');
+    Route::post('/delivery/search','Admin\DeliveryController@DeliverySearch');
+
     Route::get('/invoices', 'Admin\InvoiceController@index')->name('admin.invoice');
     Route::get('/invoices/all', 'Admin\InvoiceController@Allinvoices');
     Route::post('/invoice/file','Admin\InvoiceController@InvFile');
     Route::post('/invoice/update','Admin\InvoiceController@UpdateInvoice');
+
     Route::get('/messages', 'Admin\MessageController@index')->name('admin.message');
     Route::post('/user/delete','Admin\UserController@DeleteUser');
+
     Route::get('/invoice/notification','Admin\InvoiceController@invoiceNotification');
     Route::post('/invoice/notification','Admin\InvoiceController@InvoiceNotificationUpdate');
     Route::post('/invoice/search','Admin\InvoiceController@InvoiceSearch');
+    
     Route::get('/edit','AdminController@edit')->name('admin.edit');
     Route::get('/edit/data','AdminController@editData');
 });

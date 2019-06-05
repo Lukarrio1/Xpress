@@ -6,6 +6,7 @@ $(document).ready(() => {
   shipments();
   spnotification();
   task();
+  News();
 });
 
 // runs every 20 seconds
@@ -18,6 +19,7 @@ window.setInterval(() => {
   Modaltimer();
   shipments();
   spnotification();
+  News();
 }, 60000);
 
 // checks to see if the user verified there email ('/','NotificationController@Token')
@@ -406,7 +408,6 @@ MakeDelivery = () => {
       "Invalid phone number, It should be at 10 characters."
     );
   } else {
-    // console.log(express);
     $.ajax({
       url: "/scheduledelivery",
       type: "POST",
@@ -420,7 +421,7 @@ MakeDelivery = () => {
       },
       dataType: "text",
       success: data => {
-        console.log("this is the returned"+data);
+        console.log("this is the returned" + data);
         iziToast.success({
           position: "topCenter",
           message: "Shedule delivery submitted."
@@ -437,6 +438,45 @@ MakeDelivery = () => {
     });
   }
 };
+News = () => {
+  $.get("/news", data => {
+    let news = jQuery.parseJSON(data);
+    let text = "";
+    for (i = 0; i < news.length; i++) {
+      text += `<a href="#" class="list-group-item d-flex justify-content-between dark-grey-text newsmodal" id="news${
+        news[i].id
+      }">${news[i].subject}
+      </a>`;
+    }
+    $("#allnews").html(`${text}`);
+    $("#newscount").html(`${news.length}`);
+  });
+};
+
+$(document).on("click", ".newsmodal", function() {
+  let news = $(this).attr("id");
+  let id = news.substring(4);
+  $.ajax({
+    url: "/news",
+    type: "POST",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id
+    },
+    dataType: "text",
+    success: data => {
+     let singlenews = jQuery.parseJSON(data);
+     $("#newmessage").html(`
+     <div class="text-center">
+     <span class="h2">${singlenews.subject}</span>
+     </div>
+     <br>
+    <span class="h5">${singlenews.body}</span>
+     `);
+     $("#newsbtn").click();
+    }
+  });
+});
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
   let sum = Number(verify) + Number(sp);

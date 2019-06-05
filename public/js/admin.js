@@ -5,6 +5,8 @@ $(document).ready(() => {
   InvoiceNt();
   InvoiceSearch();
   AdminData();
+  DeliverySearch();
+  Alldeliveries();
   $("#invloading").css("display", "none");
   // $(document).ajaxStart(function() {
   // 	$('#invloading').css('display', 'block');
@@ -282,7 +284,9 @@ $(document).on("click", ".invfile", function() {
         );
       } else {
         $("#invfile").html(
-          `<embed src="/storage/Invoice/${file.file}" frameborder="0" width="100%" height="450px">`
+          `<embed src="/storage/Invoice/${
+            file.file
+          }" frameborder="0" width="100%" height="450px">`
         );
       }
       $("#modalinv").click();
@@ -346,15 +350,15 @@ $(document).on("click", ".nt", function() {
   });
 });
 
-DeliveryNt = (invoice) => {
+DeliveryNt = invoice => {
   $.get("/admin/sheduledelivery/notification", data => {
     let notify = jQuery.parseJSON(data);
     let text = "";
     let sdnotify = notify.length;
-    NotificationCount(invoice,sdnotify);
-    for (let i = 0; i <sdnotify; i++) {
+    NotificationCount(invoice, sdnotify);
+    for (let i = 0; i < sdnotify; i++) {
       text += `
-	<a class="dropdown-item" href="admin/invoices">
+	<a class="dropdown-item" href="/admin/delivery">
 	<i class="fas fa-calendar-check mr-2" aria-hidden="true"></i>
 	<span id="sdnt${notify[i].id}" class="sdnt">${notify[i].notification}</span>
     </a>
@@ -364,20 +368,98 @@ DeliveryNt = (invoice) => {
   });
 };
 
-// $(document).on("click", ".sdnt", function() {
-//   let invoice = $(this).attr("id");
-//   let id = invoice.substring(4);
-//   $.ajax({
-//     url: "/admin/invoice/notification",
-//     type: "POST",
-//     data: {
-//       _token: CSRF_TOKEN,
-//       id: id
-//     },
-//     dataType: "text",
-//     success: data => {}
-//   });
-// });
+$(document).on("click", ".sdnt", function() {
+  let delivery = $(this).attr("id");
+  let id = delivery.substring(4);
+  $.ajax({
+    url: "/admin/delivery/view",
+    type: "POST",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id
+    },
+    dataType: "text",
+    success: data => {}
+  });
+});
+
+Alldeliveries = () => {
+  $.get("/admin/all/delivery", data => {
+    let dev = jQuery.parseJSON(data);
+    window.setInterval(() => {
+      DevCheck(dev.length);
+    }, 10000);
+    let check = "";
+    let mindev = 0;
+    let express = "";
+    let text = "";
+    for (i = 0; i < dev.length; i++) {
+      if (dev[i].token == "true") {
+        _class = "<tr class='table-info'>";
+        check = "";
+        mindev = mindev + 1;
+      } else {
+        _class = '<tr class="">';
+        check = "checked";
+      }
+
+      if (dev[i].express == "true") {
+        express = "Yes";
+      } else {
+        express = "No";
+      }
+      created_at = new Date(`${dev[i].created_at}`);
+      created = created_at.toString().slice(0, 24);
+      updated_at = new Date(`${dev[i].updated_at}`);
+      updated = updated_at.toString().slice(0, 24);
+      text += `
+      ${_class}
+      <th scope="row">
+		  <input class="form-check-input devcheck" type="checkbox" id="dev${
+        dev[i].id
+      }" value="true" ${check}>
+		  <label class="form-check-label" for="dev${
+        dev[i].id
+      }" class="label-table"></label>
+		</th>
+		<td>${dev[i].firstname}</td>
+		<td>${dev[i].lastname}</td>
+		<td>${dev[i].address}</td>
+		<td>${dev[i].phone}</td>
+    <td>${express}</td>
+    <td>${created}</td>
+    <td>${updated}</td>
+	  </tr>`;
+    }
+    $("#deliverytb").html(`${text}`);
+    $("#mindev").html(`${mindev}`);
+    $("#maxdev").html(`${dev.length}`);
+  });
+};
+
+$(document).on("click", ".devcheck", function() {
+  let devid = $(this).attr("id");
+  let dev = $(this).val();
+  let id = devid.substring(3);
+  $("#devsearchcount").html(0);
+  $.ajax({
+    url: "/admin/delivery/update",
+    type: "POST",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id,
+      value: dev
+    },
+    dataType: "text",
+    success: data => {
+      Alldeliveries();
+      iziToast.success({
+        position: "topCenter",
+        message: "Schedule delivery delivered."
+      });
+    }
+  });
+});
 
 InCheck = invlen => {
   $.get("/admin/invoices/all", data => {
@@ -388,9 +470,18 @@ InCheck = invlen => {
   });
 };
 
-NotificationCount = (invoice,delivery) => {
+DevCheck = devlen => {
+  $.get("/admin/all/delivery", data => {
+    let dev = jQuery.parseJSON(data);
+    if (devlen != dev.length) {
+      Alldeliveries();
+    }
+  });
+};
+
+NotificationCount = (invoice, delivery) => {
   let sum = 0;
-  sum = invoice+delivery;
+  sum = invoice + delivery;
   $("#invoicentc").html(`${sum}`);
 };
 
@@ -478,6 +569,110 @@ $(document).on("click", ".searchin", function() {
     }
   });
 });
+
+DeliverySearch = () => {
+  $("#deliverysearch").on("keyup", function() {
+    let search = $("#deliverysearch").val();
+    if (search.length > 0) {
+      console.log(search);
+      $.ajax({
+        url: "/admin/delivery/search",
+        type: "POST",
+        data: {
+          _token: CSRF_TOKEN,
+          search: search
+        },
+        dataType: "text",
+        success: data => {
+          let dev = jQuery.parseJSON(data);
+          $("#devsearchcount").html(`${dev.length}`);
+          let check = "";
+          let mindev = 0;
+          let express = "";
+          let text = "";
+          for (i = 0; i < dev.length; i++) {
+            if (dev[i].token == "true") {
+              _class = "<tr class='table-info'>";
+              check = "";
+              mindev = mindev + 1;
+            } else {
+              _class = '<tr class="">';
+              check = "checked";
+            }
+
+            if (dev[i].express == "true") {
+              express = "Yes";
+            } else {
+              express = "No";
+            }
+            created_at = new Date(`${dev[i].created_at}`);
+            created = created_at.toString().slice(0, 24);
+            updated_at = new Date(`${dev[i].updated_at}`);
+            updated = updated_at.toString().slice(0, 24);
+            text += `
+            ${_class}
+            <th scope="row">
+            <input class="form-check-input devcheck" type="checkbox" id="dev${
+              dev[i].id
+            }" value="true" ${check}>
+            <label class="form-check-label" for="dev${
+              dev[i].id
+            }" class="label-table"></label>
+          </th>
+          <td>${dev[i].firstname}</td>
+          <td>${dev[i].lastname}</td>
+          <td>${dev[i].address}</td>
+          <td>${dev[i].phone}</td>
+          <td>${express}</td>
+          <td>${created}</td>
+          <td>${updated}</td>
+          </tr>`;
+          }
+          $("#deliverytb").html(`${text}`);
+          $("#mindev").html(`${mindev}`);
+          $("#maxdev").html(`${dev.length}`);
+        }
+      });
+    } else {
+      Alldeliveries();
+      $("#devsearchcount").html(0);
+    }
+  });
+};
+
+$("#newsendbtn").on("click", () => {
+  NewsCreate();
+});
+
+NewsCreate = () => {
+  let subject = $("#newsubject").val();
+  let body = $("#newsbody").val();
+  if (subject.length < 3) {
+    $("#errorsubject").html(`Error subject must be at least 3 character.`);
+  } else if (body.length<3) {
+    $("#errorbody").html(`Error body must be at least 3 character.`);
+  } else {
+    $("#newsubject").val("");
+    $("#newsbody").val("");
+    $.ajax({
+      url: "/admin/news",
+      type: "POST",
+      data: {
+        _token: CSRF_TOKEN,
+        subject: subject,
+        body: body
+      },
+      dataType: "text",
+      success: data => {
+        Allinvoice();
+        iziToast.success({
+          position: "topCenter",
+          message: "New news posted"
+        });
+      }
+    });
+  }
+};
 // this function gets the admin thats currently logged in .
 AdminData = () => {
   $.get("/admin/edit/data", data => {
@@ -488,5 +683,4 @@ AdminData = () => {
 // Checks every 10 seconds more
 window.setInterval(() => {
   InvoiceNt();
-
 }, 10000);
