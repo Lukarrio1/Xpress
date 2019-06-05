@@ -102,7 +102,7 @@ $("#usersearch").on("keyup", () => {
 });
 
 // this function gets the id of the user on click
-$(document).on("click", ".userid", function() {
+$(document).on("click", ".userid", function () {
   let data = $(this).attr("id");
   let id = data.substring(4);
   $.ajax({
@@ -159,7 +159,7 @@ $(document).on("click", ".userid", function() {
 });
 
 // this function will delete a user from the database
-$(document).on("click", ".userdel", function() {
+$(document).on("click", ".userdel", function () {
   let del = $(this).attr("id");
   let id = del.substring(3);
   iziToast.question({
@@ -177,7 +177,7 @@ $(document).on("click", ".userdel", function() {
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
-        function(instance, toast) {
+        function (instance, toast) {
           $.ajax({
             type: "Post",
             url: "/admin/user/delete",
@@ -186,18 +186,22 @@ $(document).on("click", ".userdel", function() {
               delete: id
             },
             dataType: "text",
-            success: function(response) {
+            success: function (response) {
               Allusers();
             }
           });
-          instance.hide({ transitionOut: "fadeOut" }, toast, "button");
+          instance.hide({
+            transitionOut: "fadeOut"
+          }, toast, "button");
         },
         true
       ],
       [
         '<button style="color:white;">NO</button>',
-        function(instance, toast) {
-          instance.hide({ transitionOut: "fadeOut" }, toast, "button");
+        function (instance, toast) {
+          instance.hide({
+            transitionOut: "fadeOut"
+          }, toast, "button");
         }
       ]
     ]
@@ -264,7 +268,7 @@ Allinvoice = () => {
   });
 };
 // this function is responsible for displaying the file inside of the modal
-$(document).on("click", ".invfile", function() {
+$(document).on("click", ".invfile", function () {
   let invc = $(this).attr("id");
   let id = invc.substring(7);
   $.ajax({
@@ -294,7 +298,7 @@ $(document).on("click", ".invfile", function() {
   });
 });
 
-$(document).on("click", ".invoice", function() {
+$(document).on("click", ".invoice", function () {
   let invoice = $(this).attr("id");
   let inval = $(this).val();
   let id = invoice.substring(3);
@@ -335,7 +339,7 @@ InvoiceNt = () => {
   });
 };
 
-$(document).on("click", ".nt", function() {
+$(document).on("click", ".nt", function () {
   let invoice = $(this).attr("id");
   let id = invoice.substring(2);
   $.ajax({
@@ -368,7 +372,7 @@ DeliveryNt = invoice => {
   });
 };
 
-$(document).on("click", ".sdnt", function() {
+$(document).on("click", ".sdnt", function () {
   let delivery = $(this).attr("id");
   let id = delivery.substring(4);
   $.ajax({
@@ -437,7 +441,7 @@ Alldeliveries = () => {
   });
 };
 
-$(document).on("click", ".devcheck", function() {
+$(document).on("click", ".devcheck", function () {
   let devid = $(this).attr("id");
   let dev = $(this).val();
   let id = devid.substring(3);
@@ -486,7 +490,7 @@ NotificationCount = (invoice, delivery) => {
 };
 
 InvoiceSearch = () => {
-  $("#invoicesearch").on("keyup", function() {
+  $("#invoicesearch").on("keyup", function () {
     let search = $("#invoicesearch").val();
     if (search.length > 0) {
       $.ajax({
@@ -547,7 +551,7 @@ InvoiceSearch = () => {
   });
 };
 
-$(document).on("click", ".searchin", function() {
+$(document).on("click", ".searchin", function () {
   let invoice = $(this).attr("id");
   let inval = $(this).val();
   let id = invoice.substring(3);
@@ -571,7 +575,7 @@ $(document).on("click", ".searchin", function() {
 });
 
 DeliverySearch = () => {
-  $("#deliverysearch").on("keyup", function() {
+  $("#deliverysearch").on("keyup", function () {
     let search = $("#deliverysearch").val();
     if (search.length > 0) {
       console.log(search);
@@ -649,11 +653,13 @@ NewsCreate = () => {
   let body = $("#newsbody").val();
   if (subject.length < 3) {
     $("#errorsubject").html(`Error subject must be at least 3 character.`);
-  } else if (body.length<3) {
+  } else if (body.length < 3) {
     $("#errorbody").html(`Error body must be at least 3 character.`);
   } else {
     $("#newsubject").val("");
     $("#newsbody").val("");
+    $("#errorsubject").html(``);
+    $("#errorbody").html(``);
     $.ajax({
       url: "/admin/news",
       type: "POST",
@@ -664,7 +670,6 @@ NewsCreate = () => {
       },
       dataType: "text",
       success: data => {
-        Allinvoice();
         iziToast.success({
           position: "topCenter",
           message: "New news posted"

@@ -18,9 +18,12 @@
         <span class="text-danger" id="errorbody"></span>
     </div>
 
-    <!-- Send button -->
-    <button class="btn btn-info btn-block" id="newsendbtn">Send</button>
+                <!-- Send button -->
+                <button class="btn btn-info btn-block" id="newsendbtn">Send</button>
 
+            </div>
+       
+    </div>
 </div>
 </div>
 </section>
