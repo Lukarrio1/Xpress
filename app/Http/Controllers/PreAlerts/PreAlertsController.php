@@ -69,6 +69,7 @@ class PreAlertsController extends Controller
         if(empty($notify->user_id)){
         $notify = New nt;
         $notify->user_id = Auth::user()->id;
+        $notify->url =config('app.url')."/admin/invoices";
         $notify->notification = "New pre-alert from ".Auth::user()->name."";
         $notify->save();
         }else{

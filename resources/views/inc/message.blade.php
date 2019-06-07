@@ -8,7 +8,7 @@
 @endif
 
 @if(session('success'))
-<div class="alert alert-success text-center  col-lg-8 offset-lg-2 col-xs-12" >
+<div class="alert alert-success text-center  col-lg-8 offset-lg-2 col-xs-12" id="successmessage">
     {{ session('success') }}
 </div>
 @endif

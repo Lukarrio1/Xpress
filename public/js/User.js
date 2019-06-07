@@ -8,6 +8,7 @@ $(document).ready(() => {
   task();
   News();
   footerDate();
+  SuccesMessageRemove()
 });
 // this function updates the date of the footer every year .
 footerDate = () => {
@@ -28,6 +29,17 @@ window.setInterval(() => {
   News();
 }, 60000);
 
+SuccesMessageRemove = () => {
+  let timeout = setInterval(() => {
+    $("#successmessage").remove()
+    StopInterval(id)
+  }, 5000);
+}
+
+StopInterval = (id) => {
+  clearInterval(id);
+
+}
 // checks to see if the user verified there email ('/','NotificationController@Token')
 TokenCheck = () => {
   $.get("/Notifications", data => {
@@ -320,7 +332,8 @@ spnotification = verify => {
     let sp = spnotification.number;
     if (sp > 0) {
       $("#spnotify").html(
-        `<a class='dropdown-item' href='/shipments'>New shipment added. <span class='float-right'> <i class="fas fa-box-open"></i></span></a>`
+        `<a class='dropdown-item' href='/shipments'>New shipment added. <span class='float-right'>
+         <i class="fas fa-box-open"></i></span></a>`
       );
     } else {
       sp = 0;

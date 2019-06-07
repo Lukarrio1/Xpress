@@ -17,6 +17,7 @@ class CreateInvoicenfsTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('notification');
+            $table->string('url');
             $table->string('clicked')->default('false');
             $table->timestamps();
         });

@@ -39,4 +39,14 @@ class AdminController extends Controller
         'email'=>$admin->email,
        ]);
    }
+
+   public function AppData(){
+       $url = config('app.url');
+       $name = config('app.name');
+       return json_encode([
+           'app_name'=>$name,
+           'app_url'=>$url
+       ]);
+    
+   }
 }
