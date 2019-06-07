@@ -399,6 +399,81 @@ InvoiceNt = () => {
   });
 };
 
+InvoiceSearch = () => {
+  $("#invoicesearch").on("keyup", function () {
+    let search = $("#invoicesearch").val();
+    if (search.length > 0) {
+      $.ajax({
+        url: "/admin/invoice/search",
+        type: "POST",
+        data: {
+          _token: CSRF_TOKEN,
+          search: search
+        },
+        dataType: "text",
+        success: data => {
+          let inv = jQuery.parseJSON(data);
+          let invoice = "";
+          let maxinv = 0
+          $("#searchcount").html(`${inv.length}`);
+          for (let i = 0; i < inv.length; i++) {
+            if (inv[i].token == "true") {
+              _class = "<tr class='table-info'>";
+              maxinv = maxinv + 1
+              check = "";
+            } else {
+              _class = '<tr class="">';
+              check = "checked";
+            }
+            created_at = new Date(`${inv[i].created_at}`);
+            created = created_at.toString().slice(0, 24);
+            updated_at = new Date(`${inv[i].updated_at}`);
+            updated = updated_at.toString().slice(0, 24);
+            invoice += `
+				${_class}
+				<th scope="row">
+					<input class="form-check-input searchin" type="checkbox"  ${check}  id="inv${
+              inv[i].id
+            }" value="true">
+					<label class="form-check-label" for="inv${
+            inv[i].id
+          }" class="label-table"></label>
+				</th>
+				<td>${inv[i].xl}</td>
+				<td>${inv[i].name}</td>
+				<td>${inv[i].email}</td>
+				<td>${inv[i].vender}</td>
+				<td>${inv[i].tracking}</td>
+				<td>${inv[i].courier}</td>
+				<td>${inv[i].description}</td>
+				<td>$${inv[i].value}</td>
+				<td>${inv[i].weight}lbs</td>
+				<td><a href="/storage/invoice/${inv[i].invoice}">${inv[i].invoice}</a></td>
+				<td>${created}</td>
+				<td>${updated}</td>
+				</tr>`;
+          }
+          if (maxinv == inv.length) {
+            $("#completedinvcount").removeClass("green");
+            $("#completedinvcount").addClass("badge red");
+          } else {
+            $("#completedinvcount").removeClass("red");
+            $("#completedinvcount").addClass("badge green");
+          }
+          $("#completedinvcount").html(`${maxinv}`);
+          $("#invoicebody1").html(`${invoice}`);
+          $("#invcount").html(`${inv.length}`);
+          $("#invoicebody1").html(`${invoice}`);
+        }
+      });
+    } else {
+      $("#searchcount").html(0);
+      Allinvoice();
+    }
+  });
+};
+
+
 InvoiceNotificationUpdate = (ntid) => {
   let invoice = $(ntid).attr("id");
   let id = invoice.substring(2);
@@ -448,6 +523,7 @@ DeliveryView = (delId) => {
     success: data => {}
   });
 }
+
 Alldeliveries = () => {
   $.get("/admin/all/delivery", data => {
     let dev = jQuery.parseJSON(data);
@@ -497,6 +573,13 @@ Alldeliveries = () => {
     <td>${updated}</td>
 	  </tr>`;
     }
+    if (mindev == dev.length) {
+      $("#mindev").removeClass("green");
+      $("#mindev").addClass("badge red");
+    } else {
+      $("#mindev").removeClass("red");
+      $("#mindev").addClass("badge green");
+    }
     $("#deliverytb").html(`${text}`);
     $("#mindev").html(`${mindev}`);
     $("#maxdev").html(`${dev.length}`);
@@ -526,6 +609,7 @@ DeliveryComplete = (delId) => {
     }
   });
 }
+
 InCheck = invlen => {
   $.get("/admin/invoices/all", data => {
     let inv = jQuery.parseJSON(data);
@@ -548,68 +632,6 @@ NotificationCount = (invoice, delivery) => {
   let sum = 0;
   sum = invoice + delivery;
   $("#invoicentc").html(`${sum}`);
-};
-
-InvoiceSearch = () => {
-  $("#invoicesearch").on("keyup", function () {
-    let search = $("#invoicesearch").val();
-    if (search.length > 0) {
-      $.ajax({
-        url: "/admin/invoice/search",
-        type: "POST",
-        data: {
-          _token: CSRF_TOKEN,
-          search: search
-        },
-        dataType: "text",
-        success: data => {
-          let inv = jQuery.parseJSON(data);
-          let invoice = "";
-          $("#searchcount").html(`${inv.length}`);
-          for (let i = 0; i < inv.length; i++) {
-            if (inv[i].token == "true") {
-              _class = "<tr class='table-info'>";
-              check = "";
-            } else {
-              _class = '<tr class="">';
-              check = "checked";
-            }
-            created_at = new Date(`${inv[i].created_at}`);
-            created = created_at.toString().slice(0, 24);
-            updated_at = new Date(`${inv[i].updated_at}`);
-            updated = updated_at.toString().slice(0, 24);
-            invoice += `
-				${_class}
-				<th scope="row">
-					<input class="form-check-input searchin" type="checkbox"  ${check}  id="inv${
-              inv[i].id
-            }" value="true">
-					<label class="form-check-label" for="inv${
-            inv[i].id
-          }" class="label-table"></label>
-				</th>
-				<td>${inv[i].xl}</td>
-				<td>${inv[i].name}</td>
-				<td>${inv[i].email}</td>
-				<td>${inv[i].vender}</td>
-				<td>${inv[i].tracking}</td>
-				<td>${inv[i].courier}</td>
-				<td>${inv[i].description}</td>
-				<td>$${inv[i].value}</td>
-				<td>${inv[i].weight}lbs</td>
-				<td><a href="/storage/invoice/${inv[i].invoice}">${inv[i].invoice}</a></td>
-				<td>${created}</td>
-				<td>${updated}</td>
-				</tr>`;
-          }
-          $("#invoicebody1").html(`${invoice}`);
-        }
-      });
-    } else {
-      $("#searchcount").html(0);
-      Allinvoice();
-    }
-  });
 };
 
 
@@ -635,6 +657,7 @@ InvoiceView = (invId) => {
     }
   });
 }
+
 DeliverySearch = () => {
   $("#deliverysearch").on("keyup", function () {
     let search = $("#deliverysearch").val();
@@ -693,6 +716,13 @@ DeliverySearch = () => {
           <td>${updated}</td>
           </tr>`;
           }
+          if (mindev == dev.length) {
+            $("#mindev").removeClass("green");
+            $("#mindev").addClass("badge red");
+          } else {
+            $("#mindev").removeClass("red");
+            $("#mindev").addClass("badge green");
+          }
           $("#deliverytb").html(`${text}`);
           $("#mindev").html(`${mindev}`);
           $("#maxdev").html(`${dev.length}`);
@@ -704,8 +734,6 @@ DeliverySearch = () => {
     }
   });
 };
-
-
 
 NewsCreate = () => {
   let subject = $("#newsubject").val();

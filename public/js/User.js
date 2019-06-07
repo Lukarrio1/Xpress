@@ -19,20 +19,20 @@ footerDate = () => {
 // runs every 20 seconds
 window.setInterval(() => {
   TokenCheck();
+  spnotification();
 }, 20000);
 
 //runs ever mininute
 window.setInterval(() => {
   Modaltimer();
   shipments();
-  spnotification();
   News();
 }, 60000);
 
 SuccesMessageRemove = () => {
   let timeout = setInterval(() => {
     $("#successmessage").remove()
-    StopInterval(id)
+    StopInterval(timeout)
   }, 5000);
 }
 
@@ -341,6 +341,7 @@ spnotification = verify => {
     NotificationCounter(verify, sp);
   });
 };
+
 $("#savetodo").click(() => {
   let todo = $("#todotextarea").val();
   $.ajax({
@@ -403,6 +404,7 @@ $(document).on("click", ".todo", function () {
     }
   });
 });
+
 $("#devsubmit").on("click", () => {
   MakeDelivery();
 });
@@ -443,7 +445,6 @@ MakeDelivery = () => {
       },
       dataType: "text",
       success: data => {
-        console.log("this is the returned" + data);
         iziToast.success({
           position: "topCenter",
           message: "Shedule delivery submitted."
