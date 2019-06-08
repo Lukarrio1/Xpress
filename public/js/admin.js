@@ -112,8 +112,6 @@ UserCheck = amount => {
   });
 };
 
-
-
 UserSearch = () => {
   if ($("#usersearch").val().length > 3) {
     $("#alluserbody").html("");
@@ -157,7 +155,6 @@ UserSearch = () => {
   }
 
 }
-
 
 UserCard = (userID) => {
   let data = $(userID).attr("id");

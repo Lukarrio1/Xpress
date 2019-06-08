@@ -10,12 +10,7 @@ $(document).ready(() => {
   footerDate();
   SuccesMessageRemove()
 });
-// this function updates the date of the footer every year .
-footerDate = () => {
-  var date = new Date();
-  var year = date.getFullYear();
-  $("#footerdate").html(`${year}`);
-}
+
 // runs every 20 seconds
 window.setInterval(() => {
   TokenCheck();
@@ -29,13 +24,63 @@ window.setInterval(() => {
   News();
 }, 60000);
 
+/* Triggers start here */
+// this function updates the login modal /modal ('/modal','User\UserController@modaltokenupdate')
+$("#update_login_token").click(() => {
+  ModalUpdate();
+});
+
+// This trigger calls the ProfileImageRemove()
+$("#changeimg").click(() => {
+  ProfileImageRemove()
+});
+
+// This trigger calls the ProfileUpate()
+$("#updatebtn").html("Update");
+$("#update").click(() => {
+  ProfileUpdate()
+});
+
+// This trigger calls the ProfileDelete()
+$("#Deletebtn").click(() => {
+  ProfileDelete()
+});
+// This trigger calls the NewTask()
+$("#savetodo").click(() => {
+  NewTask();
+});
+// This trigger calls the MakeDelivery()
+$("#devsubmit").on("click", () => {
+  MakeDelivery();
+});
+// This trigger calls DeleteTask()
+$(document).on("click", ".todo", function () {
+  let delId = this
+  DeleteTask(delId)
+});
+// This trigger calls the NewsModal()
+$(document).on("click", ".newsmodal", function () {
+  let mdid = this
+  NewsModal(mdid)
+});
+
+
+/* Triggers end here */
+// this function updates the date of the footer every year .
+footerDate = () => {
+  var date = new Date();
+  var year = date.getFullYear();
+  $("#footerdate").html(`${year}`);
+}
+
+// this message removes the Success message from the prealerts page after 5000 milliseconds
 SuccesMessageRemove = () => {
   let timeout = setInterval(() => {
     $("#successmessage").remove()
     StopInterval(timeout)
   }, 5000);
 }
-
+// this function stops the SuccessMessageRemove() from running after 5 seconds
 StopInterval = (id) => {
   clearInterval(id);
 
@@ -76,8 +121,8 @@ Modaltimer = () => {
   });
 };
 
-// this function updates the login modal /modal ('/modal','User\UserController@modaltokenupdate')
-$("#update_login_token").click(() => {
+
+ModalUpdate = () => {
   $.ajax({
     url: "/modal",
     type: "POST",
@@ -88,9 +133,10 @@ $("#update_login_token").click(() => {
     dataType: "text",
     success: data => {}
   });
-});
+}
 
-$("#changeimg").click(() => {
+
+ProfileImageRemove = () => {
   $.ajax({
     url: "/user/imgremove",
     type: "POST",
@@ -104,10 +150,9 @@ $("#changeimg").click(() => {
       $("#update").click();
     }
   });
-});
-//  this function updates the users information on the user/edit page ('/MyAccount','User\UserController@edit')->name('account.edit')
-$("#updatebtn").html("Update");
-$("#update").click(() => {
+}
+
+ProfileUpdate = () => {
   let name = $("#name").val();
   let telephone = $("#telephone").val();
   let city = $("#city").val();
@@ -167,7 +212,7 @@ $("#update").click(() => {
       }
     });
   }
-});
+}
 // this function upates and sends a request to ('/Userinfo','User\UserController@index')
 Userinfo = () => {
   $.get("/Userinfo", data => {
@@ -200,8 +245,8 @@ Userinfo = () => {
     );
   });
 };
-// this funtion deletes user
-$("#Deletebtn").click(() => {
+
+ProfileDelete = () => {
   iziToast.question({
     backgroundColor: "red",
     messageColor: "white",
@@ -247,7 +292,7 @@ $("#Deletebtn").click(() => {
       ]
     ]
   });
-});
+}
 //  all you need to know is that this function goes to the Pdata in UserController
 Pdata = () => {
   $("#oldpass").val("");
@@ -322,6 +367,7 @@ shipments = () => {
                 <td>${shipments[i].updated_at}</td>
               </tr>`;
     }
+    $("#shipmentscount").html(`${shipments.length}`)
     $("#shipments").html(`${all_ship}`);
   });
 };
@@ -342,7 +388,8 @@ spnotification = verify => {
   });
 };
 
-$("#savetodo").click(() => {
+
+NewTask = () => {
   let todo = $("#todotextarea").val();
   $.ajax({
     url: "/todo",
@@ -362,7 +409,7 @@ $("#savetodo").click(() => {
       task();
     }
   });
-});
+}
 
 task = () => {
   $.get("/todo", data => {
@@ -384,8 +431,9 @@ task = () => {
   });
 };
 
-$(document).on("click", ".todo", function () {
-  let todo = $(this).attr("id");
+
+DeleteTask = (delId) => {
+  let todo = $(delId).attr("id");
   let id = todo.substring(4);
   $.ajax({
     url: "/delete/todo",
@@ -403,11 +451,7 @@ $(document).on("click", ".todo", function () {
       task();
     }
   });
-});
-
-$("#devsubmit").on("click", () => {
-  MakeDelivery();
-});
+}
 
 MakeDelivery = () => {
   let firstname = $("#devfname").val();
@@ -476,8 +520,9 @@ News = () => {
   });
 };
 
-$(document).on("click", ".newsmodal", function () {
-  let news = $(this).attr("id");
+
+NewsModal = (mdid) => {
+  let news = $(mdid).attr("id");
   let id = news.substring(4);
   $.ajax({
     url: "/news",
@@ -499,7 +544,7 @@ $(document).on("click", ".newsmodal", function () {
       $("#newsbtn").click();
     }
   });
-});
+}
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
   let sum = Number(verify) + Number(sp);

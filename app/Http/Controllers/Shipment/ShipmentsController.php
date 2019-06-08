@@ -53,13 +53,17 @@ class ShipmentsController extends Controller
     public function notification()
     {
         $user = Auth::user()->id;
-        $new = DB::table('spnotifies')
-        ->where('user_id','=',$user)
-        ->where('token','=','true')
-        ->count(); 
-        return json_encode([
-        'number'=>$new,
-        ]);
+        $new = spnotify::where('user_id',$user)->first();
+        if($new->token =="true"){
+          return json_encode([
+          'number'=>1,
+            ]);
+        }else{
+         return json_encode([
+          'number'=>0,
+         ]);
+        }
+       
     }
 
 
