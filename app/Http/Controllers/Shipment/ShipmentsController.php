@@ -54,15 +54,20 @@ class ShipmentsController extends Controller
     {
         $user = Auth::user()->id;
         $new = spnotify::where('user_id',$user)->first();
-        if($new->token =="true"){
-          return json_encode([
-          'number'=>1,
-            ]);
-        }else{
-         return json_encode([
-          'number'=>0,
-         ]);
+        if(!empty($new)){
+            if($new->token =="true"){
+                return json_encode([
+                'number'=>1,
+                  ]);
+              }else{
+               return json_encode([
+                'number'=>0,
+               ]);
         }
+        }
+        return json_encode([
+            'number'=>0,
+           ]); 
        
     }
 

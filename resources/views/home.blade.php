@@ -104,11 +104,8 @@
   <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-primary text-white">
         <h5 class="modal-title" id="exampleModalLongTitle">Add New Task</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" id="closetodo">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
         <div class="md-form">
@@ -282,8 +279,8 @@
       aria-hidden="true">
       <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">News</h5>
+          <div class="modal-header bg-primary text-white text-center">
+            <h5 class="modal-title" id="exampleModalLabel">News <small id="newtime"></small></h5>
           </div>
           <div class="modal-body" id="newmessage">
           

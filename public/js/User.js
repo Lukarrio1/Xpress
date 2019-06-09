@@ -541,6 +541,9 @@ NewsModal = (mdid) => {
      <br>
     <span class="h5">${singlenews.body}</span>
      `);
+     created_at = new Date(`${singlenews.created_at}`);
+     created = created_at.toString().slice(0, 24);
+     $("#newtime").html(`${created}`)
       $("#newsbtn").click();
     }
   });
