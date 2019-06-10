@@ -489,8 +489,7 @@ InvoiceNotificationUpdate = (ntid) => {
 
 DeliveryNt = invoice => {
   $.get("/admin/sheduledelivery/notification", data => {
-    let notify = jQuery.parseJSON(data);
-    console.log(notify)
+    let notify = jQuery.parseJSON(data)
     let text = "";
     let sdnotify = notify.length;
     NotificationCount(invoice, sdnotify);
@@ -660,7 +659,6 @@ DeliverySearch = () => {
   $("#deliverysearch").on("keyup", function () {
     let search = $("#deliverysearch").val();
     if (search.length > 0) {
-      console.log(search);
       $.ajax({
         url: "/admin/delivery/search",
         type: "POST",
