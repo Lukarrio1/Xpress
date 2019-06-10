@@ -349,6 +349,7 @@ Pdata = () => {
     }
   });
 };
+
 // this is function will show all of the shipments
 shipments = () => {
   $.get("/shipments/all", data => {
@@ -387,7 +388,6 @@ spnotification = verify => {
     NotificationCounter(verify, sp);
   });
 };
-
 
 NewTask = () => {
   let todo = $("#todotextarea").val();
@@ -430,7 +430,6 @@ task = () => {
     $("#todosection").html(`${todobody}`);
   });
 };
-
 
 DeleteTask = (delId) => {
   let todo = $(delId).attr("id");

@@ -490,17 +490,19 @@ InvoiceNotificationUpdate = (ntid) => {
 DeliveryNt = invoice => {
   $.get("/admin/sheduledelivery/notification", data => {
     let notify = jQuery.parseJSON(data);
+    console.log(notify)
     let text = "";
     let sdnotify = notify.length;
     NotificationCount(invoice, sdnotify);
-    for (let i = 0; i < sdnotify; i++) {
+    // this is a use of one of the js higher order functions 
+    notify.forEach((not) => {
       text += `
 	<a class="dropdown-item" href="/admin/delivery">
 	<i class="fas fa-calendar-check mr-2" aria-hidden="true"></i>
-	<span id="sdnt${notify[i].id}" class="sdnt">${notify[i].notification}</span>
+	<span id="sdnt${not.id}" class="sdnt">${not.notification}</span>
     </a>
-	`;
-    }
+	`
+    })
     $("#deliverynt").html(`${text}`);
   });
 };
@@ -545,7 +547,6 @@ Alldeliveries = () => {
         _class = '<tr class="">';
         check = "checked";
       }
-
       if (dev[i].express == "true") {
         express = "Yes";
       } else {
@@ -611,7 +612,7 @@ InCheck = invlen => {
   $.get("/admin/invoices/all", data => {
     let inv = jQuery.parseJSON(data);
     if (invlen != inv.length) {
-      Allinvoice();
+      Allinoice();
     }
   });
 };
