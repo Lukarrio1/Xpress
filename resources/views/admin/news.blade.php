@@ -18,7 +18,7 @@
 
         <!-- Message -->
         <div class="form-group">
-            <textarea class="form-control rounded-0" id="newsbody" rows="4" placeholder="News Body"></textarea>
+            <textarea class="form-control rounded-0" id="newsbody" rows="4" placeholder="News Body" name="newsbody"></textarea>
             <span class="text-danger" id="errorbody"></span>
         </div>
         <button class="btn btn-info btn-md" id="newsendbtn">Post</button>

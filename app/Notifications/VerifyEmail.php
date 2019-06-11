@@ -42,7 +42,7 @@ class VerifyEmail extends Notification
         return (new MailMessage)
                     ->line('Click the button below to verify your email..')
                     ->action('Verify email', route('verify',$this->user->token))
-                    ->line('Thank you for using our Xpress-Logisticsja!');
+                    ->line('Thank you for using Xpress-Logisticsja!');
     }
     /**
      * Get the array representation of the notification.
