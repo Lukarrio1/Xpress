@@ -24,6 +24,7 @@ Route::prefix('Notifications')->group(function () {
 Route::post('/user/imgremove', 'User\UserController@removeimg');
 Route::post('/todo', 'User\UserController@todo');
 Route::get('/todo', 'User\UserController@alltodo');
+Route::get('/todo/{id}','User\UserController@SingleTodo');
 Route::post('/delete/todo', 'User\UserController@deletetodo');
 // this route goes to the Storeimage function on the usercontroller it is resposible for storing a image
 Route::post('/store/image', 'User\UserController@Storeimage')->name('userimage');

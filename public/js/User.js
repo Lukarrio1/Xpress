@@ -63,7 +63,11 @@ $(document).on("click", ".newsmodal", function () {
   let mdid = this
   NewsModal(mdid)
 });
-
+// This trigger calls the ViewTask()
+$(document).on("click", ".task", function () {
+  let taskId = this
+  ViewTask(taskId)
+});
 
 /* Triggers end here */
 // this function updates the date of the footer every year .
@@ -419,7 +423,7 @@ task = () => {
       todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text " id="emptytask">Add your tasks here..</a>`;
     } else {
       for (let i = 0; i < todo.length; i++) {
-        todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text ">${
+        todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text " id="task${todo[i].id}">${
           todo[i].todo
         }
       <i class="fas fa-trash ml-auto todo" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
@@ -430,6 +434,19 @@ task = () => {
     $("#todosection").html(`${todobody}`);
   });
 };
+
+ViewTask = (taskid) => {
+  let task = $(taskid).attr("id")
+  let id = task.substring(4)
+  $.get(`/todo/${id}`, data => {
+    let task = jQuery.parseJSON(data)
+    created_at = new Date(`${task.created_at}`);
+    created = created_at.toString().slice(0, 24);
+    $("#taskbody").html(`${task.todo}`)
+    $("#tasktime").html(`${created}`)
+    $("#viewTASK").click()
+  })
+}
 
 DeleteTask = (delId) => {
   let todo = $(delId).attr("id");
@@ -508,12 +525,12 @@ News = () => {
   $.get("/news", data => {
     let news = jQuery.parseJSON(data);
     let text = "";
-    for (i = 0; i < news.length; i++) {
+    news.forEach((n) => {
       text += `<a href="#" class="list-group-item d-flex justify-content-between dark-grey-text newsmodal" id="news${
-        news[i].id
-      }">${news[i].subject}
+        n.id
+      }">${n.subject}
       </a>`;
-    }
+    })
     $("#allnews").html(`${text}`);
     $("#newscount").html(`${news.length}`);
   });
@@ -540,9 +557,9 @@ NewsModal = (mdid) => {
      <br>
     <span class="h5">${singlenews.body}</span>
      `);
-     created_at = new Date(`${singlenews.created_at}`);
-     created = created_at.toString().slice(0, 24);
-     $("#newtime").html(`${created}`)
+      created_at = new Date(`${singlenews.created_at}`);
+      created = created_at.toString().slice(0, 24);
+      $("#newtime").html(`${created}`)
       $("#newsbtn").click();
     }
   });

@@ -250,6 +250,13 @@ class UserController extends Controller
         }
         return json_encode($todo);
     }
+
+    public function SingleTodo($id){
+       $newid = htmlentities($id);
+       $todo = todo::find($newid);
+       return json_encode($todo);
+    }
+
     public function deletetodo(Request $request){
         $this->validate($request,[
             'id'=>'required'
@@ -259,10 +266,10 @@ class UserController extends Controller
     return 200;
     }
     // this function returns all the user in the database will remove later this is for the admin section..
-    public function all_users()
-    {
-        return json_encode(User::orderBy('created_at', 'DESC')->get());
-    }
+    // public function all_users()
+    // {
+    //     return json_encode(User::orderBy('created_at', 'DESC')->get());
+    // }
 // this function sends an email to the user as soon as they change there password
     public function PasswordEmailNotification()
     {

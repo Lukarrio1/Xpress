@@ -20,6 +20,26 @@
 <!--Section: Main panel-->
 
 <!-- Central Modal Large Info -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#todomodalview" style="display: none" id="viewTASK">
+</button>
+
+<!-- Modal -->
+<div class="modal " id="todomodalview" tabindex="-1" role="dialog" aria-labelledby="todomodalview"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white text-center">
+        <h5 class="modal-title" id="exampleModalLabel">Task <small id="tasktime"></small></h5>
+      </div>
+      <div class="modal-body" id="taskbody">
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <button type="button" class="btn btn-primary waves-effect waves-light " data-toggle="modal"
   data-target="#centralModalLGInfoDemo" id="modal" style="display:none;">
@@ -115,7 +135,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closetodo">Close</button>
         <button type="button" class="btn btn-primary" id="savetodo">Add Task</button>
       </div>
     </div>
