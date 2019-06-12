@@ -35,7 +35,8 @@
       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <span id="taskcompleted"></span>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closetaskmodal">Close</button>
       </div>
     </div>
   </div>
@@ -125,13 +126,13 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add New Task</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add New Task    <span class="text-danger" id="errortask"></span></h5>
       </div>
       <div class="modal-body">
         <div class="md-form">
           <i class="fas fa-pencil prefix grey-text"></i>
+         
           <textarea type="text" id="todotextarea" class="md-textarea form-control" rows="4"></textarea>
-          <label data-error="wrong" data-success="right" for="form8">Add New Task Here</label>
         </div>
       </div>
       <div class="modal-footer">
@@ -350,7 +351,7 @@
         <div class="card-header white-text primary-color">
           Tasks to do
           <i href="#" class="fas fa-plus fa-pull-right align-right text-white" data-toggle="modal"
-            data-target="#taskmodal" id="modal" data-placement=top title="Add new task"></i>
+            data-target="#taskmodal" id="taskmodal" data-placement=top title="Add new task"></i>
         </div>
         <!--/.Card-->
         <div class="card-body pt-0 px-1">

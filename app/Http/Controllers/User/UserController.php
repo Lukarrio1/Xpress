@@ -257,6 +257,15 @@ class UserController extends Controller
        return json_encode($todo);
     }
 
+    public function CompletedTodo(Request $request){
+        $this->validate($request,["id"=>"required"]);
+        $id = htmlentities($request->id);
+        $task = todo::find($id);
+        $task->completed ? $task->completed=0 : $task->completed =1; 
+        $task->save();
+        return json_encode($task);
+    }
+
     public function deletetodo(Request $request){
         $this->validate($request,[
             'id'=>'required'

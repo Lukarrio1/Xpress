@@ -68,8 +68,14 @@ $(document).on("click", ".task", function () {
   let taskId = this
   ViewTask(taskId)
 });
+// This trigger calls the Completetask()
+$(document).on("click", ".completedtask", function () {
+  let taskId = this
+  CompleteTask(taskId)
+});
 
 /* Triggers end here */
+
 // this function updates the date of the footer every year .
 footerDate = () => {
   var date = new Date();
@@ -395,41 +401,50 @@ spnotification = verify => {
 
 NewTask = () => {
   let todo = $("#todotextarea").val();
-  $.ajax({
-    url: "/todo",
-    type: "POST",
-    data: {
-      _token: CSRF_TOKEN,
-      todo: todo
-    },
-    dataType: "text",
-    success: data => {
-      $("#todotextarea").val("");
-      $("#closetodo").click();
-      iziToast.success({
-        position: "topCenter",
-        message: "Task added.."
-      });
-      task();
-    }
-  });
+  if (todo.length < 1 || todo.length > 200) {
+    $("#errortask").html(`Error invalid task!`)
+  } else {
+    $.ajax({
+      url: "/todo",
+      type: "POST",
+      data: {
+        _token: CSRF_TOKEN,
+        todo: todo
+      },
+      dataType: "text",
+      success: data => {
+        $("#todotextarea").val("");
+        $("#closetodo").click();
+        $("#taskmodal").click(() => $("#errortask").html(" "));
+        task();
+        iziToast.success({
+          position: "topCenter",
+          message: "Task added.."
+        });
+      }
+    });
+  }
 }
 
 task = () => {
   $.get("/todo", data => {
     let todo = jQuery.parseJSON(data);
     let todobody = "";
+    let _class = ""
     if (todo.count == 0) {
       todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text " id="emptytask">Add your tasks here..</a>`;
     } else {
-      for (let i = 0; i < todo.length; i++) {
-        todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text " id="task${todo[i].id}">${
-          todo[i].todo
+      todo.forEach((n) => {
+        if (n.completed) {
+          _class = "completed"
+        }
+        todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${n.id}">${
+          n.todo
         }
       <i class="fas fa-trash ml-auto todo" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
-        todo[i].id
+        n.id
       }"></i></a>`;
-      }
+      })
     }
     $("#todosection").html(`${todobody}`);
   });
@@ -440,12 +455,41 @@ ViewTask = (taskid) => {
   let id = task.substring(4)
   $.get(`/todo/${id}`, data => {
     let task = jQuery.parseJSON(data)
-    created_at = new Date(`${task.created_at}`);
-    created = created_at.toString().slice(0, 24);
-    $("#taskbody").html(`${task.todo}`)
-    $("#tasktime").html(`${created}`)
-    $("#viewTASK").click()
+    if (task == null) {} else {
+      created_at = new Date(`${task.created_at}`);
+      created = created_at.toString().slice(0, 24);
+      let com = task.completed ? `<i class="fas fa-check"></i >` : `<i class="far fa-square"></i>`
+      $("#taskbody").html(`${task.todo}`)
+      $("#tasktime").html(`${created}`)
+      $("#taskcompleted").html(`<button type="button" class="btn btn-primary completedtask" id="completedTask${id}">
+      ${com}
+     </button>`)
+      $("#viewTASK").click()
+    }
   })
+
+}
+
+CompleteTask = (taskId) => {
+  let taskID = $(taskId).attr("id")
+  let id = taskID.substring(13)
+  $.ajax({
+    type: "POST",
+    url: "/todo/completed",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id
+    },
+    dataType: "text",
+    success: function (response) {
+      iziToast.success({
+        position: "topCenter",
+        message: "Task Completed"
+      });
+      $("#closetaskmodal").click();
+      task()
+    }
+  });
 }
 
 DeleteTask = (delId) => {
