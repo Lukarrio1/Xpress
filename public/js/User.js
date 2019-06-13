@@ -467,7 +467,6 @@ ViewTask = (taskid) => {
       $("#viewTASK").click()
     }
   })
-
 }
 
 CompleteTask = (taskId) => {
@@ -565,6 +564,7 @@ MakeDelivery = () => {
     });
   }
 };
+
 News = () => {
   $.get("/news", data => {
     let news = jQuery.parseJSON(data);
@@ -579,7 +579,6 @@ News = () => {
     $("#newscount").html(`${news.length}`);
   });
 };
-
 
 NewsModal = (mdid) => {
   let news = $(mdid).attr("id");

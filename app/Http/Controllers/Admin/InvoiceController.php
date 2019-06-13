@@ -59,7 +59,7 @@ class InvoiceController extends Controller
         $update= Notify::find($request->id);
         $update->clicked = "true";
         $update->save();
-        return 1;
+        return json_encode(["status"=>200]);
     }
 
     public function InvoiceSearch(Request $request){

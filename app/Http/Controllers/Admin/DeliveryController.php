@@ -45,7 +45,7 @@ class DeliveryController extends Controller
       ->where('user_id','=',$user)
       ->where('clicked','=','false')
       ->update(['clicked'=>'true']);
-      return 200;
+      return json_encode(["status"=>200]);
     }
 
     public function TokenUpdate(Request $request){

@@ -58,6 +58,7 @@ class UserController extends Controller
         $password->password = Hash::make( htmlentities($request->newpass));
         $this->PasswordEmailNotification();
         $password->save();
+        return json_encode(["status"=>200]);
 
     }
 // this function checks the the oldpassword form the from and compare it with the password from the database
@@ -133,7 +134,7 @@ class UserController extends Controller
                 Storage::delete('public/Userimage/' . $user->userimage);
                 $user->userimage = "noimage.jpg";
                 $user->save();
-                return 1;
+                return json_encode(["status"=>301]);
             }
         }
     }
@@ -174,7 +175,7 @@ class UserController extends Controller
         $user->address =  htmlentities($request->address);
         $user->Country =  htmlentities($request->country);
         $user->save();
-        return "updated";
+        return json_encode(["status"=>200]);
 
     }
 
@@ -272,7 +273,7 @@ class UserController extends Controller
         ]);
     $todo = todo::find($request->id);
     $todo->delete();
-    return 200;
+    return json_encode(["status"=>200]);
     }
     // this function returns all the user in the database will remove later this is for the admin section..
     // public function all_users()
