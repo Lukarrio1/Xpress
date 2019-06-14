@@ -169,17 +169,13 @@ UserCard = (userID) => {
     dataType: "text",
     success: data => {
       let user = jQuery.parseJSON(data);
-      // console.log(user)
       let usercard = `<!-- Card -->
 				<div class="card profile-card">
-
-				<!-- Avatar -->
 				<div class="avatar z-depth-1-half mb-4">
 				<img src="/storage/Userimage/${
           user.image
         }" class="rounded-circle" alt="First sample avatar image">
 				</div>
-
 				<div class="card-body pt-0 mt-0" >
 				<div class="text-center">
 				<h3 class="mb-3 font-weight-bold"><strong>${user.name}</strong></h3>
@@ -204,9 +200,6 @@ UserCard = (userID) => {
 
 				<li><strong>Updated:</strong> ${user.updated}</li>
 				</ul>
-				<!-- Name -->
-
-
 				</div>
 
 				</div>`;

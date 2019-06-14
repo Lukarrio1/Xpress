@@ -9,6 +9,7 @@ $(document).ready(() => {
   News();
   footerDate();
   SuccesMessageRemove()
+  ShipmentCount()
 });
 
 // runs every 20 seconds
@@ -22,6 +23,7 @@ window.setInterval(() => {
   Modaltimer();
   shipments();
   News();
+  ShipmentCount()
 }, 60000);
 
 /* Triggers start here */
@@ -131,7 +133,6 @@ Modaltimer = () => {
   });
 };
 
-
 ModalUpdate = () => {
   $.ajax({
     url: "/modal",
@@ -144,7 +145,6 @@ ModalUpdate = () => {
     success: data => {}
   });
 }
-
 
 ProfileImageRemove = () => {
   $.ajax({
@@ -435,13 +435,11 @@ task = () => {
       todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text " id="emptytask">Add your tasks here..</a>`;
     } else {
       todo.forEach((n) => {
-        if (n.completed) {
-          _class = "completed"
-        }
+        _class = n.completed ? "completed" : " "
         todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${n.id}">${
           n.todo
         }
-      <i class="fas fa-trash ml-auto todo" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
+      <i class="fas fa-trash ml-auto todo text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
         n.id
       }"></i></a>`;
       })
@@ -455,7 +453,7 @@ ViewTask = (taskid) => {
   let id = task.substring(4)
   $.get(`/todo/${id}`, data => {
     let task = jQuery.parseJSON(data)
-    if (task == null) {} else {
+    if (task != null) {
       created_at = new Date(`${task.created_at}`);
       created = created_at.toString().slice(0, 24);
       let com = task.completed ? `<i class="fas fa-check"></i >` : `<i class="far fa-square"></i>`
@@ -607,26 +605,24 @@ NewsModal = (mdid) => {
     }
   });
 }
+
+ShipmentCount = () => {
+  $.get("/shipments/all", data => {
+    let spdata = jQuery.parseJSON(data)
+    let count = spdata.filter((n) => n.status)
+    let all = spdata.length;
+    let percent = count.length > 0 ? count.length / all * 100 : 0
+    $("#shipmentscount").html(`${count.length}/${all}`)
+    $("#shipmentpercent").html(`${percent}`)
+    $("#shipmentbar").css("width", `${percent}%`)
+  })
+}
+
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
   let sum = Number(verify) + Number(sp);
   $("#notificount").html(`${sum}`);
 };
-
-// testings: this get all the users in the database  ('/Allusers', 'NotificationController@Allusers')
-// Allusers = verify => {
-// 	$.get('/Allusers', data => {
-// 		let text = '';
-// 		var user = jQuery.parseJSON(data);
-// 		var number = user.length;
-// 		spnotification(number, verify);
-// 		for (i = 0; i < user.length; i++) {
-// 			text += `<a class='dropdown-item' href='/Notifications/${user[i]
-// 				.id}'>${user[i].name}</span></a>`;
-// 		}
-// 		$('#allusersnotify').html(`${text}`);
-// 	});
-// };
 
 // $('#preAlertSubmit').on('click', ev => {
 // 	let name = $('#vendorname').val();

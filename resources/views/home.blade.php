@@ -210,15 +210,15 @@
             <i class="fas fa-box"></i>
           </div>
           <p>Packages For Pick Up</p>
-          <h4>2</h4>
+          <h4 id="shipmentscount">0</h4>
         </div>
-        <div class="progress">
-          <div class="progress-bar bg grey darken-4" role="progressbar" style="width: 50%" aria-valuenow="50"
-            aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <div class="card-body">
-          <p>Better than last week (50%)</p>
-        </div>
+          <div class="progress">
+            <div class="progress-bar bg grey darken-4" role="progressbar" style="width: 0%"
+              aria-valuemin="0" aria-valuemax="100" id="shipmentbar"></div>
+          </div>
+          <div class="card-body">
+            <p><span id="shipmentpercent"></span>% of packages picked up</p>
+          </div>
       </div>
       <!--/.Card Blue-->
 
