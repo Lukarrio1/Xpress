@@ -484,7 +484,7 @@ CompleteTask = (taskId) => {
         message: "Task Completed"
       });
       $("#closetaskmodal").click();
-      task()
+      window.setTimeout(() => task(), 1000)
     }
   });
 }
@@ -505,7 +505,7 @@ DeleteTask = (delId) => {
         position: "topCenter",
         message: "Task deleted.."
       });
-      task();
+      window.setTimeout(() => task(), 1000)
     }
   });
 }
@@ -620,7 +620,9 @@ ShipmentCount = () => {
 
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
-  let sum = Number(verify) + Number(sp);
+  let ver = parseInt(verify)
+  let spt = parseInt(sp)
+  let sum = ver + spt;
   $("#notificount").html(`${sum}`);
 };
 

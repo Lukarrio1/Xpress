@@ -238,15 +238,14 @@ class UserController extends Controller
         $new->save();
         return 200;
     }
-    // this function return all of the user create taskes
+    // this function return all of the user create tasks
     public function alltodo(){
         $id= Auth::user()->id;
-        // this is a next way to query
         $todo = todo::where('user_id',$id)->orderBy('created_at', 'DESC')->get();
         $count = count($todo);
         if($count==0){
             return json_encode([
-            'count'=>$count,
+            'count'=>0,
             ]);  
         }
         return json_encode($todo);
@@ -262,7 +261,7 @@ class UserController extends Controller
         $this->validate($request,["id"=>"required"]);
         $id = htmlentities($request->id);
         $task = todo::find($id);
-        $task->completed ? $task->completed=0 : $task->completed =1; 
+        $task->completed ? $task->completed= 0 : $task->completed =1; 
         $task->save();
         return json_encode($task);
     }

@@ -486,7 +486,6 @@ DeliveryNt = invoice => {
     let text = "";
     let sdnotify = notify.length;
     NotificationCount(invoice, sdnotify);
-    // this is a use of one of the js higher order functions 
     notify.forEach((not) => {
       text += `
 	<a class="dropdown-item" href="/admin/delivery">
