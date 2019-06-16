@@ -72,7 +72,7 @@ class ScheduleDeliveryController extends Controller
         $notify->clicked ="false";
         $notify->save(); 
        }
-       return 200;
+       return json_encode(["status"=>200]);
     }
 
     /**

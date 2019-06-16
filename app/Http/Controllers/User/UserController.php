@@ -58,6 +58,7 @@ class UserController extends Controller
         $password->password = Hash::make( htmlentities($request->newpass));
         $this->PasswordEmailNotification();
         $password->save();
+        return json_encode(["status"=>200]);
 
     }
 // this function checks the the oldpassword form the from and compare it with the password from the database
@@ -133,7 +134,7 @@ class UserController extends Controller
                 Storage::delete('public/Userimage/' . $user->userimage);
                 $user->userimage = "noimage.jpg";
                 $user->save();
-                return 1;
+                return json_encode(["status"=>301]);
             }
         }
     }
@@ -174,7 +175,7 @@ class UserController extends Controller
         $user->address =  htmlentities($request->address);
         $user->Country =  htmlentities($request->country);
         $user->save();
-        return "updated";
+        return json_encode(["status"=>200]);
 
     }
 
@@ -237,15 +238,14 @@ class UserController extends Controller
         $new->save();
         return 200;
     }
-    // this function return all of the user create taskes
+    // this function return all of the user create tasks
     public function alltodo(){
         $id= Auth::user()->id;
-        // this is a next way to query
         $todo = todo::where('user_id',$id)->orderBy('created_at', 'DESC')->get();
         $count = count($todo);
         if($count==0){
             return json_encode([
-            'count'=>$count,
+            'count'=>0,
             ]);  
         }
         return json_encode($todo);
@@ -261,7 +261,7 @@ class UserController extends Controller
         $this->validate($request,["id"=>"required"]);
         $id = htmlentities($request->id);
         $task = todo::find($id);
-        $task->completed ? $task->completed=0 : $task->completed =1; 
+        $task->completed ? $task->completed= 0 : $task->completed =1; 
         $task->save();
         return json_encode($task);
     }
@@ -272,7 +272,7 @@ class UserController extends Controller
         ]);
     $todo = todo::find($request->id);
     $todo->delete();
-    return 200;
+    return json_encode(["status"=>200]);
     }
     // this function returns all the user in the database will remove later this is for the admin section..
     // public function all_users()

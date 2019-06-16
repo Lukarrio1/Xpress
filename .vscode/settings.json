@@ -15,6 +15,7 @@
         "lastname",
         "maxdev",
         "modaltokenupdate",
+        "newid",
         "newsbody",
         "newsubject",
         "spnotify"

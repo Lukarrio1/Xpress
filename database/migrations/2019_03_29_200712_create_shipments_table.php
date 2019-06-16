@@ -20,7 +20,7 @@ class CreateShipmentsTable extends Migration
             $table->string('recipient');
             $table->string('description');
             $table->string('spcharge');
-            $table->string('status'); 
+            $table->boolean('status')->default(FALSE); 
             $table->string('delivery_date');
             $table->string('user_id');
             $table->timestamps();
