@@ -30,7 +30,7 @@ class HomeController extends Controller
             $id->save();
             return view('home');
         }
-
+        
         return view('home');
 
     }

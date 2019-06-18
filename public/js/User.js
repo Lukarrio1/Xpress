@@ -8,8 +8,8 @@ $(document).ready(() => {
   task();
   News();
   footerDate();
-  SuccesMessageRemove()
-  ShipmentCount()
+  SuccesMessageRemove();
+  ShipmentCount();
 });
 
 // runs every 20 seconds
@@ -23,7 +23,7 @@ window.setInterval(() => {
   Modaltimer();
   shipments();
   News();
-  ShipmentCount()
+  ShipmentCount();
 }, 60000);
 
 /* Triggers start here */
@@ -34,18 +34,18 @@ $("#update_login_token").click(() => {
 
 // This trigger calls the ProfileImageRemove()
 $("#changeimg").click(() => {
-  ProfileImageRemove()
+  ProfileImageRemove();
 });
 
 // This trigger calls the ProfileUpate()
 $("#updatebtn").html("Update");
 $("#update").click(() => {
-  ProfileUpdate()
+  ProfileUpdate();
 });
 
 // This trigger calls the ProfileDelete()
 $("#Deletebtn").click(() => {
-  ProfileDelete()
+  ProfileDelete();
 });
 // This trigger calls the NewTask()
 $("#savetodo").click(() => {
@@ -56,24 +56,24 @@ $("#devsubmit").on("click", () => {
   MakeDelivery();
 });
 // This trigger calls DeleteTask()
-$(document).on("click", ".todo", function () {
-  let delId = this
-  DeleteTask(delId)
+$(document).on("click", ".todo", function() {
+  let delId = this;
+  DeleteTask(delId);
 });
 // This trigger calls the NewsModal()
-$(document).on("click", ".newsmodal", function () {
-  let mdid = this
-  NewsModal(mdid)
+$(document).on("click", ".newsmodal", function() {
+  let mdid = this;
+  NewsModal(mdid);
 });
 // This trigger calls the ViewTask()
-$(document).on("click", ".task", function () {
-  let taskId = this
-  ViewTask(taskId)
+$(document).on("click", ".task", function() {
+  let taskId = this;
+  ViewTask(taskId);
 });
 // This trigger calls the Completetask()
-$(document).on("click", ".completedtask", function () {
-  let taskId = this
-  CompleteTask(taskId)
+$(document).on("click", ".completedtask", function() {
+  let taskId = this;
+  CompleteTask(taskId);
 });
 
 /* Triggers end here */
@@ -83,20 +83,19 @@ footerDate = () => {
   var date = new Date();
   var year = date.getFullYear();
   $("#footerdate").html(`${year}`);
-}
+};
 
 // this message removes the Success message from the prealerts page after 5000 milliseconds
 SuccesMessageRemove = () => {
   let timeout = setInterval(() => {
-    $("#successmessage").remove()
-    StopInterval(timeout)
+    $("#successmessage").remove();
+    StopInterval(timeout);
   }, 5000);
-}
+};
 // this function stops the SuccessMessageRemove() from running after 5 seconds
-StopInterval = (id) => {
+StopInterval = id => {
   clearInterval(id);
-
-}
+};
 // checks to see if the user verified there email ('/','NotificationController@Token')
 TokenCheck = () => {
   $.get("/Notifications", data => {
@@ -127,7 +126,8 @@ Modaltimer = () => {
     var modal = token.token;
     $("#modalname").html(`${token.name}`);
     $("#modalxl").html(`${token.xl}`);
-    if (modal == "") {} else {
+    if (modal == "") {
+    } else {
       $("#modal").click();
     }
   });
@@ -144,7 +144,7 @@ ModalUpdate = () => {
     dataType: "text",
     success: data => {}
   });
-}
+};
 
 ProfileImageRemove = () => {
   $.ajax({
@@ -160,7 +160,7 @@ ProfileImageRemove = () => {
       $("#update").click();
     }
   });
-}
+};
 
 ProfileUpdate = () => {
   let name = $("#name").val();
@@ -222,7 +222,7 @@ ProfileUpdate = () => {
       }
     });
   }
-}
+};
 // this function upates and sends a request to ('/Userinfo','User\UserController@index')
 Userinfo = () => {
   $.get("/Userinfo", data => {
@@ -273,7 +273,7 @@ ProfileDelete = () => {
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
-        function (instance, toast) {
+        function(instance, toast) {
           $.ajax({
             type: "Post",
             url: "/Useraccountdel",
@@ -282,27 +282,35 @@ ProfileDelete = () => {
               delete: true
             },
             dataType: "text",
-            success: function (response) {
+            success: function(response) {
               window.location.href = "/";
             }
           });
-          instance.hide({
-            transitionOut: "fadeOut"
-          }, toast, "button");
+          instance.hide(
+            {
+              transitionOut: "fadeOut"
+            },
+            toast,
+            "button"
+          );
         },
         true
       ],
       [
         '<button style="color:white;">NO</button>',
-        function (instance, toast) {
-          instance.hide({
-            transitionOut: "fadeOut"
-          }, toast, "button");
+        function(instance, toast) {
+          instance.hide(
+            {
+              transitionOut: "fadeOut"
+            },
+            toast,
+            "button"
+          );
         }
       ]
     ]
   });
-}
+};
 //  all you need to know is that this function goes to the Pdata in UserController
 Pdata = () => {
   $("#oldpass").val("");
@@ -318,7 +326,7 @@ Pdata = () => {
           data: $("#oldpass").val()
         },
         dataType: "text",
-        success: function (response) {
+        success: function(response) {
           var something = jQuery.parseJSON(response);
           if (something.passed == 0) {
             $("#oldpassword").html("Password doesn`t match");
@@ -338,7 +346,7 @@ Pdata = () => {
                 newpass: $("#newpass").val()
               },
               dataType: "text",
-              success: function (response) {
+              success: function(response) {
                 $("#pschbtn").removeClass("disabled");
                 $("#oldpassword").html("");
                 $("#newpassword").html("");
@@ -378,7 +386,7 @@ shipments = () => {
                 <td>${shipments[i].updated_at}</td>
               </tr>`;
     }
-    $("#shipmentscount").html(`${shipments.length}`)
+    $("#shipmentscount").html(`${shipments.length}`);
     $("#shipments").html(`${all_ship}`);
   });
 };
@@ -402,7 +410,7 @@ spnotification = verify => {
 NewTask = () => {
   let todo = $("#todotextarea").val();
   if (todo.length < 1 || todo.length > 200) {
-    $("#errortask").html(`Error invalid task!`)
+    $("#errortask").html(`Error invalid task!`);
   } else {
     $.ajax({
       url: "/todo",
@@ -424,52 +432,55 @@ NewTask = () => {
       }
     });
   }
-}
+};
 
 task = () => {
   $.get("/todo", data => {
     let todo = jQuery.parseJSON(data);
     let todobody = "";
-    let _class = ""
+    let _class = "";
     if (todo.count == 0) {
       todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text " id="emptytask">Add your tasks here..</a>`;
     } else {
-      todo.forEach((n) => {
-        _class = n.completed ? "completed" : " "
-        todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${n.id}">${
-          n.todo
-        }
+      todo.forEach(n => {
+        _class = n.completed ? "completed" : " ";
+        todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${
+          n.id
+        }">${n.todo}
       <i class="fas fa-trash ml-auto todo text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
         n.id
       }"></i></a>`;
-      })
+      });
     }
     $("#todosection").html(`${todobody}`);
   });
 };
 
-ViewTask = (taskid) => {
-  let task = $(taskid).attr("id")
-  let id = task.substring(4)
+ViewTask = taskid => {
+  let task = $(taskid).attr("id");
+  let id = task.substring(4);
   $.get(`/todo/${id}`, data => {
-    let task = jQuery.parseJSON(data)
+    let task = jQuery.parseJSON(data);
     if (task != null) {
       created_at = new Date(`${task.created_at}`);
       created = created_at.toString().slice(0, 24);
-      let com = task.completed ? `<i class="fas fa-check"></i >` : `<i class="far fa-square"></i>`
-      $("#taskbody").html(`${task.todo}`)
-      $("#tasktime").html(`${created}`)
-      $("#taskcompleted").html(`<button type="button" class="btn btn-primary completedtask" id="completedTask${id}">
+      let com = task.completed
+        ? `<i class="fas fa-check"></i >`
+        : `<i class="far fa-square"></i>`;
+      $("#taskbody").html(`${task.todo}`);
+      $("#tasktime").html(`${created}`);
+      $("#taskcompleted")
+        .html(`<button type="button" class="btn btn-primary completedtask" id="completedTask${id}">
       ${com}
-     </button>`)
-      $("#viewTASK").click()
+     </button>`);
+      $("#viewTASK").click();
     }
-  })
-}
+  });
+};
 
-CompleteTask = (taskId) => {
-  let taskID = $(taskId).attr("id")
-  let id = taskID.substring(13)
+CompleteTask = taskId => {
+  let taskID = $(taskId).attr("id");
+  let id = taskID.substring(13);
   $.ajax({
     type: "POST",
     url: "/todo/completed",
@@ -478,18 +489,18 @@ CompleteTask = (taskId) => {
       id: id
     },
     dataType: "text",
-    success: function (response) {
+    success: function(response) {
       iziToast.success({
         position: "topCenter",
         message: "Task Completed"
       });
       $("#closetaskmodal").click();
-      window.setTimeout(() => task(), 1000)
+      window.setTimeout(() => task(), 1000);
     }
   });
-}
+};
 
-DeleteTask = (delId) => {
+DeleteTask = delId => {
   let todo = $(delId).attr("id");
   let id = todo.substring(4);
   $.ajax({
@@ -505,10 +516,10 @@ DeleteTask = (delId) => {
         position: "topCenter",
         message: "Task deleted.."
       });
-      window.setTimeout(() => task(), 1000)
+      window.setTimeout(() => task(), 1000);
     }
   });
-}
+};
 
 MakeDelivery = () => {
   let firstname = $("#devfname").val();
@@ -567,18 +578,18 @@ News = () => {
   $.get("/news", data => {
     let news = jQuery.parseJSON(data);
     let text = "";
-    news.forEach((n) => {
+    news.forEach(n => {
       text += `<a href="#" class="list-group-item d-flex justify-content-between dark-grey-text newsmodal" id="news${
         n.id
       }">${n.subject}
       </a>`;
-    })
+    });
     $("#allnews").html(`${text}`);
     $("#newscount").html(`${news.length}`);
   });
 };
 
-NewsModal = (mdid) => {
+NewsModal = mdid => {
   let news = $(mdid).attr("id");
   let id = news.substring(4);
   $.ajax({
@@ -599,29 +610,29 @@ NewsModal = (mdid) => {
     <span class="h5">${singlenews.body}</span>
      `);
       created_at = new Date(`${singlenews.created_at}`);
-      created = created_at.toString().slice(0, 24);
-      $("#newtime").html(`${created}`)
+      created = created_at.toString().slice(0, 24)
+      $("#newtime").html(`${created}`);
       $("#newsbtn").click();
     }
   });
-}
+};
 
 ShipmentCount = () => {
   $.get("/shipments/all", data => {
-    let spdata = jQuery.parseJSON(data)
-    let count = spdata.filter((n) => n.status)
+    let spdata = jQuery.parseJSON(data);
+    let count = spdata.filter(n => n.status);
     let all = spdata.length;
-    let percent = count.length > 0 ? count.length / all * 100 : 0
-    $("#shipmentscount").html(`${count.length}/${all}`)
-    $("#shipmentpercent").html(`${percent}`)
-    $("#shipmentbar").css("width", `${percent}%`)
-  })
-}
+    let percent = count.length > 0 ? (count.length / all) * 100 : 0;
+    $("#shipmentscount").html(`${count.length}/${all}`);
+    $("#shipmentpercent").html(`${percent}`);
+    $("#shipmentbar").css("width", `${percent}%`);
+  });
+};
 
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
-  let ver = parseInt(verify)
-  let spt = parseInt(sp)
+  let ver = parseInt(verify);
+  let spt = parseInt(sp);
   let sum = ver + spt;
   $("#notificount").html(`${sum}`);
 };
