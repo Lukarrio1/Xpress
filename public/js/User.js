@@ -9,7 +9,6 @@ $(document).ready(() => {
   News();
   footerDate();
   SuccesMessageRemove();
-  ShipmentCount();
 });
 
 // runs every 20 seconds
@@ -23,7 +22,6 @@ window.setInterval(() => {
   Modaltimer();
   shipments();
   News();
-  ShipmentCount();
 }, 60000);
 
 /* Triggers start here */
@@ -114,7 +112,7 @@ TokenCheck = () => {
       spnotification(verify);
     }
     // for(i = 0; i<notification.length; i++){
-    // text +=`<a class='dropdown-item' href='/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
+    // text +=`<a class='dropdown-item' href'/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
     // }
   });
 };
@@ -194,7 +192,6 @@ ProfileUpdate = () => {
     $("#errorparish").html("");
     $("#errorcountry").html("");
     $("#erroraddress").html("");
-    // if validation is successfull then ae ajax request is sent to /Userinfo (/Userinfo','User\UserController@update)
     $.ajax({
       url: "/Userinfo",
       type: "Post",
@@ -210,8 +207,6 @@ ProfileUpdate = () => {
       dataType: "text",
       success: data => {
         Userinfo();
-        // $("#updatesuccess").html("Updated Successfully.");
-        // setTimeout(function(){ $("#updatesuccess").html(""); }, 5000);
         $("#updatebtn").html("Update");
         $("#update").addClass("btn btn-success");
         // iziToast
@@ -223,7 +218,7 @@ ProfileUpdate = () => {
     });
   }
 };
-// this function upates and sends a request to ('/Userinfo','User\UserController@index')
+
 Userinfo = () => {
   $.get("/Userinfo", data => {
     let user = jQuery.parseJSON(data);
@@ -372,6 +367,7 @@ Pdata = () => {
 shipments = () => {
   $.get("/shipments/all", data => {
     var shipments = jQuery.parseJSON(data);
+    ShipmentCount(shipments);
     let all_ship = "";
     for (i = 0; i < shipments.length; i++) {
       all_ship += `<tr class="">
@@ -386,15 +382,15 @@ shipments = () => {
                 <td>${shipments[i].updated_at}</td>
               </tr>`;
     }
-    $("#shipmentscount").html(`${shipments.length}`);
+    $("#shpcount").html(`${shipments.length}`);
     $("#shipments").html(`${all_ship}`);
   });
 };
 
 spnotification = verify => {
   $.get("/shipments/notification", data => {
-    var spnotification = jQuery.parseJSON(data);
-    let sp = spnotification.number;
+    console.log(data);
+    let sp = data;
     if (sp > 0) {
       $("#spnotify").html(
         `<a class='dropdown-item' href='/shipments'>New shipment added. <span class='float-right'>
@@ -610,30 +606,30 @@ NewsModal = mdid => {
     <span class="h5">${singlenews.body}</span>
      `);
       created_at = new Date(`${singlenews.created_at}`);
-      created = created_at.toString().slice(0, 24)
+      created = created_at.toString().slice(0, 24);
       $("#newtime").html(`${created}`);
       $("#newsbtn").click();
     }
   });
 };
 
-ShipmentCount = () => {
-  $.get("/shipments/all", data => {
-    let spdata = jQuery.parseJSON(data);
-    let count = spdata.filter(n => n.status);
-    let all = spdata.length;
-    let percent = count.length > 0 ? (count.length / all) * 100 : 0;
-    $("#shipmentscount").html(`${count.length}/${all}`);
-    $("#shipmentpercent").html(`${percent}`);
-    $("#shipmentbar").css("width", `${percent}%`);
-  });
+ShipmentCount = shipment => {
+  let count = shipment.filter(n => n.status);
+  let all = shipment.length;
+  let percent = count.length > 0 ? (count.length / all) * 100 : 0;
+  $("#shipmentscount").html(`${count.length}/${all}`);
+  $("#shipmentpercent").html(`${percent}`);
+  $("#shipmentbar").css("width", `${percent}%`);
 };
 
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
-  let ver = parseInt(verify);
-  let spt = parseInt(sp);
-  let sum = ver + spt;
+  let vers = 0,
+    spts = 0;
+  vers = Number.isNaN(verify) ? 0 : verify;
+  spts = Number.isNaN(sp) ? 0 : sp;
+  console.log(vers);
+  let sum = vers + spts;
   $("#notificount").html(`${sum}`);
 };
 

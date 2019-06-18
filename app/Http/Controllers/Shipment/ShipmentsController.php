@@ -56,18 +56,12 @@ class ShipmentsController extends Controller
         $new = spnotify::where('user_id',$user)->first();
         if(!empty($new)){
             if($new->token =="true"){
-                return json_encode([
-                'number'=>1,
-                  ]);
+            return 1;
               }else{
-               return json_encode([
-                'number'=>0,
-               ]);
+            return 0;
         }
         }
-        return json_encode([
-            'number'=>0,
-           ]); 
+        return 0;
        
     }
 

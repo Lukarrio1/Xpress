@@ -6,7 +6,7 @@
     class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
     <div>
     </div>
-    <a class="white-text align-content-center mx-3 h5">Shipments <span class="badge red" id="shipmentscount">0</span>
+    <a class="white-text align-content-center mx-3 h5">Shipments <span class="badge red" id="shpcount">0</span>
     </a>
     <div>
     </div>
