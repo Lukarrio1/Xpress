@@ -8,19 +8,11 @@
   <meta name="appurl" content="{{config('app.url')}}">
 <title>{{config('app.name')}}</title>
 
-<<<<<<< HEAD
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/env.css') }}">
 <link rel="stylesheet" href="{{asset('css/iziToast.css')}}">
-=======
-<link rel="stylesheet" href="{{ asset('css/all.css') }}">
-<link rel="stylesheet" href="{{ asset('css/iziToast.css')}}">
-<link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('css/env.css')}}">
->>>>>>> 327b4bf5c3899c4ad334c618d0e62db9047b5a44
 {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"> --}}
     <!-- Scripts -->
     <script>
