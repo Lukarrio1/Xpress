@@ -30,17 +30,15 @@
                 <thead>
                   <tr>
                     <th>
-                      <input class="form-check-input" type="checkbox" id="checkbox">
-                      <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
-                    </th>
-                    <th class="th-lg"><a>First Name <i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Tracking No.<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Reference No.<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Recipient<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Description<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Delivery Date<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Shipping Charge<i class="fas fa-sort ml-1"></i></a></th>
-                    <th class="th-lg"><a href="">Status<i class="fas fa-sort ml-1"></i></a></th>
+                       </th>
+                    <th class="th-lg"><a>First Name <i class=""></i></a></th>
+                    <th class="th-lg"><a href="">Tracking No.<i class=""></i></a></th>
+                    <th class="th-lg"><a href="">Reference No.<i class=""></i></a></th>
+                    <th class="th-lg"><a href="">Recipient<i class=""></i></a></th>
+                    <th class="th-lg"><a href="">Description<i class=""></i></a></th>
+                    <th class="th-lg"><a href="">Delivery Date<i class=""></i></a></th>
+                    <th class="th-lg"><a href="">Shipping Charge<i class=""></i></a></th>
+                    <th class="th-lg"><a href="">Status<i class=""></i></a></th>
                   
                 </tr>
                 </thead>
