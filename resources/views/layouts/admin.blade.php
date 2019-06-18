@@ -24,7 +24,7 @@
 
 <body class="fixed-sn light-skin">
 @include('inc.adminnav')
-<main>
+<main class="pb-5">
 @yield('content')
 </main>
 @include('inc.adminfooter')
