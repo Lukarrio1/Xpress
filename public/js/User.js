@@ -1,4 +1,3 @@
-// runs  at start up..
 $(document).ready(() => {
   TokenCheck();
   Modaltimer();
@@ -54,22 +53,22 @@ $("#devsubmit").on("click", () => {
   MakeDelivery();
 });
 // This trigger calls DeleteTask()
-$(document).on("click", ".todo", function() {
+$(document).on("click", ".todo", function () {
   let delId = this;
   DeleteTask(delId);
 });
 // This trigger calls the NewsModal()
-$(document).on("click", ".newsmodal", function() {
+$(document).on("click", ".newsmodal", function () {
   let mdid = this;
   NewsModal(mdid);
 });
 // This trigger calls the ViewTask()
-$(document).on("click", ".task", function() {
+$(document).on("click", ".task", function () {
   let taskId = this;
   ViewTask(taskId);
 });
 // This trigger calls the Completetask()
-$(document).on("click", ".completedtask", function() {
+$(document).on("click", ".completedtask", function () {
   let taskId = this;
   CompleteTask(taskId);
 });
@@ -105,7 +104,7 @@ TokenCheck = () => {
     } else {
       $("#emailnotify").html(
         `<a  class='dropdown-item' href='#'>${
-          notification.notification
+        notification.notification
         }<span class='float-right'>${notification.icon}</span></a>`
       );
       var verify = 1;
@@ -140,7 +139,7 @@ ModalUpdate = () => {
       id: id
     },
     dataType: "text",
-    success: data => {}
+    success: data => { }
   });
 };
 
@@ -245,7 +244,7 @@ Userinfo = () => {
     $("#usercardtrn").html(`${user.trn}`);
     $("#usercardimage").html(
       `<img src="/storage/Userimage/${
-        user.image
+      user.image
       }" class="rounded-circle" alt="${user.image}">`
     );
   });
@@ -268,7 +267,7 @@ ProfileDelete = () => {
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
-        function(instance, toast) {
+        function (instance, toast) {
           $.ajax({
             type: "Post",
             url: "/Useraccountdel",
@@ -277,7 +276,7 @@ ProfileDelete = () => {
               delete: true
             },
             dataType: "text",
-            success: function(response) {
+            success: function (response) {
               window.location.href = "/";
             }
           });
@@ -293,7 +292,7 @@ ProfileDelete = () => {
       ],
       [
         '<button style="color:white;">NO</button>',
-        function(instance, toast) {
+        function (instance, toast) {
           instance.hide(
             {
               transitionOut: "fadeOut"
@@ -321,7 +320,7 @@ Pdata = () => {
           data: $("#oldpass").val()
         },
         dataType: "text",
-        success: function(response) {
+        success: function (response) {
           var something = jQuery.parseJSON(response);
           if (something.passed == 0) {
             $("#oldpassword").html("Password doesn`t match");
@@ -341,7 +340,7 @@ Pdata = () => {
                 newpass: $("#newpass").val()
               },
               dataType: "text",
-              success: function(response) {
+              success: function (response) {
                 $("#pschbtn").removeClass("disabled");
                 $("#oldpassword").html("");
                 $("#newpassword").html("");
@@ -447,10 +446,10 @@ task = () => {
         _class = n.completed ? "completed" : " ";
         todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${
           n.id
-        }">${n.todo}
+          }">${n.todo}
       <i class="fas fa-trash ml-auto todo text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
-        n.id
-      }"></i></a>`;
+          n.id
+          }"></i></a>`;
       });
     }
     $("#todosection").html(`${todobody}`);
@@ -490,7 +489,7 @@ CompleteTask = taskId => {
       id: id
     },
     dataType: "text",
-    success: function(response) {
+    success: function (response) {
       iziToast.success({
         position: "topCenter",
         message: "Task Completed"
@@ -582,7 +581,7 @@ News = () => {
     news.forEach(n => {
       text += `<a href="#" class="list-group-item d-flex justify-content-between dark-grey-text newsmodal" id="news${
         n.id
-      }">${n.subject}
+        }">${n.subject}
       </a>`;
     });
     $("#allnews").html(`${text}`);
@@ -638,58 +637,3 @@ NotificationCounter = (verify, sp) => {
   let sum = Number(vers) + Number(spts);
   $("#notificount").html(`${sum}`);
 };
-
-// $('#preAlertSubmit').on('click', ev => {
-// 	let name = $('#vendorname').val();
-// 	let tnumber = $('#trackingnumber').val();
-// 	let pkgname = $('#name_pkg').val();
-// 	if (name.length < 2) {
-// 		$('#errorvenname').html('Vendor name is too short..');
-// 		ev.preventDefault();
-// 	} else if (tnumber.length < 4) {
-// 		$('#errortnumber').html('Tracking number is too is too short..');
-// 		ev.preventDefault();
-// 	} else if (pkgname.length < 3) {
-// 		ev.preventDefault();
-// 		$('#errorpkg').html('Package name is too short..');
-// 	}
-// });
-// parseInt() this function will convert a string to a int...
-//  parseFloat() this will convert a string to a float ..
-
-// $(()=> {
-//     let $createAlertForm = $('#createAlertForm')
-//     let $submitBtn = $('#preAlertSubmit')
-
-//     $submitBtn.on('click', (ev)=>{
-//         ev.preventDefault()
-//         // ev.stopPropagation()
-//         postFormData()
-//     })
-
-//     function postFormData() {
-//         let formData = new FormData()
-//         let file = $('input[name="invoice"]')[0].files[0]
-//         let elements = $createAlertForm.find('.form-control')
-//         for(let i = 0; i < elements.length; i++)
-//             formData.append($(elements[i]).name, $(elements[i]).val())
-
-//         formData.append('file', file)
-//         console.log(formData)
-//         $.ajax({
-//             url: '/shipments/update',
-//             type: 'POST',
-//             data: {
-//                 _token: CSRF_TOKEN,
-//                 data:formData,
-//             },
-//             contentType: false,
-//             processData: false,
-//             dataType: 'JSON',
-//             success: (data)=> {
-
-//             }
-//         });
-
-//     }
-// })

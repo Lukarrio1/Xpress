@@ -93,9 +93,9 @@
                     <i class="fas fa-bell"></i>
                 Pre Alert</a></li>
 
-            {{--  <li><a href="{{route('shippingCalculator.home')}}" class="collapsible-header waves-effect">
+            <li><a href="{{route('shippingCalculator.home')}}" class="collapsible-header waves-effect">
                     <i class="fas fa-calculator"></i>
-                Shipping Calculator</a></li>  --}}
+                Shipping Calculator</a></li>
 
             <li><a href="{{route('scheduledelivery.home')}}" class="collapsible-header waves-effect">
                     <i class="fas fa-truck"></i>
