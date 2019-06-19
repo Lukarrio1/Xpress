@@ -1,4 +1,3 @@
-// runs  at start up..
 $(document).ready(() => {
   TokenCheck();
   Modaltimer();
@@ -8,8 +7,7 @@ $(document).ready(() => {
   task();
   News();
   footerDate();
-  SuccesMessageRemove()
-  ShipmentCount()
+  SuccesMessageRemove();
 });
 
 // runs every 20 seconds
@@ -23,7 +21,6 @@ window.setInterval(() => {
   Modaltimer();
   shipments();
   News();
-  ShipmentCount()
 }, 60000);
 
 /* Triggers start here */
@@ -144,7 +141,7 @@ ModalUpdate = () => {
     dataType: "text",
     success: data => { }
   });
-}
+};
 
 ProfileImageRemove = () => {
   $.ajax({
@@ -445,11 +442,11 @@ task = () => {
     if (todo.count == 0) {
       todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text " id="emptytask">Add your tasks here..</a>`;
     } else {
-      todo.forEach((n) => {
-        _class = n.completed ? "completed" : " "
-        todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${n.id}">${
-          n.todo
-          }
+      todo.forEach(n => {
+        _class = n.completed ? "completed" : " ";
+        todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${
+          n.id
+          }">${n.todo}
       <i class="fas fa-trash ml-auto todo text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
           n.id
           }"></i></a>`;
@@ -463,7 +460,7 @@ ViewTask = taskid => {
   let task = $(taskid).attr("id");
   let id = task.substring(4);
   $.get(`/todo/${id}`, data => {
-    let task = jQuery.parseJSON(data)
+    let task = jQuery.parseJSON(data);
     if (task != null) {
       created_at = new Date(`${task.created_at}`);
       created = created_at.toString().slice(0, 24);
@@ -478,8 +475,8 @@ ViewTask = taskid => {
      </button>`);
       $("#viewTASK").click();
     }
-  })
-}
+  });
+};
 
 CompleteTask = taskId => {
   let taskID = $(taskId).attr("id");
@@ -498,7 +495,7 @@ CompleteTask = taskId => {
         message: "Task Completed"
       });
       $("#closetaskmodal").click();
-      window.setTimeout(() => task(), 1000)
+      window.setTimeout(() => task(), 1000);
     }
   });
 };
@@ -519,19 +516,7 @@ DeleteTask = delId => {
         position: "topCenter",
         message: "Task deleted.."
       });
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
       window.setTimeout(() => task(), 1000);
-=======
-      window.setTimeout(() => task(), 1000)
->>>>>>> Stashed changes
-=======
-      window.setTimeout(() => task(), 1000)
->>>>>>> Stashed changes
-=======
-      window.setTimeout(() => task(), 1000)
->>>>>>> Stashed changes
     }
   });
 };
@@ -604,7 +589,7 @@ News = () => {
   });
 };
 
-NewsModal = (mdid) => {
+NewsModal = mdid => {
   let news = $(mdid).attr("id");
   let id = news.substring(4);
   $.ajax({
@@ -630,79 +615,25 @@ NewsModal = (mdid) => {
       $("#newsbtn").click();
     }
   });
-}
+};
 
-ShipmentCount = () => {
-  $.get("/shipments/all", data => {
-    let spdata = jQuery.parseJSON(data)
-    let count = spdata.filter((n) => n.status)
-    let all = spdata.length;
-    let percent = count.length > 0 ? count.length / all * 100 : 0
-    $("#shipmentscount").html(`${count.length}/${all}`)
-    $("#shipmentpercent").html(`${percent}`)
-    $("#shipmentbar").css("width", `${percent}%`)
-  })
-}
+ShipmentCount = shipment => {
+  let count = shipment.filter(n => n.collected == 1);
+  console.log(count);
+  let all = shipment.length;
+  let percent = count.length > 0 ? (count.length / all) * 100 : 0;
+  $("#shipmentscount").html(`${count.length}/${all}`);
+  $("#shipmentpercent").html(`${percent.toPrecision(2)}`);
+  $("#shipmentbar").css("width", `${percent}%`);
+};
 
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
-  let ver = parseInt(verify)
-  let spt = parseInt(sp)
-  let sum = ver + spt;
+  let vers = 0,
+    spts = 0;
+  vers = Number.isNaN(verify) ? 0 : verify;
+  spts = Number.isNaN(sp) ? 0 : sp;
+  console.log(vers);
+  let sum = Number(vers) + Number(spts);
   $("#notificount").html(`${sum}`);
 };
-
-// $('#preAlertSubmit').on('click', ev => {
-// 	let name = $('#vendorname').val();
-// 	let tnumber = $('#trackingnumber').val();
-// 	let pkgname = $('#name_pkg').val();
-// 	if (name.length < 2) {
-// 		$('#errorvenname').html('Vendor name is too short..');
-// 		ev.preventDefault();
-// 	} else if (tnumber.length < 4) {
-// 		$('#errortnumber').html('Tracking number is too is too short..');
-// 		ev.preventDefault();
-// 	} else if (pkgname.length < 3) {
-// 		ev.preventDefault();
-// 		$('#errorpkg').html('Package name is too short..');
-// 	}
-// });
-// parseInt() this function will convert a string to a int...
-//  parseFloat() this will convert a string to a float ..
-
-// $(()=> {
-//     let $createAlertForm = $('#createAlertForm')
-//     let $submitBtn = $('#preAlertSubmit')
-
-//     $submitBtn.on('click', (ev)=>{
-//         ev.preventDefault()
-//         // ev.stopPropagation()
-//         postFormData()
-//     })
-
-//     function postFormData() {
-//         let formData = new FormData()
-//         let file = $('input[name="invoice"]')[0].files[0]
-//         let elements = $createAlertForm.find('.form-control')
-//         for(let i = 0; i < elements.length; i++)
-//             formData.append($(elements[i]).name, $(elements[i]).val())
-
-//         formData.append('file', file)
-//         console.log(formData)
-//         $.ajax({
-//             url: '/shipments/update',
-//             type: 'POST',
-//             data: {
-//                 _token: CSRF_TOKEN,
-//                 data:formData,
-//             },
-//             contentType: false,
-//             processData: false,
-//             dataType: 'JSON',
-//             success: (data)=> {
-
-//             }
-//         });
-
-//     }
-// })
