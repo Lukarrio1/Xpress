@@ -790,9 +790,9 @@ CreateShipment = () => {
   } else if (reference.length < 3) {
     $("#errorrefrence").html("Error, Invalid reference number.");
   } else if (date.length < 1) {
-    $("#errordate").html("Error, Invalid reference number.");
+    $("#errordate").html("Error, Invalid date.");
   } else if (description.length < 3) {
-    $("#errordescription").html("Error, Invalid Date.");
+    $("#errordescription").html("Error, Invalid description.");
   } else if (charge.length < 1) {
     $("#errorcharge").html("Error, Invalid charge.");
   } else if (status == "status") {
