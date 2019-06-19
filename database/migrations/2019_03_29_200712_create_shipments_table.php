@@ -19,7 +19,7 @@ class CreateShipmentsTable extends Migration
             $table->string('reference_no');
             $table->string('description');
             $table->string('spcharge');
-            $table->string('status'); 
+            $table->string('status');
             $table->string('delivery_date');
             $table->string('user_id');
             $table->boolean('collected')->default(false);

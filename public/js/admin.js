@@ -774,7 +774,6 @@ AdminData = () => {
     console.log(admin);
   });
 };
-TempStorage = userid => {};
 
 CreateShipment = () => {
   let uid = $(shipmentuserid).attr("id");

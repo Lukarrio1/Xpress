@@ -1,10 +1,10 @@
-@extends('layouts.admin') @section('content')
+@extends('layouts.admin')
+ @section('content')
 <style>
     .input-group.md-form.form-sm.form-2 input.red-border {
         border: 1px solid red;
     }
- </style>
-
+</style>
 <!--Section heading-->
 <div class="mt-lg-5 mb-5 mt--3">
     <h4 class=" mt--3text-left font-weight-bold dark-grey-text">Update Shipments</h4>
@@ -17,83 +17,109 @@
             <div class="modal-content">
                 <div class="modal-header text-center bg-primary">
                     <h4 class="modal-title w-100 font-weight-bold text-white">Update Shipments</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"  id="closespup">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
                         <i class="fas fa-hashtag prefix grey-text"></i>
-                        <input type="text" id="uptracting" class="form-control">
-                        <label  for="uptracting">Tracking No.</label>
-                        <span id="errortracking" class="text-danger">
-                       </span>
+                        <input type="text" id="form34" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="form34">Tracking No.</label>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-hashtag prefix grey-text"></i>
-                        <input type="text" id="upreference" class="form-control">
-                        <label  for="upreference">Reference No.</label>
-                        <span id="errorrefrence" class="text-danger">
-                        </span>
+                        <input type="text" id="form34" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="form34">Reference No.</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-calendar-alt prefix grey-text"></i>
-                        <input placeholder="Selected date" type="text" id="updeliverydate" class="form-control datepicker">
+                        <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
                         <label for="date-picker-example">Delivery Date</label>
-                        <span id="errordate" class="text-danger">
-                        </span>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-file prefix grey-text"></i>
-                        <input type="text" id="updescription" class="form-control">
-                        <label  for="updescription">Description</label>
-                        <span id="errordescription" class="text-danger">
-                        </span>
+                        <input type="text" id="form34" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="form34">Description</label>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-money-bill prefix grey-text"></i>
-                        <input type="number" id="upshipping" class="form-control">
-                        <label  for="upshipping">Shipping Charge</label>
-                        <span id="errorcharge" class="text-danger">
-                            </span>
+                        <input type="text" id="form34" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="form34">Shipping Charge</label>
                     </div>
-                    <div class="md-form mb-5">
-                    <select class="browser-default custom-select" id="upstatus">
-                        <option selected value="status">Status</option>
-                        <option value="dw">Delivered to Warehouse</option>
-                        <option value="Ij">In transit to Jamaica</option>
-                        <option value="ac">At Customs</option>
-                        <option value="ru">Ready for Pick Up</option>
-                      </select>
-                      <span id="errorstatus" class="text-danger">
-                      </span>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger btn-lg">Status</button>
+                        <button type="button" class="btn btn-danger btn-lg dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Delivered to Warehouse</a>
+                            <a class="dropdown-item" href="#">In transit to Jamaica</a>
+                            <a class="dropdown-item" href="#">At Customs</a>
+                            <a class="dropdown-item" href="#">Ready for Pick Up</a>
+
+
+                        </div>
+
+
+<<<<<<< Updated upstream
+=======
+                <!-- Table head -->
+                <thead>
+                  <tr>
+                    <th>
+                      <input class="form-check-input" type="checkbox" id="checkbox">
+                      </th>
+                    <th>XL#:</th>
+                              <th>Recipient</th>
+                              <th>Email</th>
+                              <th>Tracking No.</th>
+                              <th>Reference No.</th>
+                              <th>Description</th>
+                              <th>Delivery Date</th>
+                              <th>Arrival Date</th>
+                              <th>Shipping Charge</th>
+                              <th>Status</th>
+                              <th>Created At</th>
+                              <th>Actions</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+>>>>>>> Stashed changes
+
+
+
+
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-success" id="sendshipment">Add<i class="fas fa-paper-plane-o ml-1"></i></button>
+                        <button class="btn btn-unique">Submit <i class="fas fa-paper-plane-o ml-1"></i></button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Grid row -->
 
-</div>
+
+        </form>
         <!-- Grid column -->
         <div class="col-lg-3 col-md-6">
 
-            <div class="form-inline md-form mt-2 ml-2">
-                <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;" id="updatesearchuser">
-                <span class="badge badge-primary ml-2 px-1" id="updatesearchresult">0</span>
-            </div>
+            <form class="form-inline md-form mt-2 ml-2">
+                <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;">
+                <button class="btn btn-sm btn-primary ml-2 px-1"><i class="fas fa-search"></i> </button>
+            </form>
 
         </div>
         <!-- Grid column -->
 
+    </div>
+    <!-- Grid row -->
 
+</div>
 <!-- Top Table UI -->
 
 <div class="card card-cascade narrower z-depth-1 pb-4">
@@ -130,14 +156,83 @@
                         <th class="th-lg"><a href="">Name<i class=""></i></a></th>
                         <th class="th-lg"><a href="">Email<i class=""></i></a></th>
                         <th class="th-lg"><a href="">Telephone<i class=""></i></a></th>
-                        <th class="th-lg"><a href="">TRN<i class=""></i></a></th>
+                        <th class="th-lg"><a href="">Email<i class=""></i></a></th>
                         <th class="th-lg"><a href="">Actions<i class=""></i></a></th>
                     </tr>
+                  <tr>
+                    <th>
+                      <input class="form-check-input" type="checkbox" id="checkbox">
+                      </th>
+                    <th>XL#:</th>
+                              <th>Recipient</th>
+                              <th>Email</th>
+                              <th>Tracking No.</th>
+                              <th>Reference No.</th>
+                              <th>Description</th>
+                              <th>Delivery Date</th>
+                              <th>Arrival Date</th>
+                              <th>Shipping Charge</th>
+                              <th>Status</th>
+                              <th>Created At</th>
+                              <th>Actions</th>
+                  </tr>
                 </thead>
                 <!-- Table head -->
 
                 <!-- Table body -->
-                <tbody id="addshipments">
+                <tbody>
+                    <tr>
+                        <th scope="row">
+
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                        </th>
+                        <td>Paul</td>
+                        <td>Topolski</td>
+                        <td>@P_Topolski</td>
+                        <td>ptopolski@gmail.com</td>
+                        <td>Poland</td>
+
+
+                        <td>
+                            <button type="button" data-toggle="modal" data-target="#updateshipmentmodal" class="btn btn-outline-blue btn-rounded btn-md px-2"><i class="fas fa-pencil-alt mt-0"></i></button>
+                            <div class="text-center">
+
+
+                            </div>
+
+
+
+
+
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <th scope="row">
+
+                        </th>
+                        <td>Anna</td>
+                        <td>Doe</td>
+                        <td>@andy</td>
+                        <td>annadoe@gmail.com</td>
+
+                    </tr>
                 </tbody>
                 <!-- Table body -->
             </table>
