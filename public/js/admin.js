@@ -20,48 +20,48 @@ $(document).ready(() => {
  This trigger calls the UserSearch()*/
 $("#usersearch").on("keyup", () => UserSearch());
 // this trigger calls the UserCard()
-$(document).on("click", ".userid", function () {
-  var userID = this
-  UserCard(userID)
+$(document).on("click", ".userid", function() {
+  var userID = this;
+  UserCard(userID);
 });
 // this trigger calls the UserDelete()
-$(document).on("click", ".userdel", function () {
-  var userID = this
-  UserDelete(userID)
+$(document).on("click", ".userdel", function() {
+  var userID = this;
+  UserDelete(userID);
 });
 // this trigger calls the invoiceFile()
-$(document).on("click", ".invoice", function () {
-  var invId = this
-  InvoiceComplete(invId)
+$(document).on("click", ".invoice", function() {
+  var invId = this;
+  InvoiceComplete(invId);
 });
 // this trigger calls the InvoiceFile()
-$(document).on("click", ".invfile", function () {
-  var invoicefileID = this
-  InvoiceFile(invoicefileID)
+$(document).on("click", ".invfile", function() {
+  var invoicefileID = this;
+  InvoiceFile(invoicefileID);
 });
 // this trigger calls the InvoiceNotificationUpate()
-$(document).on("click", ".nt", function () {
-  var ntid = this
-  InvoiceNotificationUpdate(ntid)
+$(document).on("click", ".nt", function() {
+  var ntid = this;
+  InvoiceNotificationUpdate(ntid);
 });
 // this trigger calls the NewsCreate()
 $("#newsendbtn").on("click", () => {
   NewsCreate();
 });
 // this trigger calls the InvoiceView()
-$(document).on("click", ".searchin", function () {
-  var invId = this
-  InvoiceView(invId)
+$(document).on("click", ".searchin", function() {
+  var invId = this;
+  InvoiceView(invId);
 });
 // this trigger calls the DeliveryView()
-$(document).on("click", ".sdnt", function () {
-  let delId = this
-  DeliveryView(delId)
+$(document).on("click", ".sdnt", function() {
+  let delId = this;
+  DeliveryView(delId);
 });
 // this trigger calls the DeliveryComplete()
-$(document).on("click", ".devcheck", function () {
-  var delId = this
-  DeliveryComplete(delId)
+$(document).on("click", ".devcheck", function() {
+  var delId = this;
+  DeliveryComplete(delId);
 });
 // End of triggers
 
@@ -69,7 +69,7 @@ footerDate = () => {
   var date = new Date();
   var year = date.getFullYear();
   $("#footerdate").html(`${year}`);
-}
+};
 // this function returns all of the users
 Allusers = () => {
   $.get("/admin/allusers", data => {
@@ -153,10 +153,9 @@ UserSearch = () => {
   } else {
     Allusers();
   }
+};
 
-}
-
-UserCard = (userID) => {
+UserCard = userID => {
   let data = $(userID).attr("id");
   let id = data.substring(4);
   $.ajax({
@@ -206,9 +205,9 @@ UserCard = (userID) => {
       $("#usercardbody").html(`${usercard}`);
     }
   });
-}
+};
 
-UserDelete = (UserID) => {
+UserDelete = UserID => {
   let del = $(UserID).attr("id");
   let id = del.substring(3);
   iziToast.question({
@@ -226,7 +225,7 @@ UserDelete = (UserID) => {
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
-        function (instance, toast) {
+        function(instance, toast) {
           $.ajax({
             type: "Post",
             url: "/admin/user/delete",
@@ -235,27 +234,35 @@ UserDelete = (UserID) => {
               delete: id
             },
             dataType: "text",
-            success: function (response) {
+            success: function(response) {
               Allusers();
             }
           });
-          instance.hide({
-            transitionOut: "fadeOut"
-          }, toast, "button");
+          instance.hide(
+            {
+              transitionOut: "fadeOut"
+            },
+            toast,
+            "button"
+          );
         },
         true
       ],
       [
         '<button style="color:white;">NO</button>',
-        function (instance, toast) {
-          instance.hide({
-            transitionOut: "fadeOut"
-          }, toast, "button");
+        function(instance, toast) {
+          instance.hide(
+            {
+              transitionOut: "fadeOut"
+            },
+            toast,
+            "button"
+          );
         }
       ]
     ]
   });
-}
+};
 // this function shows all of the pre-alerts to the admin
 Allinvoice = () => {
   $.get("/admin/invoices/all", data => {
@@ -272,7 +279,7 @@ Allinvoice = () => {
       updated = updated_at.toString().slice(0, 24);
       if (inv[i].token == "true") {
         _class = "<tr class='table-info'>";
-        updated = ""
+        updated = "";
         check = "";
         maxinv = maxinv + 1;
       } else {
@@ -318,7 +325,7 @@ Allinvoice = () => {
   });
 };
 
-InvoiceFile = (invoicefileID) => {
+InvoiceFile = invoicefileID => {
   let invc = $(invoicefileID).attr("id");
   let id = invc.substring(7);
   $.ajax({
@@ -346,9 +353,9 @@ InvoiceFile = (invoicefileID) => {
       $("#modalinv").click();
     }
   });
-}
+};
 
-InvoiceComplete = (invId) => {
+InvoiceComplete = invId => {
   let invoice = $(invId).attr("id");
   let inval = $(invId).val();
   let id = invoice.substring(3);
@@ -369,7 +376,7 @@ InvoiceComplete = (invId) => {
       });
     }
   });
-}
+};
 
 InvoiceNt = () => {
   $.get("/admin/invoice/notification", data => {
@@ -390,7 +397,7 @@ InvoiceNt = () => {
 };
 
 InvoiceSearch = () => {
-  $("#invoicesearch").on("keyup", function () {
+  $("#invoicesearch").on("keyup", function() {
     let search = $("#invoicesearch").val();
     if (search.length > 0) {
       $.ajax({
@@ -404,12 +411,12 @@ InvoiceSearch = () => {
         success: data => {
           let inv = jQuery.parseJSON(data);
           let invoice = "";
-          let maxinv = 0
+          let maxinv = 0;
           $("#searchcount").html(`${inv.length}`);
           for (let i = 0; i < inv.length; i++) {
             if (inv[i].token == "true") {
               _class = "<tr class='table-info'>";
-              maxinv = maxinv + 1
+              maxinv = maxinv + 1;
               check = "";
             } else {
               _class = '<tr class="">';
@@ -463,8 +470,7 @@ InvoiceSearch = () => {
   });
 };
 
-
-InvoiceNotificationUpdate = (ntid) => {
+InvoiceNotificationUpdate = ntid => {
   let invoice = $(ntid).attr("id");
   let id = invoice.substring(2);
   $.ajax({
@@ -477,29 +483,27 @@ InvoiceNotificationUpdate = (ntid) => {
     dataType: "text",
     success: data => {}
   });
-
-}
+};
 
 DeliveryNt = invoice => {
   $.get("/admin/sheduledelivery/notification", data => {
-    let notify = jQuery.parseJSON(data)
+    let notify = jQuery.parseJSON(data);
     let text = "";
     let sdnotify = notify.length;
     NotificationCount(invoice, sdnotify);
-    notify.forEach((not) => {
+    notify.forEach(not => {
       text += `
 	<a class="dropdown-item" href="/admin/delivery">
 	<i class="fas fa-calendar-check mr-2" aria-hidden="true"></i>
 	<span id="sdnt${not.id}" class="sdnt">${not.notification}</span>
     </a>
-	`
-    })
+	`;
+    });
     $("#deliverynt").html(`${text}`);
   });
 };
 
-
-DeliveryView = (delId) => {
+DeliveryView = delId => {
   let delivery = $(delId).attr("id");
   let id = delivery.substring(4);
   $.ajax({
@@ -512,7 +516,7 @@ DeliveryView = (delId) => {
     dataType: "text",
     success: data => {}
   });
-}
+};
 
 Alldeliveries = () => {
   $.get("/admin/all/delivery", data => {
@@ -575,7 +579,7 @@ Alldeliveries = () => {
   });
 };
 
-DeliveryComplete = (delId) => {
+DeliveryComplete = delId => {
   let devid = $(delId).attr("id");
   let dev = $(delId).val();
   let id = devid.substring(3);
@@ -597,7 +601,7 @@ DeliveryComplete = (delId) => {
       });
     }
   });
-}
+};
 
 InCheck = invlen => {
   $.get("/admin/invoices/all", data => {
@@ -623,8 +627,7 @@ NotificationCount = (invoice, delivery) => {
   $("#invoicentc").html(`${sum}`);
 };
 
-
-InvoiceView = (invId) => {
+InvoiceView = invId => {
   let invoice = $(invId).attr("id");
   let inval = $(invId).val();
   let id = invoice.substring(3);
@@ -645,10 +648,10 @@ InvoiceView = (invId) => {
       });
     }
   });
-}
+};
 
 DeliverySearch = () => {
-  $("#deliverysearch").on("keyup", function () {
+  $("#deliverysearch").on("keyup", function() {
     let search = $("#deliverysearch").val();
     if (search.length > 0) {
       $.ajax({
@@ -759,6 +762,15 @@ AdminData = () => {
     admin = jQuery.parseJSON(data);
     console.log(admin);
   });
+};
+
+CreateShipment = () => {
+  let tracking = $("#uptracting").val();
+  let reference = $("#upreference").val();
+  let date = $("#updeliverydate").val();
+  let description = $("#updescription").val();
+  let charge = $("#upshipping").val();
+  let status = $("#upstatus").val();
 };
 // Checks every 10 seconds more
 window.setInterval(() => {

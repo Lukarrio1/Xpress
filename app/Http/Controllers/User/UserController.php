@@ -236,7 +236,7 @@ class UserController extends Controller
         $new->user_id = Auth::user()->id;
         $new->todo = $todo;
         $new->save();
-        return 200;
+        return json_encode(['status'=>200]);
     }
     // this function return all of the user create tasks
     public function alltodo(){

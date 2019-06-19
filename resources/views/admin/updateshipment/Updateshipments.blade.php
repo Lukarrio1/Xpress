@@ -3,6 +3,8 @@
     .input-group.md-form.form-sm.form-2 input.red-border {
         border: 1px solid red;
     }
+
+    </style>
 </style>
 <!--Section heading-->
 <div class="mt-lg-5 mb-5 mt--3">
@@ -23,53 +25,41 @@
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
                         <i class="fas fa-hashtag prefix grey-text"></i>
-                        <input type="text" id="form34" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="form34">Tracking No.</label>
+                        <input type="text" id="uptracting" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="uptracting">Tracking No.</label>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-hashtag prefix grey-text"></i>
-                        <input type="text" id="form34" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="form34">Reference No.</label>
+                        <input type="text" id="upreference" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="upreference">Reference No.</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-calendar-alt prefix grey-text"></i>
-                        <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
+                        <input placeholder="Selected date" type="text" id="updeliverydate" class="form-control datepicker">
                         <label for="date-picker-example">Delivery Date</label>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-file prefix grey-text"></i>
-                        <input type="text" id="form34" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="form34">Description</label>
+                        <input type="text" id="updescription" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="updescription">Description</label>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-money-bill prefix grey-text"></i>
-                        <input type="text" id="form34" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="form34">Shipping Charge</label>
+                        <input type="text" id="upshipping" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="upshipping">Shipping Charge</label>
                     </div>
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-danger btn-lg">Status</button>
-                        <button type="button" class="btn btn-danger btn-lg dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Delivered to Warehouse</a>
-                            <a class="dropdown-item" href="#">In transit to Jamaica</a>
-                            <a class="dropdown-item" href="#">At Customs</a>
-                            <a class="dropdown-item" href="#">Ready for Pick Up</a>
-
-
-                        </div>
-
-
-
-
-
-
+                    <div class="md-form mb-5">
+                    <select class="browser-default custom-select">
+                        <option selected id="upstatus">Status</option>
+                        <option value="dw">Delivered to Warehouse</option>
+                        <option value="Ij">In transit to Jamaica</option>
+                        <option value="ac">At Customs</option>
+                        <option value="ru">Ready for Pick Up</option>
+                      </select>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
                         <button class="btn btn-unique">Submit <i class="fas fa-paper-plane-o ml-1"></i></button>
@@ -77,9 +67,10 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Grid row -->
 
-
-        </form>
+</div>
         <!-- Grid column -->
         <div class="col-lg-3 col-md-6">
 
@@ -91,10 +82,7 @@
         </div>
         <!-- Grid column -->
 
-    </div>
-    <!-- Grid row -->
 
-</div>
 <!-- Top Table UI -->
 
 <div class="card card-cascade narrower z-depth-1 pb-4">
