@@ -73,7 +73,7 @@
                       </span>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-unique" id="sendshipment">Submit <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        <button class="btn btn-success" id="sendshipment">Add<i class="fas fa-paper-plane-o ml-1"></i></button>
                     </div>
                 </div>
             </div>
@@ -85,10 +85,10 @@
         <!-- Grid column -->
         <div class="col-lg-3 col-md-6">
 
-            <form class="form-inline md-form mt-2 ml-2">
-                <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;">
-                <button class="btn btn-sm btn-primary ml-2 px-1"><i class="fas fa-search"></i> </button>
-            </form>
+            <div class="form-inline md-form mt-2 ml-2">
+                <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;" id="updatesearchuser">
+                <span class="badge badge-primary ml-2 px-1" id="updatesearchresult">0</span>
+            </div>
 
         </div>
         <!-- Grid column -->

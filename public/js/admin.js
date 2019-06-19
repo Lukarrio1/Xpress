@@ -69,7 +69,10 @@ $(document).on("click", ".devcheck", function() {
 $(document).on("click", ".addshipment", function() {
   shipmentuserid = this;
 });
+// This trigger calls the CreateShipment()
 $("#sendshipment").on("click", () => CreateShipment());
+// This trigger calls the UpdateShipmentSearch()
+$("#updatesearchuser").on("keyup", () => UpdateShipmentSearch());
 // End of triggers
 
 footerDate = () => {
@@ -860,6 +863,53 @@ UsersShipment = users => {
   `;
   });
   $("#addshipments").html(`${output}`);
+};
+
+UpdateShipmentSearch = () => {
+  let search = $("#updatesearchuser").val();
+  if (search.length > 0) {
+    $.ajax({
+      type: "POST",
+      url: "/admin/search",
+      data: {
+        _token: CSRF_TOKEN,
+        search: search
+      },
+      dataType: "text",
+      success: function(response) {
+        let users = jQuery.parseJSON(response);
+        $("#updatesearchresult").html(`${users.length}`);
+        let output = "";
+        users.forEach(user => {
+          output += `  <tr>
+         <th scope="row" />
+         <td>${user.xl}</td>
+         <td>${user.name}</td>
+          <td>${user.email}</td>
+         <td>${user.telephone}</td>
+          <td>${user.trn}</td>
+         <td>
+         <button 
+        id="upsh${user.id}"
+        type="button"
+        data-toggle="modal"
+        data-target="#updateshipmentmodal"
+        class="btn btn-outline-blue btn-rounded btn-md px-2 addshipment"
+       >
+      <i class="fas fa-pencil-alt mt-0" />
+      </button>
+      <div class="text-center" />
+      </td>
+      </tr>
+    `;
+        });
+        $("#addshipments").html(`${output}`);
+      }
+    });
+  } else {
+    Allusers();
+    $("#updatesearchresult").html("0");
+  }
 };
 // Checks every 10 seconds more
 window.setInterval(() => {
