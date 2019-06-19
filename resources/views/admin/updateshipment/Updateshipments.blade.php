@@ -3,9 +3,8 @@
     .input-group.md-form.form-sm.form-2 input.red-border {
         border: 1px solid red;
     }
+ </style>
 
-    </style>
-</style>
 <!--Section heading-->
 <div class="mt-lg-5 mb-5 mt--3">
     <h4 class=" mt--3text-left font-weight-bold dark-grey-text">Update Shipments</h4>
@@ -18,51 +17,63 @@
             <div class="modal-content">
                 <div class="modal-header text-center bg-primary">
                     <h4 class="modal-title w-100 font-weight-bold text-white">Update Shipments</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"  id="closespup">
             <span aria-hidden="true">&times;</span>
           </button>
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
                         <i class="fas fa-hashtag prefix grey-text"></i>
-                        <input type="text" id="uptracting" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="uptracting">Tracking No.</label>
+                        <input type="text" id="uptracting" class="form-control">
+                        <label  for="uptracting">Tracking No.</label>
+                        <span id="errortracking" class="text-danger">
+                       </span>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-hashtag prefix grey-text"></i>
-                        <input type="text" id="upreference" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="upreference">Reference No.</label>
+                        <input type="text" id="upreference" class="form-control">
+                        <label  for="upreference">Reference No.</label>
+                        <span id="errorrefrence" class="text-danger">
+                        </span>
                     </div>
 
                     <div class="md-form">
                         <i class="fas fa-calendar-alt prefix grey-text"></i>
                         <input placeholder="Selected date" type="text" id="updeliverydate" class="form-control datepicker">
                         <label for="date-picker-example">Delivery Date</label>
+                        <span id="errordate" class="text-danger">
+                        </span>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-file prefix grey-text"></i>
-                        <input type="text" id="updescription" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="updescription">Description</label>
+                        <input type="text" id="updescription" class="form-control">
+                        <label  for="updescription">Description</label>
+                        <span id="errordescription" class="text-danger">
+                        </span>
                     </div>
 
                     <div class="md-form mb-5">
                         <i class="fas fa-money-bill prefix grey-text"></i>
-                        <input type="text" id="upshipping" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="upshipping">Shipping Charge</label>
+                        <input type="number" id="upshipping" class="form-control">
+                        <label  for="upshipping">Shipping Charge</label>
+                        <span id="errorcharge" class="text-danger">
+                            </span>
                     </div>
                     <div class="md-form mb-5">
-                    <select class="browser-default custom-select">
-                        <option selected id="upstatus">Status</option>
+                    <select class="browser-default custom-select" id="upstatus">
+                        <option selected value="status">Status</option>
                         <option value="dw">Delivered to Warehouse</option>
                         <option value="Ij">In transit to Jamaica</option>
                         <option value="ac">At Customs</option>
                         <option value="ru">Ready for Pick Up</option>
                       </select>
+                      <span id="errorstatus" class="text-danger">
+                      </span>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-unique">Submit <i class="fas fa-paper-plane-o ml-1"></i></button>
+                        <button class="btn btn-unique" id="sendshipment">Submit <i class="fas fa-paper-plane-o ml-1"></i></button>
                     </div>
                 </div>
             </div>
@@ -119,66 +130,14 @@
                         <th class="th-lg"><a href="">Name<i class=""></i></a></th>
                         <th class="th-lg"><a href="">Email<i class=""></i></a></th>
                         <th class="th-lg"><a href="">Telephone<i class=""></i></a></th>
-                        <th class="th-lg"><a href="">Email<i class=""></i></a></th>
+                        <th class="th-lg"><a href="">TRN<i class=""></i></a></th>
                         <th class="th-lg"><a href="">Actions<i class=""></i></a></th>
                     </tr>
                 </thead>
                 <!-- Table head -->
 
                 <!-- Table body -->
-                <tbody>
-                    <tr>
-                        <th scope="row">
-
-                        </th>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                        </th>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">
-
-                        </th>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                        </th>
-                        <td>Paul</td>
-                        <td>Topolski</td>
-                        <td>@P_Topolski</td>
-                        <td>ptopolski@gmail.com</td>
-                        <td>Poland</td>
-
-
-                        <td>
-                            <button type="button" data-toggle="modal" data-target="#updateshipmentmodal" class="btn btn-outline-blue btn-rounded btn-md px-2"><i class="fas fa-pencil-alt mt-0"></i></button>
-                            <div class="text-center">
-
-
-                            </div>
-
-
-
-
-
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <th scope="row">
-
-                        </th>
-                        <td>Anna</td>
-                        <td>Doe</td>
-                        <td>@andy</td>
-                        <td>annadoe@gmail.com</td>
-
-                    </tr>
+                <tbody id="addshipments">
                 </tbody>
                 <!-- Table body -->
             </table>

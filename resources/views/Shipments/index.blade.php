@@ -19,7 +19,6 @@
     <tr>
       <th>Tracking No.</th>
       <th>Reference No.</th>
-      <th>Recipient</th>
       <th>Description</th>
       <th>Delivery Date</th> 
       <th>Shipping Charge</th>

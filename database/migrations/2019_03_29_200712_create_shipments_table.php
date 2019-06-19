@@ -17,12 +17,12 @@ class CreateShipmentsTable extends Migration
             $table->increments('id');
             $table->string('tracking_no');
             $table->string('reference_no');
-            $table->string('recipient');
             $table->string('description');
             $table->string('spcharge');
-            $table->boolean('status')->default(FALSE); 
+            $table->string('status'); 
             $table->string('delivery_date');
             $table->string('user_id');
+            $table->boolean('collected')->default(false);
             $table->timestamps();
         });
     }

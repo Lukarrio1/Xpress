@@ -43,7 +43,7 @@
 </div>
 
 <button type="button" class="btn btn-primary waves-effect waves-light " data-toggle="modal"
-  data-target="#centralModalLGInfoDemo" id="modal" style="display:none;">
+  data-target="#centralModalLGInfoDemo" id="tutmodal" style="display:none;">
 </button>
 <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">

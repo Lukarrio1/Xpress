@@ -1,4 +1,4 @@
-// Loads  at start up ..
+// Loads  at start up .
 $(document).ready(() => {
   Allusers();
   Allinvoice();
@@ -16,6 +16,8 @@ $(document).ready(() => {
   // 	$('#invloading').css('display', 'none');
   // });
 });
+// global declaration
+let shipmentuserid = "";
 /* Triggers. these call function when the respective part of the dom is manipulated .. 
  This trigger calls the UserSearch()*/
 $("#usersearch").on("keyup", () => UserSearch());
@@ -63,6 +65,11 @@ $(document).on("click", ".devcheck", function() {
   var delId = this;
   DeliveryComplete(delId);
 });
+// this trigger calls the CreateShipment()
+$(document).on("click", ".addshipment", function() {
+  shipmentuserid = this;
+});
+$("#sendshipment").on("click", () => CreateShipment());
 // End of triggers
 
 footerDate = () => {
@@ -74,6 +81,7 @@ footerDate = () => {
 Allusers = () => {
   $.get("/admin/allusers", data => {
     var user = jQuery.parseJSON(data);
+    UsersShipment(user);
     let text = "";
     let amount = user.length;
     $("#allusercount").html(`${amount}`);
@@ -763,14 +771,95 @@ AdminData = () => {
     console.log(admin);
   });
 };
+TempStorage = userid => {};
 
 CreateShipment = () => {
+  let uid = $(shipmentuserid).attr("id");
+  let id = uid.substring(4);
   let tracking = $("#uptracting").val();
   let reference = $("#upreference").val();
   let date = $("#updeliverydate").val();
   let description = $("#updescription").val();
   let charge = $("#upshipping").val();
   let status = $("#upstatus").val();
+  if (tracking.length < 3) {
+    $("#errortracking").html("Error, Invalid tracking number.");
+  } else if (reference.length < 3) {
+    $("#errorrefrence").html("Error, Invalid reference number.");
+  } else if (date.length < 1) {
+    $("#errordate").html("Error, Invalid reference number.");
+  } else if (description.length < 3) {
+    $("#errordescription").html("Error, Invalid Date.");
+  } else if (charge.length < 1) {
+    $("#errorcharge").html("Error, Invalid charge.");
+  } else if (status == "status") {
+    $("#errorstatus").html("Error, Invalid status.");
+  } else {
+    $("#errortracking").html(" ");
+    $("#errorstatus").html(" ");
+    $("#errorcharge").html(" ");
+    $("#errordescription").html(" ");
+    $("#errordate").html(" ");
+    $("#errorrefrence").html(" ");
+    $("#upstatus").val("Status");
+    $("#upshipping").val("");
+    $("#updescription").val("");
+    $("#updeliverydate").val("");
+    $("#upreference").val("");
+    $("#uptracting").val("");
+    $.ajax({
+      type: "POST",
+      url: "/admin/add/shipment",
+      data: {
+        _token: CSRF_TOKEN,
+        id: id,
+        tracking: tracking,
+        reference: reference,
+        date: date,
+        description: description,
+        charge: charge,
+        status: status
+      },
+      dataType: "text",
+      success: function(response) {
+        $("#closespup").click();
+        iziToast.success({
+          position: "topCenter",
+          message: "Shipment Added"
+        });
+      }
+    });
+  }
+};
+
+UsersShipment = users => {
+  let output = "";
+  users.forEach(user => {
+    output += `  <tr>
+    <th scope="row" />
+    <td>${user.xl}</td>
+    <td>${user.name}</td>
+    <td>${user.email}</td>
+    <td>${user.telephone}</td>
+    <td>${user.trn}</td>
+  
+    <td>
+      <button 
+        id="upsh${user.id}"
+        type="button"
+        data-toggle="modal"
+        data-target="#updateshipmentmodal"
+        class="btn btn-outline-blue btn-rounded btn-md px-2 addshipment"
+      >
+        <i class="fas fa-pencil-alt mt-0" />
+      </button>
+      <div class="text-center" />
+    </td>
+  </tr>
+  
+  `;
+  });
+  $("#addshipments").html(`${output}`);
 };
 // Checks every 10 seconds more
 window.setInterval(() => {

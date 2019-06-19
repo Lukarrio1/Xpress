@@ -126,7 +126,7 @@ Modaltimer = () => {
     $("#modalxl").html(`${token.xl}`);
     if (modal == "") {
     } else {
-      $("#modal").click();
+      $("#tutmodal").click();
     }
   });
 };
@@ -366,32 +366,37 @@ Pdata = () => {
 // this is function will show all of the shipments
 shipments = () => {
   $.get("/shipments/all", data => {
-    var shipments = jQuery.parseJSON(data);
-    ShipmentCount(shipments);
+    var shp = jQuery.parseJSON(data);
+    ShipmentCount(shp);
     let all_ship = "";
-    for (i = 0; i < shipments.length; i++) {
+    for (i = 0; i < shp.length; i++) {
+      created_at = new Date(`${shp[i].created_at}`);
+      created = created_at.toString().slice(0, 24);
+      updated_at = new Date(`${shp[i].updated_at}`);
+      updated =
+        shp[i].collected == 1 ? updated_at.toString().slice(0, 24) : " ";
+
       all_ship += `<tr class="">
-                <th>${shipments[i].tracking_no}</th>
-                <td>${shipments[i].reference_no}</td>
-                <td>${shipments[i].recipient}</td>
-                <td>${shipments[i].description}</td>
-                <td>${shipments[i].delivery_date}</td>
-                <td>${shipments[i].spcharge}</td>
-                <td>${shipments[i].status}</td>
-                <td>${shipments[i].created_at}</td>
-                <td>${shipments[i].updated_at}</td>
+                <th>${shp[i].tracking_no}</th>
+                <td>${shp[i].reference_no}</td>
+                <td>${shp[i].description}</td>
+                <td>${shp[i].delivery_date}</td>
+                <td>${shp[i].spcharge}</td>
+                <td>${shp[i].status}</td>
+                <td>${created}</td>
+                <td>${updated}</td>
               </tr>`;
     }
-    $("#shpcount").html(`${shipments.length}`);
+    $("#shpcount").html(`${shp.length}`);
     $("#shipments").html(`${all_ship}`);
   });
 };
 
 spnotification = verify => {
   $.get("/shipments/notification", data => {
-    console.log(data);
     let sp = data;
     if (sp > 0) {
+      shipments();
       $("#spnotify").html(
         `<a class='dropdown-item' href='/shipments'>New shipment added. <span class='float-right'>
          <i class="fas fa-box-open"></i></span></a>`
@@ -614,11 +619,12 @@ NewsModal = mdid => {
 };
 
 ShipmentCount = shipment => {
-  let count = shipment.filter(n => n.status);
+  let count = shipment.filter(n => n.collected == 1);
+  console.log(count);
   let all = shipment.length;
   let percent = count.length > 0 ? (count.length / all) * 100 : 0;
   $("#shipmentscount").html(`${count.length}/${all}`);
-  $("#shipmentpercent").html(`${percent}`);
+  $("#shipmentpercent").html(`${percent.toPrecision(2)}`);
   $("#shipmentbar").css("width", `${percent}%`);
 };
 
@@ -629,7 +635,7 @@ NotificationCounter = (verify, sp) => {
   vers = Number.isNaN(verify) ? 0 : verify;
   spts = Number.isNaN(sp) ? 0 : sp;
   console.log(vers);
-  let sum = vers + spts;
+  let sum = Number(vers) + Number(spts);
   $("#notificount").html(`${sum}`);
 };
 

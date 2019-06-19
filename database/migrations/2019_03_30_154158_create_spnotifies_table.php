@@ -17,6 +17,7 @@ class CreateSpnotifiesTable extends Migration
             $table->increments('id');
             $table->string('token')->nullable();
             $table->string('user_id');
+            $table->timestamps();
         });
     }
 

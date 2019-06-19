@@ -39,7 +39,7 @@ class ShipmentsController extends Controller
         $user = Auth::user()->id;
         $shipments = DB::table('shipments')
         ->where('user_id','=',$user)
-        ->orderBy('created_at', 'desc')
+        ->orderBy('created_at', 'DESC')
         ->get(); 
         return json_encode($shipments);
     }
