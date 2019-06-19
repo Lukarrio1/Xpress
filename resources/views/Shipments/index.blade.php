@@ -31,8 +31,7 @@
 
   <!--Table body-->
   <tbody id="shipments">
-    
-  </tbody>
+      </tbody>
   <!--Table body-->
 
 

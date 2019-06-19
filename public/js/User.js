@@ -381,7 +381,7 @@ shipments = () => {
                 <td>${shp[i].reference_no}</td>
                 <td>${shp[i].description}</td>
                 <td>${shp[i].delivery_date}</td>
-                <td>${shp[i].spcharge}</td>
+                <td>$${shp[i].spcharge}</td>
                 <td>${shp[i].status}</td>
                 <td>${created}</td>
                 <td>${updated}</td>
