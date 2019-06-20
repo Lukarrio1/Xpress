@@ -58,8 +58,15 @@
             <!-- Package Weight -->
             <div class="md-form">
                 <input type="number" id="pkg_weight" class="form-control" name="weight">
-                <label for="pkg_weight">Weight (lbs) </label>
+                <label for="pkg_weight">Weight  </label>
             </div>
+            <div class="md-form">
+                       
+                        <input placeholder="Selected date" type="text" id="updeliverydate" class="form-control datepicker">
+                        <label for="date-picker-example">Expected Delivery Date</label>
+                        <span id="errordate" class="text-danger">
+                        </span>
+                    </div>
             <div class="file-field">
         <a class="btn-floating peach-gradient mt-0 float-left">
     <i class="fas fa-paperclip" aria-hidden="true"></i>
