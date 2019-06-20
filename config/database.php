@@ -19,8 +19,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
-    //'default' => env('DB_CONNECTION', 'pgsql_xpress'),
+    // 'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql_xpress'),
 
     /*
     |--------------------------------------------------------------------------
@@ -73,16 +73,16 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        // 'pgsql_xpress' => [
-        //     'driver' => 'pgsql',
-        //     'host' => $host,
-        //     'database' =>$database,
-        //     'username' =>$username,
-        //     'password' =>$password,
-        //     'charset' => 'utf8',
-        //     'prefix' => '',
-        //     'schema' => 'public',
-        // ],
+        'pgsql_xpress' => [
+            'driver' => 'pgsql',
+            'host' => $host,
+            'database' =>$database,
+            'username' =>$username,
+            'password' =>$password,
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+        ],
 
     ],
 
