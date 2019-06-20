@@ -28,7 +28,7 @@ class NewsController extends Controller
      $new = new News;
      $new->subject =htmlentities($request->subject);
      $new->body = htmlentities($request->body);
-     $this->Email(htmlentities($request->subject),htmlentities($request->body));
+    //  $this->Email(htmlentities($request->subject),htmlentities($request->body));
      $new->save();
      return json_encode([
          'status'=>200,
