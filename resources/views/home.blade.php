@@ -24,7 +24,8 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#todomodalview" style="display: none" id="viewTASK">
 </button>
 
-<!-- Modal -->
+
+<!-- Todo Modal -->
 <div class="modal " id="todomodalview" tabindex="-1" role="dialog" aria-labelledby="todomodalview"
   aria-hidden="true">
   <div class="modal-dialog modal-lg " role="document">
@@ -378,23 +379,33 @@
           <div class="card-body text-center">
 
             <div class="list-group list-panel">
-              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Cras justo odio
-                <i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top"
-                  title="Click to fix"></i></a>
-              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Dapibus ac
-                facilisi<i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top"
-                  title="Click to fix"></i></a>
-              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Morbi leo risus
-                <i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top"
-                  title="Click to fix"></i></a>
-              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Porta ac
-                consectet<i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top"
-                  title="Click to fix"></i></a>
-              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">Vestibulum at
-                eros <i class="fas fa-wrench ml-auto" data-toggle="tooltip" data-placement="top"
-                  title="Click to fix"></i></a>
+              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">A new pre alert has been added for nike shoes.
+                <i class="fas fa-plus ml-auto" data-toggle="modal" data-target="#activitymodal"
+                  title="View Item"></i></a>
+              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text"> A new delivery has been requested for Drew Ave.
+                <i class="fas fa-plus ml-auto" data-toggle="modal" data-target="#activitymodal" 
+                  title="View Item"></i></a>
+              
+              
             </div>
-
+<!-- Todo Modal -->
+<div class="modal " id="activitymodal" tabindex="-1" role="dialog" aria-labelledby="activitymodal"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white text-center">
+        <h5 class="modal-title" id="activitytitle">Task <small id="tasktime"></small></h5>
+      </div>
+      <div class="modal-body" id="">
+      
+      </div>
+      <div class="modal-footer">
+         <span id="taskcompleted"></span>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closetaskmodal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
           </div>
           <!--/.Card content-->
 
