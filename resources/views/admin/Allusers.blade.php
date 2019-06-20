@@ -25,23 +25,18 @@
             <div class="row">
               <div class="col-md-12 mb-1">
                 <!-- Tabs -->
-                <div class="classic-tabs">
-                  <!-- Nav tabs -->
-                  <div class="tabs-wrapper">
-                    <ul class="nav tabs-primary primary-color" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link waves-light active" data-toggle="tab" href="#panel83" role="tab">All
-                          Clients <span class="badge red" id="allusercount"></span></a>
-                      </li>
-                      
-                    </ul>
-                  </div>
-                  <!-- Tab panels -->
-                  <div class="tab-content card">
-                    <!-- Panel 1 -->
-                    <div class="tab-pane fade show active" id="panel83" role="tabpanel">
-                      <div class="table-responsive">
-                        <table class="table">
+                <div class="card card-cascade narrower z-depth-1 mt-5">
+    <div
+        class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+        <div>
+        </div>
+        <a class="white-text align-content-center mx-3 h4">News Form
+        </a>
+        <div>
+        </div>
+    </div>
+    <div class="text-center border border-light p-5">
+        <table class="table">
                           <thead>
                             <tr>
                               <th>XL#:</th>
@@ -52,38 +47,16 @@
                             </tr>
                           </thead>
                           <tbody id="alluserbody">
-                          {{-- all the users will show here --}}
+                          
                           </tbody>
                         </table>
-                      </div>
-                    </div>
-                    <!-- /.Panel 1 -->
-                    
+
+
+        
+    </div>
+</div>
+                
                   </div>
                   <!-- /.Tabs -->
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <!-- First column -->
-
-          <!-- Second column -->
-          <div class="col-md-4 mb-md-0 mb-5" id="usercardbody">
-
-          
-            <!-- Card -->
-
-          </div>
-          <!-- Second column -->
-
-        </div>
-        <!-- First row -->
-
-      </section>
-      <!-- Section: Customers -->
-
-    </div>
-  
-  <!-- Main layout -->
+                
 @endsection
