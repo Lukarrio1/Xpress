@@ -22,13 +22,13 @@
 
 
                 <!-- Weight -->
-                <input type="text" id="shippingweight" class="form-control mb-4" placeholder="Enter Shipping Weight (lbs)">
+                <input type="text" id="shippingweight" class="form-control mb-4" placeholder="Enter Shipping Weight">
                 <!-- Shipping Length -->
                 <input type="text" id="shippinglength" class="form-control mb-4" placeholder="Enter Shipping Length">
                 <!-- Width -->
                 <input type="text" id="shippingwidth" class="form-control mb-4" placeholder="Enter Shipping Width">
                 <!-- Weight -->
-                <input type="text" id="shippingweight" class="form-control mb-4" placeholder="Enter Shipping Weight (lbs)">
+                <input type="text" id="shippingheight" class="form-control mb-4" placeholder="Enter Shipping Height ">
 
                 <!-- Price -->
                 <input type="number" id="itemprice" class="form-control mb-4" placeholder="Enter Item Price (usd)">
