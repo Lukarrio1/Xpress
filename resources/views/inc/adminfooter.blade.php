@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer fixed-bottom pt-0 mt-5 rgba-stylish-light">
+<footer class="page-footer fixed-bottom pt-3 mt-5 rgba-stylish-light">
         <!-- Copyright -->
         <div class="footer-copyright py-3 text-center">
           <div class="container-fluid">
