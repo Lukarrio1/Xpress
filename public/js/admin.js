@@ -22,27 +22,27 @@ let shipmentuserid = "";
  This trigger calls the UserSearch()*/
 $("#usersearch").on("keyup", () => UserSearch());
 // this trigger calls the UserCard()
-$(document).on("click", ".userid", function () {
+$(document).on("click", ".userid", function() {
   var userID = this;
   UserCard(userID);
 });
 // this trigger calls the UserDelete()
-$(document).on("click", ".userdel", function () {
+$(document).on("click", ".userdel", function() {
   var userID = this;
   UserDelete(userID);
 });
 // this trigger calls the invoiceFile()
-$(document).on("click", ".invoice", function () {
+$(document).on("click", ".invoice", function() {
   var invId = this;
   InvoiceComplete(invId);
 });
 // this trigger calls the InvoiceFile()
-$(document).on("click", ".invfile", function () {
+$(document).on("click", ".invfile", function() {
   var invoicefileID = this;
   InvoiceFile(invoicefileID);
 });
 // this trigger calls the InvoiceNotificationUpate()
-$(document).on("click", ".nt", function () {
+$(document).on("click", ".nt", function() {
   var ntid = this;
   InvoiceNotificationUpdate(ntid);
 });
@@ -51,23 +51,35 @@ $("#newsendbtn").on("click", () => {
   NewsCreate();
 });
 // this trigger calls the InvoiceView()
-$(document).on("click", ".searchin", function () {
+$(document).on("click", ".searchin", function() {
   var invId = this;
   InvoiceView(invId);
 });
 // this trigger calls the DeliveryView()
-$(document).on("click", ".sdnt", function () {
+$(document).on("click", ".sdnt", function() {
   let delId = this;
   DeliveryView(delId);
 });
 // this trigger calls the DeliveryComplete()
-$(document).on("click", ".devcheck", function () {
+$(document).on("click", ".devcheck", function() {
   var delId = this;
   DeliveryComplete(delId);
 });
 // this trigger calls the CreateShipment()
-$(document).on("click", ".addshipment", function () {
+$(document).on("click", ".addshipment", function() {
   shipmentuserid = this;
+  $("#errortracking").html(" ");
+  $("#errorstatus").html(" ");
+  $("#errorcharge").html(" ");
+  $("#errordescription").html(" ");
+  $("#errordate").html(" ");
+  $("#errorrefrence").html(" ");
+  $("#upstatus").val("Status");
+  $("#upshipping").val("");
+  $("#updescription").val("");
+  $("#updeliverydate").val("");
+  $("#upreference").val("");
+  $("#uptracting").val("");
 });
 // This trigger calls the CreateShipment()
 $("#sendshipment").on("click", () => CreateShipment());
@@ -100,12 +112,12 @@ Allusers = () => {
 					<td>${user[i].email}</td>
 					<td>
 					<a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="View ${
-        user[i].name
-        }" id="user${user[i].id}"><i class="fas fa-user"></i></a>
+            user[i].name
+          }" id="user${user[i].id}"><i class="fas fa-user"></i></a>
            <a class="teal-text" data-toggle="tooltip" data-placement="top">  </a>
 					<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
-        user[i].id
-        }"><i class="fas fa-times" ></i></a>
+            user[i].id
+          }"><i class="fas fa-times" ></i></a>
 					</td>
           </tr>`;
       // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
@@ -145,13 +157,13 @@ UserSearch = () => {
 								<td>${users[i].email}</td>
 								<td>
 								<a class="blue-text userid" data-toggle="tooltip" data-placement="top" title="${
-            users[i].name
-            }" id="user${users[i].id}"><i
+                  users[i].name
+                }" id="user${users[i].id}"><i
 								class="fas fa-user"></i></a>
 								
 								<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Delete user" id="del${
-            users[i].id
-            }"><i class="fas fa-times"></i></a>
+                  users[i].id
+                }"><i class="fas fa-times"></i></a>
 								</td>
 								</tr>
                 `;
@@ -183,7 +195,7 @@ UserCard = userID => {
 				<div class="card profile-card">
 				<div class="avatar z-depth-1-half mb-4">
 				<img src="/storage/Userimage/${
-        user.image
+          user.image
         }" class="rounded-circle" alt="First sample avatar image">
 				</div>
 				<div class="card-body pt-0 mt-0" >
@@ -226,7 +238,7 @@ UserDelete = UserID => {
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
-        function (instance, toast) {
+        function(instance, toast) {
           $.ajax({
             type: "Post",
             url: "/admin/user/delete",
@@ -235,7 +247,7 @@ UserDelete = UserID => {
               delete: id
             },
             dataType: "text",
-            success: function (response) {
+            success: function(response) {
               Allusers();
             }
           });
@@ -251,7 +263,7 @@ UserDelete = UserID => {
       ],
       [
         '<button style="color:white;">NO</button>',
-        function (instance, toast) {
+        function(instance, toast) {
           instance.hide(
             {
               transitionOut: "fadeOut"
@@ -292,10 +304,10 @@ Allinvoice = () => {
 		<th scope="row">
 		  <input class="form-check-input invoice" type="checkbox"  ${check}  id="inv${
         inv[i].id
-        }" value="true">
+      }" value="true">
 		  <label class="form-check-label" for="inv${
         inv[i].id
-        }" class="label-table"></label>
+      }" class="label-table"></label>
 		</th>
 		<td>${inv[i].xl}</td>
 		<td>${inv[i].name}</td>
@@ -347,7 +359,7 @@ InvoiceFile = invoicefileID => {
       } else {
         $("#invfile").html(
           `<embed src="/storage/Invoice/${
-          file.file
+            file.file
           }" frameborder="0" width="100%" height="450px">`
         );
       }
@@ -398,7 +410,7 @@ InvoiceNt = () => {
 };
 
 InvoiceSearch = () => {
-  $("#invoicesearch").on("keyup", function () {
+  $("#invoicesearch").on("keyup", function() {
     let search = $("#invoicesearch").val();
     if (search.length > 0) {
       $.ajax({
@@ -432,10 +444,10 @@ InvoiceSearch = () => {
 				<th scope="row">
 					<input class="form-check-input searchin" type="checkbox"  ${check}  id="inv${
               inv[i].id
-              }" value="true">
+            }" value="true">
 					<label class="form-check-label" for="inv${
-              inv[i].id
-              }" class="label-table"></label>
+            inv[i].id
+          }" class="label-table"></label>
 				</th>
 				<td>${inv[i].xl}</td>
 				<td>${inv[i].name}</td>
@@ -482,7 +494,7 @@ InvoiceNotificationUpdate = ntid => {
       id: id
     },
     dataType: "text",
-    success: data => { }
+    success: data => {}
   });
 };
 
@@ -515,7 +527,7 @@ DeliveryView = delId => {
       id: id
     },
     dataType: "text",
-    success: data => { }
+    success: data => {}
   });
 };
 
@@ -553,10 +565,10 @@ Alldeliveries = () => {
       <th scope="row">
 		  <input class="form-check-input devcheck" type="checkbox" id="dev${
         dev[i].id
-        }" value="true" ${check}>
+      }" value="true" ${check}>
 		  <label class="form-check-label" for="dev${
         dev[i].id
-        }" class="label-table"></label>
+      }" class="label-table"></label>
 		</th>
 		<td>${dev[i].firstname}</td>
 		<td>${dev[i].lastname}</td>
@@ -652,7 +664,7 @@ InvoiceView = invId => {
 };
 
 DeliverySearch = () => {
-  $("#deliverysearch").on("keyup", function () {
+  $("#deliverysearch").on("keyup", function() {
     let search = $("#deliverysearch").val();
     if (search.length > 0) {
       $.ajax({
@@ -694,10 +706,10 @@ DeliverySearch = () => {
             <th scope="row">
             <input class="form-check-input devcheck" type="checkbox" id="dev${
               dev[i].id
-              }" value="true" ${check}>
+            }" value="true" ${check}>
             <label class="form-check-label" for="dev${
               dev[i].id
-              }" class="label-table"></label>
+            }" class="label-table"></label>
           </th>
           <td>${dev[i].firstname}</td>
           <td>${dev[i].lastname}</td>
@@ -764,7 +776,6 @@ AdminData = () => {
     console.log(admin);
   });
 };
-TempStorage = userid => { };
 
 CreateShipment = () => {
   let uid = $(shipmentuserid).attr("id");
@@ -814,7 +825,7 @@ CreateShipment = () => {
         status: status
       },
       dataType: "text",
-      success: function (response) {
+      success: function(response) {
         $("#closespup").click();
         iziToast.success({
           position: "topCenter",
@@ -866,7 +877,7 @@ UpdateShipmentSearch = () => {
         search: search
       },
       dataType: "text",
-      success: function (response) {
+      success: function(response) {
         let users = jQuery.parseJSON(response);
         $("#updatesearchresult").html(`${users.length}`);
         let output = "";

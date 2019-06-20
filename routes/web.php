@@ -95,6 +95,8 @@ Route::prefix('admin')->group(function () {
     
     Route::get('/edit','AdminController@edit')->name('admin.edit');
     Route::get('/edit/data','AdminController@editData');
+
+    Route::get('/shipmentcalculator','Admin\ShipmentCalculator@index')->name('admin.calculator');
     
 });
 

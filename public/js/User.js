@@ -53,22 +53,22 @@ $("#devsubmit").on("click", () => {
   MakeDelivery();
 });
 // This trigger calls DeleteTask()
-$(document).on("click", ".todo", function () {
+$(document).on("click", ".todo", function() {
   let delId = this;
   DeleteTask(delId);
 });
 // This trigger calls the NewsModal()
-$(document).on("click", ".newsmodal", function () {
+$(document).on("click", ".newsmodal", function() {
   let mdid = this;
   NewsModal(mdid);
 });
 // This trigger calls the ViewTask()
-$(document).on("click", ".task", function () {
+$(document).on("click", ".task", function() {
   let taskId = this;
   ViewTask(taskId);
 });
 // This trigger calls the Completetask()
-$(document).on("click", ".completedtask", function () {
+$(document).on("click", ".completedtask", function() {
   let taskId = this;
   CompleteTask(taskId);
 });
@@ -104,7 +104,7 @@ TokenCheck = () => {
     } else {
       $("#emailnotify").html(
         `<a  class='dropdown-item' href='#'>${
-        notification.notification
+          notification.notification
         }<span class='float-right'>${notification.icon}</span></a>`
       );
       var verify = 1;
@@ -139,7 +139,7 @@ ModalUpdate = () => {
       id: id
     },
     dataType: "text",
-    success: data => { }
+    success: data => {}
   });
 };
 
@@ -244,7 +244,7 @@ Userinfo = () => {
     $("#usercardtrn").html(`${user.trn}`);
     $("#usercardimage").html(
       `<img src="/storage/Userimage/${
-      user.image
+        user.image
       }" class="rounded-circle" alt="${user.image}">`
     );
   });
@@ -267,7 +267,7 @@ ProfileDelete = () => {
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
-        function (instance, toast) {
+        function(instance, toast) {
           $.ajax({
             type: "Post",
             url: "/Useraccountdel",
@@ -276,7 +276,7 @@ ProfileDelete = () => {
               delete: true
             },
             dataType: "text",
-            success: function (response) {
+            success: function(response) {
               window.location.href = "/";
             }
           });
@@ -292,7 +292,7 @@ ProfileDelete = () => {
       ],
       [
         '<button style="color:white;">NO</button>',
-        function (instance, toast) {
+        function(instance, toast) {
           instance.hide(
             {
               transitionOut: "fadeOut"
@@ -320,7 +320,7 @@ Pdata = () => {
           data: $("#oldpass").val()
         },
         dataType: "text",
-        success: function (response) {
+        success: function(response) {
           var something = jQuery.parseJSON(response);
           if (something.passed == 0) {
             $("#oldpassword").html("Password doesn`t match");
@@ -340,7 +340,7 @@ Pdata = () => {
                 newpass: $("#newpass").val()
               },
               dataType: "text",
-              success: function (response) {
+              success: function(response) {
                 $("#pschbtn").removeClass("disabled");
                 $("#oldpassword").html("");
                 $("#newpassword").html("");
@@ -446,10 +446,10 @@ task = () => {
         _class = n.completed ? "completed" : " ";
         todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${
           n.id
-          }">${n.todo}
+        }">${n.todo}
       <i class="fas fa-trash ml-auto todo text-danger" data-toggle="tooltip" data-placement="top" title="Click to delete" id="todo${
-          n.id
-          }"></i></a>`;
+        n.id
+      }"></i></a>`;
       });
     }
     $("#todosection").html(`${todobody}`);
@@ -489,7 +489,7 @@ CompleteTask = taskId => {
       id: id
     },
     dataType: "text",
-    success: function (response) {
+    success: function(response) {
       iziToast.success({
         position: "topCenter",
         message: "Task Completed"
@@ -581,7 +581,7 @@ News = () => {
     news.forEach(n => {
       text += `<a href="#" class="list-group-item d-flex justify-content-between dark-grey-text newsmodal" id="news${
         n.id
-        }">${n.subject}
+      }">${n.subject}
       </a>`;
     });
     $("#allnews").html(`${text}`);
@@ -619,12 +619,25 @@ NewsModal = mdid => {
 
 ShipmentCount = shipment => {
   let count = shipment.filter(n => n.collected == 1);
-  console.log(count);
   let all = shipment.length;
   let percent = count.length > 0 ? (count.length / all) * 100 : 0;
   $("#shipmentscount").html(`${count.length}/${all}`);
-  $("#shipmentpercent").html(`${percent.toPrecision(2)}`);
+  $("#shipmentpercent").html(`${percent.toPrecision(3)}`);
   $("#shipmentbar").css("width", `${percent}%`);
+  Shipmentvalue(shipment);
+};
+
+Shipmentvalue = value => {
+  let money = value.reduce((total, val) => total + parseInt(val.spcharge), 0);
+  $("#shipmentvalue").html(`${money}`);
+  Shipmentotaldue(value);
+};
+
+Shipmentotaldue = due => {
+  let shpdue = due
+    .filter(n => n.collected == 0)
+    .reduce((total, val) => total + parseInt(val.spcharge), 0);
+  $("#shipmentddue").html(`${shpdue}`);
 };
 
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
@@ -633,7 +646,6 @@ NotificationCounter = (verify, sp) => {
     spts = 0;
   vers = Number.isNaN(verify) ? 0 : verify;
   spts = Number.isNaN(sp) ? 0 : sp;
-  console.log(vers);
   let sum = Number(vers) + Number(spts);
   $("#notificount").html(`${sum}`);
 };

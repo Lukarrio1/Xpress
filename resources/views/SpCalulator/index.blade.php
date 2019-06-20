@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
    <div class="container-fluid pt-4 pb-5">
-    <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+    <ul class="nav nav-tabs nav-justified md-tabs bg-primary" id="myTabJust" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#seafreight-just" role="tab" aria-controls="seafreight-just" aria-selected="true">Sea Freight</a>
         </li>
@@ -13,7 +13,7 @@
     <div class="tab-content card pt-5" id="myTabContentJust">
         <div class="tab-pane fade show active" id="seafreight-just" role="tabpanel" aria-labelledby="seafreight-tab-just">
             <!-- Default form subscription -->
-            <form class="text-center border border-light p-5">
+            <div class="text-center border border-light p-5">
 
                 <p class="h3 mb-4">Sea Freight</p>
 
@@ -40,7 +40,7 @@
                 <button class="btn btn-info btn-block" type="submit">Calculate</button>
 
 
-            </form>
+            </div>
             <!-- Default form subscription -->
         </div>
         <div class="tab-pane fade" id="airfreight-just" role="tabpanel" aria-labelledby="airfreight-tab-just">

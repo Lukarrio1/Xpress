@@ -160,15 +160,8 @@
             <i class="far fa-money-bill-alt"></i>
           </div>
           <p class="white-text">Total Shipments Value</p>
-          <h4>$30,000 JMD</h4>
-        </div>
-        <div class="progress">
-          <div class="progress-bar bg grey darken-3" role="progressbar" style="width: 25%" aria-valuenow="25"
-            aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <div class="card-body">
-          <p>Better than last month (25%)</p>
-        </div>
+          <h4>$<span id="shipmentvalue">0</span> JMD</h4>
+          </div>
       </div>
       <!--/.Card Success-->
 
@@ -185,14 +178,8 @@
             <i class="fas fa-chart-line"></i>
           </div>
           <p>Total Payments Due</p>
-          <h4>$2,000</h4>
-        </div>
-        <div class="progress">
-          <div class="progress-bar bg grey darken-3" role="progressbar" style="width: 25%" aria-valuenow="25"
-            aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-        <div class="card-body">
-          <p>Worse than last week (25%)</p>
+          <h4>$<span id="shipmentddue"></span>  JMD
+          </h4>
         </div>
       </div>
       <!--/.Card Default-->
