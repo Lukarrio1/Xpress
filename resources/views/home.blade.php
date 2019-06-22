@@ -388,7 +388,7 @@
     <div class="modal-content">
       <div class="modal-header bg-primary text-white text-center">
         <h5 class="modal-title" id=""><span id="activitytitle">
-          </span></h5><small id="recentevent">date</small></h5>
+          </span></h5><small id="recentevent"></small></h5>
       </div>
       <div class="modal-body" id="activitybody">
         

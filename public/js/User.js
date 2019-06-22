@@ -749,6 +749,7 @@ ViewPreActivity = id => {
           <th class="th-lg"><a>Value<i class=" ml-1"></i></a></th>
           <th class="th-lg"><a>Weight<i class=" ml-1"></i></a></th>
           <th class="th-lg"><a>Invoice<i class=" ml-1"></i></a></th>
+          <th class="th-lg"><a>Expected Date<i class=" ml-1"></i></a></th>
           </tr>
       </thead>
       <tbody>
@@ -760,6 +761,7 @@ ViewPreActivity = id => {
       <td>$${pre.value}</td>
       <td>${pre.weight}lbs</td>
       <td><a class="invfile" id="invfile${pre.id}">${pre.invoice}</a></td>
+      <td>${pre.expected_date}</td>
         </tbody>
     </table>
   </div>`;
@@ -770,8 +772,8 @@ ViewPreActivity = id => {
     $("#activitybody").html(`${output}`);
   });
 };
-// this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
-NotificationCounter = (verify, sp) => {
+
+NotificationCounter = (verify = 0, sp = 0) => {
   let vers = 0,
     spts = 0;
   vers = Number.isNaN(verify) ? 0 : verify;

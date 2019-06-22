@@ -62,7 +62,7 @@
             </div>
             <div class="md-form">
                        
-                        <input placeholder="Selected date" type="text" id="updeliverydate" class="form-control datepicker">
+                        <input placeholder="Selected date" type="text" id="updeliverydate" class="form-control datepicker" name="expected_date">
                         <label for="date-picker-example">Expected Delivery Date</label>
                         <span id="errordate" class="text-danger">
                         </span>

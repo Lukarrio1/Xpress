@@ -8,6 +8,7 @@ use App\Prealerts;
 use Illuminate\Support\Facades\Auth;
 use App\invoicenf as nt;
 use App\Sheduledelivery as sd;
+
 class PreAlertsController extends Controller
 {
     public function __construct()
@@ -52,6 +53,7 @@ class PreAlertsController extends Controller
             'value' => 'required|max:100|min:1',
             'weight' => 'required|max:100',
             'invoice' => 'mimes:pdf,jpeg,jpg,png|max:1999',
+            'expected_date'=>'required'
         ]);
 
         //gets the image name with extension.
@@ -86,6 +88,7 @@ class PreAlertsController extends Controller
         $store->weight =  htmlentities($request->weight);
         $path = $request->file('invoice')->storeAs('public/Invoice', $filenametostore);
         $store->invoice = $filenametostore;
+        $store->expected_date = htmlentities($request->expected_date);
         $store->save();
         return redirect()->back()->with('success', 'Pre alert sent..');
 

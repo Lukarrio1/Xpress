@@ -320,7 +320,8 @@ Allinvoice = () => {
 		<td>$${inv[i].value}</td>
 		<td>${inv[i].weight}lbs</td>
 		<td><a class="invfile" id="invfile${inv[i].id}">${inv[i].invoice}</a></td>
-		<td>${created}</td>
+    <td>${created}</td>
+    <td>${inv[i].expected_date}</td>
 		<td>${updated}</td>
 	  </tr>`;
     }
@@ -459,7 +460,8 @@ InvoiceSearch = () => {
 				<td>$${inv[i].value}</td>
 				<td>${inv[i].weight}lbs</td>
 				<td><a href="/storage/invoice/${inv[i].invoice}">${inv[i].invoice}</a></td>
-				<td>${created}</td>
+        <td>${created}</td>
+        <td>${inv[i].expected_date}</td>
 				<td>${updated}</td>
 				</tr>`;
           }

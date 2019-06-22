@@ -81,6 +81,7 @@
                   <th class="th-lg"><a>Weight<i class=" ml-1"></i></a></th>
                   <th class="th-lg"><a>Invoice<i class=" ml-1"></i></a></th>
                   <th class="th-lg"><a>Sent Date <i class=" ml-1"></i></a></th>
+                  <th class="th-lg"><a>Expected Date<i class=" ml-1"></i></a></th>
                   <th class="th-lg"><a>Completed Date<i class=" ml-1"></i></a></th>
                   </tr>
               </thead>

@@ -28,6 +28,7 @@ class CreatePrealertsTable extends Migration
             $table->string('weight');
             $table->string('invoice');
             $table->string('user_id');
+            $table->string('expected_date');
             $table->timestamps();
         });
     }
