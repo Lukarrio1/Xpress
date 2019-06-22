@@ -21,7 +21,8 @@ class ScheduleDeliveryController extends Controller
      */
     public function index()
     {
-        
+        $shd = sd::Where('user_id',Auth::user()->id)->OrderBy('created_at','desc')->get();
+        return json_encode($shd);
     }
 
     /**
@@ -81,9 +82,10 @@ class ScheduleDeliveryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function single($id)
     {
-        //
+       $sch = sd::Where('user_id',Auth::user()->id)->where('id',$id)->first();
+       return json_encode($sch);
     }
 
     /**

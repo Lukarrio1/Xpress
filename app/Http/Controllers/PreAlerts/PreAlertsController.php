@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Prealerts;
 use Illuminate\Support\Facades\Auth;
 use App\invoicenf as nt;
+use App\Sheduledelivery as sd;
 class PreAlertsController extends Controller
 {
     public function __construct()
@@ -20,7 +21,8 @@ class PreAlertsController extends Controller
      */
     public function index()
     {
-
+        $pre = Prealerts::Where('user_id',Auth::user()->id)->OrderBy('created_at','desc')->get();
+        return json_encode($pre);
     }
 
     /**
@@ -87,6 +89,10 @@ class PreAlertsController extends Controller
         $store->save();
         return redirect()->back()->with('success', 'Pre alert sent..');
 
+    }
+    public function single($id){
+        $pre = Prealerts::Where('user_id',Auth::user()->id)->where('id',$id)->first();
+        return json_encode($pre);
     }
 
 }

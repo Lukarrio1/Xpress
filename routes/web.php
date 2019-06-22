@@ -109,6 +109,8 @@ Route::prefix('Notifications')->group(function () {
 Route::prefix('scheduledelivery')->group(function () {
     Route::get('/', 'ScheduleDelivery\ScheduleDeliveryController@create')->name('scheduledelivery.home');
     Route::post('/','ScheduleDelivery\ScheduleDeliveryController@store');
+    Route::get('/all','ScheduleDelivery\ScheduleDeliveryController@index');
+    Route::get('/{id}', 'ScheduleDelivery\ScheduleDeliveryController@single');
 });
 //  these are the Shipping calculator routes
 Route::prefix('shippingcalculator')->group(function () {
@@ -118,6 +120,8 @@ Route::prefix('shippingcalculator')->group(function () {
 Route::prefix('prealerts')->group(function () {
     Route::get('/', 'PreAlerts\PreAlertsController@create')->name('Pre.Alerts.home');
     Route::post('/store', 'PreAlerts\PreAlertsController@store')->name('Pre.Alerts.store');
+    Route::get('/all','PreAlerts\PreAlertsController@index');
+    Route::get('/{id}','PreAlerts\PreAlertsController@single');
 });
 //  these are the shipment routes
 Route::prefix('shipments')->group(function () {

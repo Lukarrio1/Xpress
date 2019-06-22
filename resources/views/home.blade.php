@@ -377,27 +377,21 @@
 
           <!--Card content-->
           <div class="card-body text-center">
-
             <div class="list-group list-panel">
-              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text">A new pre alert has been added for nike shoes.
-                <i class="fas fa-plus ml-auto" data-toggle="modal" data-target="#activitymodal"
-                  title="View Item"></i></a>
-              <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text"> A new delivery has been requested for Drew Ave.
-                <i class="fas fa-plus ml-auto" data-toggle="modal" data-target="#activitymodal" 
-                  title="View Item"></i></a>
-              
-              
-            </div>
+              <span id="recentpre"></span>
+              <span id="recentsch"></span>
+ </div>
 <!-- Todo Modal -->
 <div class="modal " id="activitymodal" tabindex="-1" role="dialog" aria-labelledby="activitymodal"
   aria-hidden="true">
   <div class="modal-dialog modal-lg " role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white text-center">
-        <h5 class="modal-title" id="activitytitle">Task <small id="tasktime"></small></h5>
+        <h5 class="modal-title" id=""><span id="activitytitle">
+          </span></h5><small id="recentevent">date</small></h5>
       </div>
-      <div class="modal-body" id="">
-      
+      <div class="modal-body" id="activitybody">
+        
       </div>
       <div class="modal-footer">
          <span id="taskcompleted"></span>

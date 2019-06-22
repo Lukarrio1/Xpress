@@ -8,6 +8,8 @@ $(document).ready(() => {
   News();
   footerDate();
   SuccesMessageRemove();
+  ScheduleRec();
+  PreAlertsRec();
 });
 
 // runs every 20 seconds
@@ -21,6 +23,8 @@ window.setInterval(() => {
   Modaltimer();
   shipments();
   News();
+  ScheduleRec();
+  PreAlertsRec();
 }, 60000);
 
 /* Triggers start here */
@@ -73,6 +77,17 @@ $(document).on("click", ".completedtask", function() {
   CompleteTask(taskId);
 });
 
+$(document).on("click", ".scheduleactivity", function() {
+  let schid = $(this).attr("id");
+  let id = schid.substring(5);
+  ViewSchActivity(id);
+});
+
+$(document).on("click", ".prealertactivity", function() {
+  let preid = $(this).attr("id");
+  let id = preid.substring(5);
+  ViewPreActivity(id);
+});
 /* Triggers end here */
 
 // this function updates the date of the footer every year .
@@ -640,6 +655,121 @@ Shipmentotaldue = due => {
   $("#shipmentddue").html(`${shpdue}`);
 };
 
+ScheduleRec = () => {
+  $.get("/scheduledelivery/all", res => {
+    let sch = jQuery.parseJSON(res);
+    let output = "";
+    sch.forEach((n, index) => {
+      created_at = new Date(`${n.created_at}`);
+      created = created_at.toString().slice(0, 24);
+      updated_at = new Date(`${n.updated_at}`);
+      if (index < 2) {
+        output += `
+        <button type="button" class="list-group-item d-flex justify-content-between dark-grey-text scheduleactivity" data-toggle="modal"
+       data-target="#activitymodal" id="schac${n.id}">
+       Sent schedule delivery on ${created}
+       </button>`;
+      }
+    });
+    $("#recentsch").html(`${output}`);
+  });
+};
+{
+  /* <button href="#" class="list-group-item d-flex justify-content-between dark-grey-text"  data-target="#activitymodal"></button> */
+}
+PreAlertsRec = () => {
+  $.get("/prealerts/all", data => {
+    let pre = jQuery.parseJSON(data);
+    let output = "";
+    pre.forEach((n, index) => {
+      created_at = new Date(`${n.created_at}`);
+      created = created_at.toString().slice(0, 24);
+      updated_at = new Date(`${n.updated_at}`);
+      if (index < 2) {
+        output += `
+        <button type="button" class="list-group-item d-flex justify-content-between dark-grey-text prealertactivity" data-toggle="modal"
+        data-target="#activitymodal" id="preac${n.id}">
+        Sent prealerts on ${created}
+        </button>`;
+      }
+    });
+    $("#recentpre").html(`${output}`);
+  });
+};
+
+ViewSchActivity = id => {
+  $.get(`/scheduledelivery/${id}`, data => {
+    let sch = jQuery.parseJSON(data);
+    created_at = new Date(`${sch.created_at}`);
+    created = created_at.toString().slice(0, 24);
+    let express = "";
+    if (sch.express == "true") {
+      express = "Yes";
+    } else {
+      express = "No";
+    }
+    let output = `<table class="table table-striped w-100">
+    <thead>
+      <tr>
+      <th class="th-lg"><a>First Name <i class=" ml-1"></i></a></th>
+      <th class="th-lg"><a>Last Name<i class=" ml-1"></i></a></th>
+      <th class="th-lg"><a>Delivery Address<i class=" ml-1"></i></a></th>
+      <th class="th-lg"><a>Phone Number<i class=" ml-1"></i></a></th>
+      <th class="th-lg"><a>Express Delivery<i class=" ml-1"></i></a></th>
+      </tr>
+    </thead>
+    <tbody>
+    <td>${sch.firstname}</td>
+		<td>${sch.lastname}</td>
+		<td>${sch.address}</td>
+		<td>${sch.phone}</td>
+    <td>${express}</td>
+        </tbody>
+  </table>`;
+    $("#activitytitle").html(`Recent Schdule delivery`);
+    $("#recentevent").html(`${created}`);
+    $("#activitybody").html(`${output}`);
+  });
+};
+
+ViewPreActivity = id => {
+  $.get(`/prealerts/${id}`, data => {
+    let pre = jQuery.parseJSON(data);
+    let output = ` <div class="table-responsive text-nowrap" style="overflow-y: hidden">
+    <!-- Table -->
+    <table class="table table-hover mb-0 table-sm">
+      <!-- Table head -->
+      <thead>
+        <tr>
+          <th class="th-lg"><a>Vendor Name<i class=" ml-1"></i></a></th>
+          <th class="th-lg"><a>Tracking No.<i class=" ml-1"></i></a></th>
+          <th class="th-lg"><a>Courier<i class=" ml-1"></i></a></th>
+          <th class="th-lg"><a>Product Name<i class=" ml-1"></i></a></th>
+          <th class="th-lg"><a>Product Description<i class=" ml-1"></i></a></th>
+          <th class="th-lg"><a>Value<i class=" ml-1"></i></a></th>
+          <th class="th-lg"><a>Weight<i class=" ml-1"></i></a></th>
+          <th class="th-lg"><a>Invoice<i class=" ml-1"></i></a></th>
+          </tr>
+      </thead>
+      <tbody>
+      <td>${pre.vender}</td>
+      <td>${pre.tracking}</td>
+      <td>${pre.courier}</td>
+      <td>${pre.pkgname}</td>
+      <td>${pre.description}</td>
+      <td>$${pre.value}</td>
+      <td>${pre.weight}lbs</td>
+      <td><a class="invfile" id="invfile${pre.id}">${pre.invoice}</a></td>
+        </tbody>
+    </table>
+  </div>`;
+    created_at = new Date(`${pre.created_at}`);
+    created = created_at.toString().slice(0, 24);
+    $("#activitytitle").html(`Recent Prealert`);
+    $("#recentevent").html(`${created}`);
+    $("#activitybody").html(`${output}`);
+  });
+};
 // this function counts and display the amount of notification that the user has via the notificount id in the nav bar onder notification.
 NotificationCounter = (verify, sp) => {
   let vers = 0,

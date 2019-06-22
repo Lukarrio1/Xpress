@@ -253,7 +253,7 @@ class UserController extends Controller
 
     public function SingleTodo($id){
        $newid = htmlentities($id);
-       $todo = todo::find($newid);
+       $todo = todo::Where('user_id',Auth::user()->id)->where('id',$id)->first();
        return json_encode($todo);
     }
 
