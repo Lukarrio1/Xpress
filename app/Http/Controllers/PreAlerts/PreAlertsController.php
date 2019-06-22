@@ -52,7 +52,7 @@ class PreAlertsController extends Controller
             'description' => 'required|max:256',
             'value' => 'required|max:100|min:1',
             'weight' => 'required|max:100',
-            'invoice' => 'mimes:pdf,jpeg,jpg,png|max:1999',
+            'invoice' => 'mimes:pdf,jpeg,jpg,png|max:1999|required',
             'expected_date'=>'required'
         ]);
 
