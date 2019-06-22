@@ -23,8 +23,8 @@
       <th>Delivery Date</th> 
       <th>Shipping Charge</th>
       <th>Status</th>
-      <th>Created At</th>
-      <th>Updated At</th>
+      <th>Shipment Added on</th>
+      <th>Collected On</th>
     </tr>
   </thead>
   <!--Table head-->
