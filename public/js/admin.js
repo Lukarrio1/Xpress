@@ -8,6 +8,7 @@ $(document).ready(() => {
   DeliverySearch();
   Alldeliveries();
   footerDate();
+  Allshipments();
   $("#invloading").css("display", "none");
   // $(document).ajaxStart(function() {
   // 	$('#invloading').css('display', 'block');
@@ -64,6 +65,12 @@ $(document).on("click", ".sdnt", function() {
 $(document).on("click", ".devcheck", function() {
   var delId = this;
   DeliveryComplete(delId);
+});
+
+$(document).on("click", ".adminshipcollected", function() {
+  let shipmentid = $(this).attr("id");
+  let id = shipmentid.substring(9);
+  ShipmentCompleted(id);
 });
 // this trigger calls the CreateShipment()
 $(document).on("click", ".addshipment", function() {
@@ -122,6 +129,7 @@ Allusers = () => {
           </tr>`;
       // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
     }
+    $("#usercount").html(`${user.length}`);
     $("#alluserbody").html(`${text}`);
   });
 };
@@ -276,7 +284,7 @@ UserDelete = UserID => {
     ]
   });
 };
-// this function shows all of the pre-alerts to the admin
+
 Allinvoice = () => {
   $.get("/admin/invoices/all", data => {
     let inv = jQuery.parseJSON(data);
@@ -636,12 +644,6 @@ DevCheck = devlen => {
   });
 };
 
-NotificationCount = (invoice, delivery) => {
-  let sum = 0;
-  sum = invoice + delivery;
-  $("#invoicentc").html(`${sum}`);
-};
-
 InvoiceView = invId => {
   let invoice = $(invId).attr("id");
   let inval = $(invId).val();
@@ -913,6 +915,76 @@ UpdateShipmentSearch = () => {
     Allusers();
     $("#updatesearchresult").html("0");
   }
+};
+
+Allshipments = () => {
+  $.get("/admin/shipments/all", data => {
+    let shipment = jQuery.parseJSON(data);
+    console.log(shipment);
+    let output = "";
+    shipment.forEach(n => {
+      let check = "";
+      created_at = new Date(`${n.created_at.date}`);
+      created = created_at.toString().slice(0, 24);
+      updated_at = new Date(`${n.updated_at.date}`);
+      updated = updated_at.toString().slice(0, 24);
+      let collected = n.collected == 1 ? updated : "";
+      check = n.collected == 1 ? "checked" : "";
+      let _class = n.collected == 1 ? "<tr>" : " <tr class='table-info'>";
+      output += `
+    ${_class}
+      <td><input class="form-check-input adminshipcollected" type="checkbox" ${check} id="adminship${
+        n.id
+      }" value="true">
+      <label class="form-check-label" for="adminship${
+        n.id
+      }" class="label-table"></label></td>
+      <td>${n.xl}</td>
+      <td>${n.tracking_no}</td>
+      <td>${n.reference_no}</td>
+      <td>${n.description}</td>
+      <td>${n.delivery_date}</td>
+      <td>${n.spcharge}</td>
+      <td>${n.status}</td>
+      <td>${created}</td>
+      <td>${collected}</td>
+      <td>  <button 
+        id=""
+        type="button"
+        data-toggle="modal"
+        data-target=""
+        class="btn btn-outline-blue btn-rounded btn-md px-2"
+       >
+      <i class="fas fa-pencil-alt mt-0" />
+      </button></td>
+      </tr>`;
+    });
+    $("#adminshipments").html(`${output}`);
+  });
+};
+ShipmentCompleted = id => {
+  $.ajax({
+    type: "Post",
+    url: "/admin/shipment/completed",
+    data: {
+      _token: CSRF_TOKEN,
+      id: id
+    },
+    dataType: "text",
+    success: function(response) {
+      Allshipments();
+      iziToast.success({
+        position: "topCenter",
+        message: "Shipment Delivered"
+      });
+    }
+  });
+};
+
+NotificationCount = (invoice = 0, delivery = 0) => {
+  let sum = 0;
+  sum = parseInt(invoice) + parseInt(delivery);
+  $("#invoicentc").html(`${sum}`);
 };
 // Checks every 10 seconds more
 window.setInterval(() => {

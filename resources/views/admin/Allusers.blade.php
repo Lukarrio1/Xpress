@@ -31,7 +31,7 @@
               >
                 <div></div>
                 <a class="white-text align-content-center mx-3 h4"
-                  >All Users
+                  >All Users <span id="usercount" class="badge badge-danger">0</span>
                 </a>
                 <div></div>
               </div>

@@ -27,14 +27,8 @@
       <th>Collected On</th>
     </tr>
   </thead>
-  <!--Table head-->
-
-  <!--Table body-->
   <tbody id="shipments">
       </tbody>
-  <!--Table body-->
-
-
 </table>
 <!--Table-->
 </div>  

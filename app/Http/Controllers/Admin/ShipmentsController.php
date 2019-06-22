@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\spnotify;
-use User;
+use App\User;
 use App\Shipments;
 
 class ShipmentsController extends Controller
@@ -68,6 +68,38 @@ class ShipmentsController extends Controller
         $shp->save();
         return json_encode(['status'=>200]);
         
+    }
+
+    public function All(){
+        $Shipments = Shipments::OrderBy('created_at','Desc')->get();
+        $ship = array();
+        foreach($Shipments as $shipment){
+            $user = User::find($shipment->user_id);
+            $ship[] =[
+            'id'=>$shipment->id,
+            'xl'=>$user->xl,
+            'tracking_no'=>$shipment->tracking_no,
+            'reference_no'=>$shipment->reference_no,
+            'description'=>$shipment->description,
+            'spcharge'=>$shipment->spcharge,
+            'status'=>$shipment->status,
+            'delivery_date'=>$shipment->delivery_date,
+            'collected'=>$shipment->collected,
+            'created_at'=>$shipment->created_at,
+            'updated_at'=>$shipment->updated_at
+            ];
+        }
+        return json_encode($ship);
+    
+
+    }
+
+    public function completed(Request $request){
+        $ship = Shipments::find(htmlentities($request->id));
+        $ship->collected = 1;
+        $ship->save();
+        return json_encode(["status"=>200]);
+
     }
 
 }   
