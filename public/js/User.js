@@ -708,7 +708,7 @@ ViewSchActivity = id => {
     } else {
       express = "No";
     }
-    let output = `<table class="table table-striped w-100">
+    let output = `<table class="table table-striped w-100 table-responsive  text-nowrap">
     <thead>
       <tr>
       <th class="th-lg"><a>First Name <i class=" ml-1"></i></a></th>
