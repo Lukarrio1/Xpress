@@ -11,7 +11,7 @@
     <div>
     </div>
 </div>
-<div class="table-responsive py-2">
+<div class="table-responsive py-2 text-nowrap" style="overflow-y: hidden">
 <table class="table table-striped w-100">
 
   <!--Table head-->
