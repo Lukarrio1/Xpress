@@ -390,7 +390,7 @@ shipments = () => {
       updated =
         shp[i].collected == 1 ? updated_at.toString().slice(0, 24) : " ";
 
-      all_ship += `<tr class="">
+      all_ship += `<tr class="" scope="row">
                 <th>${shp[i].tracking_no}</th>
                 <td>${shp[i].reference_no}</td>
                 <td>${shp[i].description}</td>
