@@ -921,6 +921,7 @@ Allshipments = () => {
   $.get("/admin/shipments/all", data => {
     let shipment = jQuery.parseJSON(data);
     console.log(shipment);
+    console.log("its here");
     let shipp = shipment.filter(n => n.collected == 0);
     $("#shipp").html(`${shipp.length}`);
     $("#shipa").html(`${shipment.length}`);
