@@ -69,7 +69,7 @@ class ShipmentsController extends Controller
         return json_encode(['status'=>200]);
         
     }
-
+// this function query two table via a foreach loop .
     public function All(){
         $Shipments = Shipments::OrderBy('created_at','Desc')->get();
         $ship = array();
@@ -90,14 +90,15 @@ class ShipmentsController extends Controller
             ];
         }
         return json_encode($ship);
-    
-
-    }
+        }
 
     public function completed(Request $request){
         $ship = Shipments::find(htmlentities($request->id));
-        $ship->collected = 1;
-        $ship->save();
+        if( $ship->status ==="Ready for Pick Up"){
+            $ship->collected = 1;
+            $ship->save();
+            return json_encode(["status"=>200]);
+        }
         return json_encode(["status"=>200]);
 
     }

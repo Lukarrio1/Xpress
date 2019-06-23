@@ -920,25 +920,51 @@ UpdateShipmentSearch = () => {
 Allshipments = () => {
   $.get("/admin/shipments/all", data => {
     let shipment = jQuery.parseJSON(data);
-    console.log(shipment);
+    let shipp = shipment.filter(n => n.collected == 0);
+    $("#shipp").html(`${shipp.length}`);
+    $("#shipa").html(`${shipment.length}`);
+    if (shipp.length == shipment.length) {
+      $("#shipp").removeClass("badge-success");
+      $("#shipp").addClass("badge-danger");
+    } else {
+      $("#shipp").removeClass("badge-danger");
+      $("#shipp").addClass("badge-success");
+    }
     let output = "";
     shipment.forEach(n => {
-      let check = "";
       created_at = new Date(`${n.created_at.date}`);
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${n.updated_at.date}`);
       updated = updated_at.toString().slice(0, 24);
+
       let collected = n.collected == 1 ? updated : "";
-      check = n.collected == 1 ? "checked" : "";
+      let check = n.collected == 1 ? "checked" : "";
       let _class = n.collected == 1 ? "<tr>" : " <tr class='table-info'>";
-      output += `
-    ${_class}
-      <td><input class="form-check-input adminshipcollected" type="checkbox" ${check} id="adminship${
-        n.id
-      }" value="true">
+      let ischeck =
+        n.status != "Ready for Pick Up"
+          ? ""
+          : `<input class="form-check-input adminshipcollected" type="checkbox" ${check} id="adminship${
+              n.id
+            }" value="true">
       <label class="form-check-label" for="adminship${
         n.id
-      }" class="label-table"></label></td>
+      }" class="label-table"></label>`;
+      let action =
+        n.status == "Ready for Pick Up"
+          ? ""
+          : `
+          <button
+              id=""
+              type="button"
+              data-toggle="modal"
+              data-target=""
+              class="btn btn-outline-blue btn-rounded btn-md px-2"
+             >
+            <i class="fas fa-pencil-alt mt-0" />
+            </button>`;
+      output += `
+    ${_class}
+      <td>${ischeck}</td>
       <td>${n.xl}</td>
       <td>${n.tracking_no}</td>
       <td>${n.reference_no}</td>
@@ -948,20 +974,13 @@ Allshipments = () => {
       <td>${n.status}</td>
       <td>${created}</td>
       <td>${collected}</td>
-      <td>  <button 
-        id=""
-        type="button"
-        data-toggle="modal"
-        data-target=""
-        class="btn btn-outline-blue btn-rounded btn-md px-2"
-       >
-      <i class="fas fa-pencil-alt mt-0" />
-      </button></td>
+      <td>${action}</td>
       </tr>`;
     });
     $("#adminshipments").html(`${output}`);
   });
 };
+
 ShipmentCompleted = id => {
   $.ajax({
     type: "Post",

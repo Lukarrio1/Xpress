@@ -7,7 +7,11 @@
         py-2 mx-4 mb-3 d-flex justify-content-between align-items-center"
       >
         <div></div>
-        <a href="#" class="white-text mx-3">View All Updated Shipments</a>
+        <a href="#" class="white-text mx-3">View All Updated Shipments 
+        &nbsp; <span id="shipp" class="badge-circle badge-success badge">0</span>
+        <span class="badge">/</span>
+        <span id="shipa" class="badge badge-circle badge-danger">0</span>
+        </a>
         <div></div>
       </div>
       <div class="px-4">
