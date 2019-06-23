@@ -12,7 +12,7 @@
     </div>
 </div>
 <div class="table-responsive py-2 text-nowrap" style="overflow-y: hidden">
-<table class="table table-striped w-100">
+<table class="table table-hover mb-0 table-sm">
 
   <!--Table head-->
   <thead>
