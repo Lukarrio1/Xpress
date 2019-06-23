@@ -11,7 +11,7 @@
     <div>
     </div>
 </div>
-<div class="table-responsive py-2 text-nowrap" style="overflow-y: hidden">
+<div class="table-responsive py-2 text-nowrap">
 <table class="table table-hover mb-0 table-sm">
 
   <!--Table head-->
