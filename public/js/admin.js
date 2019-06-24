@@ -956,7 +956,7 @@ Allshipments = () => {
               id=""
               type="button"
               data-toggle="modal"
-              data-target=""
+              data-target="#viewshipmentstatus"
               class="btn btn-outline-blue btn-rounded btn-md px-2"
              >
             <i class="fas fa-pencil-alt mt-0" />

@@ -28,7 +28,7 @@
                   class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
                 <ul class="list-unstyled">
-                <li><a href="{{ route('admin.shipments') }}" class="waves-effect">Update Shipments</a>
+                <li><a href="{{ route('admin.shipments') }}" class="waves-effect">Add Shipments</a>
                   </li>
                   <li><a href="{{ route('admin.sent.shipments') }}" class="waves-effect">View all Shipments</a>
                   </li>
@@ -48,14 +48,14 @@
                 <li>
                 <a href="{{route('admin.invoice')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-file-invoice"></i>Invoices</a>
                 </li>
-                <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-envelope"></i>Messages<i
+                {{-- <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-envelope"></i>Messages<i
                   class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
                 <ul class="list-unstyled">
                   <li><a href="{{ route('admin.message') }}" class="waves-effect">Inbox</a>
                   </li>
                   <li><a href="#" class="waves-effect">Compose Message</a>
-                  </li>
+                  </li> --}}
                 </ul>
               </div>
             </li>
