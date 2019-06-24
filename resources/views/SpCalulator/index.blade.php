@@ -22,45 +22,91 @@
 
 
                 <!-- Weight -->
-                <input type="text" id="shippingweight" class="form-control mb-4" placeholder="Enter Shipping Weight">
+                <input type="text" id="shippingweight" class="form-control mb-4" placeholder="Shipping Weight">
                 <!-- Shipping Length -->
-                <input type="text" id="shippinglength" class="form-control mb-4" placeholder="Enter Shipping Length">
+                <input type="text" id="shippinglength" class="form-control mb-4" placeholder="Shipping Length">
                 <!-- Width -->
-                <input type="text" id="shippingwidth" class="form-control mb-4" placeholder="Enter Shipping Width">
+                <input type="text" id="shippingwidth" class="form-control mb-4" placeholder="Shipping Width">
                 <!-- Weight -->
-                <input type="text" id="shippingheight" class="form-control mb-4" placeholder="Enter Shipping Height ">
+                <input type="text" id="shippingheight" class="form-control mb-4" placeholder="Shipping Height ">
 
                 <!-- Price -->
-                <input type="number" id="itemprice" class="form-control mb-4" placeholder="Enter Item Price (usd)">
+                <input type="number" id="itemprice" class="form-control mb-4" placeholder="Item Price (usd)">
                 <!--Result --> 
-               <input type="text" id="result" class="form-control mb-4" placeholder="">
-
-
+               
                 <!-- Calculate button -->
-                <button class="btn btn-info btn-block" type="submit">Calculate</button>
+                <button class="btn btn-info btn-block"data-toggle="modal" data-target="#calculateresult" type="submit">Calculate</button>
 
-
+                {{-- //Sea Freight Modal --}}
+<div class="modal fade" id="calculateresult" tabindex="-1" role="dialog" aria-labelledby="calculateresult"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="">Sea Freight Results </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <div class="h5 text-left">
+                Freight Charge : <span id=''>112</span><br>
+                Service Charge : <span id=''>112</span><br>
+                Total Charges : <span id=''>112</span><br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
             </div>
             <!-- Default form subscription -->
         </div>
         <div class="tab-pane fade" id="airfreight-just" role="tabpanel" aria-labelledby="airfreight-tab-just">
             <!-- Default form subscription -->
-            <form class="text-center border border-light p-5">
+            <div class="text-center border border-light p-5">
 
                 <p class="h3 pb-5 mb-4">Air Freight Calculator</p>
 
                 <!-- Weight -->
-                <input type="text" id="shippingweight" class="form-control mb-4" placeholder="Enter Shipping Weight (lbs)">
+                <input type="text" id="shippingweight" class="form-control mb-4" placeholder="Enter Shipping Weight">
                 <!-- Price -->
                 <input type="text" id="itemprice" class="form-control mb-4" placeholder="Enter Item cost (usd)">
                 <!--Result --> 
                <input type="text" id="result" class="form-control mb-4" placeholder="">
 
                 <!-- Calculate button -->
-                <button class="btn btn-info btn-block" type="submit">Calculate</button>
-
-
-            </form>
+                <button class="btn btn-info btn-block" data-toggle ="modal" data-target="#calculateresultair" type="button">Calculate</button>
+{{-- //Air Freight Modal --}}
+                <div class="modal fade" id="calculateresultair" tabindex="-1" role="dialog" aria-labelledby="calculateresultair"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="">Air Freight Results </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <div class="h4">Air Freight Calculations</div>
+        <div class="h5 text-left">
+            Result : <span id=''>112</span><br>
+              Result : <span id=''>112</span><br>
+                Result : <span id=''>112</span><br>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
             <!-- Default form subscription -->
         </div>
 
