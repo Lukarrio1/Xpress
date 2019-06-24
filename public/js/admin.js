@@ -936,7 +936,6 @@ Allshipments = () => {
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${n.updated_at.date}`);
       updated = updated_at.toString().slice(0, 24);
-
       let collected = n.collected == 1 ? updated : "";
       let check = n.collected == 1 ? "checked" : "";
       let _class = n.collected == 1 ? "<tr>" : " <tr class='table-info'>";
@@ -1005,7 +1004,7 @@ NotificationCount = (invoice = 0, delivery = 0) => {
   sum = parseInt(invoice) + parseInt(delivery);
   $("#invoicentc").html(`${sum}`);
 };
-// Checks every 10 seconds more
+
 window.setInterval(() => {
   InvoiceNt();
 }, 10000);

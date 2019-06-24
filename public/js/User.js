@@ -389,7 +389,6 @@ shipments = () => {
       updated_at = new Date(`${shp[i].updated_at}`);
       updated =
         shp[i].collected == 1 ? updated_at.toString().slice(0, 24) : " ";
-
       all_ship += `<tr class="" scope="row">
                 <th>${shp[i].tracking_no}</th>
                 <td>${shp[i].reference_no}</td>
@@ -735,7 +734,8 @@ ViewSchActivity = id => {
 ViewPreActivity = id => {
   $.get(`/prealerts/${id}`, data => {
     let pre = jQuery.parseJSON(data);
-    let output = ` <div class="table-responsive text-nowrap" style="overflow-y: hidden">
+    let output = ` 
+    <div class="table-responsive text-nowrap" style="overflow-y: hidden">
     <!-- Table -->
     <table class="table table-hover mb-0 table-sm">
       <!-- Table head -->
@@ -760,9 +760,10 @@ ViewPreActivity = id => {
       <td>${pre.description}</td>
       <td>$${pre.value}</td>
       <td>${pre.weight}lbs</td>
-      <td><a class="invfile" id="invfile${pre.id}">${pre.invoice}</a></td>
+      <td><a class="invfile" id="invfile${pre.id}">
+      ${pre.invoice}</a></td>
       <td>${pre.expected_date}</td>
-        </tbody>
+      </tbody>
     </table>
   </div>`;
     created_at = new Date(`${pre.created_at}`);
