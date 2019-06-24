@@ -145,35 +145,7 @@
             <!-- Table -->
         </div>
 
-<div class="modal fade" id="viewshipmentstatus" tabindex="-1" role="dialog" aria-labelledby="viewshipmentstatus"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="">Sea Freight Results </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-    <div class="h5 text-left">
-            Result : <span id=''>112</span><br>
-              Result : <span id=''>112</span><br>
-                Result : <span id=''>112</span><br>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
 </div>
-
-
-
-
-    </div>
 </div>
 
 </section>

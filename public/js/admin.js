@@ -953,7 +953,7 @@ Allshipments = () => {
           ? ""
           : `
           <button
-              id=""
+              id="shipstat${n.id}"
               type="button"
               data-toggle="modal"
               data-target="#viewshipmentstatus"
