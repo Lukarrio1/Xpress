@@ -10,15 +10,10 @@ $(document).ready(() => {
   footerDate();
   Allshipments();
   $("#invloading").css("display", "none");
-  // $(document).ajaxStart(function() {
-  // 	$('#invloading').css('display', 'block');
-  // });
-  // $(document).ajaxComplete(function() {
-  // 	$('#invloading').css('display', 'none');
-  // });
 });
 // global declaration
 let shipmentuserid = "";
+let shipmentbtn = "";
 /* Triggers. these call function when the respective part of the dom is manipulated .. 
  This trigger calls the UserSearch()*/
 $("#usersearch").on("keyup", () => UserSearch());
@@ -72,6 +67,10 @@ $(document).on("click", ".adminshipcollected", function() {
   let id = shipmentid.substring(9);
   ShipmentCompleted(id);
 });
+$(document).on("click", ".updatestatusbtn", function() {
+  shipmentbtn = $(this).attr("id");
+});
+$("#updateshipmentbtn").click(() => ViewStatusChange());
 // this trigger calls the CreateShipment()
 $(document).on("click", ".addshipment", function() {
   shipmentuserid = this;
@@ -957,7 +956,7 @@ Allshipments = () => {
               type="button"
               data-toggle="modal"
               data-target="#viewshipmentstatus"
-              class="btn btn-outline-blue btn-rounded btn-md px-2"
+              class="btn btn-outline-blue btn-rounded btn-md px-2 updatestatusbtn"
              >
             <i class="fas fa-pencil-alt mt-0" />
             </button>`;
@@ -997,6 +996,35 @@ ShipmentCompleted = id => {
       });
     }
   });
+};
+
+ViewStatusChange = () => {
+  let status = $("#updatesentstatus").val();
+  let id = shipmentbtn.substring(8);
+  if (status == "status") {
+    iziToast.error({
+      position: "topCenter",
+      message: "Error, Invalid status."
+    });
+  } else {
+    $.ajax({
+      type: "Post",
+      url: "/admin/shipment/status",
+      data: {
+        _token: CSRF_TOKEN,
+        id: id,
+        status: status
+      },
+      dataType: "text",
+      success: function(response) {
+        Allshipments();
+        iziToast.success({
+          position: "topCenter",
+          message: "Status Changed."
+        });
+      }
+    });
+  }
 };
 
 NotificationCount = (invoice = 0, delivery = 0) => {

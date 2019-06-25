@@ -67,6 +67,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/add/shipment','Admin\ShipmentsController@store');
     Route::get('/shipments/all','Admin\ShipmentsController@All');
     Route::post('/shipment/completed','Admin\ShipmentsController@completed');
+    Route::post('/shipment/status','Admin\ShipmentsController@updatestatus');
 
     Route::get('/news', 'Admin\NewsController@create')->name('admin.news');
     Route::post('/news','Admin\NewsController@store');

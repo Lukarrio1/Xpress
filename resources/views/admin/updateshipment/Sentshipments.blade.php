@@ -1,4 +1,5 @@
-@extends('layouts.admin') @section('content')
+@extends('layouts.admin') 
+@section('content')
 <div class="container-fluid pt-3 pb-5">
   <section>
     <div class="card card-cascade narrower z-depth-1">
@@ -47,19 +48,22 @@
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
         <h5 class="modal-title" id="">Sea Freight Results </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeupdatestatusship">
         </button>
       </div>
       <div class="modal-body">
-    <div class="h5 text-left">
-            Result : <span id=''>112</span><br>
-              Result : <span id=''>112</span><br>
-                Result : <span id=''>112</span><br>
-        </div>
-      </div>
+      <div class="h5 text-left">
+        <select class="browser-default custom-select" id="updatesentstatus">
+          <option selected value="status">Status</option>
+          <option value="dw">Delivered to Warehouse</option>
+          <option value="Ij">In transit to Jamaica</option>
+          <option value="ac">At Customs</option>
+          <option value="ru">Ready for Pick Up</option>
+        </select>
+    </div>
+    </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Change</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" id="updateshipmentbtn">Update Status</button>
       </div>
     </div>
   </div>

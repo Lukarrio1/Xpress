@@ -103,4 +103,24 @@ class ShipmentsController extends Controller
 
     }
 
+    public function updatestatus(Request $request){
+        $shp = Shipments::find(htmlentities($request->id));
+        switch($request->status){
+            case "dw":
+            $shp->status ="Delivered to Warehouse";
+            break;
+            case "Ij" :
+            $shp->status ="In transit to Jamaica";
+            break;
+            case "ac" : 
+            $shp->status ="At Customs";
+            break;
+            case "ru": 
+            $shp->status ="Ready for Pick Up";
+            break;
+        }
+        $shp->save();
+        return json_encode(["status"=>200]);
+    }
+
 }   
