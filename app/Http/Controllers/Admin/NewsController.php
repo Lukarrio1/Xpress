@@ -41,7 +41,9 @@ class NewsController extends Controller
     {
         $users = User::all();
         foreach ($users as $user) {
-            Mail::to($user->email)->send(new PasswordUpdatedEmail($subject, $body));
+            if($user->deleted==0){
+             Mail::to($user->email)->send(new PasswordUpdatedEmail($subject, $body));
+            }
         }
     }
 }
