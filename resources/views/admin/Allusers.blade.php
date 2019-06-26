@@ -36,7 +36,7 @@
                 <div></div>
               </div>
               <div class="text-center border border-light p-5">
-                <table class="table">
+                <table class="table  table-hover mb-0 table-sm">
                   <thead>
                     <tr>
                       <th>XL#:</th>

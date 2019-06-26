@@ -10,6 +10,7 @@ $(document).ready(() => {
   SuccesMessageRemove();
   ScheduleRec();
   PreAlertsRec();
+  SpReadyForPickup();
 });
 
 // runs every 20 seconds
@@ -417,14 +418,24 @@ spnotification = verify => {
     } else {
       sp = 0;
     }
-    NotificationCounter(verify, sp);
+  SpReadyForPickup(verify, sp)
   });
 };
+
+SpReadyForPickup=(verify, sp)=>{
+  $.get("/shipments/notification/data", data=>{
+       let res = jQuery.parseJSON(data)
+        let count = res.completed ? 1 : 0;
+        res.completed ? $("#spready").html(`<a class='dropdown-item' href='/shipments'>A shipment is ready for pick up.<span class='float-right'>
+         <i class="fas fa-box-open"></i></span></a>`):""
+       NotificationCounter(verify, sp, count);
+    });
+}
 
 NewTask = () => {
   let todo = $("#todotextarea").val();
   if (todo.length < 1 || todo.length > 200) {
-    $("#errortask").html(`Error invalid task!`);
+    $("#errortask").html(`Error, invalid task!`);
   } else {
     $.ajax({
       url: "/todo",
@@ -774,11 +785,11 @@ ViewPreActivity = id => {
   });
 };
 
-NotificationCounter = (verify = 0, sp = 0) => {
+NotificationCounter = (verify = 0, sp = 0, count=0) => {
   let vers = 0,
-    spts = 0;
+      spts = 0
   vers = Number.isNaN(verify) ? 0 : verify;
   spts = Number.isNaN(sp) ? 0 : sp;
-  let sum = Number(vers) + Number(spts);
+  let sum = Number(vers) + Number(spts)+ Number(count);
   $("#notificount").html(`${sum}`);
 };

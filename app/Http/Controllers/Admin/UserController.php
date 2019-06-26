@@ -44,6 +44,7 @@ class UserController extends Controller
             'xl' => $user->xl,
             'id'=>$user->id,
             'trn'=>$user->trn,
+            'deleted'=>$user->deleted,
             'created'=>date('M j, Y h:ia', strtotime($user->created_at )),
             'updated'=>date('M j, Y h:ia', strtotime($user->updated_at ))
         ]);
@@ -75,11 +76,17 @@ class UserController extends Controller
         ]);
             $user = User::find($request->delete);
             if ($user->userimage == "noimage.jpg") {
-                $user->delete();
+                $user->email=str_shuffle($user->email);
+                $user->password=str_shuffle($user->password);
+                $user->deleted= 1;
+                $user->save();
                 return 1;
             } else {
                 Storage::delete('public/Userimage/' . $user->userimage);
-                $user->delete();
+                $user->email=str_shuffle($user->email."sd");
+                $user->password=str_shuffle($user->password);
+                $user->deleted= 1;
+                $user->save();
                 return 1;
             }
     

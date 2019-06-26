@@ -22,10 +22,10 @@ class ShipmentsController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
-        DB::table('spnotifies')
-        ->where('user_id','=',$user)
-        ->where('token','=','true')
-        ->update(['token'=>'false']);
+        $update =spnotify::where('user_id','=',$user)->first();
+        $update->token = 'false';
+        $update->completed =0;
+        $update->save();
         return view('Shipments.index');
     }
 
@@ -65,15 +65,9 @@ class ShipmentsController extends Controller
        
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-       
+    public function notificationData(){
+        $user = Auth::user()->id;
+        $new = spnotify::where('user_id',$user)->first();
+        return json_encode($new);
     }
 }

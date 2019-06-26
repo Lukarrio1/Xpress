@@ -9,107 +9,112 @@ $(document).ready(() => {
   Alldeliveries();
   footerDate();
   Allshipments();
-  $("#invloading").css("display", "none");
+  $('#invloading').css('display', 'none');
 });
 // global declaration
-let shipmentuserid = "";
-let shipmentbtn = "";
+let shipmentuserid = '';
+let shipmentbtn = '';
 /* Triggers. these call function when the respective part of the dom is manipulated .. 
  This trigger calls the UserSearch()*/
-$("#usersearch").on("keyup", () => UserSearch());
+$('#usersearch').on('keyup', () => UserSearch());
 // this trigger calls the UserCard()
-$(document).on("click", ".userid", function() {
+$(document).on('click', '.userid', function() {
   var userID = this;
   UserCard(userID);
 });
 // this trigger calls the UserDelete()
-$(document).on("click", ".userdel", function() {
+$(document).on('click', '.userdel', function() {
   var userID = this;
   UserDelete(userID);
 });
 // this trigger calls the invoiceFile()
-$(document).on("click", ".invoice", function() {
+$(document).on('click', '.invoice', function() {
   var invId = this;
   InvoiceComplete(invId);
 });
 // this trigger calls the InvoiceFile()
-$(document).on("click", ".invfile", function() {
+$(document).on('click', '.invfile', function() {
   var invoicefileID = this;
   InvoiceFile(invoicefileID);
 });
 // this trigger calls the InvoiceNotificationUpate()
-$(document).on("click", ".nt", function() {
+$(document).on('click', '.nt', function() {
   var ntid = this;
   InvoiceNotificationUpdate(ntid);
 });
 // this trigger calls the NewsCreate()
-$("#newsendbtn").on("click", () => {
+$('#newsendbtn').on('click', () => {
   NewsCreate();
 });
 // this trigger calls the InvoiceView()
-$(document).on("click", ".searchin", function() {
+$(document).on('click', '.searchin', function() {
   var invId = this;
   InvoiceView(invId);
 });
 // this trigger calls the DeliveryView()
-$(document).on("click", ".sdnt", function() {
+$(document).on('click', '.sdnt', function() {
   let delId = this;
   DeliveryView(delId);
 });
 // this trigger calls the DeliveryComplete()
-$(document).on("click", ".devcheck", function() {
+$(document).on('click', '.devcheck', function() {
   var delId = this;
   DeliveryComplete(delId);
 });
 
-$(document).on("click", ".adminshipcollected", function() {
-  let shipmentid = $(this).attr("id");
+$(document).on('click', '.adminshipcollected', function() {
+  let shipmentid = $(this).attr('id');
   let id = shipmentid.substring(9);
   ShipmentCompleted(id);
 });
-$(document).on("click", ".updatestatusbtn", function() {
-  shipmentbtn = $(this).attr("id");
+$(document).on('click', '.updatestatusbtn', function() {
+  shipmentbtn = $(this).attr('id');
 });
-$("#updateshipmentbtn").click(() => ViewStatusChange());
+$('#updateshipmentbtn').click(() => ViewStatusChange());
 // this trigger calls the CreateShipment()
-$(document).on("click", ".addshipment", function() {
+$(document).on('click', '.addshipment', function() {
   shipmentuserid = this;
-  $("#errortracking").html(" ");
-  $("#errorstatus").html(" ");
-  $("#errorcharge").html(" ");
-  $("#errordescription").html(" ");
-  $("#errordate").html(" ");
-  $("#errorrefrence").html(" ");
-  $("#upstatus").val("Status");
-  $("#upshipping").val("");
-  $("#updescription").val("");
-  $("#updeliverydate").val("");
-  $("#upreference").val("");
-  $("#uptracting").val("");
+  $('#errortracking').html(' ');
+  $('#errorstatus').html(' ');
+  $('#errorcharge').html(' ');
+  $('#errordescription').html(' ');
+  $('#errordate').html(' ');
+  $('#errorrefrence').html(' ');
+  $('#upstatus').val('Status');
+  $('#upshipping').val('');
+  $('#updescription').val('');
+  $('#updeliverydate').val('');
+  $('#upreference').val('');
+  $('#uptracting').val('');
 });
 // This trigger calls the CreateShipment()
-$("#sendshipment").on("click", () => CreateShipment());
+$('#sendshipment').on('click', () => CreateShipment());
 // This trigger calls the UpdateShipmentSearch()
-$("#updatesearchuser").on("keyup", () => UpdateShipmentSearch());
+$('#updatesearchuser').on('keyup', () => UpdateShipmentSearch());
 // End of triggers
 
 footerDate = () => {
   var date = new Date();
   var year = date.getFullYear();
-  $("#footerdate").html(`${year}`);
+  $('#footerdate').html(`${year}`);
 };
 // this function returns all of the users
 Allusers = () => {
-  $.get("/admin/allusers", data => {
+  $.get('/admin/allusers', data => {
     var user = jQuery.parseJSON(data);
     UsersShipment(user);
-    let text = "";
+    let text = '';
     let amount = user.length;
-    $("#allusercount").html(`${amount}`);
+    $('#allusercount').html(`${amount}`);
     window.setInterval(() => {
       UserCheck(amount);
     }, 10000);
     for (let i = 0; i < amount; i++) {
+      let deleted = user[i].deleted
+        ? ''
+        : `<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
+            user[i].id
+          }"><i class="fas fa-times" ></i></a>`;
       text += `
 					<tr>
 					<th scope="row">${user[i].xl}</th>
@@ -121,20 +126,18 @@ Allusers = () => {
             user[i].name
           }" id="user${user[i].id}"><i class="fas fa-user"></i></a>
            <a class="teal-text" data-toggle="tooltip" data-placement="top">  </a>
-					<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
-            user[i].id
-          }"><i class="fas fa-times" ></i></a>
+          ${deleted}
 					</td>
           </tr>`;
       // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
     }
-    $("#usercount").html(`${user.length}`);
-    $("#alluserbody").html(`${text}`);
+    $('#usercount').html(`${user.length}`);
+    $('#alluserbody').html(`${text}`);
   });
 };
 
 UserCheck = amount => {
-  $.get("/admin/allusers", data => {
+  $.get('/admin/allusers', data => {
     var user = jQuery.parseJSON(data);
     if (amount != user.length) {
       Allusers();
@@ -143,20 +146,25 @@ UserCheck = amount => {
 };
 
 UserSearch = () => {
-  if ($("#usersearch").val().length > 3) {
-    $("#alluserbody").html("");
+  if ($('#usersearch').val().length > 3) {
+    $('#alluserbody').html('');
     $.ajax({
-      url: "/admin/search",
-      type: "POST",
+      url: '/admin/search',
+      type: 'POST',
       data: {
         _token: CSRF_TOKEN,
-        search: $("#usersearch").val()
+        search: $('#usersearch').val()
       },
-      dataType: "text",
+      dataType: 'text',
       success: data => {
         let users = jQuery.parseJSON(data);
-        let searches = "";
+        let searches = '';
         for (let i = 0; i < users.length; i++) {
+          let deleted = users[i].deleted
+            ? ''
+            : `<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
+                user[i].id
+              }"><i class="fas fa-times" ></i></a>`;
           searches += `<tr>
 								<th scope="row">${users[i].xl}</th>
 								<td>${users[i].name}</td>
@@ -167,17 +175,14 @@ UserSearch = () => {
                   users[i].name
                 }" id="user${users[i].id}"><i
 								class="fas fa-user"></i></a>
-								
-								<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Delete user" id="del${
-                  users[i].id
-                }"><i class="fas fa-times"></i></a>
+                ${deleted}
 								</td>
 								</tr>
                 `;
           // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
         }
 
-        $("#alluserbody").html(`${searches}`);
+        $('#alluserbody').html(`${searches}`);
       }
     });
   } else {
@@ -186,18 +191,19 @@ UserSearch = () => {
 };
 
 UserCard = userID => {
-  let data = $(userID).attr("id");
+  let data = $(userID).attr('id');
   let id = data.substring(4);
   $.ajax({
-    url: "/admin/allusers",
-    type: "POST",
+    url: '/admin/allusers',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {
       let user = jQuery.parseJSON(data);
+      let deleted = user.deleted == 1 ? 'Account Deleted' : '';
       let usercard = `<!-- Card -->
 				<div class="card profile-card">
 				<div class="avatar z-depth-1-half mb-4">
@@ -218,52 +224,53 @@ UserCard = userID => {
 				<li><strong>City:</strong> ${user.city}</li>
 				<li><strong>Parish:</strong> ${user.parish}</li>
 				<li><strong>Joined:</strong> ${user.created}</li>
-				<li><strong>Updated:</strong> ${user.updated}</li>
+        <li><strong>Updated:</strong> ${user.updated}</li>
+        <li><strong> ${deleted}</strong></li>
 				</ul>
 				</div>
 				</div>`;
-      $("#usercardbody").html(`${usercard}`);
+      $('#usercardbody').html(`${usercard}`);
     }
   });
 };
 
 UserDelete = UserID => {
-  let del = $(UserID).attr("id");
+  let del = $(UserID).attr('id');
   let id = del.substring(3);
   iziToast.question({
-    backgroundColor: "red",
-    messageColor: "white",
-    titleColor: "white",
+    backgroundColor: 'red',
+    messageColor: 'white',
+    titleColor: 'white',
     timeout: 10000,
     close: false,
     overlay: true,
-    displayMode: "once",
-    id: "question",
+    displayMode: 'once',
+    id: 'question',
     zindex: 999,
-    message: "Are you sure you want to delete this user?",
-    position: "center",
+    message: 'Are you sure you want to delete this user?',
+    position: 'center',
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
         function(instance, toast) {
           $.ajax({
-            type: "Post",
-            url: "/admin/user/delete",
+            type: 'Post',
+            url: '/admin/user/delete',
             data: {
               _token: CSRF_TOKEN,
               delete: id
             },
-            dataType: "text",
+            dataType: 'text',
             success: function(response) {
               Allusers();
             }
           });
           instance.hide(
             {
-              transitionOut: "fadeOut"
+              transitionOut: 'fadeOut'
             },
             toast,
-            "button"
+            'button'
           );
         },
         true
@@ -273,10 +280,10 @@ UserDelete = UserID => {
         function(instance, toast) {
           instance.hide(
             {
-              transitionOut: "fadeOut"
+              transitionOut: 'fadeOut'
             },
             toast,
-            "button"
+            'button'
           );
         }
       ]
@@ -285,9 +292,9 @@ UserDelete = UserID => {
 };
 
 Allinvoice = () => {
-  $.get("/admin/invoices/all", data => {
+  $.get('/admin/invoices/all', data => {
     let inv = jQuery.parseJSON(data);
-    let invoice = "";
+    let invoice = '';
     let maxinv = 0;
     window.setInterval(() => {
       InCheck(inv.length);
@@ -297,14 +304,14 @@ Allinvoice = () => {
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${inv[i].updated_at}`);
       updated = updated_at.toString().slice(0, 24);
-      if (inv[i].token == "true") {
+      if (inv[i].token == 'true') {
         _class = "<tr class='table-info'>";
-        updated = "";
-        check = "";
+        updated = '';
+        check = '';
         maxinv = maxinv + 1;
       } else {
         _class = '<tr class="">';
-        check = "checked";
+        check = 'checked';
       }
       invoice += `
 		${_class}
@@ -334,75 +341,75 @@ Allinvoice = () => {
     }
     // changes made here
     if (maxinv == inv.length) {
-      $("#completedinvcount").removeClass("green");
-      $("#completedinvcount").addClass("badge red");
+      $('#completedinvcount').removeClass('green');
+      $('#completedinvcount').addClass('badge red');
     } else {
-      $("#completedinvcount").removeClass("red");
-      $("#completedinvcount").addClass("badge green");
+      $('#completedinvcount').removeClass('red');
+      $('#completedinvcount').addClass('badge green');
     }
-    $("#completedinvcount").html(`${maxinv}`);
-    $("#invoicebody1").html(`${invoice}`);
-    $("#invcount").html(`${inv.length}`);
+    $('#completedinvcount').html(`${maxinv}`);
+    $('#invoicebody1').html(`${invoice}`);
+    $('#invcount').html(`${inv.length}`);
   });
 };
 
 InvoiceFile = invoicefileID => {
-  let invc = $(invoicefileID).attr("id");
+  let invc = $(invoicefileID).attr('id');
   let id = invc.substring(7);
   $.ajax({
-    url: "/admin/invoice/file",
-    type: "POST",
+    url: '/admin/invoice/file',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {
       let file = jQuery.parseJSON(data);
       let ext = file.ext;
       if (ext < 1) {
-        $("#invfile").html(
+        $('#invfile').html(
           `<img src="/storage/Invoice/${file.file}" style="width:100%">`
         );
       } else {
-        $("#invfile").html(
+        $('#invfile').html(
           `<embed src="/storage/Invoice/${
             file.file
           }" frameborder="0" width="100%" height="450px">`
         );
       }
-      $("#modalinv").click();
+      $('#modalinv').click();
     }
   });
 };
 
 InvoiceComplete = invId => {
-  let invoice = $(invId).attr("id");
+  let invoice = $(invId).attr('id');
   let inval = $(invId).val();
   let id = invoice.substring(3);
   $.ajax({
-    url: "/admin/invoice/update",
-    type: "POST",
+    url: '/admin/invoice/update',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id,
       inv: inval
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {
       Allinvoice();
       iziToast.success({
-        position: "topCenter",
-        message: "Invoice viewed"
+        position: 'topCenter',
+        message: 'Invoice viewed'
       });
     }
   });
 };
 
 InvoiceNt = () => {
-  $.get("/admin/invoice/notification", data => {
+  $.get('/admin/invoice/notification', data => {
     let notify = jQuery.parseJSON(data);
-    let text = "";
+    let text = '';
     let invoice = notify.length;
     DeliveryNt(invoice);
     for (let i = 0; i < invoice; i++) {
@@ -413,35 +420,35 @@ InvoiceNt = () => {
     </a>
 	`;
     }
-    $("#invoicent").html(`${text}`);
+    $('#invoicent').html(`${text}`);
   });
 };
 
 InvoiceSearch = () => {
-  $("#invoicesearch").on("keyup", function() {
-    let search = $("#invoicesearch").val();
+  $('#invoicesearch').on('keyup', function() {
+    let search = $('#invoicesearch').val();
     if (search.length > 0) {
       $.ajax({
-        url: "/admin/invoice/search",
-        type: "POST",
+        url: '/admin/invoice/search',
+        type: 'POST',
         data: {
           _token: CSRF_TOKEN,
           search: search
         },
-        dataType: "text",
+        dataType: 'text',
         success: data => {
           let inv = jQuery.parseJSON(data);
-          let invoice = "";
+          let invoice = '';
           let maxinv = 0;
-          $("#searchcount").html(`${inv.length}`);
+          $('#searchcount').html(`${inv.length}`);
           for (let i = 0; i < inv.length; i++) {
-            if (inv[i].token == "true") {
+            if (inv[i].token == 'true') {
               _class = "<tr class='table-info'>";
               maxinv = maxinv + 1;
-              check = "";
+              check = '';
             } else {
               _class = '<tr class="">';
-              check = "checked";
+              check = 'checked';
             }
             created_at = new Date(`${inv[i].created_at}`);
             created = created_at.toString().slice(0, 24);
@@ -473,44 +480,44 @@ InvoiceSearch = () => {
 				</tr>`;
           }
           if (maxinv == inv.length) {
-            $("#completedinvcount").removeClass("green");
-            $("#completedinvcount").addClass("badge red");
+            $('#completedinvcount').removeClass('green');
+            $('#completedinvcount').addClass('badge red');
           } else {
-            $("#completedinvcount").removeClass("red");
-            $("#completedinvcount").addClass("badge green");
+            $('#completedinvcount').removeClass('red');
+            $('#completedinvcount').addClass('badge green');
           }
-          $("#completedinvcount").html(`${maxinv}`);
-          $("#invoicebody1").html(`${invoice}`);
-          $("#invcount").html(`${inv.length}`);
-          $("#invoicebody1").html(`${invoice}`);
+          $('#completedinvcount').html(`${maxinv}`);
+          $('#invoicebody1').html(`${invoice}`);
+          $('#invcount').html(`${inv.length}`);
+          $('#invoicebody1').html(`${invoice}`);
         }
       });
     } else {
-      $("#searchcount").html(0);
+      $('#searchcount').html(0);
       Allinvoice();
     }
   });
 };
 
 InvoiceNotificationUpdate = ntid => {
-  let invoice = $(ntid).attr("id");
+  let invoice = $(ntid).attr('id');
   let id = invoice.substring(2);
   $.ajax({
-    url: "/admin/invoice/notification",
-    type: "POST",
+    url: '/admin/invoice/notification',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {}
   });
 };
 
 DeliveryNt = invoice => {
-  $.get("/admin/sheduledelivery/notification", data => {
+  $.get('/admin/sheduledelivery/notification', data => {
     let notify = jQuery.parseJSON(data);
-    let text = "";
+    let text = '';
     let sdnotify = notify.length;
     NotificationCount(invoice, sdnotify);
     notify.forEach(not => {
@@ -521,53 +528,53 @@ DeliveryNt = invoice => {
     </a>
 	`;
     });
-    $("#deliverynt").html(`${text}`);
+    $('#deliverynt').html(`${text}`);
   });
 };
 
 DeliveryView = delId => {
-  let delivery = $(delId).attr("id");
+  let delivery = $(delId).attr('id');
   let id = delivery.substring(4);
   $.ajax({
-    url: "/admin/delivery/view",
-    type: "POST",
+    url: '/admin/delivery/view',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {}
   });
 };
 
 Alldeliveries = () => {
-  $.get("/admin/all/delivery", data => {
+  $.get('/admin/all/delivery', data => {
     let dev = jQuery.parseJSON(data);
     window.setInterval(() => {
       DevCheck(dev.length);
     }, 10000);
-    let check = "";
+    let check = '';
     let mindev = 0;
-    let express = "";
-    let text = "";
+    let express = '';
+    let text = '';
     for (i = 0; i < dev.length; i++) {
       created_at = new Date(`${dev[i].created_at}`);
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${dev[i].updated_at}`);
       updated = updated_at.toString().slice(0, 24);
-      if (dev[i].token == "true") {
+      if (dev[i].token == 'true') {
         _class = "<tr class='table-info'>";
-        updated = "";
-        check = "";
+        updated = '';
+        check = '';
         mindev = mindev + 1;
       } else {
         _class = '<tr class="">';
-        check = "checked";
+        check = 'checked';
       }
-      if (dev[i].express == "true") {
-        express = "Yes";
+      if (dev[i].express == 'true') {
+        express = 'Yes';
       } else {
-        express = "No";
+        express = 'No';
       }
       text += `
       ${_class}
@@ -589,44 +596,44 @@ Alldeliveries = () => {
 	  </tr>`;
     }
     if (mindev == dev.length) {
-      $("#mindev").removeClass("green");
-      $("#mindev").addClass("badge red");
+      $('#mindev').removeClass('green');
+      $('#mindev').addClass('badge red');
     } else {
-      $("#mindev").removeClass("red");
-      $("#mindev").addClass("badge green");
+      $('#mindev').removeClass('red');
+      $('#mindev').addClass('badge green');
     }
-    $("#deliverytb").html(`${text}`);
-    $("#mindev").html(`${mindev}`);
-    $("#maxdev").html(`${dev.length}`);
+    $('#deliverytb').html(`${text}`);
+    $('#mindev').html(`${mindev}`);
+    $('#maxdev').html(`${dev.length}`);
   });
 };
 
 DeliveryComplete = delId => {
-  let devid = $(delId).attr("id");
+  let devid = $(delId).attr('id');
   let dev = $(delId).val();
   let id = devid.substring(3);
-  $("#devsearchcount").html(0);
+  $('#devsearchcount').html(0);
   $.ajax({
-    url: "/admin/delivery/update",
-    type: "POST",
+    url: '/admin/delivery/update',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id,
       value: dev
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {
       Alldeliveries();
       iziToast.success({
-        position: "topCenter",
-        message: "Schedule delivery delivered."
+        position: 'topCenter',
+        message: 'Schedule delivery delivered.'
       });
     }
   });
 };
 
 InCheck = invlen => {
-  $.get("/admin/invoices/all", data => {
+  $.get('/admin/invoices/all', data => {
     let inv = jQuery.parseJSON(data);
     if (invlen != inv.length) {
       Allinoice();
@@ -635,7 +642,7 @@ InCheck = invlen => {
 };
 
 DevCheck = devlen => {
-  $.get("/admin/all/delivery", data => {
+  $.get('/admin/all/delivery', data => {
     let dev = jQuery.parseJSON(data);
     if (devlen != dev.length) {
       Alldeliveries();
@@ -644,61 +651,61 @@ DevCheck = devlen => {
 };
 
 InvoiceView = invId => {
-  let invoice = $(invId).attr("id");
+  let invoice = $(invId).attr('id');
   let inval = $(invId).val();
   let id = invoice.substring(3);
   $.ajax({
-    url: "/admin/invoice/update",
-    type: "POST",
+    url: '/admin/invoice/update',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id,
       inv: inval
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {
       Allinvoice();
       iziToast.success({
-        position: "topCenter",
-        message: "Invoice viewed"
+        position: 'topCenter',
+        message: 'Invoice viewed'
       });
     }
   });
 };
 
 DeliverySearch = () => {
-  $("#deliverysearch").on("keyup", function() {
-    let search = $("#deliverysearch").val();
+  $('#deliverysearch').on('keyup', function() {
+    let search = $('#deliverysearch').val();
     if (search.length > 0) {
       $.ajax({
-        url: "/admin/delivery/search",
-        type: "POST",
+        url: '/admin/delivery/search',
+        type: 'POST',
         data: {
           _token: CSRF_TOKEN,
           search: search
         },
-        dataType: "text",
+        dataType: 'text',
         success: data => {
           let dev = jQuery.parseJSON(data);
-          $("#devsearchcount").html(`${dev.length}`);
-          let check = "";
+          $('#devsearchcount').html(`${dev.length}`);
+          let check = '';
           let mindev = 0;
-          let express = "";
-          let text = "";
+          let express = '';
+          let text = '';
           for (i = 0; i < dev.length; i++) {
-            if (dev[i].token == "true") {
+            if (dev[i].token == 'true') {
               _class = "<tr class='table-info'>";
-              check = "";
+              check = '';
               mindev = mindev + 1;
             } else {
               _class = '<tr class="">';
-              check = "checked";
+              check = 'checked';
             }
 
-            if (dev[i].express == "true") {
-              express = "Yes";
+            if (dev[i].express == 'true') {
+              express = 'Yes';
             } else {
-              express = "No";
+              express = 'No';
             }
             created_at = new Date(`${dev[i].created_at}`);
             created = created_at.toString().slice(0, 24);
@@ -724,49 +731,49 @@ DeliverySearch = () => {
           </tr>`;
           }
           if (mindev == dev.length) {
-            $("#mindev").removeClass("green");
-            $("#mindev").addClass("badge red");
+            $('#mindev').removeClass('green');
+            $('#mindev').addClass('badge red');
           } else {
-            $("#mindev").removeClass("red");
-            $("#mindev").addClass("badge green");
+            $('#mindev').removeClass('red');
+            $('#mindev').addClass('badge green');
           }
-          $("#deliverytb").html(`${text}`);
-          $("#mindev").html(`${mindev}`);
-          $("#maxdev").html(`${dev.length}`);
+          $('#deliverytb').html(`${text}`);
+          $('#mindev').html(`${mindev}`);
+          $('#maxdev').html(`${dev.length}`);
         }
       });
     } else {
       Alldeliveries();
-      $("#devsearchcount").html(0);
+      $('#devsearchcount').html(0);
     }
   });
 };
 
 NewsCreate = () => {
-  let subject = $("#newsubject").val();
-  let body = $("#newsbody").val();
+  let subject = $('#newsubject').val();
+  let body = $('#newsbody').val();
   if (subject.length < 3) {
-    $("#errorsubject").html(`Error subject must be at least 3 character.`);
+    $('#errorsubject').html(`Error subject must be at least 3 character.`);
   } else if (body.length < 3) {
-    $("#errorbody").html(`Error body must be at least 3 character.`);
+    $('#errorbody').html(`Error body must be at least 3 character.`);
   } else {
-    $("#newsubject").val("");
-    $("#newsbody").val("");
-    $("#errorsubject").html(``);
-    $("#errorbody").html(``);
+    $('#newsubject').val('');
+    $('#newsbody').val('');
+    $('#errorsubject').html(``);
+    $('#errorbody').html(``);
     $.ajax({
-      url: "/admin/news",
-      type: "POST",
+      url: '/admin/news',
+      type: 'POST',
       data: {
         _token: CSRF_TOKEN,
         subject: subject,
         body: body
       },
-      dataType: "text",
+      dataType: 'text',
       success: data => {
         iziToast.success({
-          position: "topCenter",
-          message: "New news posted"
+          position: 'topCenter',
+          message: 'New news posted'
         });
       }
     });
@@ -774,49 +781,49 @@ NewsCreate = () => {
 };
 // this function gets the admin thats currently logged in .
 AdminData = () => {
-  $.get("/admin/edit/data", data => {
+  $.get('/admin/edit/data', data => {
     admin = jQuery.parseJSON(data);
     console.log(admin);
   });
 };
 
 CreateShipment = () => {
-  let uid = $(shipmentuserid).attr("id");
+  let uid = $(shipmentuserid).attr('id');
   let id = uid.substring(4);
-  let tracking = $("#uptracting").val();
-  let reference = $("#upreference").val();
-  let date = $("#updeliverydate").val();
-  let description = $("#updescription").val();
-  let charge = $("#upshipping").val();
-  let status = $("#upstatus").val();
+  let tracking = $('#uptracting').val();
+  let reference = $('#upreference').val();
+  let date = $('#updeliverydate').val();
+  let description = $('#updescription').val();
+  let charge = $('#upshipping').val();
+  let status = $('#upstatus').val();
   if (tracking.length < 3) {
-    $("#errortracking").html("Error, Invalid tracking number.");
+    $('#errortracking').html('Error, Invalid tracking number.');
   } else if (reference.length < 3) {
-    $("#errorrefrence").html("Error, Invalid reference number.");
+    $('#errorrefrence').html('Error, Invalid reference number.');
   } else if (date.length < 1) {
-    $("#errordate").html("Error, Invalid date.");
+    $('#errordate').html('Error, Invalid date.');
   } else if (description.length < 3) {
-    $("#errordescription").html("Error, Invalid description.");
+    $('#errordescription').html('Error, Invalid description.');
   } else if (charge.length < 1) {
-    $("#errorcharge").html("Error, Invalid charge.");
-  } else if (status == "status") {
-    $("#errorstatus").html("Error, Invalid status.");
+    $('#errorcharge').html('Error, Invalid charge.');
+  } else if (status == 'status') {
+    $('#errorstatus').html('Error, Invalid status.');
   } else {
-    $("#errortracking").html(" ");
-    $("#errorstatus").html(" ");
-    $("#errorcharge").html(" ");
-    $("#errordescription").html(" ");
-    $("#errordate").html(" ");
-    $("#errorrefrence").html(" ");
-    $("#upstatus").val("Status");
-    $("#upshipping").val("");
-    $("#updescription").val("");
-    $("#updeliverydate").val("");
-    $("#upreference").val("");
-    $("#uptracting").val("");
+    $('#errortracking').html(' ');
+    $('#errorstatus').html(' ');
+    $('#errorcharge').html(' ');
+    $('#errordescription').html(' ');
+    $('#errordate').html(' ');
+    $('#errorrefrence').html(' ');
+    $('#upstatus').val('Status');
+    $('#upshipping').val('');
+    $('#updescription').val('');
+    $('#updeliverydate').val('');
+    $('#upreference').val('');
+    $('#uptracting').val('');
     $.ajax({
-      type: "POST",
-      url: "/admin/add/shipment",
+      type: 'POST',
+      url: '/admin/add/shipment',
       data: {
         _token: CSRF_TOKEN,
         id: id,
@@ -827,12 +834,12 @@ CreateShipment = () => {
         charge: charge,
         status: status
       },
-      dataType: "text",
+      dataType: 'text',
       success: function(response) {
-        $("#closespup").click();
+        $('#closespup').click();
         iziToast.success({
-          position: "topCenter",
-          message: "Shipment Added"
+          position: 'topCenter',
+          message: 'Shipment Added'
         });
       }
     });
@@ -840,9 +847,11 @@ CreateShipment = () => {
 };
 
 UsersShipment = users => {
-  let output = "";
+  let output = '';
   users.forEach(user => {
-    output += `  <tr>
+    if (user.deleted) {
+    } else {
+      output += `  <tr>
     <th scope="row" />
     <td>${user.xl}</td>
     <td>${user.name}</td>
@@ -865,27 +874,32 @@ UsersShipment = users => {
   </tr>
   
   `;
+    }
   });
-  $("#addshipments").html(`${output}`);
+  $('#addshipments').html(`${output}`);
 };
 
 UpdateShipmentSearch = () => {
-  let search = $("#updatesearchuser").val();
+  let search = $('#updatesearchuser').val();
   if (search.length > 0) {
     $.ajax({
-      type: "POST",
-      url: "/admin/search",
+      type: 'POST',
+      url: '/admin/search',
       data: {
         _token: CSRF_TOKEN,
         search: search
       },
-      dataType: "text",
+      dataType: 'text',
       success: function(response) {
         let users = jQuery.parseJSON(response);
-        $("#updatesearchresult").html(`${users.length}`);
-        let output = "";
+        let count = users.filter(n => n.deleted == false);
+        console.log(count);
+        $('#updatesearchresult').html(`${count.length}`);
+        let output = '';
         users.forEach(user => {
-          output += `  <tr>
+          if (user.deleted) {
+          } else {
+            output += `  <tr>
          <th scope="row" />
          <td>${user.xl}</td>
          <td>${user.name}</td>
@@ -906,41 +920,42 @@ UpdateShipmentSearch = () => {
       </td>
       </tr>
     `;
+          }
         });
-        $("#addshipments").html(`${output}`);
+        $('#addshipments').html(`${output}`);
       }
     });
   } else {
     Allusers();
-    $("#updatesearchresult").html("0");
+    $('#updatesearchresult').html('0');
   }
 };
 
 Allshipments = () => {
-  $.get("/admin/shipments/all", data => {
+  $.get('/admin/shipments/all', data => {
     let shipment = jQuery.parseJSON(data);
     let shipp = shipment.filter(n => n.collected == 0);
-    $("#shipp").html(`${shipp.length}`);
-    $("#shipa").html(`${shipment.length}`);
+    $('#shipp').html(`${shipp.length}`);
+    $('#shipa').html(`${shipment.length}`);
     if (shipp.length == shipment.length) {
-      $("#shipp").removeClass("badge-success");
-      $("#shipp").addClass("badge-danger");
+      $('#shipp').removeClass('badge-success');
+      $('#shipp').addClass('badge-danger');
     } else {
-      $("#shipp").removeClass("badge-danger");
-      $("#shipp").addClass("badge-success");
+      $('#shipp').removeClass('badge-danger');
+      $('#shipp').addClass('badge-success');
     }
-    let output = "";
+    let output = '';
     shipment.forEach(n => {
       created_at = new Date(`${n.created_at.date}`);
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${n.updated_at.date}`);
       updated = updated_at.toString().slice(0, 24);
-      let collected = n.collected == 1 ? updated : "";
-      let check = n.collected == 1 ? "checked" : "";
-      let _class = n.collected == 1 ? "<tr>" : " <tr class='table-info'>";
+      let collected = n.collected == 1 ? updated : '';
+      let check = n.collected == 1 ? 'checked' : '';
+      let _class = n.collected == 1 ? '<tr>' : " <tr class='table-info'>";
       let ischeck =
-        n.status != "Ready for Pick Up"
-          ? ""
+        n.status != 'Ready for Pick Up'
+          ? ''
           : `<input class="form-check-input adminshipcollected" type="checkbox" ${check} id="adminship${
               n.id
             }" value="true">
@@ -948,8 +963,8 @@ Allshipments = () => {
         n.id
       }" class="label-table"></label>`;
       let action =
-        n.status == "Ready for Pick Up"
-          ? ""
+        n.status == 'Ready for Pick Up'
+          ? ''
           : `
           <button
               id="shipstat${n.id}"
@@ -975,52 +990,54 @@ Allshipments = () => {
       <td>${action}</td>
       </tr>`;
     });
-    $("#adminshipments").html(`${output}`);
+    $('#adminshipments').html(`${output}`);
   });
 };
 
 ShipmentCompleted = id => {
   $.ajax({
-    type: "Post",
-    url: "/admin/shipment/completed",
+    type: 'Post',
+    url: '/admin/shipment/completed',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: function(response) {
       Allshipments();
       iziToast.success({
-        position: "topCenter",
-        message: "Shipment Delivered"
+        position: 'topCenter',
+        message: 'Shipment Delivered'
       });
     }
   });
 };
 
 ViewStatusChange = () => {
-  let status = $("#updatesentstatus").val();
+  let status = $('#updatesentstatus').val();
   let id = shipmentbtn.substring(8);
-  if (status == "status") {
+  if (status == 'status') {
     iziToast.error({
-      position: "topCenter",
-      message: "Error, Invalid status."
+      position: 'topCenter',
+      message: 'Error, Invalid status.'
     });
   } else {
     $.ajax({
-      type: "Post",
-      url: "/admin/shipment/status",
+      type: 'Post',
+      url: '/admin/shipment/status',
       data: {
         _token: CSRF_TOKEN,
         id: id,
         status: status
       },
-      dataType: "text",
+      dataType: 'text',
       success: function(response) {
+        let res = jQuery.parseJSON(response);
+        console.log(res);
         Allshipments();
         iziToast.success({
-          position: "topCenter",
-          message: "Status Changed."
+          position: 'topCenter',
+          message: 'Status Changed.'
         });
       }
     });
@@ -1030,7 +1047,7 @@ ViewStatusChange = () => {
 NotificationCount = (invoice = 0, delivery = 0) => {
   let sum = 0;
   sum = parseInt(invoice) + parseInt(delivery);
-  $("#invoicentc").html(`${sum}`);
+  $('#invoicentc').html(`${sum}`);
 };
 
 window.setInterval(() => {

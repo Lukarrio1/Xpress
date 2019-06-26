@@ -16,6 +16,7 @@ class CreateSpnotifiesTable extends Migration
         Schema::create('spnotifies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('token')->nullable();
+            $table->boolean("completed");
             $table->string('user_id');
             $table->timestamps();
         });

@@ -27,6 +27,7 @@ class UserController extends Controller
     public function SingleUser()
     {
         $user = User::find(Auth::user()->id);
+       $this->Isdeleted($user->deleted);
         return json_encode([
             'name' => $user->name,
             'country' => $user->Country,
@@ -42,7 +43,11 @@ class UserController extends Controller
             'trn'=>$user->trn,
         ]);
     }
-
+    public function Isdeleted($deleted){
+        if($deleted==1){
+        Auth::logout();
+        }
+    }
     /*
      * Updates the users password
      *
@@ -194,11 +199,20 @@ class UserController extends Controller
         if ($request->delete == true) {
             $user = User::find(Auth::user()->id);
             if ($user->userimage == "noimage.jpg") {
-                $user->delete();
+                $user->email=str_shuffle($user->email."sd");
+                $user->password=str_shuffle($user->password."sdbajnsdkasnduandaskdnasndjasns");
+                $user->deleted= 1;
+                $user->save();
+                Auth::logout();
                 return 1;
             } else {
                 Storage::delete('public/Userimage/' . $user->userimage);
-                $user->delete();
+                $user->email=str_shuffle($user->email."sd");
+                $user->password=str_shuffle($user->password."sdbajnsdkasnduandaskdnasndjasns");
+                $user->deleted= 1;
+                $user->save();
+                Auth::logout();
+              
                 return 1;
             }
         }

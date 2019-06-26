@@ -83,6 +83,7 @@ class RegisterController extends Controller
             'login_modal' => str_random(10),
             'login_modal' => str_random(10),
             'trn'=>$data['trn'],
+            'deleted'=>0
         ]);
         // $user->sendverificationemail();
         return $user;

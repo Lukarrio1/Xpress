@@ -316,6 +316,7 @@
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" id="notificationcenter">
             <span id="emailnotify"></span>
             <span id="spnotify"></span>
+            <span id="spready"></span>
             {{-- <span id="allusersnotify"></span> --}}
           </div>
         </li>

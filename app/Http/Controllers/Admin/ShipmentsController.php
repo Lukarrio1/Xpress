@@ -53,6 +53,19 @@ class ShipmentsController extends Controller
             break;
             case "ru": 
             $shp->status ="Ready for Pick Up";
+            if(empty($notify)){
+                $newnotify = new spnotify;
+                $newnotify->user_id=$id;
+                $newnotify->token = "true";
+                $newnotify->completed=1;
+                $newnotify->save();
+            }else if($notify->token=="false"){
+                $notify->token = "true";
+                $notify->completed=1;
+                $notify->save();
+            }
+           $shp->user_id = htmlentities($request->id);
+           $shp->save();
             break;
         }
             if(empty($notify)){
@@ -99,8 +112,6 @@ class ShipmentsController extends Controller
             $ship->save();
             return json_encode(["status"=>200]);
         }
-        return json_encode(["status"=>200]);
-
     }
 
     public function updatestatus(Request $request){
@@ -117,9 +128,12 @@ class ShipmentsController extends Controller
             break;
             case "ru": 
             $shp->status ="Ready for Pick Up";
+            $notify = spnotify::where("user_id",$shp->user_id)->first();
+            $notify->completed=1;
+            $notify->save();
             break;
         }
-        $shp->save();
+            $shp->save();
         return json_encode(["status"=>200]);
     }
 
