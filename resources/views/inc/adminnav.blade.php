@@ -48,6 +48,9 @@
                 <li>
                 <a href="{{route('admin.invoice')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-file-invoice"></i>Invoices</a>
                 </li>
+                <li>
+                <a href="{{route('admin.calculator')}}" class="collapsible-header waves-effect text-dark"><i class="fas fa-calculator"></i>Shipment Calculator</a>
+                </li>
                 {{-- <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-envelope"></i>Messages<i
                   class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">

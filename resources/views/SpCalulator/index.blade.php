@@ -75,9 +75,7 @@
                 <input type="text" id="shippingweight" class="form-control mb-4" placeholder="Enter Shipping Weight">
                 <!-- Price -->
                 <input type="text" id="itemprice" class="form-control mb-4" placeholder="Enter Item cost (usd)">
-                <!--Result --> 
-               <input type="text" id="result" class="form-control mb-4" placeholder="">
-
+                
                 <!-- Calculate button -->
                 <button class="btn btn-info btn-block" data-toggle ="modal" data-target="#calculateresultair" type="button">Calculate</button>
 {{-- //Air Freight Modal --}}
