@@ -100,6 +100,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/edit/data','AdminController@editData');
 
     Route::get('/shipmentcalculator','Admin\ShipmentCalculator@index')->name('admin.calculator');
+    Route::post('/shipmentcalculator','Admin\ShipmentCalculator@Rates');
+    Route::get('/data','Admin\ShipmentCalculator@Data');
     
 });
 
@@ -118,6 +120,7 @@ Route::prefix('scheduledelivery')->group(function () {
 //  these are the Shipping calculator routes
 Route::prefix('shippingcalculator')->group(function () {
     Route::get('/', 'ShippingCalculator\ShippingCalculatorController@index')->name('shippingCalculator.home');
+    Route::get('/data','ShippingCalculator\ShippingCalculatorController@Data');
 });
 //  these are the Pre-Alerts routes
 Route::prefix('prealerts')->group(function () {

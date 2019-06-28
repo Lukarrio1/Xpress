@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
 
    <div class="container-fluid pt-4 pb-5">
@@ -23,13 +23,14 @@
 
 
                 <!-- Exchange Rate -->
-                <input type="text" id="exchangerate" class="form-control mb-4" placeholder="Exchange Rate">
+                <input type="number" id="exchangerate" class="form-control mb-4" placeholder="Exchange Rate">
+                <span id="errorexrate"></span>
                 <!-- Percentage -->
-                <input type="text" id="percentage" class="form-control mb-4" placeholder="Percentage Rate">
+                <input type="number" id="percentage" class="form-control mb-4" placeholder="Percentage Rate">
                 
                
                 <!-- Update button -->
-                <button class="btn btn-info btn-block" type="submit">Update Info</button>
+                <button class="btn btn-info btn-block" type="button" id="seaupdatebtn">Update Info</button>
 
                 
             </div>

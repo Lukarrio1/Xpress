@@ -4,86 +4,38 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Calsea;
 
 class ShipmentCalculator extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin',['except'=>['']]);
+        $this->middleware('auth:admin', ['except' => ['']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         return view('admin.ShipmentCalculator');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    
+    public function Rates(Request $request){
+        $exrate = htmlentities($request->exrate);
+        $percentage = htmlentities($request->percentage);
+        $sea = Calsea::all();
+        if(count($sea)<1){
+            $new = new Calsea;
+            $new->exrate = $exrate;
+            $new->prerate =$percentage;
+            $new->save();
+        }else{
+            $update = Calsea::find(1);
+            $update->exrate = $exrate;
+            $update->prerate = $percentage;
+            $update->save();
+        }
+        return json_encode(['status'=>200]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function Data(){
+    return json_encode(Calsea::find(1));
     }
 }

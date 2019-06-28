@@ -30,78 +30,80 @@ window.setInterval(() => {
 
 /* Triggers start here */
 // this function updates the login modal /modal ('/modal','User\UserController@modaltokenupdate')
-$("#update_login_token").click(() => {
+$('#update_login_token').click(() => {
   ModalUpdate();
 });
 
 // This trigger calls the ProfileImageRemove()
-$("#changeimg").click(() => {
+$('#changeimg').click(() => {
   ProfileImageRemove();
 });
 
 // This trigger calls the ProfileUpate()
-$("#updatebtn").html("Update");
-$("#update").click(() => {
+$('#updatebtn').html('Update');
+$('#update').click(() => {
   ProfileUpdate();
 });
 
 // This trigger calls the ProfileDelete()
-$("#Deletebtn").click(() => {
+$('#Deletebtn').click(() => {
   ProfileDelete();
 });
 // This trigger calls the NewTask()
-$("#savetodo").click(() => {
+$('#savetodo').click(() => {
   NewTask();
 });
 // This trigger calls the MakeDelivery()
-$("#devsubmit").on("click", () => {
+$('#devsubmit').on('click', () => {
   MakeDelivery();
 });
 // This trigger calls DeleteTask()
-$(document).on("click", ".todo", function() {
+$(document).on('click', '.todo', function() {
   let delId = this;
   DeleteTask(delId);
 });
 // This trigger calls the NewsModal()
-$(document).on("click", ".newsmodal", function() {
+$(document).on('click', '.newsmodal', function() {
   let mdid = this;
   NewsModal(mdid);
 });
 // This trigger calls the ViewTask()
-$(document).on("click", ".task", function() {
+$(document).on('click', '.task', function() {
   let taskId = this;
   ViewTask(taskId);
 });
 // This trigger calls the Completetask()
-$(document).on("click", ".completedtask", function() {
+$(document).on('click', '.completedtask', function() {
   let taskId = this;
   CompleteTask(taskId);
 });
 
-$(document).on("click", ".scheduleactivity", function() {
-  let schid = $(this).attr("id");
+$(document).on('click', '.scheduleactivity', function() {
+  let schid = $(this).attr('id');
   let id = schid.substring(5);
   ViewSchActivity(id);
 });
 
-$(document).on("click", ".prealertactivity", function() {
-  let preid = $(this).attr("id");
+$(document).on('click', '.prealertactivity', function() {
+  let preid = $(this).attr('id');
   let id = preid.substring(5);
   ViewPreActivity(id);
 });
+
+$('#calculatesea').on('click', () => SeaFreightCalculator());
 /* Triggers end here */
 
 // this function updates the date of the footer every year .
 footerDate = () => {
   var date = new Date();
   var year = date.getFullYear();
-  $("#footerdate").html(`${year}`);
+  $('#footerdate').html(`${year}`);
 };
 
 // this message removes the Success message from the prealerts page after 5000 milliseconds
 SuccesMessageRemove = () => {
   let timeout = setInterval(() => {
-    $("#successmessage").remove();
+    $('#successmessage').remove();
     StopInterval(timeout);
   }, 5000);
 };
@@ -111,14 +113,14 @@ StopInterval = id => {
 };
 // checks to see if the user verified there email ('/','NotificationController@Token')
 TokenCheck = () => {
-  $.get("/Notifications", data => {
+  $.get('/Notifications', data => {
     var notification = jQuery.parseJSON(data);
-    if (notification.notification == "") {
-      $("#emailnotify").html("");
+    if (notification.notification == '') {
+      $('#emailnotify').html('');
       var verify = 0;
       spnotification(verify);
     } else {
-      $("#emailnotify").html(
+      $('#emailnotify').html(
         `<a  class='dropdown-item' href='#'>${
           notification.notification
         }<span class='float-right'>${notification.icon}</span></a>`
@@ -134,82 +136,82 @@ TokenCheck = () => {
 
 // check to see if the modal has been clicked /modal ('/modal', 'User\UserController@Modaltoken')
 Modaltimer = () => {
-  $.get("/modal", data => {
+  $.get('/modal', data => {
     var token = jQuery.parseJSON(data);
     var modal = token.token;
-    $("#modalname").html(`${token.name}`);
-    $("#modalxl").html(`${token.xl}`);
-    if (modal == "") {
+    $('#modalname').html(`${token.name}`);
+    $('#modalxl').html(`${token.xl}`);
+    if (modal == '') {
     } else {
-      $("#tutmodal").click();
+      $('#tutmodal').click();
     }
   });
 };
 
 ModalUpdate = () => {
   $.ajax({
-    url: "/modal",
-    type: "POST",
+    url: '/modal',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {}
   });
 };
 
 ProfileImageRemove = () => {
   $.ajax({
-    url: "/user/imgremove",
-    type: "POST",
+    url: '/user/imgremove',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
-      rm: "true"
+      rm: 'true'
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {
-      $("#imgclose").click();
-      $("#update").click();
+      $('#imgclose').click();
+      $('#update').click();
     }
   });
 };
 
 ProfileUpdate = () => {
-  let name = $("#name").val();
-  let telephone = $("#telephone").val();
-  let city = $("#city").val();
-  let parish = $("#parish").val();
-  let country = $("#country").val();
-  let address = $("#address").val();
+  let name = $('#name').val();
+  let telephone = $('#telephone').val();
+  let city = $('#city').val();
+  let parish = $('#parish').val();
+  let country = $('#country').val();
+  let address = $('#address').val();
   // Validates the update user form
   if (name.length < 3) {
-    $("#errorname").html("Name is too short");
+    $('#errorname').html('Name is too short');
   } else if (telephone.length < 10 || telephone.length > 12) {
-    $("#errorphone").html("Number must be ten numbers");
+    $('#errorphone').html('Number must be ten numbers');
   } else if (city.length < 3) {
-    $("#errorcity").html("City name is too short");
+    $('#errorcity').html('City name is too short');
   } else if (parish.length < 3) {
-    $("#errorparish").html("Parish name is too short");
+    $('#errorparish').html('Parish name is too short');
   } else if (country.length < 3) {
-    $("#errorcountry").html("Country name is too short");
+    $('#errorcountry').html('Country name is too short');
   } else if (address.length < 3) {
-    $("#erroraddress").html("Address is too short");
+    $('#erroraddress').html('Address is too short');
   } else {
     // empties the error messages if validate is successfull
-    $("#update").removeClass("btn btn-success");
-    $("#updatebtn").html(
+    $('#update').removeClass('btn btn-success');
+    $('#updatebtn').html(
       "<div class='spinner-grow text-success' role='status'></div>"
     );
-    $("#errorname").html("");
-    $("#errorphone").html("");
-    $("#errorcity").html("");
-    $("#errorparish").html("");
-    $("#errorcountry").html("");
-    $("#erroraddress").html("");
+    $('#errorname').html('');
+    $('#errorphone').html('');
+    $('#errorcity').html('');
+    $('#errorparish').html('');
+    $('#errorcountry').html('');
+    $('#erroraddress').html('');
     $.ajax({
-      url: "/Userinfo",
-      type: "Post",
+      url: '/Userinfo',
+      type: 'Post',
       data: {
         _token: CSRF_TOKEN,
         name: name,
@@ -219,15 +221,15 @@ ProfileUpdate = () => {
         country: country,
         address: address
       },
-      dataType: "text",
+      dataType: 'text',
       success: data => {
         Userinfo();
-        $("#updatebtn").html("Update");
-        $("#update").addClass("btn btn-success");
+        $('#updatebtn').html('Update');
+        $('#update').addClass('btn btn-success');
         // iziToast
         iziToast.success({
-          position: "topCenter",
-          message: "Updated Successfully.."
+          position: 'topCenter',
+          message: 'Updated Successfully..'
         });
       }
     });
@@ -235,7 +237,7 @@ ProfileUpdate = () => {
 };
 
 Userinfo = () => {
-  $.get("/Userinfo", data => {
+  $.get('/Userinfo', data => {
     let user = jQuery.parseJSON(data);
     Pdata();
     Object.keys(user).forEach(key => {
@@ -248,17 +250,17 @@ Userinfo = () => {
     //   $("#parish").val(user.parish);
     //   $("#country").val(user.country);
     //   $("#address").val(user.address);
-    $("#usercardid").html(`${user.xl}`);
-    $("#authusername").html(`${user.name}`);
-    $("#usercardname").html(`${user.name}`);
-    $("#usercardemail").html(`${user.email}`);
-    $("#usercardphone").html(`${user.telephone}`);
-    $("#usercardcity").html(`${user.city}`);
-    $("#usercardparish").html(`${user.parish}`);
-    $("#usercardcountry").html(`${user.country}`);
-    $("#usercardaddress").html(`${user.address}`);
-    $("#usercardtrn").html(`${user.trn}`);
-    $("#usercardimage").html(
+    $('#usercardid').html(`${user.xl}`);
+    $('#authusername').html(`${user.name}`);
+    $('#usercardname').html(`${user.name}`);
+    $('#usercardemail').html(`${user.email}`);
+    $('#usercardphone').html(`${user.telephone}`);
+    $('#usercardcity').html(`${user.city}`);
+    $('#usercardparish').html(`${user.parish}`);
+    $('#usercardcountry').html(`${user.country}`);
+    $('#usercardaddress').html(`${user.address}`);
+    $('#usercardtrn').html(`${user.trn}`);
+    $('#usercardimage').html(
       `<img src="/storage/Userimage/${
         user.image
       }" class="rounded-circle" alt="${user.image}">`
@@ -268,40 +270,40 @@ Userinfo = () => {
 
 ProfileDelete = () => {
   iziToast.question({
-    backgroundColor: "red",
-    messageColor: "white",
-    titleColor: "white",
+    backgroundColor: 'red',
+    messageColor: 'white',
+    titleColor: 'white',
     timeout: 10000,
     close: false,
     overlay: true,
-    displayMode: "once",
-    id: "question",
+    displayMode: 'once',
+    id: 'question',
     zindex: 999,
-    title: "Hey",
-    message: "Are you sure about that?",
-    position: "center",
+    title: 'Hey',
+    message: 'Are you sure about that?',
+    position: 'center',
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
         function(instance, toast) {
           $.ajax({
-            type: "Post",
-            url: "/Useraccountdel",
+            type: 'Post',
+            url: '/Useraccountdel',
             data: {
               _token: CSRF_TOKEN,
               delete: true
             },
-            dataType: "text",
+            dataType: 'text',
             success: function(response) {
-              window.location.href = "/";
+              window.location.href = '/';
             }
           });
           instance.hide(
             {
-              transitionOut: "fadeOut"
+              transitionOut: 'fadeOut'
             },
             toast,
-            "button"
+            'button'
           );
         },
         true
@@ -311,10 +313,10 @@ ProfileDelete = () => {
         function(instance, toast) {
           instance.hide(
             {
-              transitionOut: "fadeOut"
+              transitionOut: 'fadeOut'
             },
             toast,
-            "button"
+            'button'
           );
         }
       ]
@@ -323,51 +325,51 @@ ProfileDelete = () => {
 };
 //  all you need to know is that this function goes to the Pdata in UserController
 Pdata = () => {
-  $("#oldpass").val("");
-  $("#pschbtn").click(() => {
-    if ($("#oldpass").val().length < 6) {
-      $("#oldpassword").html("Must be at least 6 characters");
+  $('#oldpass').val('');
+  $('#pschbtn').click(() => {
+    if ($('#oldpass').val().length < 6) {
+      $('#oldpassword').html('Must be at least 6 characters');
     } else {
       $.ajax({
-        type: "POST",
-        url: "/pdata",
+        type: 'POST',
+        url: '/pdata',
         data: {
           _token: CSRF_TOKEN,
-          data: $("#oldpass").val()
+          data: $('#oldpass').val()
         },
-        dataType: "text",
+        dataType: 'text',
         success: function(response) {
           var something = jQuery.parseJSON(response);
           if (something.passed == 0) {
-            $("#oldpassword").html("Password doesn`t match");
-          } else if ($("#newpass").val().length < 6) {
-            $("#newpassword").html("Must be at least 6 characters");
-          } else if ($("#confirmpass").val().length < 6) {
-            $("#confirmpassword").html("Must be at least 6 characters");
-          } else if ($("#newpass").val() != $("#confirmpass").val()) {
-            $("#confirmpassword").html("Password dont match");
+            $('#oldpassword').html('Password doesn`t match');
+          } else if ($('#newpass').val().length < 6) {
+            $('#newpassword').html('Must be at least 6 characters');
+          } else if ($('#confirmpass').val().length < 6) {
+            $('#confirmpassword').html('Must be at least 6 characters');
+          } else if ($('#newpass').val() != $('#confirmpass').val()) {
+            $('#confirmpassword').html('Password dont match');
           } else {
-            $("#pschbtn").addClass("disabled");
+            $('#pschbtn').addClass('disabled');
             $.ajax({
-              type: "POST",
-              url: "/passwordUpdate",
+              type: 'POST',
+              url: '/passwordUpdate',
               data: {
                 _token: CSRF_TOKEN,
-                newpass: $("#newpass").val()
+                newpass: $('#newpass').val()
               },
-              dataType: "text",
+              dataType: 'text',
               success: function(response) {
-                $("#pschbtn").removeClass("disabled");
-                $("#oldpassword").html("");
-                $("#newpassword").html("");
-                $("#confirmpassword").html("");
-                $("#oldpass").val("");
-                $("#newpass").val("");
-                $("#confirmpass").val("");
-                $("#closepasswordmodal").click();
+                $('#pschbtn').removeClass('disabled');
+                $('#oldpassword').html('');
+                $('#newpassword').html('');
+                $('#confirmpassword').html('');
+                $('#oldpass').val('');
+                $('#newpass').val('');
+                $('#confirmpass').val('');
+                $('#closepasswordmodal').click();
                 iziToast.success({
-                  position: "topCenter",
-                  message: "Password Changed .."
+                  position: 'topCenter',
+                  message: 'Password Changed ..'
                 });
               }
             });
@@ -380,16 +382,16 @@ Pdata = () => {
 
 // this is function will show all of the shipments
 shipments = () => {
-  $.get("/shipments/all", data => {
+  $.get('/shipments/all', data => {
     var shp = jQuery.parseJSON(data);
     ShipmentCount(shp);
-    let all_ship = "";
+    let all_ship = '';
     for (i = 0; i < shp.length; i++) {
       created_at = new Date(`${shp[i].created_at}`);
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${shp[i].updated_at}`);
       updated =
-        shp[i].collected == 1 ? updated_at.toString().slice(0, 24) : " ";
+        shp[i].collected == 1 ? updated_at.toString().slice(0, 24) : ' ';
       all_ship += `<tr class="" scope="row">
                 <th>${shp[i].tracking_no}</th>
                 <td>${shp[i].reference_no}</td>
@@ -401,58 +403,61 @@ shipments = () => {
                 <td>${updated}</td>
               </tr>`;
     }
-    $("#shpcount").html(`${shp.length}`);
-    $("#shipments").html(`${all_ship}`);
+    $('#shpcount').html(`${shp.length}`);
+    $('#shipments').html(`${all_ship}`);
   });
 };
 
 spnotification = verify => {
-  $.get("/shipments/notification", data => {
+  $.get('/shipments/notification', data => {
     let sp = data;
     if (sp > 0) {
       shipments();
-      $("#spnotify").html(
+      $('#spnotify').html(
         `<a class='dropdown-item' href='/shipments'>New shipment added. <span class='float-right'>
          <i class="fas fa-box-open"></i></span></a>`
       );
     } else {
       sp = 0;
     }
-  SpReadyForPickup(verify, sp)
+    SpReadyForPickup(verify, sp);
   });
 };
 
-SpReadyForPickup=(verify, sp)=>{
-  $.get("/shipments/notification/data", data=>{
-       let res = jQuery.parseJSON(data)
-        let count = res.completed ? 1 : 0;
-        res.completed ? $("#spready").html(`<a class='dropdown-item' href='/shipments'>A shipment is ready for pick up.<span class='float-right'>
-         <i class="fas fa-box-open"></i></span></a>`):""
-       NotificationCounter(verify, sp, count);
-    });
-}
+SpReadyForPickup = (verify, sp) => {
+  $.get('/shipments/notification/data', data => {
+    let res = jQuery.parseJSON(data);
+    let count = res.completed ? 1 : 0;
+    res.completed
+      ? $('#spready')
+          .html(`<a class='dropdown-item' href='/shipments'>A shipment is ready for pick up.<span class='float-right'>
+         <i class="fas fa-box-open"></i></span></a>`)
+      : '';
+    NotificationCounter(verify, sp, count);
+  });
+};
 
 NewTask = () => {
-  let todo = $("#todotextarea").val();
+  let todo = $('#todotextarea').val();
   if (todo.length < 1 || todo.length > 200) {
-    $("#errortask").html(`Error, invalid task!`);
+    $('#errortask').html(`Error, invalid task!`);
   } else {
     $.ajax({
-      url: "/todo",
-      type: "POST",
+      url: '/todo',
+      type: 'POST',
       data: {
         _token: CSRF_TOKEN,
         todo: todo
       },
-      dataType: "text",
+      dataType: 'text',
       success: data => {
-        $("#todotextarea").val("");
-        $("#closetodo").click();
-        $("#taskmodal").click(() => $("#errortask").html(" "));
+        $('#todotextarea').val('');
+        $('#closetodo').click();
+        $('#taskmodal').click(() => $('#errortask').html(' '));
         task();
         iziToast.success({
-          position: "topCenter",
-          message: "Task added.."
+          position: 'topCenter',
+          message: 'Task added..'
         });
       }
     });
@@ -460,15 +465,15 @@ NewTask = () => {
 };
 
 task = () => {
-  $.get("/todo", data => {
+  $.get('/todo', data => {
     let todo = jQuery.parseJSON(data);
-    let todobody = "";
-    let _class = "";
+    let todobody = '';
+    let _class = '';
     if (todo.count == 0) {
       todobody += ` <a href="#" class="list-group-item d-flex justify-content-between dark-grey-text " id="emptytask">Add your tasks here..</a>`;
     } else {
       todo.forEach(n => {
-        _class = n.completed ? "completed" : " ";
+        _class = n.completed ? 'completed' : ' ';
         todobody += ` <a href="#" class="list-group-item d-flex task justify-content-between dark-grey-text ${_class}" id="task${
           n.id
         }">${n.todo}
@@ -477,12 +482,12 @@ task = () => {
       }"></i></a>`;
       });
     }
-    $("#todosection").html(`${todobody}`);
+    $('#todosection').html(`${todobody}`);
   });
 };
 
 ViewTask = taskid => {
-  let task = $(taskid).attr("id");
+  let task = $(taskid).attr('id');
   let id = task.substring(4);
   $.get(`/todo/${id}`, data => {
     let task = jQuery.parseJSON(data);
@@ -492,54 +497,54 @@ ViewTask = taskid => {
       let com = task.completed
         ? `<i class="fas fa-check"></i >`
         : `<i class="far fa-square"></i>`;
-      $("#taskbody").html(`${task.todo}`);
-      $("#tasktime").html(`${created}`);
-      $("#taskcompleted")
+      $('#taskbody').html(`${task.todo}`);
+      $('#tasktime').html(`${created}`);
+      $('#taskcompleted')
         .html(`<button type="button" class="btn btn-primary completedtask" id="completedTask${id}">
       ${com}
      </button>`);
-      $("#viewTASK").click();
+      $('#viewTASK').click();
     }
   });
 };
 
 CompleteTask = taskId => {
-  let taskID = $(taskId).attr("id");
+  let taskID = $(taskId).attr('id');
   let id = taskID.substring(13);
   $.ajax({
-    type: "POST",
-    url: "/todo/completed",
+    type: 'POST',
+    url: '/todo/completed',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: function(response) {
       iziToast.success({
-        position: "topCenter",
-        message: "Task Completed"
+        position: 'topCenter',
+        message: 'Task Completed'
       });
-      $("#closetaskmodal").click();
+      $('#closetaskmodal').click();
       window.setTimeout(() => task(), 1000);
     }
   });
 };
 
 DeleteTask = delId => {
-  let todo = $(delId).attr("id");
+  let todo = $(delId).attr('id');
   let id = todo.substring(4);
   $.ajax({
-    url: "/delete/todo",
-    type: "POST",
+    url: '/delete/todo',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {
       iziToast.error({
-        position: "topCenter",
-        message: "Task deleted.."
+        position: 'topCenter',
+        message: 'Task deleted..'
       });
       window.setTimeout(() => task(), 1000);
     }
@@ -547,31 +552,31 @@ DeleteTask = delId => {
 };
 
 MakeDelivery = () => {
-  let firstname = $("#devfname").val();
-  let lastname = $("#devlname").val();
-  let devaddress = $("#deliveryaddress").val();
-  let devphone = $("#devphone").val();
-  let express = $("#expressdelivery").prop("checked");
+  let firstname = $('#devfname').val();
+  let lastname = $('#devlname').val();
+  let devaddress = $('#deliveryaddress').val();
+  let devphone = $('#devphone').val();
+  let express = $('#expressdelivery').prop('checked');
   if (firstname.length < 3) {
-    $("#errorfname").html(
-      "Invalid firstname, It should be at least 3 characters."
+    $('#errorfname').html(
+      'Invalid firstname, It should be at least 3 characters.'
     );
   } else if (lastname.length < 3) {
-    $("#errorlname").html(
-      "Invalid lastname, It should be at least 3 characters."
+    $('#errorlname').html(
+      'Invalid lastname, It should be at least 3 characters.'
     );
   } else if (devaddress.length < 4) {
-    $("#errordelivery").html(
-      "Invalid delivery address, It should be at least 4 characters."
+    $('#errordelivery').html(
+      'Invalid delivery address, It should be at least 4 characters.'
     );
   } else if (devphone.length < 10 || devphone.length >= 11) {
-    $("#errorphone").html(
-      "Invalid phone number, It should be at 10 characters."
+    $('#errorphone').html(
+      'Invalid phone number, It should be at 10 characters.'
     );
   } else {
     $.ajax({
-      url: "/scheduledelivery",
-      type: "POST",
+      url: '/scheduledelivery',
+      type: 'POST',
       data: {
         _token: CSRF_TOKEN,
         firstname: firstname,
@@ -580,54 +585,54 @@ MakeDelivery = () => {
         phone: devphone,
         express: express
       },
-      dataType: "text",
+      dataType: 'text',
       success: data => {
         iziToast.success({
-          position: "topCenter",
-          message: "Shedule delivery submitted."
+          position: 'topCenter',
+          message: 'Shedule delivery submitted.'
         });
-        $("#errorfname").html("");
-        $("#errorlname").html("");
-        $("#errordelivery").html("");
-        $("#errorphone").html("");
-        $("#devfname").val("");
-        $("#devlname").val("");
-        $("#deliveryaddress").val("");
-        $("#devphone").val("");
+        $('#errorfname').html('');
+        $('#errorlname').html('');
+        $('#errordelivery').html('');
+        $('#errorphone').html('');
+        $('#devfname').val('');
+        $('#devlname').val('');
+        $('#deliveryaddress').val('');
+        $('#devphone').val('');
       }
     });
   }
 };
 
 News = () => {
-  $.get("/news", data => {
+  $.get('/news', data => {
     let news = jQuery.parseJSON(data);
-    let text = "";
+    let text = '';
     news.forEach(n => {
       text += `<a href="#" class="list-group-item d-flex justify-content-between dark-grey-text newsmodal" id="news${
         n.id
       }">${n.subject}
       </a>`;
     });
-    $("#allnews").html(`${text}`);
-    $("#newscount").html(`${news.length}`);
+    $('#allnews').html(`${text}`);
+    $('#newscount').html(`${news.length}`);
   });
 };
 
 NewsModal = mdid => {
-  let news = $(mdid).attr("id");
+  let news = $(mdid).attr('id');
   let id = news.substring(4);
   $.ajax({
-    url: "/news",
-    type: "POST",
+    url: '/news',
+    type: 'POST',
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: "text",
+    dataType: 'text',
     success: data => {
       let singlenews = jQuery.parseJSON(data);
-      $("#newmessage").html(`
+      $('#newmessage').html(`
      <div class="text-center">
      <span class="h2">${singlenews.subject}</span>
      </div>
@@ -636,8 +641,8 @@ NewsModal = mdid => {
      `);
       created_at = new Date(`${singlenews.created_at}`);
       created = created_at.toString().slice(0, 24);
-      $("#newtime").html(`${created}`);
-      $("#newsbtn").click();
+      $('#newtime').html(`${created}`);
+      $('#newsbtn').click();
     }
   });
 };
@@ -646,15 +651,15 @@ ShipmentCount = shipment => {
   let count = shipment.filter(n => n.collected == 1);
   let all = shipment.length;
   let percent = count.length > 0 ? (count.length / all) * 100 : 0;
-  $("#shipmentscount").html(`${count.length}/${all}`);
-  $("#shipmentpercent").html(`${percent.toPrecision(3)}`);
-  $("#shipmentbar").css("width", `${percent}%`);
+  $('#shipmentscount').html(`${count.length}/${all}`);
+  $('#shipmentpercent').html(`${percent.toPrecision(3)}`);
+  $('#shipmentbar').css('width', `${percent}%`);
   Shipmentvalue(shipment);
 };
 
 Shipmentvalue = value => {
   let money = value.reduce((total, val) => total + parseInt(val.spcharge), 0);
-  $("#shipmentvalue").html(`${money}`);
+  $('#shipmentvalue').html(`${money}`);
   Shipmentotaldue(value);
 };
 
@@ -662,13 +667,13 @@ Shipmentotaldue = due => {
   let shpdue = due
     .filter(n => n.collected == 0)
     .reduce((total, val) => total + parseInt(val.spcharge), 0);
-  $("#shipmentddue").html(`${shpdue}`);
+  $('#shipmentddue').html(`${shpdue}`);
 };
 
 ScheduleRec = () => {
-  $.get("/scheduledelivery/all", res => {
+  $.get('/scheduledelivery/all', res => {
     let sch = jQuery.parseJSON(res);
-    let output = "";
+    let output = '';
     sch.forEach((n, index) => {
       created_at = new Date(`${n.created_at}`);
       created = created_at.toString().slice(0, 24);
@@ -681,16 +686,16 @@ ScheduleRec = () => {
        </button>`;
       }
     });
-    $("#recentsch").html(`${output}`);
+    $('#recentsch').html(`${output}`);
   });
 };
 {
   /* <button href="#" class="list-group-item d-flex justify-content-between dark-grey-text"  data-target="#activitymodal"></button> */
 }
 PreAlertsRec = () => {
-  $.get("/prealerts/all", data => {
+  $.get('/prealerts/all', data => {
     let pre = jQuery.parseJSON(data);
-    let output = "";
+    let output = '';
     pre.forEach((n, index) => {
       created_at = new Date(`${n.created_at}`);
       created = created_at.toString().slice(0, 24);
@@ -703,7 +708,7 @@ PreAlertsRec = () => {
         </button>`;
       }
     });
-    $("#recentpre").html(`${output}`);
+    $('#recentpre').html(`${output}`);
   });
 };
 
@@ -712,11 +717,11 @@ ViewSchActivity = id => {
     let sch = jQuery.parseJSON(data);
     created_at = new Date(`${sch.created_at}`);
     created = created_at.toString().slice(0, 24);
-    let express = "";
-    if (sch.express == "true") {
-      express = "Yes";
+    let express = '';
+    if (sch.express == 'true') {
+      express = 'Yes';
     } else {
-      express = "No";
+      express = 'No';
     }
     let output = `<table class="table table-striped w-100 table-responsive  text-nowrap">
     <thead>
@@ -736,9 +741,9 @@ ViewSchActivity = id => {
     <td>${express}</td>
         </tbody>
   </table>`;
-    $("#activitytitle").html(`Recent Schdule delivery`);
-    $("#recentevent").html(`${created}`);
-    $("#activitybody").html(`${output}`);
+    $('#activitytitle').html(`Recent Schdule delivery`);
+    $('#recentevent').html(`${created}`);
+    $('#activitybody').html(`${output}`);
   });
 };
 
@@ -779,17 +784,53 @@ ViewPreActivity = id => {
   </div>`;
     created_at = new Date(`${pre.created_at}`);
     created = created_at.toString().slice(0, 24);
-    $("#activitytitle").html(`Recent Prealert`);
-    $("#recentevent").html(`${created}`);
-    $("#activitybody").html(`${output}`);
+    $('#activitytitle').html(`Recent Prealert`);
+    $('#recentevent').html(`${created}`);
+    $('#activitybody').html(`${output}`);
   });
 };
 
-NotificationCounter = (verify = 0, sp = 0, count=0) => {
+SeaFreightCalculator = () => {
+  let length =
+    $('#shippinglength').val().length > 0
+      ? parseInt($('#shippinglength').val())
+      : 0;
+  let width =
+    $('#shippingwidth').val().length > 0
+      ? parseInt($('#shippingwidth').val())
+      : 0;
+  let height =
+    $('#shippingheight').val().length > 0
+      ? parseInt($('#shippingheight').val())
+      : 0;
+
+  let price =
+    $('#itemprice').val().length > 0 ? parseInt($('#itemprice').val()) : 0;
+  $.get('/shippingcalculator/data', data => {
+    let fcharge = 0;
+    let scharge = 0;
+    let total = 0;
+    let res = jQuery.parseJSON(data);
+    let lwh = Number(length) * Number(width) * Number(height);
+    fcharge = Math.round(lwh / Number(res.exrate));
+    $('#fcharge').html(`${Math.round(fcharge)}`);
+    let prerate = parseInt(res.prerate) / 100;
+    scharge = Math.round(price) * prerate;
+    $('#scharge').html(`${Math.round(scharge)}`);
+    total = Number(fcharge) + Number(scharge);
+    $('#fctotal').html(`${total}`);
+    $('#shippinglength').val('');
+    $('#shippingwidth').val('');
+    $('#shippingheight').val('');
+    $('#itemprice').val('');
+  });
+};
+
+NotificationCounter = (verify = 0, sp = 0, count = 0) => {
   let vers = 0,
-      spts = 0
+    spts = 0;
   vers = Number.isNaN(verify) ? 0 : verify;
   spts = Number.isNaN(sp) ? 0 : sp;
-  let sum = Number(vers) + Number(spts)+ Number(count);
-  $("#notificount").html(`${sum}`);
+  let sum = Number(vers) + Number(spts) + Number(count);
+  $('#notificount').html(`${sum}`);
 };

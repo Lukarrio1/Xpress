@@ -9,6 +9,7 @@ $(document).ready(() => {
   Alldeliveries();
   footerDate();
   Allshipments();
+  SeaFreightData();
   $('#invloading').css('display', 'none');
 });
 // global declaration
@@ -71,6 +72,8 @@ $(document).on('click', '.updatestatusbtn', function() {
   shipmentbtn = $(this).attr('id');
 });
 $('#updateshipmentbtn').click(() => ViewStatusChange());
+
+$('#seaupdatebtn').on('click', () => SeaFreight());
 // this trigger calls the CreateShipment()
 $(document).on('click', '.addshipment', function() {
   shipmentuserid = this;
@@ -1013,6 +1016,40 @@ ShipmentCompleted = id => {
   });
 };
 
+SeaFreight = () => {
+  let exrate =
+    $('#exchangerate').val().length < 1 ? 0 : $('#exchangerate').val();
+  let percentage =
+    $('#percentage').val().length < 1 ? 0 : $('#percentage').val();
+  $.ajax({
+    type: 'POST',
+    url: '/admin/shipmentcalculator',
+    data: {
+      _token: CSRF_TOKEN,
+      exrate: parseFloat(exrate),
+      percentage: parseInt(percentage)
+    },
+    dataType: 'text',
+    success: function(response) {
+      $('#exchangerate').val('');
+      $('#percentage').val('');
+      iziToast.success({
+        position: 'topCenter',
+        message: 'Rates Updated'
+      });
+      SeaFreightData();
+    }
+  });
+};
+
+SeaFreightData = () => {
+  $.get('/admin/data', data => {
+    let res = jQuery.parseJSON(data);
+    $('#exchangerate').val(`${res.exrate}`);
+    $('#percentage').val(`${res.prerate}`);
+  });
+};
+
 ViewStatusChange = () => {
   let status = $('#updatesentstatus').val();
   let id = shipmentbtn.substring(8);
@@ -1032,8 +1069,6 @@ ViewStatusChange = () => {
       },
       dataType: 'text',
       success: function(response) {
-        let res = jQuery.parseJSON(response);
-        console.log(res);
         Allshipments();
         iziToast.success({
           position: 'topCenter',
