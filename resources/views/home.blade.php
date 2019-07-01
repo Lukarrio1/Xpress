@@ -79,12 +79,18 @@
           <div class="tab-pane fade show active text-center" id="home" role="tabpanel" aria-labelledby="home-tab">
             <i class="fas fa-globe-americas fa-5x blue-text"></i><br>
             <h2>Overseas Address</h2><br>
+            <h3>Sea Freight Address</h3>
             Name : <span id="modalname"></span><br>
             Address line 1: 2736 NW 29th Terrace,<br>
             Address line 2: Bldg 13 Lauderdale Lakes,<br>
             City / State : Oakland, Florida<br>
             Zipcode : 33311 <br>
             Xl number:<span id="modalxl"></span>
+            <h3>Air Freight Address</h3>
+            Address line 1: 10901 N.W. 146th Street,<br>
+            Address line 2: 8 Hialeah Gardens,<br>
+            City / State : Florida<br>
+            Zipcode : 33018 <br>
 
           </div>
           <!-- Pre alert modal content -->

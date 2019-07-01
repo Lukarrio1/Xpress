@@ -2,7 +2,7 @@
 @section('content')
 
    <div class="container-fluid pt-4 pb-5">
-    <ul class="nav nav-tabs nav-justified md-tabs bg-primary" id="myTabJust" role="tablist">
+    <ul class="nav nav-tabs nav-justified md-tabs bg-danger" id="myTabJust" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#seafreight-just" role="tab" aria-controls="seafreight-just" aria-selected="true">Sea Freight</a>
         </li>
@@ -66,7 +66,7 @@
                 <input type="text" id="shippingweight10" class="form-control mb-4" placeholder="Add 10 lbs rate">
                
                 <!-- Calculate button -->
-                <button class="btn btn-info btn-block" type="button">Update Info</button>
+                <button class="btn btn-danger btn-block" type="button">Update Info</button>
 
             </div>
             <!-- Default form subscription -->
