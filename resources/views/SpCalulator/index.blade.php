@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
    <div class="container-fluid pt-4 pb-5">
-    <ul class="nav nav-tabs nav-justified md-tabs bg-primary" id="myTabJust" role="tablist">
+    <ul class="nav nav-tabs nav-justified md-tabs bg-danger" id="myTabJust" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#seafreight-just" role="tab" aria-controls="seafreight-just" aria-selected="true">Sea Freight</a>
         </li>
@@ -37,15 +37,15 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header bg-danger text-white">
         <h5 class="modal-title" id="">Sea Freight Results </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-    <div class="h5 text-left">
-                Freight Charge : $<span id='fcharge'>0</span><br>
+        </div>
+       <div class="modal-body">
+       <div class="h5 text-left">
+                  Freight Charge : $<span id='fcharge'>0</span><br>
                 Service Charge : $<span id='scharge'>0</span><br>
                 Total Charges : $<span id='fctotal'>0</span><br>
         </div>
@@ -78,7 +78,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header bg-danger text-white">
         <h5 class="modal-title" id="">Air Freight Results </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>

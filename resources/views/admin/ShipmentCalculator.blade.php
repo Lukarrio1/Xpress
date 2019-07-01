@@ -2,7 +2,7 @@
 @section('content')
 
    <div class="container-fluid pt-4 pb-5">
-    <ul class="nav nav-tabs nav-justified md-tabs bg-primary" id="myTabJust" role="tablist">
+    <ul class="nav nav-tabs nav-justified md-tabs bg-danger" id="myTabJust" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#seafreight-just" role="tab" aria-controls="seafreight-just" aria-selected="true">Sea Freight</a>
         </li>

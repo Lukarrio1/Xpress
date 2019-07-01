@@ -30,7 +30,7 @@
   aria-hidden="true">
   <div class="modal-dialog modal-lg " role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white text-center">
+      <div class="modal-header bg-danger text-white text-center">
         <h5 class="modal-title" id="exampleModalLabel">Task <small id="tasktime"></small></h5>
       </div>
       <div class="modal-body" id="taskbody">
@@ -127,7 +127,7 @@
   <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header bg-danger text-white">
         <h5 class="modal-title" id="exampleModalLongTitle">Add New Task    <span class="text-danger" id="errortask"></span></h5>
       </div>
       <div class="modal-body">
@@ -156,7 +156,7 @@
     <div class="col-xl-4 col-md-6 mb-4">
 
       <!--Card Success-->
-      <div class="card classic-admin-card primary-color">
+      <div class="card classic-admin-card bg-danger">
         <div class="card-body">
           <div class="pull-right">
             <i class="far fa-money-bill-alt"></i>
@@ -174,7 +174,7 @@
     <div class="col-xl-4 col-md-6 mb-4">
 
       <!--Card Default-->
-      <div class="card classic-admin-card warning-color">
+      <div class="card classic-admin-card bg-danger ">
         <div class="card-body">
           <div class="pull-right">
             <i class="fas fa-chart-line"></i>
@@ -193,7 +193,7 @@
     <div class="col-xl-4 col-md-6 mb-4">
 
       <!--Card Blue-->
-      <div class="card classic-admin-card light-blue lighten-1">
+      <div class="card classic-admin-card bg-danger darken-2">
         <div class="card-body">
           <div class="pull-right">
             <i class="fas fa-box"></i>
@@ -202,7 +202,7 @@
           <h4 id="shipmentscount">0</h4>
         </div>
           <div class="progress">
-            <div class="progress-bar bg grey darken-4" role="progressbar" style="width: 0%"
+            <div class="progress-bar bg-white" role="progressbar" style="width: 0%"
               aria-valuemin="0" aria-valuemax="100" id="shipmentbar"></div>
           </div>
           <div class="card-body">
@@ -289,7 +289,7 @@
       aria-hidden="true">
       <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
-          <div class="modal-header bg-primary text-white text-center">
+          <div class="modal-header bg-danger text-white text-center">
             <h5 class="modal-title" id="exampleModalLabel">News <small id="newtime"></small></h5>
           </div>
           <div class="modal-body" id="newmessage">
@@ -307,9 +307,9 @@
 
       <!--Panel-->
       <div class="card">
-        <div class="card-header white-text primary-color">
+        <div class="card-header white-text bg-danger">
           News Feed
-          <span class="badge fa-pull-right align-right text-white" id="newscount">0</span>
+          <span class="badge bg-primary fa-pull-right align-right text-white" id="newscount">0</span>
         </div>
         <!--/.Card-->
         <div class="card-body pt-0 px-1">
@@ -337,8 +337,8 @@
 
       <!--Panel-->
       <div class="card">
-        <div class="card-header white-text primary-color">
-          Tasks to do
+        <div class="card-header white-text bg-danger">
+          Tasks
           <i href="#" class="fas fa-plus fa-pull-right align-right text-white" data-toggle="modal"
             data-target="#taskmodal" id="taskmodal" data-placement=top title="Add new task"></i>
         </div>
@@ -369,7 +369,7 @@
 
       <!--Panel-->
       <div class="card">
-        <div class="card-header white-text primary-color">
+        <div class="card-header white-text bg-danger">
           Recent Activity
         </div>
         <!--/.Card-->
@@ -386,7 +386,7 @@
   aria-hidden="true">
   <div class="modal-dialog modal-lg " role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white text-center">
+      <div class="modal-header bg-danger text-white text-center">
         <h5 class="modal-title" id=""><span id="activitytitle">
           </span></h5><small id="recentevent"></small></h5>
       </div>

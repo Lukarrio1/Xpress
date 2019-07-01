@@ -4,7 +4,7 @@
     <!-- Pre Alerts Form-->
 <div class="card col-sm-12 col-md-10 offset-md-1 mt-4 mb-5">
 
-    <h5 class="card-header info-color white-text text-center py-4">
+    <h5 class="card-header bg-danger white-text text-center py-4">
         <strong>Create Pre Alert Notification</strong>
     </h5>
 

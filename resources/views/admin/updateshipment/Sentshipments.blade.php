@@ -4,14 +4,14 @@
   <section>
     <div class="card card-cascade narrower z-depth-1">
       <div
-        class="view view-cascade gradient-card-header blue-gradient narrower 
+        class="view view-cascade bg-danger narrower 
         py-2 mx-4 mb-3 d-flex justify-content-between align-items-center"
       >
         <div></div>
         <a href="#" class="white-text mx-3">View All Updated Shipments 
         &nbsp; <span id="shipp" class="badge-circle badge-success badge">0</span>
         <span class="badge">/</span>
-        <span id="shipa" class="badge badge-circle badge-danger">0</span>
+        <span id="shipa" class="badge badge-circle blue">0</span>
         </a>
         <div></div>
       </div>
@@ -46,7 +46,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header bg-danger text-white">
         <h5 class="modal-title" id="">Sea Freight Results </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeupdatestatusship">
         </button>

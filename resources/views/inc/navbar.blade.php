@@ -349,7 +349,7 @@
 
     <!-- Fixed button -->
     <div class="fixed-action-btn clearfix d-none d-xl-block" style="bottom: 45px; right: 24px;">
-      <a class="btn-floating btn-lg red">
+      <a class="btn-floating btn-lg bg-danger">
         <i class="fas fa-pencil-alt"></i>
       </a>
 

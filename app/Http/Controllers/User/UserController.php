@@ -284,16 +284,11 @@ class UserController extends Controller
         $this->validate($request,[
             'id'=>'required'
         ]);
-    $todo = todo::find($request->id);
-    $todo->delete();
-    return json_encode(["status"=>200]);
+         $todo = todo::find($request->id);
+         $todo->delete();
+         return json_encode(["status"=>200]);
     }
-    // this function returns all the user in the database will remove later this is for the admin section..
-    // public function all_users()
-    // {
-    //     return json_encode(User::orderBy('created_at', 'DESC')->get());
-    // }
-// this function sends an email to the user as soon as they change there password
+
     public function PasswordEmailNotification()
     {
         $person = User::find(Auth::user()->id);

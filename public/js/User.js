@@ -651,8 +651,9 @@ ShipmentCount = shipment => {
   let count = shipment.filter(n => n.collected == 1);
   let all = shipment.length;
   let percent = count.length > 0 ? (count.length / all) * 100 : 0;
+  let formpercent = percent == 0 ? 0 : percent.toPrecision(3);
   $('#shipmentscount').html(`${count.length}/${all}`);
-  $('#shipmentpercent').html(`${percent.toPrecision(3)}`);
+  $('#shipmentpercent').html(`${formpercent}`);
   $('#shipmentbar').css('width', `${percent}%`);
   Shipmentvalue(shipment);
 };
@@ -803,9 +804,9 @@ SeaFreightCalculator = () => {
     $('#shippingheight').val().length > 0
       ? parseInt($('#shippingheight').val())
       : 0;
-
   let price =
     $('#itemprice').val().length > 0 ? parseInt($('#itemprice').val()) : 0;
+
   $.get('/shippingcalculator/data', data => {
     let fcharge = 0;
     let scharge = 0;
