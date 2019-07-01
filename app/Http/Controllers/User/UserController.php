@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\todo;
+use App\UserEmailReset as uer;
+
 class UserController extends Controller
 {
     public function __construct()
@@ -196,24 +198,30 @@ class UserController extends Controller
         $this->validate($request, [
             'delete' => 'required',
         ]);
+
+           $emailrs = new uer;
+           
         if ($request->delete == true) {
             $user = User::find(Auth::user()->id);
             if ($user->userimage == "noimage.jpg") {
-                $user->email=str_shuffle($user->email."sd");
-                $user->password=str_shuffle($user->password."sdbajnsdkasnduandaskdnasndjasns");
+                $user->email=str_shuffle($user->email);
+                $emailrs->email = $user->email;
+                $emailrs->user_id= $user->id;
+                $user->password=str_shuffle($user->password);
                 $user->deleted= 1;
                 $user->save();
                 Auth::logout();
-                return 1;
+                return json_encode(['status'=>200]);
             } else {
                 Storage::delete('public/Userimage/' . $user->userimage);
-                $user->email=str_shuffle($user->email."sd");
-                $user->password=str_shuffle($user->password."sdbajnsdkasnduandaskdnasndjasns");
+                $user->email=str_shuffle($user->email);
+                $user->password=str_shuffle($user->password);
+                $emailrs->email = $user->email;
+                $emailrs->user_id=$user->id;
                 $user->deleted= 1;
                 $user->save();
                 Auth::logout();
-              
-                return 1;
+                 return json_encode(['status'=>200]);
             }
         }
 

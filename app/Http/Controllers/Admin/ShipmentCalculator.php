@@ -19,6 +19,10 @@ class ShipmentCalculator extends Controller
     }
     
     public function Rates(Request $request){
+        $this->validate($request,[
+            'exrate'=>'required',
+            'percentage'=>'required'
+        ]);
         $exrate = htmlentities($request->exrate);
         $percentage = htmlentities($request->percentage);
         $sea = Calsea::all();

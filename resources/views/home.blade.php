@@ -44,12 +44,12 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-primary waves-effect waves-light " data-toggle="modal"
+<button type="button" class="btn btn-danger waves-effect waves-light " data-toggle="modal"
   data-target="#centralModalLGInfoDemo" id="tutmodal" style="display:none;">
 </button>
 <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+  <div class="modal-dialog modal-lg modal-notify modal-danger" role="document">
     <!-- Content -->
     <div class="modal-content">
       <!-- Header -->
@@ -77,7 +77,7 @@
         <!-- Overseas address modal content -->
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active text-center" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <i class="fas fa-globe-americas fa-5x blue-text"></i><br>
+            <i class="fas fa-globe-americas fa-5x danger-text"></i><br>
             <h2>Overseas Address</h2><br>
             Name : <span id="modalname"></span><br>
             Address line 1: 2736 NW 29th Terrace,<br>
@@ -90,7 +90,7 @@
           <!-- Pre alert modal content -->
           <div class="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-            <i class="far fa-bell fa-5x blue-text text-center"></i>
+            <i class="far fa-bell fa-5x danger-text text-center"></i>
             <h2>How To Create A Pre Alert</h2><br>
             As soon as you receive your tracking number, create a pre alert.
             This allows us to be able to to give you updates on your package as soon as it reaches our warehouse.
@@ -101,7 +101,7 @@
           </div>
           <!-- Overseas address modal content -->
           <div class="tab-pane fade text-center" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            <i class="far fa-envelope fa-5x blue-text"></i><br>
+            <i class="far fa-envelope fa-5x danger-text"></i><br>
             <h2>Notifications</h2><br>
             Track your package on your customer dashboard at every stage until it reaches you.
             Also, you will be notified about your order status
@@ -113,7 +113,7 @@
 
       <!-- Footer -->
       <div class="modal-footer">
-        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal" id="update_login_token">OK</a>
+        <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal" id="update_login_token">OK</a>
       </div>
     </div>
     <!-- Content -->
