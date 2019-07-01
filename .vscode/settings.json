@@ -22,13 +22,20 @@
     ],
     "cSpell.ignoreWords": [
         "allinvoice",
+        "allinvoices",
+        "allusers",
         "html",
         "invoicentc",
         "invoicesearch",
         "oicentc",
         "prealerts",
+        "scheduledelivery",
         "sdnotify",
         "searchcount",
-        "sum"
+        "sheduledelivery",
+        "shipmentcalculator",
+        "shippingcalculator",
+        "sum",
+        "updatestatus"
     ]
 }

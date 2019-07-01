@@ -94,7 +94,7 @@
 
           <!-- Card Data -->
           <div class="admin-up d-flex justify-content-start">
-            <i class="fas fa-users info-color py-4 mr-3 z-depth-2"></i>
+            <i class="fas fa-users danger-color py-4 mr-3 z-depth-2"></i>
             <div class="data">
               <h5 class="font-weight-bold dark-grey-text">Edit Profile - <span class="text-muted">Complete your
                   profile</span></h5>

@@ -3,7 +3,7 @@
 <section>
 <div class="card mt-4">
 
-    <h5 class="card-header info-color white-text text-center py-4">
+    <h5 class="card-header bg-danger white-text text-center py-4">
         <strong>Schedule Delivery Form</strong>
     </h5>
 

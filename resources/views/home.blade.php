@@ -30,7 +30,7 @@
   aria-hidden="true">
   <div class="modal-dialog modal-lg " role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white text-center">
+      <div class="modal-header bg-danger text-white text-center">
         <h5 class="modal-title" id="exampleModalLabel">Task <small id="tasktime"></small></h5>
       </div>
       <div class="modal-body" id="taskbody">
@@ -44,12 +44,12 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-primary waves-effect waves-light " data-toggle="modal"
+<button type="button" class="btn btn-danger waves-effect waves-light " data-toggle="modal"
   data-target="#centralModalLGInfoDemo" id="tutmodal" style="display:none;">
 </button>
 <div class="modal fade" id="centralModalLGInfoDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+  <div class="modal-dialog modal-lg modal-notify modal-danger" role="document">
     <!-- Content -->
     <div class="modal-content">
       <!-- Header -->
@@ -77,7 +77,7 @@
         <!-- Overseas address modal content -->
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active text-center" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <i class="fas fa-globe-americas fa-5x blue-text"></i><br>
+            <i class="fas fa-globe-americas fa-5x danger-text"></i><br>
             <h2>Overseas Address</h2><br>
             <h3>Sea Freight Address</h3>
             Name : <span id="modalname"></span><br>
@@ -96,7 +96,7 @@
           <!-- Pre alert modal content -->
           <div class="tab-pane fade text-center" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-            <i class="far fa-bell fa-5x blue-text text-center"></i>
+            <i class="far fa-bell fa-5x danger-text text-center"></i>
             <h2>How To Create A Pre Alert</h2><br>
             As soon as you receive your tracking number, create a pre alert.
             This allows us to be able to to give you updates on your package as soon as it reaches our warehouse.
@@ -107,7 +107,7 @@
           </div>
           <!-- Overseas address modal content -->
           <div class="tab-pane fade text-center" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            <i class="far fa-envelope fa-5x blue-text"></i><br>
+            <i class="far fa-envelope fa-5x danger-text"></i><br>
             <h2>Notifications</h2><br>
             Track your package on your customer dashboard at every stage until it reaches you.
             Also, you will be notified about your order status
@@ -119,7 +119,7 @@
 
       <!-- Footer -->
       <div class="modal-footer">
-        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal" id="update_login_token">OK</a>
+        <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal" id="update_login_token">OK</a>
       </div>
     </div>
     <!-- Content -->
@@ -133,7 +133,7 @@
   <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header bg-danger text-white">
         <h5 class="modal-title" id="exampleModalLongTitle">Add New Task    <span class="text-danger" id="errortask"></span></h5>
       </div>
       <div class="modal-body">
@@ -162,7 +162,7 @@
     <div class="col-xl-4 col-md-6 mb-4">
 
       <!--Card Success-->
-      <div class="card classic-admin-card primary-color">
+      <div class="card classic-admin-card bg-danger">
         <div class="card-body">
           <div class="pull-right">
             <i class="far fa-money-bill-alt"></i>
@@ -180,7 +180,7 @@
     <div class="col-xl-4 col-md-6 mb-4">
 
       <!--Card Default-->
-      <div class="card classic-admin-card warning-color">
+      <div class="card classic-admin-card bg-danger ">
         <div class="card-body">
           <div class="pull-right">
             <i class="fas fa-chart-line"></i>
@@ -199,7 +199,7 @@
     <div class="col-xl-4 col-md-6 mb-4">
 
       <!--Card Blue-->
-      <div class="card classic-admin-card light-blue lighten-1">
+      <div class="card classic-admin-card bg-danger darken-2">
         <div class="card-body">
           <div class="pull-right">
             <i class="fas fa-box"></i>
@@ -208,7 +208,7 @@
           <h4 id="shipmentscount">0</h4>
         </div>
           <div class="progress">
-            <div class="progress-bar bg grey darken-4" role="progressbar" style="width: 0%"
+            <div class="progress-bar bg-white" role="progressbar" style="width: 0%"
               aria-valuemin="0" aria-valuemax="100" id="shipmentbar"></div>
           </div>
           <div class="card-body">
@@ -295,7 +295,7 @@
       aria-hidden="true">
       <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
-          <div class="modal-header bg-primary text-white text-center">
+          <div class="modal-header bg-danger text-white text-center">
             <h5 class="modal-title" id="exampleModalLabel">News <small id="newtime"></small></h5>
           </div>
           <div class="modal-body" id="newmessage">
@@ -313,9 +313,9 @@
 
       <!--Panel-->
       <div class="card">
-        <div class="card-header white-text primary-color">
+        <div class="card-header white-text bg-danger">
           News Feed
-          <span class="badge fa-pull-right align-right text-white" id="newscount">0</span>
+          <span class="badge bg-primary fa-pull-right align-right text-white" id="newscount">0</span>
         </div>
         <!--/.Card-->
         <div class="card-body pt-0 px-1">
@@ -343,8 +343,8 @@
 
       <!--Panel-->
       <div class="card">
-        <div class="card-header white-text primary-color">
-          Tasks to do
+        <div class="card-header white-text bg-danger">
+          Tasks
           <i href="#" class="fas fa-plus fa-pull-right align-right text-white" data-toggle="modal"
             data-target="#taskmodal" id="taskmodal" data-placement=top title="Add new task"></i>
         </div>
@@ -375,7 +375,7 @@
 
       <!--Panel-->
       <div class="card">
-        <div class="card-header white-text primary-color">
+        <div class="card-header white-text bg-danger">
           Recent Activity
         </div>
         <!--/.Card-->
@@ -392,7 +392,7 @@
   aria-hidden="true">
   <div class="modal-dialog modal-lg " role="document">
     <div class="modal-content">
-      <div class="modal-header bg-primary text-white text-center">
+      <div class="modal-header bg-danger text-white text-center">
         <h5 class="modal-title" id=""><span id="activitytitle">
           </span></h5><small id="recentevent"></small></h5>
       </div>

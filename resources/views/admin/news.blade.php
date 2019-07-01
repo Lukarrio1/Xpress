@@ -2,7 +2,7 @@
 @section('content')
 <div class="card card-cascade narrower z-depth-1 mt-5">
     <div
-        class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+        class="view view-cascade bg-danger narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
         <div>
         </div>
         <a class="white-text align-content-center mx-3 h4">News Form

@@ -651,8 +651,9 @@ ShipmentCount = shipment => {
   let count = shipment.filter(n => n.collected == 1);
   let all = shipment.length;
   let percent = count.length > 0 ? (count.length / all) * 100 : 0;
+  let formpercent = percent == 0 ? 0 : percent.toPrecision(3);
   $('#shipmentscount').html(`${count.length}/${all}`);
-  $('#shipmentpercent').html(`${percent.toPrecision(3)}`);
+  $('#shipmentpercent').html(`${formpercent}`);
   $('#shipmentbar').css('width', `${percent}%`);
   Shipmentvalue(shipment);
 };
@@ -803,9 +804,9 @@ SeaFreightCalculator = () => {
     $('#shippingheight').val().length > 0
       ? parseInt($('#shippingheight').val())
       : 0;
-
   let price =
     $('#itemprice').val().length > 0 ? parseInt($('#itemprice').val()) : 0;
+
   $.get('/shippingcalculator/data', data => {
     let fcharge = 0;
     let scharge = 0;
@@ -813,12 +814,12 @@ SeaFreightCalculator = () => {
     let res = jQuery.parseJSON(data);
     let lwh = Number(length) * Number(width) * Number(height);
     fcharge = Math.round(lwh / Number(res.exrate));
-    $('#fcharge').html(`${Math.round(fcharge)}`);
+    $('#fcharge').html(`${Math.round(fcharge) * res.exrate}`);
     let prerate = parseInt(res.prerate) / 100;
     scharge = Math.round(price) * prerate;
-    $('#scharge').html(`${Math.round(scharge)}`);
+    $('#scharge').html(`${Math.round(scharge) * res.exrate}`);
     total = Number(fcharge) + Number(scharge);
-    $('#fctotal').html(`${total}`);
+    $('#fctotal').html(`${total * res.exrate}`);
     $('#shippinglength').val('');
     $('#shippingwidth').val('');
     $('#shippingheight').val('');

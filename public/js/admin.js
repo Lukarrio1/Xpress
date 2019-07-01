@@ -345,9 +345,9 @@ Allinvoice = () => {
     // changes made here
     if (maxinv == inv.length) {
       $('#completedinvcount').removeClass('green');
-      $('#completedinvcount').addClass('badge red');
+      $('#completedinvcount').addClass('badge blue');
     } else {
-      $('#completedinvcount').removeClass('red');
+      $('#completedinvcount').removeClass('blue');
       $('#completedinvcount').addClass('badge green');
     }
     $('#completedinvcount').html(`${maxinv}`);
@@ -600,9 +600,9 @@ Alldeliveries = () => {
     }
     if (mindev == dev.length) {
       $('#mindev').removeClass('green');
-      $('#mindev').addClass('badge red');
+      $('#mindev').addClass('badge blue');
     } else {
-      $('#mindev').removeClass('red');
+      $('#mindev').removeClass('blue');
       $('#mindev').addClass('badge green');
     }
     $('#deliverytb').html(`${text}`);

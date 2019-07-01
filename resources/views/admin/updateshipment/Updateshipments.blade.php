@@ -15,7 +15,7 @@
     <div class="modal fade" id="updateshipmentmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-warning" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center bg-primary">
+                <div class="modal-header text-center bg-danger">
                     <h4 class="modal-title w-100 font-weight-bold text-white">Update Shipments</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"  id="closespup">
             <span aria-hidden="true">&times;</span>
@@ -87,7 +87,7 @@
 
             <div class="form-inline md-form mt-2 ml-2">
                 <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;" id="updatesearchuser">
-                <span class="badge badge-primary ml-2 px-1" id="updatesearchresult">0</span>
+                <span class="badge badge-danger ml-2 px-1" id="updatesearchresult">0</span>
             </div>
 
         </div>
@@ -99,7 +99,7 @@
 <div class="card card-cascade narrower z-depth-1 pb-4">
 
     <!-- Card image -->
-    <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+    <div class="view view-cascade bg-danger narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
 
         <div>
 

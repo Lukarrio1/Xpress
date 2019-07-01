@@ -31,7 +31,7 @@
             <form class="form-inline md-form mt-2 ml-2" >
               <input class="form-control mt-2" type="text" placeholder="Search" style="max-width: 150px;" id="invoicesearch">
               {{--  <button class="btn btn-sm btn-primary ml-2 px-1"><i class="fas fa-search"></i> </button>  --}}
-                  <span class="badge blue" id="searchcount">0</span>
+                  <span class="badge red" id="searchcount">0</span>
             </form>
           </div>
           <!-- Grid column -->
@@ -41,7 +41,7 @@
       <!-- Top Table UI -->
       <div class="card card-cascade narrower z-depth-1">
         <!-- Card image -->
-        <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
+        <div class="view view-cascade bg-danger narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
           <div>
             {{--  <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-th-large mt-0"></i></button>
             <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-columns mt-0"></i></button>  --}}
@@ -49,7 +49,7 @@
           <a  class="white-text align-content-center mx-3">Invoices 
           <span class="badge green" id="completedinvcount"></span>
          <span class="badge white-text">/</span>
-          <span class="badge red" id="invcount"></span> 
+          <span class="badge blue" id="invcount"></span> 
         </a>
           <div>
             {{--  <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2"><i class="fas fa-pencil-alt mt-0"></i></button>

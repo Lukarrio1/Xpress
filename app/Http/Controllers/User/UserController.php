@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\todo;
+use App\UserEmailReset as DeletedEmail;
+
 class UserController extends Controller
 {
     public function __construct()
@@ -196,24 +198,30 @@ class UserController extends Controller
         $this->validate($request, [
             'delete' => 'required',
         ]);
+        $deleted = new DeletedEmail;
+        $user = User::find(Auth::user()->id);
         if ($request->delete == true) {
-            $user = User::find(Auth::user()->id);
-            if ($user->userimage == "noimage.jpg") {
-                $user->email=str_shuffle($user->email."sd");
-                $user->password=str_shuffle($user->password."sdbajnsdkasnduandaskdnasndjasns");
+         if ($user->userimage == "noimage.jpg") {
+             $deleted->user_id = $user->id;
+             $deleted->email =$user->email;
+             $deleted->save();
+                $user->email=str_shuffle($user->email);
+                $user->password=str_shuffle($user->password);
                 $user->deleted= 1;
                 $user->save();
                 Auth::logout();
-                return 1;
+                return json_encode(['status'=>200]);
             } else {
                 Storage::delete('public/Userimage/' . $user->userimage);
-                $user->email=str_shuffle($user->email."sd");
-                $user->password=str_shuffle($user->password."sdbajnsdkasnduandaskdnasndjasns");
+                $deleted->user_id = $user->id;
+                $deleted->email =$user->email;
+                $deleted->save();
+                $user->email=str_shuffle($user->email);
+                $user->password=str_shuffle($user->password);
                 $user->deleted= 1;
                 $user->save();
                 Auth::logout();
-              
-                return 1;
+                 return json_encode(['status'=>200]);
             }
         }
 
@@ -284,16 +292,11 @@ class UserController extends Controller
         $this->validate($request,[
             'id'=>'required'
         ]);
-    $todo = todo::find($request->id);
-    $todo->delete();
-    return json_encode(["status"=>200]);
+         $todo = todo::find($request->id);
+         $todo->delete();
+         return json_encode(["status"=>200]);
     }
-    // this function returns all the user in the database will remove later this is for the admin section..
-    // public function all_users()
-    // {
-    //     return json_encode(User::orderBy('created_at', 'DESC')->get());
-    // }
-// this function sends an email to the user as soon as they change there password
+
     public function PasswordEmailNotification()
     {
         $person = User::find(Auth::user()->id);
