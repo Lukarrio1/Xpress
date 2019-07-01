@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\todo;
-use App\UserEmailReset as uer;
+use App\UserEmailReset as DeletedEmail;
 
 class UserController extends Controller
 {
@@ -198,15 +198,14 @@ class UserController extends Controller
         $this->validate($request, [
             'delete' => 'required',
         ]);
-
-           $emailrs = new uer;
-           
+        $deleted = new DeletedEmail;
+        $user = User::find(Auth::user()->id);
         if ($request->delete == true) {
-            $user = User::find(Auth::user()->id);
-            if ($user->userimage == "noimage.jpg") {
+         if ($user->userimage == "noimage.jpg") {
+             $deleted->user_id = $user->id;
+             $deleted->email =$user->email;
+             $deleted->save();
                 $user->email=str_shuffle($user->email);
-                $emailrs->email = $user->email;
-                $emailrs->user_id= $user->id;
                 $user->password=str_shuffle($user->password);
                 $user->deleted= 1;
                 $user->save();
@@ -214,10 +213,11 @@ class UserController extends Controller
                 return json_encode(['status'=>200]);
             } else {
                 Storage::delete('public/Userimage/' . $user->userimage);
+                $deleted->user_id = $user->id;
+                $deleted->email =$user->email;
+                $deleted->save();
                 $user->email=str_shuffle($user->email);
                 $user->password=str_shuffle($user->password);
-                $emailrs->email = $user->email;
-                $emailrs->user_id=$user->id;
                 $user->deleted= 1;
                 $user->save();
                 Auth::logout();
