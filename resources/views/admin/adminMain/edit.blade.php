@@ -95,10 +95,9 @@
 
           <!-- Card Data -->
           <div class="admin-up d-flex justify-content-start">
-            <i class="fas fa-users info-color py-4 mr-3 z-depth-2"></i>
+            <i class="fas fa-users bg-danger py-4 mr-3 z-depth-2"></i>
             <div class="data">
-              <h5 class="font-weight-bold dark-grey-text">Edit Profile - <span class="text-muted">Complete your
-                  profile</span></h5>
+              <h5 class="font-weight-bold dark-grey-text">Edit Profile</h5>
               <br>
               <span class="text-success tex-center" id="updatesuccess"></span>
 
@@ -115,8 +114,8 @@
               <div class="col-lg-6 col-md-12">
                 <div class="md-form form-sm mb-0">
                   <label for="name" class="placeholder">Name</label><br>
-                  <input type="text" id="name" class="form-control form-control-sm" value="">
-                  <span id="errorname" class="text-danger"></span>
+                  <input type="text" id="adminname" class="form-control form-control-sm" value="">
+                  <span id="adminerrorname" class="text-danger"></span>
 
                 </div>
 
@@ -128,8 +127,8 @@
 
                     <div class="md-form form-sm mb-0">
                       <label for="email" class="placeholder">Email address</label><br>
-                      <input type="text" id="email" class="form-control form-control-sm" value="">
-                      <span id="erroremail" class="text-danger"></span>
+                      <input type="text" id="adminemail" class="form-control form-control-sm" value="">
+                      <span id="adminerroremail" class="text-danger"></span>
                       
                     </div>
 
@@ -207,9 +206,9 @@
 
                 <!-- Basic textarea -->
                 <div class="md-form mb-0">
-                  <a class="btn btn-danger" href="#" id="update">
+                  <a class="btn btn-danger" href="#" id="adminupdate">
                     <span id="updatebtn">Update</span>
-                  </a>
+                  </a> 
                 </div>
 
               </div>
@@ -232,28 +231,12 @@
 
         <!-- Card -->
         <div class="card profile-card">
-
-          <!-- Avatar -->
-          <div class="avatar z-depth-1-half mb-4">
-            <span id="usercardimage"></span>
-          </div>
-
-          <div class="card-body pt-0 mt-0">
-
-            <!-- Name -->
-            <h3 class="mb-3 font-weight-bold"><strong><span id="usercardname"></span></strong></h3>
-            <p class="mt-4 text-muted">
-              XL Number:<span id="usercardid"></span><br>
-              Email:<span id="usercardemail"></span><br>
-              Address:<span id="usercardaddress"></span><br>
-              Parish: <span id="usercardparish"></span><br>
-              City:<span id="usercardcity"></span><br>
-              Country: <span id="usercardcountry"></span><br>
-              Telephone:<span id="usercardphone"></span><br>
-              TRN:<span id="usercardtrn"></span><br></p>
-            {{-- <a class="btn btn-danger btn-rounded"   data-toggle="modal" data-target="#basicExampleModal">Delete Account</a> --}}
-            {{-- <a class="btn btn-danger btn-rounded" id="Deletebtn">Delete Account</a> --}}
-
+          <div class="card-header bg-danger text-white h4">Admin Info</div>
+          <div class="card-body pt-0 mt-0 ">
+            <div class="text-left pt-1">
+              Name:  <span id="admincardname"></span><br>
+              Email: <span id="admincardemail"></span><br>
+            </div>
             <a href="" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#darkModalForm">
               Change Password</a>
 
@@ -261,13 +244,13 @@
               aria-hidden="true">
               <div class="modal-dialog form-dark" role="document">
                 <!--Content-->
-                <div class="modal-content card card-image"
-                  style="background-image: url('https://images.unsplash.com/photo-1508345228704-935cc84bf5e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80');">
-                  <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                <div class="modal-content card card-image">
+                  <div class="text-dark py-5 px-5 z-depth-4">
                     <!--Header-->
                     <div class="modal-header text-center pb-4">
-                      <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel">
-                        <strong>Change</strong> <a class="blue-text font-weight-bold"><strong>Password</strong></a></h3>
+                      <h3 class="modal-title w-100 font-weight-bold" id="myModalLabel">
+                      <a class="text-dark font-weight-bold"><strong>Change Password</strong></a>
+                      </h3>
                       <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
                         <span id="closepasswordmodal" aria-hidden="true">&times;</span>
                       </button>
@@ -275,18 +258,18 @@
                     <!--Body-->
                     <div class="modal-body">
                       <div class="md-form mb-5">
-                        <input type="password" class="form-control validate white-text" id="oldpass" value="">
-                        <label for="Form-pass5">Old Password</label>
+                        <input type="password" class="form-control validate text-dark" id="oldpass" value="">
+                        <label for="oldpass" class="text-dark">Old Password</label>
                         <span id="oldpassword" class="text-danger"></span>
                       </div>
                       <div class="md-form mb-5">
-                        <input type="password" class="form-control validate white-text" id="newpass">
-                        <label for="Form-pass5">New Password</label>
+                        <input type="password" class="form-control validate text-dark" id="newpass">
+                        <label for="Form-pass5" class="text-dark">New Password</label>
                         <span id="newpassword" class="text-danger"></span>
                       </div>
                       <div class="md-form mb-5">
-                        <input type="password" class="form-control validate white-text" id="confirmpass">
-                        <label for="Form-pass5">Confirm Password</label>
+                        <input type="password" class="form-control validate text-dark" id="confirmpass">
+                        <label for="Form-pass5" class="text-dark">Confirm Password</label>
                         <span id="confirmpassword" class="text-danger"></span>
                       </div>
                       <div class="text-center mb-3 col-md-12">
@@ -315,9 +298,9 @@
                   <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
                     <!--Header-->
                     <div class="modal-header text-center pb-4">
-                      <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>Change
+                      <h3 class="modal-title w-100 text-dark font-weight-bold" id="myModalLabel"><strong>Change
                           Profile</strong> <a class="blue-text font-weight-bold"><strong>Picture</strong></a></h3>
-                      <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close" id="imgclose">
+                      <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close" id="imgclose">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>

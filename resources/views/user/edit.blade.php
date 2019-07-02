@@ -96,8 +96,7 @@
           <div class="admin-up d-flex justify-content-start">
             <i class="fas fa-users danger-color py-4 mr-3 z-depth-2"></i>
             <div class="data">
-              <h5 class="font-weight-bold dark-grey-text">Edit Profile - <span class="text-muted">Complete your
-                  profile</span></h5>
+              <h5 class="font-weight-bold dark-grey-text">Edit Profile</h5>
               <br>
               <span class="text-success tex-center" id="updatesuccess"></span>
 

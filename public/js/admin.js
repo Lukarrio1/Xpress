@@ -74,7 +74,9 @@ $(document).on('click', '.updatestatusbtn', function() {
 $('#updateshipmentbtn').click(() => ViewStatusChange());
 
 $('#seaupdatebtn').on('click', () => SeaFreight());
-// this trigger calls the CreateShipment()
+
+$('#adminupdate').on('click', () => Adminupdate());
+
 $(document).on('click', '.addshipment', function() {
   shipmentuserid = this;
   $('#errortracking').html(' ');
@@ -786,7 +788,11 @@ NewsCreate = () => {
 AdminData = () => {
   $.get('/admin/edit/data', data => {
     admin = jQuery.parseJSON(data);
-    console.log(admin);
+    $('#adminname').val(`${admin.name}`);
+    $('#adminemail').val(`${admin.email}`);
+    $('#admincardname').html(`${admin.name}`);
+    $('#admincardemail').html(`${admin.email}`);
+    $('#adminMainname').html(`${admin.name}`);
   });
 };
 
@@ -1073,6 +1079,36 @@ ViewStatusChange = () => {
         iziToast.success({
           position: 'topCenter',
           message: 'Status Changed.'
+        });
+      }
+    });
+  }
+};
+
+Adminupdate = () => {
+  let name = $('#adminname').val();
+  let email = $('#adminemail').val();
+  if (name.length < 3) {
+    $('#adminerrorname').html('Error, invalid name.');
+  } else if (!validateEmail(email)) {
+    $('#adminerroremail').html('Error, Invalid Email');
+  } else {
+    $.ajax({
+      type: 'POST',
+      url: '/admin/update/admin',
+      data: {
+        name: name,
+        email: email,
+        _token: CSRF_TOKEN
+      },
+      dataType: 'text',
+      success: function(response) {
+        $('#adminerrorname').html(' ');
+        $('#adminerroremail').html(' ');
+        AdminData();
+        iziToast.success({
+          position: 'topCenter',
+          message: 'Admin account updated.'
         });
       }
     });

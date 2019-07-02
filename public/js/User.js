@@ -390,9 +390,10 @@ shipments = () => {
       created_at = new Date(`${shp[i].created_at}`);
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${shp[i].updated_at}`);
+      let _class = shp[i].collected == 0 ? "<tr class='table-info'>" : ' <tr>';
       updated =
         shp[i].collected == 1 ? updated_at.toString().slice(0, 24) : ' ';
-      all_ship += `<tr class="" scope="row">
+      all_ship += `${_class}
                 <th>${shp[i].tracking_no}</th>
                 <td>${shp[i].reference_no}</td>
                 <td>${shp[i].description}</td>

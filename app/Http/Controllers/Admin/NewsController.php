@@ -26,7 +26,7 @@ class NewsController extends Controller
         $this->validate($request, [
             'subject' => 'required',
             'body' => 'required'
-        ]);
+    ]);
         $new = new News;
         $new->subject = htmlentities($request->subject);
         $new->body = htmlentities($request->body);

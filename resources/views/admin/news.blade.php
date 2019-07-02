@@ -21,7 +21,7 @@
             <textarea class="form-control rounded-0" id="newsbody" rows="4" placeholder="News Body" name="newsbody"></textarea>
             <span class="text-danger" id="errorbody"></span>
         </div>
-        <button class="btn btn-info btn-md" id="newsendbtn">Post</button>
+        <button class="btn btn-danger btn-md" id="newsendbtn">Post</button>
     </div>
 </div>
 </section>

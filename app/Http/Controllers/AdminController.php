@@ -49,4 +49,18 @@ class AdminController extends Controller
        ]);
     
    }
+   
+   public function update(Request $request){
+       $this->validate($request,[
+           'email'=>'required|email|max:200',
+           'name'=>'required|max:20'
+       ]);
+       $name = htmlentities($request->name);
+       $email =htmlentities($request->email);
+       $admin = Admin::find(Auth::user()->id);
+       $admin->name=$name;
+       $admin->email=$email;
+       $admin->save();
+       return json_encode(['status'=>200]);
+   }
 }
