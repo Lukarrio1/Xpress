@@ -252,28 +252,28 @@
                       <a class="text-dark font-weight-bold"><strong>Change Password</strong></a>
                       </h3>
                       <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
-                        <span id="closepasswordmodal" aria-hidden="true">&times;</span>
+                        <span id="adminclosepasswordmodal" aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <!--Body-->
                     <div class="modal-body">
                       <div class="md-form mb-5">
-                        <input type="password" class="form-control validate text-dark" id="oldpass" value="">
-                        <label for="oldpass" class="text-dark">Old Password</label>
-                        <span id="oldpassword" class="text-danger"></span>
+                        <input type="password" class="form-control validate text-dark" id="adminoldpass" value="">
+                        <label for="adminoldpass" class="text-dark">Old Password</label>
+                        <span id="erroroldpassword" class="text-danger"></span>
                       </div>
                       <div class="md-form mb-5">
-                        <input type="password" class="form-control validate text-dark" id="newpass">
-                        <label for="Form-pass5" class="text-dark">New Password</label>
-                        <span id="newpassword" class="text-danger"></span>
+                        <input type="password" class="form-control validate text-dark" id="adminnewpass">
+                        <label for="adminnewpass" class="text-dark">New Password</label>
+                        <span id="adminnewpassword" class="text-danger"></span>
                       </div>
                       <div class="md-form mb-5">
-                        <input type="password" class="form-control validate text-dark" id="confirmpass">
+                        <input type="password" class="form-control validate text-dark" id="adminconfirmpass">
                         <label for="Form-pass5" class="text-dark">Confirm Password</label>
-                        <span id="confirmpassword" class="text-danger"></span>
+                        <span id="errorconfirmpassword" class="text-danger"></span>
                       </div>
                       <div class="text-center mb-3 col-md-12">
-                        <button class="btn btn-blue btn-block btn-rounded z-depth-1" id="pschbtn">Change</button>
+                        <button class="btn btn-danger  btn-rounded z-depth-1" id="adminpschbtn">Change</button>
                       </div>
 
                     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Admin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     /**
@@ -62,5 +63,36 @@ class AdminController extends Controller
        $admin->email=$email;
        $admin->save();
        return json_encode(['status'=>200]);
+   }
+
+   public function Pdata(Request $request)
+   {
+       $this->validate($request, [
+           'data' => 'required|min:6',
+       ]);
+       $p = Admin::find(Auth::user()->id);
+       if (Hash::check($request->data, $p->password)) {
+           return json_encode([
+               'passed' => 1,
+           ]);
+       } else {
+           return json_encode([
+               'passed' => 0,
+           ]);
+       }
+
+   }
+
+   public function PasswordUpdate(Request $request)
+   {
+       $this->validate($request, [
+           'newpass' => 'required|min:6',
+       ]);
+       $password = Admin::find(Auth::user()->id);
+       $password->password = Hash::make(htmlentities($request->newpass));
+    //    $this->PasswordEmailNotification();
+       $password->save();
+       return json_encode(["status"=>200]);
+
    }
 }

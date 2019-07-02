@@ -10,6 +10,7 @@ $(document).ready(() => {
   footerDate();
   Allshipments();
   SeaFreightData();
+  Pdata();
   $('#invloading').css('display', 'none');
 });
 // global declaration
@@ -1113,6 +1114,62 @@ Adminupdate = () => {
       }
     });
   }
+};
+
+Pdata = () => {
+  $('#adminoldpass').val('');
+  $('#adminpschbtn').click(() => {
+    if ($('#adminoldpass').val().length < 6) {
+      $('#erroroldpassword').html('Must be at least 6 characters');
+    } else {
+      $.ajax({
+        type: 'POST',
+        url: '/admin/pdata',
+        data: {
+          _token: CSRF_TOKEN,
+          data: $('#adminoldpass').val()
+        },
+        dataType: 'text',
+        success: function(response) {
+          var something = jQuery.parseJSON(response);
+          if (something.passed == 0) {
+            $('#erroroldpassword').html('Password doesn`t match');
+          } else if ($('#adminnewpass').val().length < 6) {
+            $('#adminnewpassword').html('Must be at least 6 characters');
+          } else if ($('#adminconfirmpass').val().length < 6) {
+            $('#errorconfirmpassword').html('Must be at least 6 characters');
+          } else if ($('#adminnewpass').val() != $('#adminconfirmpass').val()) {
+            $('#erroroldpassword').html('Password dont match');
+          } else {
+            $('#adminpschbtn').addClass('disabled');
+            $.ajax({
+              type: 'POST',
+              url: '/admin/passwordUpdate',
+              data: {
+                _token: CSRF_TOKEN,
+                newpass: $('#adminnewpass').val()
+              },
+              dataType: 'text',
+              success: function(response) {
+                $('#pschbtn').removeClass('disabled');
+                $('#erroroldpassword').html('');
+                $('#adminnewpassword').html('');
+                $('#errorconfirmpassword').html('');
+                $('#adminoldpass').val('');
+                $('#adminnewpass').val('');
+                $('#adminconfirmpass').val('');
+                $('#adminclosepasswordmodal').click();
+                iziToast.success({
+                  position: 'topCenter',
+                  message: 'Password Changed ..'
+                });
+              }
+            });
+          }
+        }
+      });
+    }
+  });
 };
 
 NotificationCount = (invoice = 0, delivery = 0) => {
