@@ -139,7 +139,7 @@
                     <h4>4500</h4>
                   </div>
                   <div class="col-4">
-                    <small class="grey-text"></small>
+                    <small class="grey-text">Total News Added</small>
                     <h4></h4>
                   </div>
                 </div>
