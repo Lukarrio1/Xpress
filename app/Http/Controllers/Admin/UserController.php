@@ -116,9 +116,9 @@ class UserController extends Controller
 
     public function Search(Request $request)
     {
-        $this->validate($request, [
-            'search' => 'required',
-        ]);
+    $this->validate($request, [
+        'search' => 'required',
+    ]);
         $res= array();
         $search =  htmlentities($request->search);
                 $results = DB::table('users')
@@ -166,10 +166,8 @@ class UserController extends Controller
                 'updated'=>date('M j, Y h:ia', strtotime($result->updated_at ))   
             ];
             }
-            
-            
-            }
-            return json_encode($res);
+    }
+        return json_encode($res);
     }
 
     public function DeleteUser(Request $request){
@@ -186,7 +184,7 @@ class UserController extends Controller
                 $user->password=str_shuffle($user->password);
                 $user->deleted= 1;
                 $user->save();
-                return 1;
+                return json_encode(['status'=>200]);
             } else {
                 Storage::delete('public/Userimage/' . $user->userimage);
                 $deleted->user_id = $user->id;
@@ -196,7 +194,7 @@ class UserController extends Controller
                 $user->password=str_shuffle($user->password);
                 $user->deleted= 1;
                 $user->save();
-                return 1;
+                return json_encode(['status'=>200]);
             }
     
 }
