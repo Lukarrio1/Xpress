@@ -806,7 +806,6 @@ SeaFreightCalculator = () => {
       : 0;
   let price =
     $('#itemprice').val().length > 0 ? parseInt($('#itemprice').val()) : 0;
-
   $.get('/shippingcalculator/data', data => {
     let fcharge = 0;
     let scharge = 0;

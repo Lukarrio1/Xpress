@@ -66,7 +66,7 @@
                 <input type="text" id="shippingweight10" class="form-control mb-4" placeholder="Add 10 lbs rate">
                
                 <!-- Calculate button -->
-                <button class="btn btn-info btn-block" type="button">Update Info</button>
+                <button class="btn btn-danger btn-block" type="button">Update Info</button>
 
             </div>
             <!-- Default form subscription -->

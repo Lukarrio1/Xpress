@@ -24,10 +24,14 @@
             <!-- Side navigation links -->
             <li>
           <ul class="collapsible collapsible-accordion">
+            <a href="{{route('admin.dashboard')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+            
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-box-open"></i>Update Shipments<i
                   class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
                 <ul class="list-unstyled">
+                  
                 <li><a href="{{ route('admin.shipments') }}" class="waves-effect">Add Shipments</a>
                   </li>
                   <li><a href="{{ route('admin.sent.shipments') }}" class="waves-effect">View all Shipments</a>
@@ -105,11 +109,11 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link waves-effect"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                {{-- <a class="nav-link waves-effect"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link waves-effect"><i class="far fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
-              </li>
+              </li> --}}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle waves-effect text-dark" href="#" id="userDropdown" data-toggle="dropdown"aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">{{Auth::user()->name}}</span>

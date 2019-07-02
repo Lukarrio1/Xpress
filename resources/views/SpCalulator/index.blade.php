@@ -30,7 +30,7 @@
                 <!--Result --> 
                
                 <!-- Calculate button -->
-                <button class="btn btn-info btn-block"data-toggle="modal" data-target="#calculateresult" type="button" id="calculatesea">Calculate</button>
+                <button class="btn btn-danger btn-block"data-toggle="modal" data-target="#calculateresult" type="button" id="calculatesea">Calculate</button>
 
                 {{-- //Sea Freight Modal --}}
 <div class="modal fade" id="calculateresult" tabindex="-1" role="dialog" aria-labelledby="calculateresult"

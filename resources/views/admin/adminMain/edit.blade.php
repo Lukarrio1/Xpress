@@ -124,7 +124,7 @@
               <!-- Grid column -->
 
               <!-- Grid column -->
-              {{-- <div class="col-lg-4">
+             <div class="col-lg-6">
 
                     <div class="md-form form-sm mb-0">
                       <label for="email" class="placeholder">Email address</label><br>
@@ -133,17 +133,14 @@
                       
                     </div>
 
-                  </div> --}}
+                  </div> 
               <!-- Grid column -->
 
               <!-- Grid column -->
               <div class="col-lg-6 col-md-12">
 
                 <div class="md-form form-sm mb-0">
-                  <label for="telephone" class="placeholder">Telephone</label><br>
-                  <input type="number" id="telephone" class="form-control form-control-sm" vaule="">
-                  <span id="errorphone" class="text-danger"></span>
-
+                  
                 </div>
 
               </div>
@@ -159,10 +156,7 @@
               <div class="col-md-6">
 
                 <div class="md-form form-sm mb-0">
-                  <label for="city" class="placeholder">City</label><br>
-                  <input type="text" id="city" class="form-control form-control-sm" value="">
-                  <span id="errorcity" class="text-danger"></span>
-
+                  
                 </div>
 
               </div>
@@ -172,10 +166,7 @@
               <div class="col-md-6">
 
                 <div class="md-form form-sm mb-0">
-                  <label for="parish" class="placeholder">Parish</label><br>
-                  <input type="text" id="parish" class="form-control form-control-sm" value="">
-                  <span id="errorparish" class="text-danger"></span>
-
+                  
                 </div>
 
               </div>
@@ -191,11 +182,7 @@
               <div class="col-lg-6 col-md-12">
 
                 <div class="md-form form-sm mb-0">
-                  <label for="country" class="placeholder">Country</label><br>
-                  <input type="text" id="country" class="form-control form-control-sm" value="">
-                  <span id="errorcountry" class="text-danger"></span>
-
-                </div>
+                 </div>
 
               </div>
               <!-- Grid column -->
@@ -205,10 +192,7 @@
               <div class="col-lg-6 col-md-12">
 
                 <div class="md-form form-sm mb-0">
-                  <label for="address" class="placeholder">Address</label><br>
-                  <input type="text" id="address" class="form-control form-control-sm" value="">
-                  <span id="erroraddress" class="text-danger"></span>
-
+                  
                 </div>
 
               </div>
@@ -223,7 +207,7 @@
 
                 <!-- Basic textarea -->
                 <div class="md-form mb-0">
-                  <a class="btn btn-success" href="#" id="update">
+                  <a class="btn btn-danger" href="#" id="update">
                     <span id="updatebtn">Update</span>
                   </a>
                 </div>
@@ -268,7 +252,7 @@
               Telephone:<span id="usercardphone"></span><br>
               TRN:<span id="usercardtrn"></span><br></p>
             {{-- <a class="btn btn-danger btn-rounded"   data-toggle="modal" data-target="#basicExampleModal">Delete Account</a> --}}
-            <a class="btn btn-danger btn-rounded" id="Deletebtn">Delete Account</a>
+            {{-- <a class="btn btn-danger btn-rounded" id="Deletebtn">Delete Account</a> --}}
 
             <a href="" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#darkModalForm">
               Change Password</a>
@@ -317,7 +301,7 @@
               </div>
               <!--/.Content-->
             </div>
-            <div class="text-center">
+            {{-- <div class="text-center">
               <a href="" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#darkchangepicsForm">
                 Change Picture</a>
             </div>
@@ -364,7 +348,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
             <!--/.Content-->
           </div>
 

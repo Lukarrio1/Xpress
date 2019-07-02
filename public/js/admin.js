@@ -942,9 +942,9 @@ Allshipments = () => {
     $('#shipa').html(`${shipment.length}`);
     if (shipp.length == shipment.length) {
       $('#shipp').removeClass('badge-success');
-      $('#shipp').addClass('badge-danger');
+      $('#shipp').addClass('badge-primary');
     } else {
-      $('#shipp').removeClass('badge-danger');
+      $('#shipp').removeClass('badge-primary');
       $('#shipp').addClass('badge-success');
     }
     let output = '';
