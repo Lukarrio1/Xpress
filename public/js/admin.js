@@ -1259,7 +1259,7 @@ initcalculator = () => {
     url: '/admin/shipmentcalculator/air',
     data: {
       _token: CSRF_TOKEN,
-      exrate: exchange,
+      exrate: 0,
       shw10: 0,
       shw9: 0,
       shw8: 0,
