@@ -83,8 +83,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/edit/data','AdminController@editData');
 
     Route::get('/shipmentcalculator','Admin\ShipmentCalculator@index')->name('admin.calculator');
-    Route::post('/shipmentcalculator','Admin\ShipmentCalculator@Rates');
-    Route::get('/data','Admin\ShipmentCalculator@Data');
+    Route::post('/shipmentcalculator','Admin\ShipmentCalculator@SeaRates');
+    Route::post('/shipmentcalculator/air','Admin\ShipmentCalculator@AirRates');
+    Route::get('/sea/data','Admin\ShipmentCalculator@SeaData');
+    Route::get('/air/data','Admin\ShipmentCalculator@AirData');
     
 });
 

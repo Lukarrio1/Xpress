@@ -42,31 +42,31 @@
 
                 <p class="h3 pb-5 mb-4">Air Freight Calculator</p>
                 <!-- Exchange Rate -->
-                <input type="text" id="exchangerate" class="form-control mb-4" placeholder="Exchange Rate">
+                <input type="number" id="Aexchangerate" class="form-control mb-4" placeholder="Exchange Rate">
                 
                 <!-- Weight 1lbs -->
-                <input type="text" id="shippingweight1" class="form-control mb-4" placeholder="Add 1 lbs rate">
+                <input type="number" id="shippingweight1" class="form-control mb-4" placeholder="Add 1 lbs rate">
                 <!-- Weight 2lbs -->
-                <input type="text" id="shippingweight2" class="form-control mb-4" placeholder="Add 2 lbs rate">
+                <input type="number" id="shippingweight2" class="form-control mb-4" placeholder="Add 2 lbs rate">
                 <!-- Weight 3lbs-->
-                <input type="text" id="shippingweight3" class="form-control mb-4" placeholder="Add 3 lbs rate">
+                <input type="number" id="shippingweight3" class="form-control mb-4" placeholder="Add 3 lbs rate">
                <!-- Weight 4lbs -->
-                <input type="text" id="shippingweight4" class="form-control mb-4" placeholder="Add 4 lbs rate">
+                <input type="number" id="shippingweight4" class="form-control mb-4" placeholder="Add 4 lbs rate">
                <!-- Weight 5lbs -->
-                <input type="text" id="shippingweight5" class="form-control mb-4" placeholder="Add 5 lbs rate">
+                <input type="number" id="shippingweight5" class="form-control mb-4" placeholder="Add 5 lbs rate">
                <!-- Weight 6lbs -->
-                <input type="text" id="shippingweight6" class="form-control mb-4" placeholder="Add 6 lbs rate">
+                <input type="number" id="shippingweight6" class="form-control mb-4" placeholder="Add 6 lbs rate">
                <!-- Weight 7lbs-->
-                <input type="text" id="shippingweight7" class="form-control mb-4" placeholder="Add 7 lbs rate">
+                <input type="number" id="shippingweight7" class="form-control mb-4" placeholder="Add 7 lbs rate">
                <!-- Weight 8lbs -->
-                <input type="text" id="shippingweight8" class="form-control mb-4" placeholder="Add 8 lbs rate">
+                <input type="number" id="shippingweight8" class="form-control mb-4" placeholder="Add 8 lbs rate">
                <!-- Weight 9lbs-->
-                <input type="text" id="shippingweight9" class="form-control mb-4" placeholder="Add 9 lbs rate">
+                <input type="number" id="shippingweight9" class="form-control mb-4" placeholder="Add 9 lbs rate">
                <!-- Weight 10lbs-->
-                <input type="text" id="shippingweight10" class="form-control mb-4" placeholder="Add 10 lbs rate">
+                <input type="number" id="shippingweight10" class="form-control mb-4" placeholder="Add 10 lbs rate">
                
                 <!-- Calculate button -->
-                <button class="btn btn-danger btn-block" type="button">Update Info</button>
+                <button class="btn btn-danger btn-block" type="button" id="airupdatebtn">Update Info</button>
 
             </div>
             <!-- Default form subscription -->

@@ -275,64 +275,12 @@
                       <div class="text-center mb-3 col-md-12">
                         <button class="btn btn-danger  btn-rounded z-depth-1" id="adminpschbtn">Change</button>
                       </div>
-
                     </div>
-
-
                   </div>
                 </div>
               </div>
               <!--/.Content-->
             </div>
-            {{-- <div class="text-center">
-              <a href="" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#darkchangepicsForm">
-                Change Picture</a>
-            </div>
-
-            <div class="modal fade" id="darkchangepicsForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog form-dark" role="document">
-                <!--Content-->
-                <div class="modal-content card card-image"
-                  style="background-image: url('https://images.unsplash.com/photo-1508345228704-935cc84bf5e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80');">
-                  <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
-                    <!--Header-->
-                    <div class="modal-header text-center pb-4">
-                      <h3 class="modal-title w-100 text-dark font-weight-bold" id="myModalLabel"><strong>Change
-                          Profile</strong> <a class="blue-text font-weight-bold"><strong>Picture</strong></a></h3>
-                      <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close" id="imgclose">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <!--Body-->
-                    <div class="modal-body">
-                      <form class="md-form" action="{{route('userimage')}}" method="Post" enctype=multipart/form-data id="imgform">
-                        <div class="file-field text-center">
-                        {{ csrf_field() }}
-                        <div class="btn btn-primary btn-sm ">
-                          <span>Choose file</span>
-                          <input type="file" name="image" required id="fileInput">
-                        </div>
-                        <div class="text-center mb-3 col-md-12">
-                          <button class="btn btn-blue btn-block btn-rounded z-depth-1" type="submit">upload
-                            image</button>
-                        </div>
-                    </div>
-                    <div class="file-path-wrapper">
-                      <input class="file-path validate" id="fileNameOutput" type="text" placeholder="Upload your file"
-                        value="">
-                    </div>
-                  </div>
-                  </form>
-                  <!--Grid row-->
-                  <div class="text-center col-md-12">
-                    <button class="btn btn-danger btn-block btn-rounded z-depth-1" id="changeimg">
-                      remove image</button>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
-            <!--/.Content-->
           </div>
 
           <!-- Card -->

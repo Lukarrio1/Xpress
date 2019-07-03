@@ -10,6 +10,7 @@ $(document).ready(() => {
   footerDate();
   Allshipments();
   SeaFreightData();
+  AirFreightData();
   Pdata();
   $('#invloading').css('display', 'none');
 });
@@ -77,6 +78,8 @@ $('#updateshipmentbtn').click(() => ViewStatusChange());
 $('#seaupdatebtn').on('click', () => SeaFreight());
 
 $('#adminupdate').on('click', () => Adminupdate());
+
+$('#airupdatebtn').on('click', () => AirFreight());
 
 $(document).on('click', '.addshipment', function() {
   shipmentuserid = this;
@@ -209,7 +212,7 @@ UserCard = userID => {
     dataType: 'text',
     success: data => {
       let user = jQuery.parseJSON(data);
-      let deleted = user.deleted == 1 ? 'Account Deleted' : '';
+      let deleted = user.deleted == 1 ? 'Account Deleted' : 'Account Active';
       let usercard = `<!-- Card -->
 				<div class="card profile-card">
 				<div class="avatar z-depth-1-half mb-4">
@@ -1049,8 +1052,76 @@ SeaFreight = () => {
   });
 };
 
+AirFreight = () => {
+  let exchange =
+    $('#Aexchangerate').val().length > 0 ? $('#Aexchangerate').val() : 0;
+  let shw1 =
+    $('#shippingweight1').val().length > 0 ? $('#shippingweight1').val() : 0;
+  let shw2 =
+    $('#shippingweight2').val().length > 0 ? $('#shippingweight2').val() : 0;
+  let shw3 =
+    $('#shippingweight3').val().length > 0 ? $('#shippingweight3').val() : 0;
+  let shw4 =
+    $('#shippingweight4').val().length > 0 ? $('#shippingweight4').val() : 0;
+  let shw5 =
+    $('#shippingweight5').val().length > 0 ? $('#shippingweight5').val() : 0;
+  let shw6 =
+    $('#shippingweight6').val().length > 0 ? $('#shippingweight6').val() : 0;
+  let shw7 =
+    $('#shippingweight7').val().length > 0 ? $('#shippingweight7').val() : 0;
+  let shw8 =
+    $('#shippingweight8').val().length > 0 ? $('#shippingweight8').val() : 0;
+  let shw9 =
+    $('#shippingweight9').val().length > 0 ? $('#shippingweight9').val() : 0;
+  let shw10 =
+    $('#shippingweight10').val().length > 0 ? $('#shippingweight10').val() : 0;
+  $.ajax({
+    type: 'POST',
+    url: '/admin/shipmentcalculator/air',
+    data: {
+      _token: CSRF_TOKEN,
+      exrate: exchange,
+      shw10: shw10,
+      shw9: shw9,
+      shw8: shw8,
+      shw7: shw7,
+      shw6: shw6,
+      shw5: shw5,
+      shw4: shw4,
+      shw3: shw3,
+      shw2: shw2,
+      shw1: shw1
+    },
+    dataType: 'text',
+    success: function(response) {
+      AirFreightData();
+      iziToast.success({
+        position: 'topCenter',
+        message: 'Air freight rates updated'
+      });
+    }
+  });
+};
+
+AirFreightData = () => {
+  $.get('/admin/air/data', data => {
+    let res = jQuery.parseJSON(data);
+    $('#Aexchangerate').val(`${res.exrate}`);
+    $('#shippingweight1').val(`${res.w1lb}`);
+    $('#shippingweight2').val(`${res.w2lb}`);
+    $('#shippingweight3').val(`${res.w3lb}`);
+    $('#shippingweight4').val(`${res.w4lb}`);
+    $('#shippingweight5').val(`${res.w5lb}`);
+    $('#shippingweight6').val(`${res.w6lb}`);
+    $('#shippingweight7').val(`${res.w7lb}`);
+    $('#shippingweight8').val(`${res.w8lb}`);
+    $('#shippingweight9').val(`${res.w9lb}`);
+    $('#shippingweight10').val(`${res.w10lb}`);
+  });
+};
+
 SeaFreightData = () => {
-  $.get('/admin/data', data => {
+  $.get('/admin/sea/data', data => {
     let res = jQuery.parseJSON(data);
     $('#exchangerate').val(`${res.exrate}`);
     $('#percentage').val(`${res.prerate}`);
