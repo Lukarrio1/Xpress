@@ -72,10 +72,10 @@
                 <input type="text" id="itemprice" class="form-control mb-4" placeholder="Enter Item cost (usd)">
                 
                 <!-- Calculate button -->
-                <button class="btn btn-info btn-block" data-toggle ="modal" data-target="#calculateresultair" type="button">Calculate</button>
+                <button class="btn btn-danger btn-block" data-toggle ="modal" data-target="#calculateresultair" type="button">Calculate</button>
 {{-- //Air Freight Modal --}}
                 <div class="modal fade" id="calculateresultair" tabindex="-1" role="dialog" aria-labelledby="calculateresultair"
-  aria-hidden="true">
+         aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-danger text-white">
