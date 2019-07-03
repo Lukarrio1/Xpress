@@ -216,9 +216,9 @@ UserCard = userID => {
       let usercard = `<!-- Card -->
 				<div class="card profile-card">
 				<div class="avatar z-depth-1-half mb-4">
-				<img src="/storage/Userimage/${
-          user.image
-        }" class="rounded-circle" alt="${user.name}">
+				<img src="/storage/Userimage/${user.image}" class="rounded-circle" alt="${
+        user.image
+      }">
 				</div>
 				<div class="card-body pt-0 mt-0" >
 				<div class="text-center">
