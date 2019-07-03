@@ -218,7 +218,7 @@ UserCard = userID => {
 				<div class="avatar z-depth-1-half mb-4">
 				<img src="/storage/Userimage/${
           user.image
-        }" class="rounded-circle" alt="First sample avatar image">
+        }" class="rounded-circle" alt="${user.name}">
 				</div>
 				<div class="card-body pt-0 mt-0" >
 				<div class="text-center">
