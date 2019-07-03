@@ -1252,3 +1252,41 @@ NotificationCount = (invoice = 0, delivery = 0) => {
 window.setInterval(() => {
   InvoiceNt();
 }, 10000);
+
+initcalculator = () => {
+  $.ajax({
+    type: 'POST',
+    url: '/admin/shipmentcalculator/air',
+    data: {
+      _token: CSRF_TOKEN,
+      exrate: exchange,
+      shw10: 0,
+      shw9: 0,
+      shw8: 0,
+      shw7: 0,
+      shw6: 0,
+      shw5: 0,
+      shw4: 0,
+      shw3: 0,
+      shw2: 0,
+      shw1: 0
+    },
+    dataType: 'text',
+    success: function(response) {
+      AirFreightData();
+    }
+  });
+  $.ajax({
+    type: 'POST',
+    url: '/admin/shipmentcalculator',
+    data: {
+      _token: CSRF_TOKEN,
+      exrate: 0,
+      percentage: 0
+    },
+    dataType: 'text',
+    success: function(response) {
+      SeaFreightData();
+    }
+  });
+};
