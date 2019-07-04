@@ -216,9 +216,9 @@ UserCard = userID => {
       let usercard = `<!-- Card -->
 				<div class="card profile-card">
 				<div class="avatar z-depth-1-half mb-4">
-				<img src="/storage/Userimage/${
-          user.image
-        }" class="rounded-circle" alt="First sample avatar image">
+				<img src="/storage/Userimage/${user.image}" class="rounded-circle" alt="${
+        user.image
+      }">
 				</div>
 				<div class="card-body pt-0 mt-0" >
 				<div class="text-center">
@@ -302,6 +302,10 @@ UserDelete = UserID => {
 
 Allinvoice = () => {
   $.get('/admin/invoices/all', data => {
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
     let inv = jQuery.parseJSON(data);
     let invoice = '';
     let maxinv = 0;
@@ -340,7 +344,7 @@ Allinvoice = () => {
     <td>${inv[i].courier}</td>
     <td>${inv[i].pkgname}</td>
 		<td>${inv[i].description}</td>
-		<td>$${inv[i].value}</td>
+		<td>${formatter.format(parseInt(inv[i].value))}</td>
 		<td>${inv[i].weight}lbs</td>
 		<td><a class="invfile" id="invfile${inv[i].id}">${inv[i].invoice}</a></td>
     <td>${created}</td>
@@ -946,6 +950,10 @@ UpdateShipmentSearch = () => {
 
 Allshipments = () => {
   $.get('/admin/shipments/all', data => {
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
     let shipment = jQuery.parseJSON(data);
     let shipp = shipment.filter(n => n.collected == 0);
     $('#shipp').html(`${shipp.length}`);
@@ -996,7 +1004,7 @@ Allshipments = () => {
       <td>${n.reference_no}</td>
       <td>${n.description}</td>
       <td>${n.delivery_date}</td>
-      <td>${n.spcharge}</td>
+      <td>${formatter.format(parseInt(n.spcharge))}</td>
       <td>${n.status}</td>
       <td>${created}</td>
       <td>${collected}</td>

@@ -169,7 +169,7 @@
             <i class="far fa-money-bill-alt"></i>
           </div>
           <p class="white-text">Total Shipments Value</p>
-          <h4>$<span id="shipmentvalue">0</span> JMD</h4>
+          <h4><span id="shipmentvalue">0</span> JMD</h4>
           </div>
       </div>
       <!--/.Card Success-->
@@ -187,7 +187,7 @@
             <i class="fas fa-chart-line"></i>
           </div>
           <p>Total Payments Due</p>
-          <h4>$<span id="shipmentddue"></span>  JMD
+          <h4><span id="shipmentddue"></span> JMD
           </h4>
         </div>
       </div>

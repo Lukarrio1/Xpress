@@ -39,15 +39,12 @@
     <div class="modal-content">
       <div class="modal-header bg-danger text-white">
         <h5 class="modal-title" id="">Sea Freight Results </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
         </div>
        <div class="modal-body">
        <div class="h5 text-left">
-                  Freight Charge : $<span id='fcharge'>0</span><br>
-                Service Charge : $<span id='scharge'>0</span><br>
-                Total Charges : $<span id='fctotal'>0</span><br>
+                  Freight Charge : <span id='fcharge'>0</span><br>
+                Service Charge : <span id='scharge'>0</span><br>
+                Total Charges : <span id='fctotal'>0</span><br>
         </div>
       </div>
       <div class="modal-footer">
@@ -72,10 +69,10 @@
                 <input type="text" id="itemprice" class="form-control mb-4" placeholder="Enter Item cost (usd)">
                 
                 <!-- Calculate button -->
-                <button class="btn btn-info btn-block" data-toggle ="modal" data-target="#calculateresultair" type="button">Calculate</button>
+                <button class="btn btn-danger btn-block" data-toggle ="modal" data-target="#calculateresultair" type="button">Calculate</button>
 {{-- //Air Freight Modal --}}
                 <div class="modal fade" id="calculateresultair" tabindex="-1" role="dialog" aria-labelledby="calculateresultair"
-  aria-hidden="true">
+         aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-danger text-white">

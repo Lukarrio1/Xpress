@@ -30,7 +30,7 @@
                 
                
                 <!-- Update button -->
-                <button class="btn btn-info btn-block" type="button" id="seaupdatebtn">Update Info</button>
+                <button class="btn btn-danger btn-block" type="button" id="seaupdatebtn">Update Info</button>
 
                 
             </div>
