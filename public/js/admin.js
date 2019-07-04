@@ -111,6 +111,7 @@ footerDate = () => {
 Allusers = () => {
   $.get('/admin/allusers', data => {
     var user = jQuery.parseJSON(data);
+    AdminVerifiedUser(user);
     UsersShipment(user);
     let text = '';
     let amount = user.length;
@@ -143,6 +144,12 @@ Allusers = () => {
     $('#usercount').html(`${user.length}`);
     $('#alluserbody').html(`${text}`);
   });
+};
+
+AdminVerifiedUser = users => {
+  let verified = users.filter(n => n.verified == '').length;
+  $('#verifieduserscount').html(`${verified}`);
+  $('#totalusercount').html(`${users.length}`)
 };
 
 UserCheck = amount => {
@@ -307,6 +314,7 @@ Allinvoice = () => {
       currency: 'USD'
     });
     let inv = jQuery.parseJSON(data);
+    AdmininvoiceValue(inv);
     let invoice = '';
     let maxinv = 0;
     window.setInterval(() => {
@@ -364,6 +372,16 @@ Allinvoice = () => {
     $('#invoicebody1').html(`${invoice}`);
     $('#invcount').html(`${inv.length}`);
   });
+};
+
+AdmininvoiceValue = invoices => {
+  let money = invoices.reduce((total, val) => total + parseInt(val.value), 0);
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+  let formatmoney = formatter.format(money);
+  $('#adminInvoiceValue').html(formatmoney);
 };
 
 InvoiceFile = invoicefileID => {
@@ -955,6 +973,7 @@ Allshipments = () => {
       currency: 'USD'
     });
     let shipment = jQuery.parseJSON(data);
+    AdminShipmentValue(shipment);
     let shipp = shipment.filter(n => n.collected == 0);
     $('#shipp').html(`${shipp.length}`);
     $('#shipa').html(`${shipment.length}`);
@@ -1013,6 +1032,19 @@ Allshipments = () => {
     });
     $('#adminshipments').html(`${output}`);
   });
+};
+
+AdminShipmentValue = shipments => {
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+  let money = shipments.reduce(
+    (total, val) => total + parseInt(val.spcharge),
+    0
+  );
+  let formatmoney = formatter.format(money);
+  $('#adminshipmentvalue').html(formatmoney);
 };
 
 ShipmentCompleted = id => {

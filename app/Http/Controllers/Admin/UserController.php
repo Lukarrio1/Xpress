@@ -39,6 +39,7 @@ class UserController extends Controller
                 'xl' => $user->xl,
                 'id'=>$user->id,
                 'trn'=>$user->trn,
+                'verified'=>$user->token,
                 'deleted'=>$user->deleted,
                 'created'=>date('M j, Y h:ia', strtotime($user->created_at )),
                 'updated'=>date('M j, Y h:ia', strtotime($user->updated_at ))
@@ -57,6 +58,7 @@ class UserController extends Controller
                 'xl' => $user->xl,
                 'id'=>$user->id,
                 'trn'=>$user->trn,
+                'verified'=>$user->token,
                 'deleted'=>$user->deleted,
                 'created'=>date('M j, Y h:ia', strtotime($user->created_at )),
                 'updated'=>date('M j, Y h:ia', strtotime($user->updated_at ))
