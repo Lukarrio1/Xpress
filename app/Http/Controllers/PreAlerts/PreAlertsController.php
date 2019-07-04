@@ -8,7 +8,9 @@ use App\Prealerts;
 use Illuminate\Support\Facades\Auth;
 use App\invoicenf as nt;
 use App\Sheduledelivery as sd;
-
+use App\Mail\Newprealert;
+use Illuminate\Support\Facades\Mail;
+use App\Admin;
 class PreAlertsController extends Controller
 {
     public function __construct()
@@ -90,12 +92,19 @@ class PreAlertsController extends Controller
         $store->invoice = $filenametostore;
         $store->expected_date = htmlentities($request->expected_date);
         $store->save();
+        $this->PreAlertCreated();
         return redirect()->back()->with('success', 'Pre alert sent..');
 
     }
     public function single($id){
         $pre = Prealerts::Where('user_id',Auth::user()->id)->where('id',$id)->first();
         return json_encode($pre);
+    }
+
+    public function PreAlertCreated(){
+        $user =Auth::user()->name;
+        $admin = Admin::find(1);
+        Mail::to($admin->email)->send(new Newprealert($user));
     }
 
 }

@@ -246,10 +246,6 @@
     <!-- Second column -->
     <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
 
-      <!-- Card -->
-
-      <!-- Card -->
-
     </div>
     <!-- Second column -->
 
@@ -395,7 +391,8 @@
     <div class="modal-content">
       <div class="modal-header bg-danger text-white text-center">
         <h5 class="modal-title" id=""><span id="activitytitle">
-          </span></h5><small id="recentevent"></small></h5>
+          </span></h5><small id="recentevent"></small>
+        </h5>
       </div>
       <div class="modal-body" id="activitybody">
         

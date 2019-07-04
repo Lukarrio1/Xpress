@@ -649,7 +649,7 @@ InCheck = invlen => {
   $.get('/admin/invoices/all', data => {
     let inv = jQuery.parseJSON(data);
     if (invlen != inv.length) {
-      Allinoice();
+      Allinvoice();
     }
   });
 };

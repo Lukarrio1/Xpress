@@ -1,0 +1,1 @@
+Your package with reference number {{$reference}} {{$status}}.

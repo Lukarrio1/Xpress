@@ -4,21 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name') }}</title>
-
-    <!-- Styles -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/env.css') }}">
 <link rel="stylesheet" href="{{asset('css/iziToast.css')}}">
-
-   
-    <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -32,7 +24,6 @@
         @include('inc.message')
         @yield('content')
       </main>
-      @include('inc.adminfooter')
     </div>   
    <script
   src="http://code.jquery.com/jquery-3.3.1.min.js"
@@ -53,6 +44,5 @@
   var id ={{ Auth::user()->id }};
   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 </script>
-{{-- dont touch  --}}
  </body>
 </html>

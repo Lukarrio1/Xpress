@@ -8,6 +8,7 @@ use App\Mail\PasswordUpdatedEmail;
 use Illuminate\Support\Facades\Mail;
 use App\News;
 use App\User;
+use App\Mail\NewBroadCast;
 
 class NewsController extends Controller
 {
@@ -30,7 +31,7 @@ class NewsController extends Controller
         $new = new News;
         $new->subject = htmlentities($request->subject);
         $new->body = htmlentities($request->body);
-        // $this->Email(htmlentities($request->subject), htmlentities($request->body));
+        $this->Email(htmlentities($request->subject), htmlentities($request->body));
         $new->save();
         return json_encode([
             'status' => 200,
@@ -42,7 +43,7 @@ class NewsController extends Controller
         $users = User::all();
         foreach ($users as $user) {
             if($user->deleted==0){
-             Mail::to($user->email)->send(new PasswordUpdatedEmail($subject, $body));
+             Mail::to($user->email)->send(new NewBroadCast($subject, $body));
             }
         }
     }

@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\spnotify;
 use App\User;
 use App\Shipments;
+use App\Mail\ShipmentStatus;
+use App\Mail\ShipmentCollected;
+use Illuminate\Support\Facades\Mail;
 
 class ShipmentsController extends Controller
 {
@@ -41,18 +44,23 @@ class ShipmentsController extends Controller
         $shp->delivery_date = htmlentities($request->date);
         $shp->description = htmlentities($request->description);
         $shp->spcharge = htmlentities($request->charge);
+        $status="";
         switch($request->status){
             case "dw":
             $shp->status ="Delivered to Warehouse";
+            $status =" was delivered to the Warehouse";
             break;
             case "Ij" :
             $shp->status ="In transit to Jamaica";
+            $status= "is in transit to jamaica";
             break;
             case "ac" : 
             $shp->status ="At Customs";
+            $status = "is at customs";
             break;
             case "ru": 
             $shp->status ="Ready for Pick Up";
+            $status="is ready for pick up";
             if(empty($notify)){
                 $newnotify = new spnotify;
                 $newnotify->user_id=$id;
@@ -65,9 +73,11 @@ class ShipmentsController extends Controller
                 $notify->save();
             }
            $shp->user_id = htmlentities($request->id);
+           $this->ShipmentStatusMail($status,$request->id,$request->reference);
            $shp->save();
             break;
         }
+
             if(empty($notify)){
                 $newnotify = new spnotify;
                 $newnotify->user_id=$id;
@@ -77,12 +87,13 @@ class ShipmentsController extends Controller
                 $notify->token = "true";
                 $notify->save();
             }
+      
         $shp->user_id = htmlentities($request->id);
+        $this->ShipmentStatusMail($status,$request->id,$request->reference);
         $shp->save();
         return json_encode(['status'=>200]);
         
     }
-// this function query two table via a foreach loop .
     public function All(){
         $Shipments = Shipments::OrderBy('created_at','Desc')->get();
         $ship = array();
@@ -109,6 +120,7 @@ class ShipmentsController extends Controller
         $ship = Shipments::find(htmlentities($request->id));
         if( $ship->status ==="Ready for Pick Up"){
             $ship->collected = 1;
+            $this->ShipmentCollected($ship->user_id,$ship->reference_no);
             $ship->save();
             return json_encode(["status"=>200]);
         }
@@ -116,25 +128,42 @@ class ShipmentsController extends Controller
 
     public function updatestatus(Request $request){
         $shp = Shipments::find(htmlentities($request->id));
+         $status="";
         switch($request->status){
             case "dw":
             $shp->status ="Delivered to Warehouse";
+            $status =" was delivered to the Warehouse";
             break;
             case "Ij" :
             $shp->status ="In transit to Jamaica";
+            $status= "is in transit to jamaica";
             break;
             case "ac" : 
             $shp->status ="At Customs";
+            $status = "is at customs";
             break;
             case "ru": 
             $shp->status ="Ready for Pick Up";
+            $status="is ready for pick up";
             $notify = spnotify::where("user_id",$shp->user_id)->first();
             $notify->completed=1;
             $notify->save();
             break;
         }
+        $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             $shp->save();
+            
         return json_encode(["status"=>200]);
+    }
+
+    public function ShipmentStatusMail($status,$id,$reference){
+        $user = User::find($id);
+        Mail::to($user->email)->send(new ShipmentStatus($status,$reference));
+    }
+    
+    public function ShipmentCollected($id,$reference){
+        $user = User::find($id);
+        Mail::to($user->email)->send(new ShipmentCollected($reference));
     }
 
 }   

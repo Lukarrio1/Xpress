@@ -1,3 +1,3 @@
 
-{{$name}} {{$mail}}
+{{$name}} {{$mail}}.
  

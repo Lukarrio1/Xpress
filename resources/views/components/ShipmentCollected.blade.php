@@ -1,0 +1,1 @@
+The package with reference number {{$reference}} was collected.
