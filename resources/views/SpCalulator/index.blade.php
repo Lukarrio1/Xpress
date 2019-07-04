@@ -202,7 +202,14 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <!-- Default form subscription -->
+=======
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        
+      </div>
+>>>>>>> a5d03f757b161380bdc1d18bea32f5059093df34
     </div>
   </div>
 

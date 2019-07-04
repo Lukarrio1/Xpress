@@ -78,7 +78,7 @@
   }
 </style>
 
-<div class="container-fluid ">
+<div class="container-fluid pb-5 ">
 
   <!-- Section: Team v.1 -->
   <section class="section team-section">
@@ -111,7 +111,7 @@
 
               <!-- Grid column -->
               <div class="col-lg-6 col-md-12">
-                <div class="md-form form-sm mb-0">
+                <div class="md-form form-sm mb-0 pb-5">
                   <label for="name" class="placeholder">Name</label><br>
                   <input type="text" id="name" class="form-control form-control-sm" value="">
                   <span id="errorname" class="text-danger"></span>
@@ -248,11 +248,11 @@
         <div class="card profile-card">
 
           <!-- Avatar -->
-          <div class="avatar z-depth-1-half mb-4">
+          <div class="avatar z-depth-1-half mb-5">
             <span id="usercardimage"></span>
           </div>
 
-          <div class="card-body pt-0 mt-0">
+          <div class="card-body pt-0 mt-0 ">
 
             <!-- Name -->
             <h3 class="mb-3 font-weight-bold"><strong><span id="usercardname"></span></strong></h3>
@@ -359,7 +359,7 @@
                   <!--Grid row-->
                   <div class="text-center col-md-12">
                     <button class="btn btn-danger btn-block btn-rounded z-depth-1" id="changeimg">
-                      remove image</button>
+                      Remove image</button>
                   </div>
                 </div>
               </div>
