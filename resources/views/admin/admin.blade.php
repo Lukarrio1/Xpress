@@ -41,17 +41,14 @@
               <div class="admin-up">
                 <i class="far fa-money-bill-alt primary-color mr-3 z-depth-2"></i>
                 <div class="data">
-                  <p class="text-uppercase">sales</p>
-                  <h4 class="font-weight-bold dark-grey-text">2000$</h4>
+                  <p class="text-uppercase">Shipment Value</p>
+                  <h4 class="font-weight-bold dark-grey-text">0</h4>
                 </div>
               </div>
 
               <!-- Card content -->
               <div class="card-body card-body-cascade">
-                <div class="progress mb-3">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="card-text">Better than last week (25%)</p>
+                
               </div>
 
             </div>
@@ -70,17 +67,14 @@
               <div class="admin-up">
                 <i class="fas fa-chart-line warning-color mr-3 z-depth-2"></i>
                 <div class="data">
-                  <p class="text-uppercase">subscriptions</p>
-                  <h4 class="font-weight-bold dark-grey-text">200</h4>
+                  <p class="text-uppercase">Invoice Value </p>
+                  <h4 class="font-weight-bold dark-grey-text">0</h4>
                 </div>
               </div>
 
               <!-- Card content -->
               <div class="card-body card-body-cascade">
-                <div class="progress mb-3">
-                  <div class="progress-bar red accent-2" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="card-text">Worse than last week (25%)</p>
+                
               </div>
 
             </div>
@@ -99,17 +93,14 @@
               <div class="admin-up">
                 <i class="fas fa-chart-pie light-blue lighten-1 mr-3 z-depth-2"></i>
                 <div class="data">
-                  <p class="text-uppercase">traffic</p>
-                  <h4 class="font-weight-bold dark-grey-text">20000</h4>
+                  <p class="text-uppercase">Total Clients</p>
+                  <h4 class="font-weight-bold dark-grey-text">200</h4>
                 </div>
               </div>
 
               <!-- Card content -->
               <div class="card-body card-body-cascade">
-                <div class="progress mb-3">
-                  <div class="progress-bar red accent-2" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="card-text">Worse than last week (75%)</p>
+                
               </div>
 
             </div>
@@ -128,17 +119,14 @@
               <div class="admin-up">
                 <i class="fas fa-chart-bar red accent-2 mr-3 z-depth-2"></i>
                 <div class="data">
-                  <p class="text-uppercase">organic traffic</p>
+                  <p class="text-uppercase">Verified Users</p>
                   <h4 class="font-weight-bold dark-grey-text">2000</h4>
                 </div>
               </div>
 
               <!-- Card content -->
               <div class="card-body card-body-cascade">
-                <div class="progress mb-3">
-                  <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="card-text">Better than last week (25%)</p>
+                
               </div>
 
             </div>
@@ -232,16 +220,16 @@
 
                 <div class="row my-2 pt-1">
                   <div class="col-4">
-                    <small class="grey-text">Unread Deliveries</small>
+                    <small class="grey-text">Undelivered Deliveries</small>
                     <h4>56</h4>
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">Total Clients</small>
+                    <small class="grey-text">In Active Users</small>
                     <h4>4500</h4>
                   </div>
                   
                   <div class="col-4">
-                    <small class="grey-text">Total News Added</small>
+                    <small class="grey-text">Unread Invoices</small>
                     <h4>87</h4>
                   </div>
                 </div>
@@ -251,26 +239,26 @@
                     <h4>419</h4>
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">new</small>
+                    <small class="grey-text">Total Invoices</small>
                     <h4>500</h4>
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">Last week</small>
+                    <small class="grey-text">Total News Added</small>
                     <h4>932</h4>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col-4">
-                    <small class="grey-text">Pages/Visits</small>
-                    <h4>419</h4>
+                    {{-- <small class="grey-text">Pages/Visits</small>
+                    <h4>419</h4> --}}
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">New visitors</small>
-                    <h4>51.94%</h4>
+                    {{-- <small class="grey-text">New visitors</small>
+                    <h4>51.94%</h4> --}}
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">Last week</small>
-                    <h4>51 932</h4>
+                    {{-- <small class="grey-text">Last week</small>
+                    <h4>51 932</h4> --}}
                   </div>
                 </div>
   
