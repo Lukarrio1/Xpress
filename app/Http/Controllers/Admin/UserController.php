@@ -157,7 +157,7 @@ class UserController extends Controller
                 'telephone' => $result->telephone,
                 'email' =>$result->email,
                 'data' => $result->password,
-                'image' => $result->resultimage,
+                'image' => $result->userimage,
                 'xl' => $result->xl,
                 'id'=>$result->id,
                 'trn'=>$result->trn,
