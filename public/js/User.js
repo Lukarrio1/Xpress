@@ -107,6 +107,7 @@ SuccesMessageRemove = () => {
     StopInterval(timeout);
   }, 5000);
 };
+
 // this function stops the SuccessMessageRemove() from running after 5 seconds
 StopInterval = id => {
   clearInterval(id);
@@ -383,6 +384,10 @@ Pdata = () => {
 // this is function will show all of the shipments
 shipments = () => {
   $.get('/shipments/all', data => {
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
     var shp = jQuery.parseJSON(data);
     ShipmentCount(shp);
     let all_ship = '';
@@ -398,7 +403,7 @@ shipments = () => {
                 <td>${shp[i].reference_no}</td>
                 <td>${shp[i].description}</td>
                 <td>${shp[i].delivery_date}</td>
-                <td>$${shp[i].spcharge}</td>
+                <td>${formatter.format(parseInt(shp[i].spcharge))}</td>
                 <td>${shp[i].status}</td>
                 <td>${created}</td>
                 <td>${updated}</td>
@@ -660,16 +665,26 @@ ShipmentCount = shipment => {
 };
 
 Shipmentvalue = value => {
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
   let money = value.reduce((total, val) => total + parseInt(val.spcharge), 0);
-  $('#shipmentvalue').html(`${money}`);
+  let formatmoney = formatter.format(money);
+  $('#shipmentvalue').html(`${formatmoney}`);
   Shipmentotaldue(value);
 };
 
 Shipmentotaldue = due => {
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
   let shpdue = due
     .filter(n => n.collected == 0)
     .reduce((total, val) => total + parseInt(val.spcharge), 0);
-  $('#shipmentddue').html(`${shpdue}`);
+  let formatshpdue = formatter.format(shpdue);
+  $('#shipmentddue').html(`${formatshpdue}`);
 };
 
 ScheduleRec = () => {
@@ -793,6 +808,11 @@ ViewPreActivity = id => {
 };
 
 SeaFreightCalculator = () => {
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+
   let length =
     $('#shippinglength').val().length > 0
       ? parseInt($('#shippinglength').val())
@@ -813,13 +833,16 @@ SeaFreightCalculator = () => {
     let total = 0;
     let res = jQuery.parseJSON(data);
     let lwh = Number(length) * Number(width) * Number(height);
-    fcharge = Math.round(lwh / Number(res.exrate));
-    $('#fcharge').html(`${Math.round(fcharge) * res.exrate}`);
+    fcharge = lwh / Number(res.exrate);
+    let formatefcharge = Math.round(fcharge) * res.exrate;
+    $('#fcharge').html(`${formatter.format(formatefcharge)}`);
     let prerate = parseInt(res.prerate) / 100;
     scharge = Math.round(price) * prerate;
-    $('#scharge').html(`${Math.round(scharge) * res.exrate}`);
+    let formatscharge = Math.round(scharge) * res.exrate;
+    $('#scharge').html(`${formatter.format(formatscharge)}`);
     total = Number(fcharge) + Number(scharge);
-    $('#fctotal').html(`${total * res.exrate}`);
+    let formattotal = total * Number(res.exrate);
+    $('#fctotal').html(`${formatter.format(formattotal)}`);
     $('#shippinglength').val('');
     $('#shippingwidth').val('');
     $('#shippingheight').val('');

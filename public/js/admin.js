@@ -302,6 +302,10 @@ UserDelete = UserID => {
 
 Allinvoice = () => {
   $.get('/admin/invoices/all', data => {
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
     let inv = jQuery.parseJSON(data);
     let invoice = '';
     let maxinv = 0;
@@ -340,7 +344,7 @@ Allinvoice = () => {
     <td>${inv[i].courier}</td>
     <td>${inv[i].pkgname}</td>
 		<td>${inv[i].description}</td>
-		<td>$${inv[i].value}</td>
+		<td>${formatter.format(parseInt(inv[i].value))}</td>
 		<td>${inv[i].weight}lbs</td>
 		<td><a class="invfile" id="invfile${inv[i].id}">${inv[i].invoice}</a></td>
     <td>${created}</td>
@@ -946,6 +950,10 @@ UpdateShipmentSearch = () => {
 
 Allshipments = () => {
   $.get('/admin/shipments/all', data => {
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
     let shipment = jQuery.parseJSON(data);
     let shipp = shipment.filter(n => n.collected == 0);
     $('#shipp').html(`${shipp.length}`);
@@ -996,7 +1004,7 @@ Allshipments = () => {
       <td>${n.reference_no}</td>
       <td>${n.description}</td>
       <td>${n.delivery_date}</td>
-      <td>${n.spcharge}</td>
+      <td>${formatter.format(parseInt(n.spcharge))}</td>
       <td>${n.status}</td>
       <td>${created}</td>
       <td>${collected}</td>
@@ -1252,41 +1260,3 @@ NotificationCount = (invoice = 0, delivery = 0) => {
 window.setInterval(() => {
   InvoiceNt();
 }, 10000);
-
-initcalculator = () => {
-  $.ajax({
-    type: 'POST',
-    url: '/admin/shipmentcalculator/air',
-    data: {
-      _token: CSRF_TOKEN,
-      exrate: 0,
-      shw10: 0,
-      shw9: 0,
-      shw8: 0,
-      shw7: 0,
-      shw6: 0,
-      shw5: 0,
-      shw4: 0,
-      shw3: 0,
-      shw2: 0,
-      shw1: 0
-    },
-    dataType: 'text',
-    success: function(response) {
-      AirFreightData();
-    }
-  });
-  $.ajax({
-    type: 'POST',
-    url: '/admin/shipmentcalculator',
-    data: {
-      _token: CSRF_TOKEN,
-      exrate: 0,
-      percentage: 0
-    },
-    dataType: 'text',
-    success: function(response) {
-      SeaFreightData();
-    }
-  });
-};
