@@ -25,36 +25,137 @@
 
       
 <!-- Section: Cards color -->
-      <section class="mt-2 pb-5">
+      <!-- Section: Intro -->
+      <section class="mt-md-4 pt-md-2 mb-3 pb-4">
 
         <!-- Grid row -->
         <div class="row">
 
           <!-- Grid column -->
-          <div class="col-xl-12 col-md-12 mb-4">
+          <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
 
-            <!-- Panel -->
-            <div class="card">
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
 
-              <div class="card-header white-text primary-color">
-                To be decided
+              <!-- Card Data -->
+              <div class="admin-up">
+                <i class="far fa-money-bill-alt primary-color mr-3 z-depth-2"></i>
+                <div class="data">
+                  <p class="text-uppercase">sales</p>
+                  <h4 class="font-weight-bold dark-grey-text">2000$</h4>
+                </div>
               </div>
 
-              <h6 class="ml-4 mt-5 dark-grey-text font-weight-bold"><i class="fas fa-arrow-up blue-text mr-3"
-                  aria-hidden="true"></i> 200</h6>
-              <!-- Card Data -->
-
-              
               <!-- Card content -->
+              <div class="card-body card-body-cascade">
+                <div class="progress mb-3">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="card-text">Better than last week (25%)</p>
+              </div>
 
             </div>
-            <!-- Panel -->
+            <!-- Card -->
 
           </div>
-          
-            
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+              <!-- Card Data -->
+              <div class="admin-up">
+                <i class="fas fa-chart-line warning-color mr-3 z-depth-2"></i>
+                <div class="data">
+                  <p class="text-uppercase">subscriptions</p>
+                  <h4 class="font-weight-bold dark-grey-text">200</h4>
+                </div>
+              </div>
+
+              <!-- Card content -->
+              <div class="card-body card-body-cascade">
+                <div class="progress mb-3">
+                  <div class="progress-bar red accent-2" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="card-text">Worse than last week (25%)</p>
+              </div>
+
+            </div>
+            <!-- Card -->
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-xl-3 col-md-6 mb-md-0 mb-2">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+              <!-- Card Data -->
+              <div class="admin-up">
+                <i class="fas fa-chart-pie light-blue lighten-1 mr-3 z-depth-2"></i>
+                <div class="data">
+                  <p class="text-uppercase">traffic</p>
+                  <h4 class="font-weight-bold dark-grey-text">20000</h4>
+                </div>
+              </div>
+
+              <!-- Card content -->
+              <div class="card-body card-body-cascade">
+                <div class="progress mb-3">
+                  <div class="progress-bar red accent-2" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="card-text">Worse than last week (75%)</p>
+              </div>
+
+            </div>
+            <!-- Card -->
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-xl-3 col-md-6 mb-0">
+
+            <!-- Card -->
+            <div class="card card-cascade cascading-admin-card">
+
+              <!-- Card Data -->
+              <div class="admin-up">
+                <i class="fas fa-chart-bar red accent-2 mr-3 z-depth-2"></i>
+                <div class="data">
+                  <p class="text-uppercase">organic traffic</p>
+                  <h4 class="font-weight-bold dark-grey-text">2000</h4>
+                </div>
+              </div>
+
+              <!-- Card content -->
+              <div class="card-body card-body-cascade">
+                <div class="progress mb-3">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="card-text">Better than last week (25%)</p>
+              </div>
+
+            </div>
+            <!-- Card -->
+
+          </div>
+          <!-- Grid column -->
+
         </div>
         <!-- Grid row -->
+
+      </section>
+      <!-- Section: Intro -->
+
+      
+                <!-- Card content -->
+                <div class="card-body card-body-cascade pb-5">
 
         <!-- Grid row -->
         <div class="row">
@@ -138,29 +239,30 @@
                     <small class="grey-text">Total Clients</small>
                     <h4>4500</h4>
                   </div>
+                  
                   <div class="col-4">
                     <small class="grey-text">Total News Added</small>
-                    <h4></h4>
+                    <h4>87</h4>
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col-4">
-                    <small class="grey-text">Pages/Visits</small>
-                    <h4>139 419</h4>
+                    <small class="grey-text">Total Sipments</small>
+                    <h4>419</h4>
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">New visitors</small>
-                    <h4>51.94%</h4>
+                    <small class="grey-text">new</small>
+                    <h4>500</h4>
                   </div>
                   <div class="col-4">
                     <small class="grey-text">Last week</small>
-                    <h4>51 932</h4>
+                    <h4>932</h4>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col-4">
                     <small class="grey-text">Pages/Visits</small>
-                    <h4>139 419</h4>
+                    <h4>419</h4>
                   </div>
                   <div class="col-4">
                     <small class="grey-text">New visitors</small>
