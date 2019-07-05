@@ -197,7 +197,7 @@
                     <h4><span id="undelivereddeliveries">0</span></h4>
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">Deleted Users</small>
+                    <small class="grey-text">Deleted Clients</small>
                     <h4><span id="deleteduserscount">0</span></h4>
                   </div>
                   
