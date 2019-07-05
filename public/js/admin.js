@@ -878,6 +878,10 @@ NewsCreate = () => {
     $('#newsbody').val('');
     $('#errorsubject').html(``);
     $('#errorbody').html(``);
+    iziToast.success({
+      position: 'topCenter',
+      message: 'New news posted'
+    });
     $.ajax({
       url: '/admin/news',
       type: 'POST',
@@ -889,10 +893,6 @@ NewsCreate = () => {
       dataType: 'text',
       success: data => {
         AllNews();
-        iziToast.success({
-          position: 'topCenter',
-          message: 'New news posted'
-        });
       }
     });
   }
