@@ -192,14 +192,12 @@ Allusers = () => {
 
 AdminVerifiedUser = users => {
   let verified = users.filter(n => n.verified === '').length;
-  console.log('these are all the verified users', verified);
   $('#verifieduserscount').html(`${verified}`);
   $('#totalusercount').html(`${users.length}`);
 };
 
 AdminDeletedUsers = users => {
   let deletedusers = users.filter(n => n.deleted).length;
-  console.log(deletedusers);
   $('#deleteduserscount').html(`${deletedusers}`);
 };
 
@@ -906,7 +904,6 @@ NewsCreate = () => {
 AllNews = () => {
   $.get('/admin/news/all', data => {
     let news = jQuery.parseJSON(data);
-    console.log('this is the news ', news);
     $('#admintotalnews').html(`${news.length}`);
   });
 };
@@ -1028,7 +1025,6 @@ UpdateShipmentSearch = () => {
       success: function(response) {
         let users = jQuery.parseJSON(response);
         let count = users.filter(n => n.deleted == false);
-        console.log(count);
         $('#updatesearchresult').html(`${count.length}`);
         let output = '';
         users.forEach(user => {

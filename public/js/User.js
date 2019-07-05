@@ -433,7 +433,6 @@ spnotification = verify => {
 SpReadyForPickup = (verify, sp) => {
   $.get('/shipments/notification/data', data => {
     let res = jQuery.parseJSON(data);
-    console.log(res);
     let count = res.completed ? 1 : 0;
     res.completed
       ? $('#spready')
