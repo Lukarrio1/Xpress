@@ -10,8 +10,7 @@ border-bottom: 1px solid #CC0000;
 box-shadow: 0 1px 0 0 #CC0000;
 }
 </style>
-<div class="container-fluid pt-3 pb-5">
-  <section>
+<div class="container-fluid pt-3 pb-2">
     <div class="col-md-9">
             <h3 class="h3-responsive mt-1">View All Shipments</h3>
           </div>
@@ -65,7 +64,6 @@ box-shadow: 0 1px 0 0 #CC0000;
         <div class="d-flex justify-content-between"></div>
       </div>
     </div>
-  </section>
 </div>
 <div class="modal fade" id="viewshipmentstatus" tabindex="-1" role="dialog" aria-labelledby="viewshipmentstatus"
   aria-hidden="true">
