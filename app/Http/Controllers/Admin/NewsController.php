@@ -37,6 +37,11 @@ class NewsController extends Controller
             'status' => 200,
         ]);
     }
+    
+    public function allnews(){
+        $allnews = News::all();
+        return json_encode($allnews);
+    }
 
     public function Email($subject, $body)
     {

@@ -31,6 +31,7 @@ Route::post('/passwordUpdate', 'User\UserController@PasswordUpdate');
 Route::get('/news', 'User\NewsController@index');
 Route::post('/news','User\NewsController@SingleNews');
 
+
 Route::prefix('admin')->group(function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
@@ -54,6 +55,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/news', 'Admin\NewsController@create')->name('admin.news');
     Route::post('/news','Admin\NewsController@store');
+    Route::get('/news/all','Admin\NewsController@allnews');
 
     Route::get('/users', 'Admin\UserController@index')->name('admin.allusers');
     Route::get('/allusers', 'Admin\UserController@Allusers');
