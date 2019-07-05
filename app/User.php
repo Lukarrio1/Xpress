@@ -33,7 +33,7 @@ class User extends Authenticatable
     public function Verified(){
         return $this->token === null;
     }
-    // this bit of code sends an email
+    
     public function sendverificationemail(){
      $this->notify(new VerifyEmail($this));
     }
