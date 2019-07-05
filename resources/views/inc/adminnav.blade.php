@@ -47,7 +47,7 @@
                   
                 <li><a href="{{ route('admin.news') }}" class="waves-effect">Create News</a>
                   </li>
-                  <li><a href="{{ route('admin.sent.shipments') }}" class="waves-effect">View All News</a>
+                  <li><a href="{{ route('admin.allnews') }}" class="waves-effect">View All News</a>
                   </li>
                 </ul>
               </div>

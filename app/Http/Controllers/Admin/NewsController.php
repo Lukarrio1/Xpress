@@ -42,6 +42,11 @@ class NewsController extends Controller
         ]);
     }
 
+    public function allnews(){
+        $news = News::all();
+        return json_encode($news);
+    }
+
     public function Email($subject, $body)
     {
         $users = User::all();
@@ -51,4 +56,6 @@ class NewsController extends Controller
             }
         }
     }
+
+     
 }

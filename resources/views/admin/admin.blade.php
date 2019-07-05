@@ -39,10 +39,10 @@
 
               <!-- Card Data -->
               <div class="admin-up">
-                <i class="far fa-money-bill-alt primary-color mr-3 z-depth-2"></i>
+                <i class="far fa-money-bill-alt bg-success mr-3 z-depth-2"></i>
                 <div class="data">
                   <p class="text-uppercase">Shipment Value</p>
-                  <h4 class="font-weight-bold dark-grey-text">0</h4>
+                  <h4 class="font-weight-bold dark-grey-text"><span id="adminshipmentvalue">0</span></h4>
                 </div>
               </div>
 
@@ -68,7 +68,7 @@
                 <i class="fas fa-chart-line warning-color mr-3 z-depth-2"></i>
                 <div class="data">
                   <p class="text-uppercase">Invoice Value </p>
-                  <h4 class="font-weight-bold dark-grey-text">0</h4>
+                  <h4 class="font-weight-bold dark-grey-text"><span id="adminInvoiceValue">0</span> </h4>
                 </div>
               </div>
 
@@ -94,7 +94,7 @@
                 <i class="fas fa-chart-pie light-blue lighten-1 mr-3 z-depth-2"></i>
                 <div class="data">
                   <p class="text-uppercase">Total Clients</p>
-                  <h4 class="font-weight-bold dark-grey-text">200</h4>
+                  <h4 class="font-weight-bold dark-grey-text"><span id="totalusercount">0</span></h4>
                 </div>
               </div>
 
@@ -120,7 +120,7 @@
                 <i class="fas fa-chart-bar red accent-2 mr-3 z-depth-2"></i>
                 <div class="data">
                   <p class="text-uppercase">Verified Users</p>
-                  <h4 class="font-weight-bold dark-grey-text">2000</h4>
+                  <h4 class="font-weight-bold dark-grey-text"><span id="verifieduserscount">0</span></h4>
                 </div>
               </div>
 
@@ -143,7 +143,7 @@
 
       
                 <!-- Card content -->
-                <div class="card-body card-body-cascade pb-5">
+          <div class="card-body card-body-cascade pb-5">
 
         <!-- Grid row -->
         <div class="row">
@@ -154,46 +154,19 @@
             <!-- Panel -->
             <div class="card mb-4">
 
-              <div class="card-header white-text primary-color">
+              <div class="card-header white-text bg-danger">
                 <h5 class="font-weight-500 my-1">Incoming Deliveries</h5>
               </div>
 
               <div class="card-body">
 
                 <table class="table">
-                  <tbody>
-                    <tr>
-                      <td class="border-top-0">Timothy Russell</td>
-                      <td class="border-top-0">I want something delivered to mandeville</td>
-                      <td class="border-top-0 hour">
-                        <span class="grey-text float-right">
-                          <i class="far fa-clock-o" aria-hidden="true"></i> 10:30 am June 28,2019
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Jason Ennis</td>
-                      <td>Want something deliver a Joe foot.</td>
-                      <td class="hour">
-                        <span class="grey-text float-right">
-                          <i class="far fa-clock-o" aria-hidden="true"></i> 12:30 am June 23,2019
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Lemar Henry</td>
-                      <td>Send stuff to a place.</td>
-                      <td class="hour">
-                        <span class="grey-text float-right">
-                          <i class="far fa-clock-o" aria-hidden="true"></i> 2:30 pm June 30,2019
-
-                        </span>
-                      </td>
-                    </tr>
+                  <tbody id="adminincomedeliveries">
+                    
                   </tbody>
                 </table>
   
-                <a href ="{{route('admin.delivery')}}" class="btn btn btn-flat grey lighten-3 btn-rounded waves-effect font-weight-bold dark-grey-text float-right btn-dash">View all Deliveries</a>
+              <a href="{{route('admin.delivery')}}" class="btn btn btn-flat  lighten-3 btn-rounded waves-effect font-weight-bold dark-grey-text float-right btn-dash">View all Deliveries</a>
   
               </div>
 
@@ -212,7 +185,7 @@
             <!-- Panel -->
             <div class="card mb-4">
 
-              <div class="card-header white-text primary-color">
+              <div class="card-header white-text bg-danger">
                 <h5 class="font-weight-500 my-1">Users activity</h5>
               </div>
 
@@ -221,30 +194,30 @@
                 <div class="row my-2 pt-1">
                   <div class="col-4">
                     <small class="grey-text">Undelivered Deliveries</small>
-                    <h4>56</h4>
+                    <h4><span id="undelivereddeliveries">0</span></h4>
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">Deleted Clients</small>
+                    <small class="grey-text">Deleted Users</small>
                     <h4><span id="deleteduserscount">0</span></h4>
                   </div>
                   
                   <div class="col-4">
-                    <small class="grey-text">Unread Invoices</small>
-                    <h4>87</h4>
+                    <small class="grey-text">Incomplete Invoices</small>
+                    <h4><span id="adminincompletedinvoice">0</span></h4>
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col-4">
                     <small class="grey-text">Total Sipments</small>
-                    <h4>419</h4>
+                    <h4><span id="admintotalshipment">0</span></h4>
                   </div>
                   <div class="col-4">
                     <small class="grey-text">Total Invoices</small>
-                    <h4>500</h4>
+                    <h4><span id="admintotalinvoices">0</span></h4>
                   </div>
                   <div class="col-4">
-                    <small class="grey-text">Total News Added</small>
-                    <h4>932</h4>
+                    <small class="grey-text">Total News </small>
+                    <h4><span id="admintotalnews">0</span></h4>
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -261,9 +234,6 @@
                     <h4>51 932</h4> --}}
                   </div>
                 </div>
-  
-                <button class="btn btn btn-flat grey lighten-3 btn-rounded waves-effect font-weight-bold dark-grey-text float-right btn-dash">View full report</button>
-
               </div>
 
             </div>
