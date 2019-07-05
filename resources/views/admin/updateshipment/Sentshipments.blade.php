@@ -1,7 +1,32 @@
 @extends('layouts.admin') 
 @section('content')
+<style>
+  .active-blue-2 input[type=text]:focus:not([readonly]) {
+border-bottom: 1px solid #4dd0e1;
+box-shadow: 0 1px 0 0 #4dd0e1;
+}
+.active-red input[type=text] {
+border-bottom: 1px solid #CC0000;
+box-shadow: 0 1px 0 0 #CC0000;
+}
+</style>
 <div class="container-fluid pt-3 pb-5">
   <section>
+    <div class="col-md-9">
+            <h3 class="h3-responsive mt-1">View All Shipments</h3>
+          </div>
+          <div class="col-md-3">
+            <div class="md-form active-red ">
+              <input
+                placeholder="Search..."
+                type="text"
+                class="form-control"
+                id="usersearch"
+              />
+              {{-- <button class="fas-fa-search"></button> --}}
+            </div>
+          </div>
+        </div>
     <div class="card card-cascade narrower z-depth-1">
       <div
         class="view view-cascade bg-danger narrower 

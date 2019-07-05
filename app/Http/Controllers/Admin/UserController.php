@@ -39,7 +39,6 @@ class UserController extends Controller
                 'xl' => $user->xl,
                 'id'=>$user->id,
                 'trn'=>$user->trn,
-                'verified'=>$user->token,
                 'deleted'=>$user->deleted,
                 'created'=>date('M j, Y h:ia', strtotime($user->created_at )),
                 'updated'=>date('M j, Y h:ia', strtotime($user->updated_at ))
@@ -58,7 +57,6 @@ class UserController extends Controller
                 'xl' => $user->xl,
                 'id'=>$user->id,
                 'trn'=>$user->trn,
-                'verified'=>$user->token,
                 'deleted'=>$user->deleted,
                 'created'=>date('M j, Y h:ia', strtotime($user->created_at )),
                 'updated'=>date('M j, Y h:ia', strtotime($user->updated_at ))
@@ -159,7 +157,7 @@ class UserController extends Controller
                 'telephone' => $result->telephone,
                 'email' =>$result->email,
                 'data' => $result->password,
-                'image' => $result->userimage,
+                'image' => $result->resultimage,
                 'xl' => $result->xl,
                 'id'=>$result->id,
                 'trn'=>$result->trn,

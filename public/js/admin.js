@@ -11,7 +11,6 @@ $(document).ready(() => {
   Allshipments();
   SeaFreightData();
   AirFreightData();
-  AllNews();
   Pdata();
   $('#invloading').css('display', 'none');
 });
@@ -151,9 +150,7 @@ footerDate = () => {
 Allusers = () => {
   $.get('/admin/allusers', data => {
     var user = jQuery.parseJSON(data);
-    AdminVerifiedUser(user);
     UsersShipment(user);
-    AdminDeletedUsers(user);
     let text = '';
     let amount = user.length;
     $('#allusercount').html(`${amount}`);
@@ -180,6 +177,7 @@ Allusers = () => {
           ${deleted}
 					</td>
           </tr>`;
+      // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
     }
     $('#usercount').html(`${user.length}`);
     $('#alluserbody').html(`${text}`);
@@ -360,9 +358,6 @@ Allinvoice = () => {
       currency: 'USD'
     });
     let inv = jQuery.parseJSON(data);
-    AdmininvoiceValue(inv);
-    AdminCountInvoice(inv);
-    AdminInvoiceIncompleted(inv);
     let invoice = '';
     let maxinv = 0;
     window.setInterval(() => {
@@ -420,25 +415,6 @@ Allinvoice = () => {
     $('#invoicebody1').html(`${invoice}`);
     $('#invcount').html(`${inv.length}`);
   });
-};
-
-AdminCountInvoice = invoices => {
-  $('#admintotalinvoices').html(`${invoices.length}`);
-};
-
-AdmininvoiceValue = invoices => {
-  let money = invoices.reduce((total, val) => total + parseInt(val.value), 0);
-  var formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  });
-  let formatmoney = formatter.format(money);
-  $('#adminInvoiceValue').html(formatmoney);
-};
-
-AdminInvoiceIncompleted = invoice => {
-  let incompleted = invoice.filter(n => n.token == 'true').length;
-  $('#adminincompletedinvoice').html(`${incompleted}`);
 };
 
 InvoiceFile = invoicefileID => {
@@ -638,8 +614,6 @@ DeliveryView = delId => {
 Alldeliveries = () => {
   $.get('/admin/all/delivery', data => {
     let dev = jQuery.parseJSON(data);
-    AdminDeliveryCount(dev);
-    AdminDisplayDelivery(dev);
     window.setInterval(() => {
       DevCheck(dev.length);
     }, 10000);
@@ -696,33 +670,6 @@ Alldeliveries = () => {
     $('#mindev').html(`${mindev}`);
     $('#maxdev').html(`${dev.length}`);
   });
-};
-
-AdminDisplayDelivery = delivery => {
-  let output = '';
-  delivery.forEach((n, index) => {
-    if (index < 2) {
-      created_at = new Date(`${n.created_at}`);
-      created = created_at.toString().slice(0, 24);
-      output += `
-    <tr>
-    <td class="border-top-0">${n.firstname}&nbsp;${n.lastname}</td>
-    <td class="border-top-0">${n.address}</td>
-    <td class="border-top-0 hour">
-      <span class="grey-text float-right">
-        <i class="far fa-clock-o" aria-hidden="true"></i>${created}
-      </span>
-    </td>
-  </tr>
-    `;
-    }
-  });
-  $('#adminincomedeliveries').html(`${output}`);
-};
-
-AdminDeliveryCount = deliveries => {
-  let delcount = deliveries.filter(n => n.token == 'true').length;
-  $('#undelivereddeliveries').html(`${delcount}`);
 };
 
 DeliveryComplete = delId => {
@@ -897,14 +844,7 @@ NewsCreate = () => {
     });
   }
 };
-
-AllNews = () => {
-  $.get('/admin/news/all', data => {
-    let news = jQuery.parseJSON(data);
-    $('#admintotalnews').html(`${news.length}`);
-  });
-};
-
+// this function gets the admin thats currently logged in .
 AdminData = () => {
   $.get('/admin/edit/data', data => {
     admin = jQuery.parseJSON(data);
@@ -1022,6 +962,7 @@ UpdateShipmentSearch = () => {
       success: function(response) {
         let users = jQuery.parseJSON(response);
         let count = users.filter(n => n.deleted == false);
+        console.log(count);
         $('#updatesearchresult').html(`${count.length}`);
         let output = '';
         users.forEach(user => {
@@ -1066,8 +1007,6 @@ Allshipments = () => {
       currency: 'USD'
     });
     let shipment = jQuery.parseJSON(data);
-    AdminCountShipments(shipment);
-    AdminShipmentValue(shipment);
     let shipp = shipment.filter(n => n.collected == 0);
     $('#shipp').html(`${shipp.length}`);
     $('#shipa').html(`${shipment.length}`);
@@ -1126,24 +1065,6 @@ Allshipments = () => {
     });
     $('#adminshipments').html(`${output}`);
   });
-};
-
-AdminCountShipments = shipments => {
-  let shipmentcount = shipments.length;
-  $('#admintotalshipment').html(`${shipmentcount}`);
-};
-
-AdminShipmentValue = shipments => {
-  var formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
-  });
-  let money = shipments.reduce(
-    (total, val) => total + parseInt(val.spcharge),
-    0
-  );
-  let formatmoney = formatter.format(money);
-  $('#adminshipmentvalue').html(formatmoney);
 };
 
 ShipmentCompleted = id => {

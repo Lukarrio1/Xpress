@@ -3,6 +3,9 @@
     .input-group.md-form.form-sm.form-2 input.red-border {
         border: 1px solid red;
     }
+    a:link {
+  text-decoration: none;
+}
  </style>
 
 <!--Section heading-->

@@ -187,7 +187,7 @@
             <i class="fas fa-chart-line"></i>
           </div>
           <p>Total Payments Due</p>
-          <h4><span id="shipmentddue">0</span> JMD
+          <h4><span id="shipmentddue"></span> JMD
           </h4>
         </div>
       </div>
