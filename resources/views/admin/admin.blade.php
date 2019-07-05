@@ -193,7 +193,7 @@
                   </tbody>
                 </table>
   
-                <button class="btn btn btn-flat grey lighten-3 btn-rounded waves-effect font-weight-bold dark-grey-text float-right btn-dash">View all Deliveries</button>
+                <a href ="{{route('admin.delivery')}}" class="btn btn btn-flat grey lighten-3 btn-rounded waves-effect font-weight-bold dark-grey-text float-right btn-dash">View all Deliveries</a>
   
               </div>
 
