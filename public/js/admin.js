@@ -140,6 +140,9 @@ $(document).on('click', '.addshipment', function() {
 $('#sendshipment').on('click', () => CreateShipment());
 // This trigger calls the UpdateShipmentSearch()
 $('#updatesearchuser').on('keyup', () => UpdateShipmentSearch());
+
+$('#adminsearchshipments').on('keyup', () => SearchShipments());
+
 // End of triggers
 
 footerDate = () => {
@@ -189,7 +192,7 @@ Allusers = () => {
 
 AdminVerifiedUser = users => {
   let verified = users.filter(n => n.verified === '').length;
-  console.log("these are all the verified users" ,verified);
+  console.log('these are all the verified users', verified);
   $('#verifieduserscount').html(`${verified}`);
   $('#totalusercount').html(`${users.length}`);
 };
@@ -954,6 +957,11 @@ CreateShipment = () => {
     $('#updeliverydate').val('');
     $('#upreference').val('');
     $('#uptracting').val('');
+    $('#closespup').click();
+    iziToast.success({
+      position: 'topCenter',
+      message: 'Shipment Added'
+    });
     $.ajax({
       type: 'POST',
       url: '/admin/add/shipment',
@@ -968,13 +976,7 @@ CreateShipment = () => {
         status: status
       },
       dataType: 'text',
-      success: function(response) {
-        $('#closespup').click();
-        iziToast.success({
-          position: 'topCenter',
-          message: 'Shipment Added'
-        });
-      }
+      success: function(response) {}
     });
   }
 };
@@ -1131,6 +1133,87 @@ Allshipments = () => {
     });
     $('#adminshipments').html(`${output}`);
   });
+};
+
+SearchShipments = () => {
+  let search = $('#adminsearchshipments').val();
+  if (search.length > 0) {
+    $.ajax({
+      type: 'POST',
+      url: '/admin/search/shipments',
+      data: {
+        _token: CSRF_TOKEN,
+        search: search
+      },
+      dataType: 'text',
+      success: function(response) {
+        var formatter = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD'
+        });
+        let shipment = jQuery.parseJSON(response)
+        let shipp = shipment.filter(n => n.collected == 0);
+        $('#shipp').html(`${shipp.length}`);
+        $('#shipa').html(`${shipment.length}`);
+        if (shipp.length == shipment.length) {
+          $('#shipp').removeClass('badge-success');
+          $('#shipp').addClass('badge-primary');
+        } else {
+          $('#shipp').removeClass('badge-primary');
+          $('#shipp').addClass('badge-success');
+        }
+        let output = '';
+        shipment.forEach(n => {
+          created_at = new Date(`${n.created_at.date}`);
+          created = created_at.toString().slice(0, 24);
+          updated_at = new Date(`${n.updated_at.date}`);
+          updated = updated_at.toString().slice(0, 24);
+          let collected = n.collected == 1 ? updated : '';
+          let check = n.collected == 1 ? 'checked' : '';
+          let _class = n.collected == 1 ? '<tr>' : " <tr class='table-info'>";
+          let ischeck =
+            n.status != 'Ready for Pick Up'
+              ? ''
+              : `<input class="form-check-input adminshipcollected" type="checkbox" ${check} id="adminship${
+                  n.id
+                }" value="true">
+          <label class="form-check-label" for="adminship${
+            n.id
+          }" class="label-table"></label>`;
+          let action =
+            n.status == 'Ready for Pick Up'
+              ? ''
+              : `
+              <button
+                  id="shipstat${n.id}"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#viewshipmentstatus"
+                  class="btn btn-outline-blue btn-rounded btn-md px-2 updatestatusbtn"
+                 >
+                <i class="fas fa-pencil-alt mt-0" />
+                </button>`;
+          output += `
+        ${_class}
+          <td>${ischeck}</td>
+          <td>${n.xl}</td>
+          <td>${n.tracking_no}</td>
+          <td>${n.reference_no}</td>
+          <td>${n.description}</td>
+          <td>${n.delivery_date}</td>
+          <td>${formatter.format(parseInt(n.spcharge))}</td>
+          <td>${n.status}</td>
+          <td>${created}</td>
+          <td>${collected}</td>
+          <td>${action}</td>
+          </tr>`;
+        });
+        $('#adminshipments').html(`${output}`);
+      }
+    });
+  } else {
+    Allshipments();
+  }
 };
 
 AdminCountShipments = shipments => {

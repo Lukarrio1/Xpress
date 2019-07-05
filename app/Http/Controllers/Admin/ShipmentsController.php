@@ -77,7 +77,6 @@ class ShipmentsController extends Controller
            $shp->save();
             break;
         }
-
             if(empty($notify)){
                 $newnotify = new spnotify;
                 $newnotify->user_id=$id;
@@ -87,7 +86,6 @@ class ShipmentsController extends Controller
                 $notify->token = "true";
                 $notify->save();
             }
-      
         $shp->user_id = htmlentities($request->id);
         $this->ShipmentStatusMail($status,$request->id,$request->reference);
         $shp->save();
@@ -164,6 +162,58 @@ class ShipmentsController extends Controller
     public function ShipmentCollected($id,$reference){
         $user = User::find($id);
         Mail::to($user->email)->send(new ShipmentCollected($reference));
+    }
+
+    public function search(Request $request){
+        $this->validate($request,[
+            "search"=>"required"
+        ]);
+
+      $result = array();
+        $search = htmlentities($request->search);
+          $shipments=  Shipments::where('tracking_no', 'LIKE', '%'.$search.'%')
+        ->orWhere('reference_no', 'LIKE', '%'.$search.'%')
+        ->orderby('created_at', 'desc')->get();
+        $users = User::where('xl','like','%'.$search.'%')->get();
+        if(count($users)>0){
+            foreach($users as $user){
+                $shipments= Shipments::where('user_id',$user->id)  ->orderby('created_at', 'desc')->get();
+                foreach($shipments as $shipment){
+                    $result[]=[
+                        'id'=>$shipment->id,
+                        'xl'=>$user->xl,
+                        'tracking_no'=>$shipment->tracking_no,
+                        'reference_no'=>$shipment->reference_no,
+                        'description'=>$shipment->description,
+                        'spcharge'=>$shipment->spcharge,
+                        'status'=>$shipment->status,
+                        'delivery_date'=>$shipment->delivery_date,
+                        'collected'=>$shipment->collected,
+                        'created_at'=>$shipment->created_at,
+                        'updated_at'=>$shipment->updated_at
+                    ];
+                }
+            }
+        }else{
+            foreach($shipments as $shipment){
+                $xl = User::find($shipment->user_id);
+                $result[]=[
+                    'id'=>$shipment->id,
+                    'xl'=>$xl->xl,
+                    'tracking_no'=>$shipment->tracking_no,
+                    'reference_no'=>$shipment->reference_no,
+                    'description'=>$shipment->description,
+                    'spcharge'=>$shipment->spcharge,
+                    'status'=>$shipment->status,
+                    'delivery_date'=>$shipment->delivery_date,
+                    'collected'=>$shipment->collected,
+                    'created_at'=>$shipment->created_at,
+                    'updated_at'=>$shipment->updated_at
+                ];
+            }
+        }
+          
+        return json_encode($result);
     }
 
 }   
