@@ -145,6 +145,18 @@ Allusers = () => {
   });
 };
 
+AdminVerifiedUser = users => {
+  let verified = users.filter(n => n.verified !== '').length;
+  console.log(verified);
+  $('#verifieduserscount').html(`${verified}`);
+  $('#totalusercount').html(`${users.length}`);
+};
+
+AdminDeletedUsers = users => {
+  let deletedusers = users.filter(n => n.deleted).length;
+  $('#deleteduserscount').html(`${deletedusers}`);
+};
+
 UserCheck = amount => {
   $.get('/admin/allusers', data => {
     var user = jQuery.parseJSON(data);
