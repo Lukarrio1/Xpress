@@ -47,7 +47,7 @@ class UserController extends Controller
     }
     public function Isdeleted($deleted){
         if($deleted==1){
-        // Auth::logout();
+        Auth::logout();
         }
     }
     /*

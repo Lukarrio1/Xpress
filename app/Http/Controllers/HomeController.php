@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $id = User::find(Auth::user()->id);
+        $this->Isdeleted($id->deleted);
         $notify = spnotify::where('user_id',$id->id)->first();
         if(empty($notify)){
             $newnotify = new spnotify;
@@ -41,5 +42,10 @@ class HomeController extends Controller
         }
         return view('home');
 
+    }
+    public function Isdeleted($deleted){
+        if($deleted==1){
+        Auth::logout();
+        }
     }
 }

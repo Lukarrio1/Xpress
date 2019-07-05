@@ -187,7 +187,8 @@ Allusers = () => {
 };
 
 AdminVerifiedUser = users => {
-  let verified = users.filter(n => n.verified == '').length;
+  let verified = users.filter(n => n.verified === '').length;
+  console.log(verified);
   $('#verifieduserscount').html(`${verified}`);
   $('#totalusercount').html(`${users.length}`);
 };
