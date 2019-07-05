@@ -225,7 +225,7 @@ UserSearch = () => {
           let deleted = users[i].deleted
             ? ''
             : `<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
-                user[i].id
+                users[i].id
               }"><i class="fas fa-times" ></i></a>`;
           searches += `<tr>
 								<th scope="row">${users[i].xl}</th>
