@@ -1,3 +1,4 @@
+
 <header>
 
         <!-- Sidebar navigation -->
@@ -39,9 +40,19 @@
                 </ul>
               </div>
             </li>
-            
-                <a href="{{route('admin.news')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-newspaper"></i>News Page</a>
-                </li>
+            <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-newspaper"></i>News<i
+                  class="fas fa-angle-down rotate-icon"></i></a>
+              <div class="collapsible-body">
+                <ul class="list-unstyled">
+                  
+                <li><a href="{{ route('admin.news') }}" class="waves-effect">Create News</a>
+                  </li>
+                  <li><a href="{{ route('admin.sent.shipments') }}" class="waves-effect">View All News</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+                
                 <li>
                 <a href="{{route('admin.allusers')}}" class="collapsible-header waves-effect text-dark"><i class="w-fa fas fa-user"></i>All Users</a>
                 </li>
