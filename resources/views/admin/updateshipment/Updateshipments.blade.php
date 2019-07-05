@@ -30,7 +30,7 @@
         <div class="modal-content">
           <div class="modal-header text-center bg-danger">
             <h4 class="modal-title w-100 font-weight-bold text-white">
-              Update Shipments
+              Add Shipment
             </h4>
             <button
               type="button"
@@ -129,7 +129,7 @@
     >
       <div></div>
 
-      <a href="" class="white-text mx-3">Update Shipments Page</a>
+      <a href="" class="white-text mx-3">Add Shipments</a>
 
       <div></div>
     </div>
