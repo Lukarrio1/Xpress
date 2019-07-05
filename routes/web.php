@@ -56,6 +56,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/news', 'Admin\NewsController@create')->name('admin.news');
     Route::post('/news','Admin\NewsController@store');
     Route::get('/news/all','Admin\NewsController@allnews');
+    Route::get('/all/news','Admin\NewsController@index')->name('admin.allnews');
 
     Route::get('/users', 'Admin\UserController@index')->name('admin.allusers');
     Route::get('/allusers', 'Admin\UserController@Allusers');

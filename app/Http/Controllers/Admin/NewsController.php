@@ -22,6 +22,10 @@ class NewsController extends Controller
         return view('admin.news');
     }
 
+    public function index(){
+        return view('admin.Allnews');
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [

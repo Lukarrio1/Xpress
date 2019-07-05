@@ -63,8 +63,8 @@ class UserController extends Controller
         ]);
         $password = User::find(Auth::user()->id);
         $password->password = Hash::make(htmlentities($request->newpass));
-        $this->PasswordEmailNotification();
         $password->save();
+        $this->PasswordEmailNotification();
         return json_encode(["status"=>200]);
 
     }
