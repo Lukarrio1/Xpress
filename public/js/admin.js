@@ -1243,7 +1243,7 @@ ShipmentCompleted = id => {
     },
     dataType: 'text',
     success: function(response) {
-      Allshipments();
+      // Allshipments();
       iziToast.success({
         position: 'topCenter',
         message: 'Shipment Delivered'
