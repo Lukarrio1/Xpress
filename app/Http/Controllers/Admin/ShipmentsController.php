@@ -118,7 +118,6 @@ class ShipmentsController extends Controller
         $ship = Shipments::find(htmlentities($request->id));
         if( $ship->status ==="Ready for Pick Up"){
             $ship->collected = 1;
-            $ship->status ="Collected";
             $ship->save();
             $this->ShipmentCollected($ship->user_id,$ship->reference_no);
             return json_encode(["status"=>200]);
