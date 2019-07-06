@@ -1386,7 +1386,7 @@ ViewStatusChange = () => {
       },
       dataType: 'text',
       success: function(response) {
-        // Allshipments();
+        Allshipments();
         iziToast.success({
           position: 'topCenter',
           message: 'Status Changed.'
