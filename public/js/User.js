@@ -90,6 +90,8 @@ $(document).on('click', '.prealertactivity', function() {
   ViewPreActivity(id);
 });
 
+$('#calculateair').on('click', () => AirFreightCalculator());
+
 $('#calculatesea').on('click', () => SeaFreightCalculator());
 /* Triggers end here */
 
@@ -850,6 +852,60 @@ SeaFreightCalculator = () => {
   });
 };
 
+AirFreightCalculator = () => {
+  $.get('/shippingcalculator/air/data', data => {
+    let lb = jQuery.parseJSON(data);
+    let weight = parseInt($('#Airweight').val()) || 0;
+    let price = parseFloat($('#Airitemprice').val()) || 0;
+    let processing = 0;
+    let charge = 0;
+    let cost = price >= 50.0 ? 5.0 : 1.5;
+    if (weight <= 10) {
+      switch (weight) {
+        case 1:
+          processing = price + cost + lb.w1lb;
+          break;
+        case 2:
+          processing = price + cost + lb.w2lb;
+          break;
+        case 3:
+          processing = price + cost + lb.w3lb;
+          break;
+        case 4:
+          processing = price + cost + lb.w4lb;
+          break;
+        case 5:
+          processing = price + cost + lb.w5lb;
+          break;
+        case 6:
+          processing = price + cost + lb.w6lb;
+          break;
+        case 7:
+          processing = price + cost + lb.w7lb;
+          break;
+        case 8:
+          processing = price + cost + lb.w8lb;
+          break;
+        case 9:
+          processing = price + cost + lb.w9lb;
+          break;
+        case 10:
+          processing = price + cost + lb.w10lb;
+          break;
+      }
+    } else {
+      over = weight - 10;
+      if (over > 10) {
+        over = over * lb.w11lbup;
+        processing = price + cost + lb.w10lb + over;
+      } else {
+        over = over * lb.w21lbup;
+        processing = price + cost + lb.w10lb + over;
+      }
+    }
+    console.log(processing);
+  });
+};
 NotificationCounter = (verify = 0, sp = 0, count = 0) => {
   let vers = 0,
     spts = 0;

@@ -108,6 +108,7 @@ Route::prefix('scheduledelivery')->group(function () {
 Route::prefix('shippingcalculator')->group(function () {
     Route::get('/', 'ShippingCalculator\ShippingCalculatorController@index')->name('shippingCalculator.home');
     Route::get('/data','ShippingCalculator\ShippingCalculatorController@Data');
+    Route::get('/air/data','ShippingCalculator\ShippingCalculatorController@Airdata');
 });
 
 Route::prefix('prealerts')->group(function () {

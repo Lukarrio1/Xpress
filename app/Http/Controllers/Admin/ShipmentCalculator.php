@@ -64,7 +64,9 @@ class ShipmentCalculator extends Controller
             'shw7'=>"required",
             'shw8'=>"required",
             'shw9'=>"required",
-            'shw10'=>"required"
+            'shw10'=>"required",
+            'shw11up'=>"required",
+            'shw21up'=>"required"
         ]);
             if(count(Calair::all())<1){
                 $new = new Calair;
@@ -79,6 +81,8 @@ class ShipmentCalculator extends Controller
                 $new->w8lb = htmlentities($request->shw8);
                 $new->w9lb = htmlentities($request->shw9);
                 $new->w10lb = htmlentities($request->shw10);
+                $new->w11lbup =htmlentities($request->shw11up);
+                $new->w21lbup =htmlentities($request->shw21up);
                 $new->save();
             }else{
                 $update = Calair::find(1);
@@ -93,6 +97,8 @@ class ShipmentCalculator extends Controller
                 $update->w8lb = htmlentities($request->shw8);
                 $update->w9lb = htmlentities($request->shw9);
                 $update->w10lb = htmlentities($request->shw10);
+                $update->w11lbup =htmlentities($request->shw11up);
+                $update->w21lbup =htmlentities($request->shw21up);
                 $update->save();
             }
         return json_encode(['status'=>201]);

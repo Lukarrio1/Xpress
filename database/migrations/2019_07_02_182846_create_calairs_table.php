@@ -26,6 +26,8 @@ class CreateCalairsTable extends Migration
             $table->float('w8lb')->default(22.00);
             $table->float('w9lb')->default(25.50);
             $table->float('w10lb')->default(26.00);
+            $table->float('w11lbup')->default(2.25);
+            $table->float('w21lbup')->default(2.35);
             $table->timestamps();
         });
     }

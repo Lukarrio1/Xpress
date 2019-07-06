@@ -23,6 +23,8 @@ initcalculator = () => {
     data: {
       _token: CSRF_TOKEN,
       exrate: 0,
+      shw21up: 0,
+      shw11up: 0,
       shw10: 0,
       shw9: 0,
       shw8: 0,
@@ -1147,7 +1149,7 @@ SearchShipments = () => {
           style: 'currency',
           currency: 'USD'
         });
-        let shipment = jQuery.parseJSON(response)
+        let shipment = jQuery.parseJSON(response);
         let shipp = shipment.filter(n => n.collected == 0);
         $('#shipp').html(`${shipp.length}`);
         $('#shipa').html(`${shipment.length}`);
@@ -1298,12 +1300,23 @@ AirFreight = () => {
     $('#shippingweight9').val().length > 0 ? $('#shippingweight9').val() : 0;
   let shw10 =
     $('#shippingweight10').val().length > 0 ? $('#shippingweight10').val() : 0;
+  let shw11up =
+    $('#shippingweight10up').val().length > 0
+      ? $('#shippingweight10up').val()
+      : 0;
+  let shw21up =
+    $('#shippingweight21up').val().length > 0
+      ? $('#shippingweight21up').val()
+      : 0;
+      
   $.ajax({
     type: 'POST',
     url: '/admin/shipmentcalculator/air',
     data: {
       _token: CSRF_TOKEN,
       exrate: exchange,
+      shw21up: shw21up,
+      shw11up: shw11up,
       shw10: shw10,
       shw9: shw9,
       shw8: shw8,
@@ -1340,6 +1353,8 @@ AirFreightData = () => {
     $('#shippingweight8').val(`${res.w8lb}`);
     $('#shippingweight9').val(`${res.w9lb}`);
     $('#shippingweight10').val(`${res.w10lb}`);
+    $('#shippingweight10up').val(`${res.w11lbup}`);
+    $('#shippingweight21up').val(`${res.w21lbup}`);
   });
 };
 

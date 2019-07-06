@@ -12,7 +12,7 @@
 <section>
   <div class="mt-lg-5 mb-5 mt--3">
     <h4 class=" mt--3text-left font-weight-bold dark-grey-text">
-      Update Shipments
+      Add Shipments
     </h4>
     <p class="grey-text mt-3">Add all client new shipments info below.</p>
     <hr />

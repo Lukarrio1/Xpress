@@ -141,14 +141,14 @@
         <!-- Weight -->
         <input
           type="text"
-          id="shippingweight"
+          id="Airweight"
           class="form-control mb-4"
           placeholder="Enter Shipping Weight"
         />
         <!-- Price -->
         <input
           type="text"
-          id="itemprice"
+          id="Airitemprice"
           class="form-control mb-4"
           placeholder="Enter Item cost (usd)"
         />
@@ -159,6 +159,7 @@
           data-toggle="modal"
           data-target="#calculateresultair"
           type="button"
+          id="calculateair"
         >
           Calculate
         </button>
