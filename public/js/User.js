@@ -814,7 +814,6 @@ SeaFreightCalculator = () => {
     style: 'currency',
     currency: 'USD'
   });
-
   let length =
     $('#shippinglength').val().length > 0
       ? parseInt($('#shippinglength').val())
@@ -836,11 +835,11 @@ SeaFreightCalculator = () => {
     let res = jQuery.parseJSON(data);
     let lwh = Number(length) * Number(width) * Number(height);
     fcharge = lwh / Number(res.exrate);
-    let formatefcharge = Math.round(fcharge) * res.exrate;
+    let formatefcharge = fcharge * res.exrate;
     $('#fcharge').html(`${formatter.format(formatefcharge)}`);
-    let prerate = parseInt(res.prerate) / 100;
-    scharge = Math.round(price) * prerate;
-    let formatscharge = Math.round(scharge) * res.exrate;
+    let prerate = parseFloat(res.prerate) / 100;
+    scharge = price * prerate;
+    let formatscharge = scharge * res.exrate;
     $('#scharge').html(`${formatter.format(formatscharge)}`);
     total = Number(fcharge) + Number(scharge);
     let formattotal = total * Number(res.exrate);

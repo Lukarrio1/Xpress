@@ -73,8 +73,8 @@ class ShipmentsController extends Controller
                 $notify->save();
             }
            $shp->user_id = htmlentities($request->id);
-           $this->ShipmentStatusMail($status,$request->id,$request->reference);
            $shp->save();
+           $this->ShipmentStatusMail($status,$request->id,$request->reference);
             break;
         }
             if(empty($notify)){
@@ -87,8 +87,8 @@ class ShipmentsController extends Controller
                 $notify->save();
             }
         $shp->user_id = htmlentities($request->id);
-        $this->ShipmentStatusMail($status,$request->id,$request->reference);
         $shp->save();
+        $this->ShipmentStatusMail($status,$request->id,$request->reference);
         return json_encode(['status'=>200]);
         
     }
@@ -118,8 +118,8 @@ class ShipmentsController extends Controller
         $ship = Shipments::find(htmlentities($request->id));
         if( $ship->status ==="Ready for Pick Up"){
             $ship->collected = 1;
-            $this->ShipmentCollected($ship->user_id,$ship->reference_no);
             $ship->save();
+            $this->ShipmentCollected($ship->user_id,$ship->reference_no);
             return json_encode(["status"=>200]);
         }
     }
@@ -148,8 +148,8 @@ class ShipmentsController extends Controller
             $notify->save();
             break;
         }
-        $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             $shp->save();
+            $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             
         return json_encode(["status"=>200]);
     }
@@ -168,16 +168,20 @@ class ShipmentsController extends Controller
         $this->validate($request,[
             "search"=>"required"
         ]);
-
       $result = array();
         $search = htmlentities($request->search);
           $shipments=  Shipments::where('tracking_no', 'LIKE', '%'.$search.'%')
         ->orWhere('reference_no', 'LIKE', '%'.$search.'%')
-        ->orderby('created_at', 'desc')->get();
-        $users = User::where('xl','like','%'.$search.'%')->get();
+        ->orWhere('status', 'LIKE', '%'.$search.'%')
+        ->orderby('created_at', 'desc')
+        ->get();
+        $users = User::where('xl','like','%'.$search.'%')
+        ->get();
         if(count($users)>0){
             foreach($users as $user){
-                $shipments= Shipments::where('user_id',$user->id)  ->orderby('created_at', 'desc')->get();
+                $shipments= Shipments::where('user_id',$user->id)
+                ->orderby('created_at', 'desc')
+                ->get();
                 foreach($shipments as $shipment){
                     $result[]=[
                         'id'=>$shipment->id,

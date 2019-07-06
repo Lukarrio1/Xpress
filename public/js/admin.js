@@ -957,10 +957,6 @@ CreateShipment = () => {
     $('#upreference').val('');
     $('#uptracting').val('');
     $('#closespup').click();
-    iziToast.success({
-      position: 'topCenter',
-      message: 'Shipment Added'
-    });
     $.ajax({
       type: 'POST',
       url: '/admin/add/shipment',
@@ -975,7 +971,12 @@ CreateShipment = () => {
         status: status
       },
       dataType: 'text',
-      success: function(response) {}
+      success: function(response) {
+        iziToast.success({
+          position: 'topCenter',
+          message: 'Shipment Added'
+        });
+      }
     });
   }
 };

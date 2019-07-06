@@ -53,7 +53,7 @@
             </div>
 
             <!-- Submit button -->
-            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" id="devsubmit">Submit Request</button>
+            <button class="btn btn-danger btn-block my-4 waves-effect z-depth-0" id="devsubmit">Submit Request</button>
 
             
         </div>

@@ -36,6 +36,7 @@
         "sheduledelivery",
         "shipmentcalculator",
         "shippingcalculator",
+        "spcharge",
         "sum",
         "updatestatus"
     ]

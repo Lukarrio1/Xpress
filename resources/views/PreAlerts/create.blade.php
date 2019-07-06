@@ -78,7 +78,7 @@
   </div>
 
             <!-- Submit button -->
-            <button id="preAlertSubmit" class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Submit Pre Alert</button>
+            <button id="preAlertSubmit" class="btn btn-danger btn-block z-depth-0 my-4 waves-effect" type="submit">Submit Pre Alert</button>
 
         </form>
         <!-- Form -->
