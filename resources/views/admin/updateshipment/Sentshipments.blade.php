@@ -54,7 +54,7 @@ box-shadow: 0 1px 0 0 #CC0000;
                 <th>Status</th>
                 <th>Shipment Added on</th>
                 <th>Collected On</th>
-                <th>Action</th>
+                <th>Change Status</th>
               </tr>
             </thead>
             <tbody id="adminshipments"></tbody>
