@@ -1309,7 +1309,7 @@ AirFreight = () => {
     $('#shippingweight21up').val().length > 0
       ? $('#shippingweight21up').val()
       : 0;
-      
+
   $.ajax({
     type: 'POST',
     url: '/admin/shipmentcalculator/air',
