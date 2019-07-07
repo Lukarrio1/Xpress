@@ -865,53 +865,53 @@ AirFreightCalculator = () => {
     let charge = 0;
     if (price > 0) {
       let cost = price >= 50.0 ? 5.0 : 1.5;
-    }
-    if (weight <= 10) {
-      switch (weight) {
-        case 1:
-          Freight = cost + lb.w1lb;
-          break;
-        case 2:
-          Freight = cost + lb.w2lb;
-          break;
-        case 3:
-          Freight = cost + lb.w3lb;
-          break;
-        case 4:
-          Freight = cost + lb.w4lb;
-          break;
-        case 5:
-          Freight = cost + lb.w5lb;
-          break;
-        case 6:
-          Freight = cost + lb.w6lb;
-          break;
-        case 7:
-          Freight = cost + lb.w7lb;
-          break;
-        case 8:
-          Freight = cost + lb.w8lb;
-          break;
-        case 9:
-          Freight = cost + lb.w9lb;
-          break;
-        case 10:
-          Freight = cost + lb.w10lb;
-          break;
-      }
-    } else {
-      over = weight - 10;
-      if (over < 10) {
-        lb11 = over * lb.w11lbup;
-        Freight = cost + lb.w10lb + lb11;
+      if (weight <= 10) {
+        switch (weight) {
+          case 1:
+            Freight = cost + lb.w1lb;
+            break;
+          case 2:
+            Freight = cost + lb.w2lb;
+            break;
+          case 3:
+            Freight = cost + lb.w3lb;
+            break;
+          case 4:
+            Freight = cost + lb.w4lb;
+            break;
+          case 5:
+            Freight = cost + lb.w5lb;
+            break;
+          case 6:
+            Freight = cost + lb.w6lb;
+            break;
+          case 7:
+            Freight = cost + lb.w7lb;
+            break;
+          case 8:
+            Freight = cost + lb.w8lb;
+            break;
+          case 9:
+            Freight = cost + lb.w9lb;
+            break;
+          case 10:
+            Freight = cost + lb.w10lb;
+            break;
+        }
       } else {
-        lb21 = over * lb.w21lbup;
-        Freight = cost + lb.w10lb + lb21;
+        over = weight - 10;
+        if (over < 10) {
+          lb11 = over * lb.w11lbup;
+          Freight = cost + lb.w10lb + lb11;
+        } else {
+          lb21 = over * lb.w21lbup;
+          Freight = cost + lb.w10lb + lb21;
+        }
       }
+      $('#airfreifee').html(`${formatter.format(Freight * exrate)}`);
+      $('#airprocfee').html(`${formatter.format(cost * exrate)}`);
+      $('#airtotal').html(`${formatter.format((Freight + cost) * exrate)}`);
     }
-    $('#airfreifee').html(`${formatter.format(Freight * exrate)}`);
-    $('#airprocfee').html(`${formatter.format(cost * exrate)}`);
-    $('#airtotal').html(`${formatter.format((Freight + cost) * exrate)}`);
   });
 };
 
