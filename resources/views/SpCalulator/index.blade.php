@@ -187,9 +187,9 @@
               </div>
               <div class="modal-body">
                 <div class="h5 text-left">
-                  Freight fee : <span id="airfreifee"></span><br />
-                  Processing fee: <span id="airprocfee"></span><br />
-                  Total : <span id="airtotal"></span><br />
+                  Freight fee : <span id="airfreifee">$0.00</span><br />
+                  Processing fee:<span id="airprocfee">$0.00 </span><br />
+                  Total :<span id="airtotal">$0.00 </span><br />
                 </div>
               </div>
               <div class="modal-footer">

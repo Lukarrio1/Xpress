@@ -909,8 +909,11 @@ AirFreightCalculator = () => {
         }
       }
       $('#airfreifee').html(`${formatter.format(Freight * exrate)}`);
+      console.log('Freight fee', Freight * exrate);
       $('#airprocfee').html(`${formatter.format(cost * exrate)}`);
+      console.log('processing fee', cost * exrate);
       $('#airtotal').html(`${formatter.format((Freight + cost) * exrate)}`);
+      console.log('total', (Freight + cost) * exrate);
     }
   });
 };
