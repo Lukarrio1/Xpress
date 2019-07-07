@@ -140,14 +140,14 @@
 
         <!-- Weight -->
         <input
-          type="text"
+          type="number"
           id="Airweight"
           class="form-control mb-4"
           placeholder="Enter Shipping Weight"
         />
         <!-- Price -->
         <input
-          type="text"
+          type="number"
           id="Airitemprice"
           class="form-control mb-4"
           placeholder="Enter Item cost (usd)"
