@@ -868,51 +868,53 @@ AirFreightCalculator = () => {
       if (weight <= 10) {
         switch (weight) {
           case 1:
-            Freight = cost + lb.w1lb;
+            Freight = Number(cost) + Number(lb.w1lb);
             break;
           case 2:
-            Freight = cost + lb.w2lb;
+            Freight = Number(cost) + Number(lb.w2lb);
             break;
           case 3:
-            Freight = cost + lb.w3lb;
+            Freight = Number(cost) + Number(lb.w3lb);
             break;
           case 4:
-            Freight = cost + lb.w4lb;
+            Freight = Number(cost) + Number(lb.w4lb);
             break;
           case 5:
-            Freight = cost + lb.w5lb;
+            Freight = Number(cost) + Number(lb.w5lb);
             break;
           case 6:
-            Freight = cost + lb.w6lb;
+            Freight = Number(cost) + Number(lb.w6lb);
             break;
           case 7:
-            Freight = cost + lb.w7lb;
+            Freight = Number(cost) + Number(lb.w7lb);
             break;
           case 8:
-            Freight = cost + lb.w8lb;
+            Freight = Number(cost) + Number(lb.w8lb);
             break;
           case 9:
-            Freight = cost + lb.w9lb;
+            Freight = Number(cost) + lb.w9lb;
             break;
           case 10:
-            Freight = cost + lb.w10lb;
+            Freight = Number(cost) + Number(lb.w10lb);
             break;
         }
       } else {
-        over = weight - 10;
+        over = Number(weight) - 10;
         if (over < 10) {
-          lb11 = over * lb.w11lbup;
-          Freight = cost + lb.w10lb + lb11;
+          lb11 = over * Number(lb.w11lbup);
+          Freight = cost + Number(lb.w10lb) + Number(lb11);
         } else {
-          lb21 = over * lb.w21lbup;
-          Freight = cost + lb.w10lb + lb21;
+          lb21 = over * Number(lb.w21lbup);
+          Freight = cost + Number(lb.w10lb) + Number(lb21);
         }
       }
-      $('#airfreifee').html(`${formatter.format(Freight * exrate)}`);
+      $('#airfreifee').html(`${formatter.format(Freight * Number(exrate))}`);
       console.log('Freight fee', Freight * exrate);
-      $('#airprocfee').html(`${formatter.format(cost * exrate)}`);
+      $('#airprocfee').html(`${formatter.format(cost * Number(exrate))}`);
       console.log('processing fee', cost * exrate);
-      $('#airtotal').html(`${formatter.format((Freight + cost) * exrate)}`);
+      $('#airtotal').html(
+        `${formatter.format((Freight + cost) * Number(exrate))}`
+      );
       console.log('total', (Freight + cost) * exrate);
     }
   });
