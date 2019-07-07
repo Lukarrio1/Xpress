@@ -863,7 +863,9 @@ AirFreightCalculator = () => {
     let exrate = lb.exrate;
     let Freight = 0;
     let charge = 0;
-    let cost = price >= 50.0 ? 5.0 : 1.5;
+    if (price > 0) {
+      let cost = price >= 50.0 ? 5.0 : 1.5;
+    }
     if (weight <= 10) {
       switch (weight) {
         case 1:
