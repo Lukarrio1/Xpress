@@ -186,11 +186,10 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="h4">Air Freight Calculations</div>
                 <div class="h5 text-left">
-                  Result : <span id="">112</span><br />
-                  Result : <span id="">112</span><br />
-                  Result : <span id="">112</span><br />
+                  Freight fee : <span id="airfreifee"></span><br />
+                  Processing fee: <span id="airprocfee"></span><br />
+                  Total : <span id="airtotal"></span><br />
                 </div>
               </div>
               <div class="modal-footer">

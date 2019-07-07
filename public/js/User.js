@@ -853,58 +853,66 @@ SeaFreightCalculator = () => {
 
 AirFreightCalculator = () => {
   $.get('/shippingcalculator/air/data', data => {
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    });
     let lb = jQuery.parseJSON(data);
     let weight = parseInt($('#Airweight').val()) || 0;
     let price = parseFloat($('#Airitemprice').val()) || 0;
-    let processing = 0;
+    let exrate = lb.exrate;
+    let Freight = 0;
     let charge = 0;
     let cost = price >= 50.0 ? 5.0 : 1.5;
     if (weight <= 10) {
       switch (weight) {
         case 1:
-          processing = price + cost + lb.w1lb;
+          Freight = cost + lb.w1lb;
           break;
         case 2:
-          processing = price + cost + lb.w2lb;
+          Freight = cost + lb.w2lb;
           break;
         case 3:
-          processing = price + cost + lb.w3lb;
+          Freight = cost + lb.w3lb;
           break;
         case 4:
-          processing = price + cost + lb.w4lb;
+          Freight = cost + lb.w4lb;
           break;
         case 5:
-          processing = price + cost + lb.w5lb;
+          Freight = cost + lb.w5lb;
           break;
         case 6:
-          processing = price + cost + lb.w6lb;
+          Freight = cost + lb.w6lb;
           break;
         case 7:
-          processing = price + cost + lb.w7lb;
+          Freight = cost + lb.w7lb;
           break;
         case 8:
-          processing = price + cost + lb.w8lb;
+          Freight = cost + lb.w8lb;
           break;
         case 9:
-          processing = price + cost + lb.w9lb;
+          Freight = cost + lb.w9lb;
           break;
         case 10:
-          processing = price + cost + lb.w10lb;
+          Freight = cost + lb.w10lb;
           break;
       }
     } else {
       over = weight - 10;
-      if (over > 10) {
-        over = over * lb.w11lbup;
-        processing = price + cost + lb.w10lb + over;
+      if (over < 10) {
+        lb11 = over * lb.w11lbup;
+        Freight = cost + lb.w10lb + lb11;
       } else {
-        over = over * lb.w21lbup;
-        processing = price + cost + lb.w10lb + over;
+        lb21 = over * lb.w21lbup;
+        Freight = cost + lb.w10lb + lb21;
       }
     }
-    console.log(processing);
+    $('#airfreifee').html(`${formatter.format(Freight * exrate)}`);
+    $('#airprocfee').html(`${formatter.format(cost * exrate)}`);
+    $('#airtotal').html(`${formatter.format((Freight + cost) * exrate)}`);
   });
 };
+
 NotificationCounter = (verify = 0, sp = 0, count = 0) => {
   let vers = 0,
     spts = 0;
