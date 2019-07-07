@@ -354,10 +354,10 @@
       </a>
 
       <ul class="list-unstyled">
-        <li><a class="btn-floating red"><i class="fas fa-calculator"></i></a></li>
-        <li><a class="btn-floating yellow darken-1"><i class="fas fa-user"></i></a></li>
-        <li><a class="btn-floating green"><i class="fas fa-envelope"></i></a></li>
-        <li><a class="btn-floating blue"><i class="fas fa-ship"></i></a></li>
+         <li><a class="btn-floating green" href="{{route('home')}}"><i class="fas fa-tachometer-alt"></i></a></li>
+      <li><a class="btn-floating red" href="{{route('shippingCalculator.home')}}"><i class="fas fa-calculator"></i></a></li>
+      <li><a class="btn-floating yellow darken-1" href="{{route('account.edit')}}"><i class="fas fa-user"></i></a></li>
+      <li><a class="btn-floating blue" href="{{route('shipments.home')}}"><i class="fas fa-ship"></i></a></li>
       </ul>
     </div>
     <!-- Fixed button -->
