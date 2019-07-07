@@ -85,7 +85,7 @@ class RegisterController extends Controller
             'trn'=>$data['trn'],
             'deleted'=>0
         ]);
-        // $user->sendverificationemail();
+        $user->sendverificationemail();
         return $user;
     }
 }
