@@ -81,7 +81,6 @@ class RegisterController extends Controller
             'Country' => $data['country'],
             'address' => $data['address'],
             'login_modal' => str_random(10),
-            'login_modal' => str_random(10),
             'trn'=>$data['trn'],
             'deleted'=>0
         ]);
