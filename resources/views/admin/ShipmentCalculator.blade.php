@@ -44,6 +44,7 @@
       <div class="text-center border border-light p-5">
         <p class="h3 mb-4">Sea Freight</p>
         <!-- Exchange Rate -->
+        <label>Exchange Rate</label>
         <input
           type="number"
           id="exchangerate"
@@ -52,6 +53,7 @@
         />
         <span id="errorexrate"></span>
         <!-- Percentage -->
+        <label>Percentage Rate</label>
         <input
           type="number"
           id="percentage"
@@ -80,6 +82,7 @@
       <div class="text-center border border-light p-5">
         <p class="h3 pb-5 mb-4">Air Freight Calculator</p>
         <!-- Exchange Rate -->
+        <label>Exchange Rate</label>
         <input
           type="number"
           id="Aexchangerate"

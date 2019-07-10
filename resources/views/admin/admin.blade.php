@@ -39,7 +39,7 @@
 
               <!-- Card Data -->
               <div class="admin-up">
-                <i class="far fa-money-bill-alt bg-success mr-3 z-depth-2"></i>
+                <i class="far fa-money-bill-alt bg-success mr-0 z-depth-2"></i>
                 <div class="data">
                   <p class="text-uppercase">Shipment Value</p>
                   <h4 class="font-weight-bold dark-grey-text"><span id="adminshipmentvalue">0</span></h4>
