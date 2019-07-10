@@ -82,9 +82,9 @@
               <label for="upshipping">Shipping Charge</label>
               <span id="errorcharge" class="text-danger"> </span>
             </div>
+            <label for="">Status</label>
             <div class="md-form mb-5">
-              <select class="browser-default custom-select" id="upstatus">
-                <option selected value="status">Status</option>
+           <select class="browser-default custom-select" id="upstatus">
                 <option value="dw">Delivered to Warehouse</option>
                 <option value="Ij">In transit to Jamaica</option>
                 <option value="ac">At Customs</option>

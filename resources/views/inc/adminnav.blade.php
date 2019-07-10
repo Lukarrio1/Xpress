@@ -1,3 +1,20 @@
+<style>
+  a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+</style>
 
 <header>
 
@@ -45,7 +62,7 @@
               <div class="collapsible-body">
                 <ul class="list-unstyled">
                   
-                <li><a href="{{ route('admin.news') }}" class="waves-effect">Create News</a>
+                <li><a href="{{ route('admin.news') }}" class="">Create News</a>
                   </li>
                   <li><a href="{{ route('admin.allnews') }}" class="waves-effect">View All News</a>
                   </li>
