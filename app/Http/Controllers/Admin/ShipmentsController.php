@@ -168,7 +168,7 @@ class ShipmentsController extends Controller
         $this->validate($request,[
             "search"=>"required"
         ]);
-      $result = array();
+        $result = array();
         $search = htmlentities($request->search);
           $shipments=  Shipments::where('tracking_no', 'LIKE', '%'.$search.'%')
         ->orWhere('reference_no', 'LIKE', '%'.$search.'%')
