@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Mail\PasswordUpdatedEmail;
@@ -32,11 +30,11 @@ class NewsController extends Controller
             'subject' => 'required',
             'body' => 'required'
     ]);
+        $this->Email(htmlentities($request->subject), htmlentities($request->body));
         $new = new News;
         $new->subject = htmlentities($request->subject);
         $new->body = htmlentities($request->body);
         $new->save();
-        $this->Email(htmlentities($request->subject), htmlentities($request->body));
         return json_encode([
             'status' => 200,
         ]);
