@@ -145,6 +145,24 @@ $('#updatesearchuser').on('keyup', () => UpdateShipmentSearch());
 
 $('#adminsearchshipments').on('keyup', () => SearchShipments());
 
+$(document).on('click', '.adminviewnews', function() {
+  let uiid = $(this).attr('id');
+  let id = uiid.substring(8);
+  $('#adminnewsmodaltype').removeClass('modal-fluid');
+  $('#adminnewsmodaltype').removeClass('modal-lg');
+  ViewNews(id);
+});
+
+$(document).on('click', '.admindeletenews', function() {
+  let uiid = $(this).attr('id');
+  let id = uiid.substring(10);
+  DeleteNews(id);
+});
+
+$('#adminnewssearch').on('keyup', () => {
+  let search = $('#adminnewssearch').val();
+  NewsSearch(search);
+});
 // End of triggers
 
 footerDate = () => {
@@ -907,10 +925,121 @@ AllNews = () => {
   $.get('/admin/news/all', data => {
     let news = jQuery.parseJSON(data);
     $('#admintotalnews').html(`${news.length}`);
+    $('#allnewscount').html(`${news.length}`);
+    let output = '';
+    news.forEach(n => {
+      created_at = new Date(`${n.created_at}`);
+      created = created_at.toString().slice(0, 24);
+      output += `
+      <tr>
+      <th scope="row">${
+        n.subject.length > 10 ? n.subject.slice(0, 10) + '...' : n.subject
+      }</th>
+      <td>
+      ${n.body.length > 80 ? n.body.slice(0, 80) + '...' : n.body}
+      </td>
+      <td class="text-center">
+      ${created}
+      </td>
+      <td class="text-center">
+      <a class="far fa-eye text-primary cursor mr-1 adminviewnews" id="viewnews${
+        n.id
+      }" title="View">
+      </a>
+      <a class="fas fa-trash-alt text-danger cursor admindeletenews" id="deletenews${
+        n.id
+      }" title="Delete">
+      </a>
+      </td>
+      </tr>
+      `;
+    });
+    $('#allnewstable').html(`${output}`);
   });
 };
 
-// this function gets the admin thats currently logged in .
+ViewNews = id => {
+  $.get(`/admin/single/news/${id}`, data => {
+    let res = jQuery.parseJSON(data);
+    created_at = new Date(`${res.created_at}`);
+    created = created_at.toString().slice(0, 24);
+    let modal = res.subject.length > 40 ? 'modal-fluid' : 'modal-lg';
+    $('#newssubject').html(`${res.subject}`);
+    $('#newsbody').html(`${res.body}`);
+    $('#newstime').html(`${created}`);
+    $('#adminnewsmodaltype').addClass(`${modal}`);
+    $('#viewadminnews').click();
+  });
+};
+
+DeleteNews = id => {
+  $.ajax({
+    type: 'Delete',
+    url: '/admin/delete/new',
+    data: {
+      _token: CSRF_TOKEN,
+      id: id
+    },
+    dataType: 'text',
+    success: function(response) {
+      AllNews();
+      iziToast.error({
+        position: 'topCenter',
+        message: 'News deleted.'
+      });
+    }
+  });
+};
+
+NewsSearch = search => {
+  if(search.length>0){
+  $.ajax({
+    type: 'Post',
+    url: '/admin/news/search',
+    data: {
+      search: search,
+      _token: CSRF_TOKEN
+    },
+    dataType: 'text',
+    success: function(response) {
+      let res = jQuery.parseJSON(response);
+      $('#allnewscount').html(`${res.length}`);
+      let output = '';
+      res.forEach(n => {
+        created_at = new Date(`${n.created_at}`);
+        created = created_at.toString().slice(0, 24);
+        output += `
+        <tr>
+        <th scope="row">${
+          n.subject.length > 10 ? n.subject.slice(0, 10) + '...' : n.subject
+        }</th>
+        <td>
+        ${n.body.length > 80 ? n.body.slice(0, 80) + '...' : n.body}
+        </td>
+        <td class="text-center">
+        ${created}
+        </td>
+        <td class="text-center">
+        <a class="far fa-eye text-primary cursor mr-1 adminviewnews" id="viewnews${
+          n.id
+        }" title="View">
+        </a>
+        <a class="fas fa-trash-alt text-danger cursor admindeletenews" id="deletenews${
+          n.id
+        }" title="Delete">
+        </a>
+        </td>
+        </tr>
+        `;
+      });
+      $('#allnewstable').html(`${output}`);
+    }
+  });
+}else{
+  AllNews()
+}
+};
+
 AdminData = () => {
   $.get('/admin/edit/data', data => {
     admin = jQuery.parseJSON(data);

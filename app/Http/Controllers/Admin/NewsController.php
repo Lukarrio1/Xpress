@@ -35,8 +35,8 @@ class NewsController extends Controller
         $new = new News;
         $new->subject = htmlentities($request->subject);
         $new->body = htmlentities($request->body);
-        $this->Email(htmlentities($request->subject), htmlentities($request->body));
         $new->save();
+        $this->Email(htmlentities($request->subject), htmlentities($request->body));
         return json_encode([
             'status' => 200,
         ]);
@@ -45,6 +45,30 @@ class NewsController extends Controller
     public function allnews(){
         $news = News::all();
         return json_encode($news);
+    }
+
+    public function singleNews($id){
+        $single= News::find($id);
+        return json_encode($single);
+    }
+
+    public function search(Request $request){
+        $this->validate($request,['search'=>'required']);
+        $search = htmlentities($request->search);
+        $res = News::where('subject','LIKE', '%'.$search.'%')
+        ->orWhere('body','LIKE','%'.$search.'%')
+        ->orderby('created_at','desc')
+        ->get();
+        return json_encode($res);
+    }
+
+    public function destroy(Request $request){
+        $this->validate($request,[
+            "id"=>"required"
+        ]);
+      $delete = News::find(htmlentities($request->id));
+      $delete->delete();
+      return json_encode(['status'=>200]);
     }
 
     public function Email($subject, $body)

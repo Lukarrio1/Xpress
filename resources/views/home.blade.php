@@ -290,7 +290,7 @@
     <!-- Modal -->
     <div class="modal " id="newsmodal" tabindex="-1" role="dialog" aria-labelledby="newsmodal"
       aria-hidden="true">
-      <div class="modal-dialog modal-lg " role="document">
+      <div class="modal-dialog modal-lg " role="document" id="newsmodaltype">
         <div class="modal-content">
           <div class="modal-header bg-danger text-white text-center">
             <h5 class="modal-title" id="exampleModalLabel">News <small id="newtime"></small></h5>
@@ -392,10 +392,8 @@
       <div class="modal-header bg-danger text-white text-center">
         <h5 class="modal-title" id=""><span id="activitytitle">
           </span></h5><small id="recentevent"></small>
-        </h5>
       </div>
       <div class="modal-body" id="activitybody">
-        
       </div>
       <div class="modal-footer">
          <span id="taskcompleted"></span>
@@ -416,19 +414,10 @@
     </div>
     <!--Grid column-->
 </section>
-
 <section class="pb-5">
-  <!--Section: Classic admin cards-->
-
   <div class="row mb-0 ">
-
-    <!-- First column -->
     <div class="col-md-12">
       <div class="card bg-white">
-
-
-
-
       </div>
     </div>
 </section>

@@ -65,6 +65,8 @@ $(document).on('click', '.todo', function() {
 // This trigger calls the NewsModal()
 $(document).on('click', '.newsmodal', function() {
   let mdid = this;
+  $('#newsmodaltype').removeClass('modal-lg');
+  $('#newsmodaltype').removeClass('modal-fluid');
   NewsModal(mdid);
 });
 // This trigger calls the ViewTask()
@@ -619,7 +621,7 @@ News = () => {
     news.forEach(n => {
       text += `<a href="#" class="list-group-item d-flex justify-content-between dark-grey-text newsmodal" id="news${
         n.id
-      }">${n.subject}
+      }">${n.subject.length > 37 ? n.subject.slice(0, 37) + '...' : n.subject}
       </a>`;
     });
     $('#allnews').html(`${text}`);
@@ -649,6 +651,8 @@ NewsModal = mdid => {
      `);
       created_at = new Date(`${singlenews.created_at}`);
       created = created_at.toString().slice(0, 24);
+      let modal = singlenews.subject.length > 40 ? 'modal-fluid' : 'modal-lg';
+      $('#newsmodaltype').addClass(`${modal}`);
       $('#newtime').html(`${created}`);
       $('#newsbtn').click();
     }
