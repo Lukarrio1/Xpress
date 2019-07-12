@@ -23,6 +23,15 @@ class NewsController extends Controller
             'id'=>'required'
         ]);
     $news = News::find($request->id);
+    if(empty($news)){
+        return json_encode([
+            'subject'=>"News Deleted",
+            'body'=>"  ",
+            "created_at"=>null,
+            "updated_at"=>null,
+            "id"=>null
+        ]);
+      }
     return json_encode($news);
     }
 }
