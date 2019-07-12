@@ -1,7 +1,7 @@
 <section>
 @if(count($errors)>0)
 @foreach($errors->all() as $error)
-<div class="alert alert-danger text-center  col-lg-8 offset-lg-2 col-xs-12">
+<div class="alert alert-danger text-center  col-lg-8 offset-lg-2 col-xs-12 pre-error">
 {{ $error }}
 </div>
 @endforeach

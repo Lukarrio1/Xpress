@@ -95,6 +95,8 @@ $(document).on('click', '.prealertactivity', function() {
 $('#calculateair').on('click', () => AirFreightCalculator());
 
 $('#calculatesea').on('click', () => SeaFreightCalculator());
+
+setTimeout(() => RemoveErrors(), 10000);
 /* Triggers end here */
 
 // this function updates the date of the footer every year .
@@ -116,6 +118,11 @@ SuccesMessageRemove = () => {
 StopInterval = id => {
   clearInterval(id);
 };
+
+RemoveErrors = () => {
+  let errors = document.querySelectorAll('.pre-error');
+  errors.forEach(err => err.remove());
+};
 // checks to see if the user verified there email ('/','NotificationController@Token')
 TokenCheck = () => {
   $.get('/Notifications', data => {
@@ -133,13 +140,9 @@ TokenCheck = () => {
       var verify = 1;
       spnotification(verify);
     }
-    // for(i = 0; i<notification.length; i++){
-    // text +=`<a class='dropdown-item' href'/Notifications/${notification[i].id}'><i class='fas fa-money mr-2' aria-hidden='true'></i><span>${notification[i].name}</span> <span class='float-right'><i class='far  fa-clock' aria-hidden='true'></i> 13 min</span></a>`;
-    // }
   });
 };
 
-// check to see if the modal has been clicked /modal ('/modal', 'User\UserController@Modaltoken')
 Modaltimer = () => {
   $.get('/modal', data => {
     var token = jQuery.parseJSON(data);
