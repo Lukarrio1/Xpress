@@ -642,7 +642,9 @@ NewsModal = mdid => {
     dataType: 'text',
     success: data => {
       let singlenews = jQuery.parseJSON(data);
-      $('#newmessage').html(`
+      singlenews.id == 0
+        ? News()
+        : $('#newmessage').html(`
      <div class="text-center">
      <span class="h2">${singlenews.subject}</span>
      </div>

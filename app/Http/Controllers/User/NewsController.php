@@ -29,7 +29,7 @@ class NewsController extends Controller
             'body'=>"  ",
             "created_at"=>null,
             "updated_at"=>null,
-            "id"=>null
+            "id"=>0
         ]);
       }
     return json_encode($news);
