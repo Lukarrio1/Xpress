@@ -96,7 +96,7 @@ $('#calculateair').on('click', () => AirFreightCalculator());
 
 $('#calculatesea').on('click', () => SeaFreightCalculator());
 
-// setTimeout(() => RemoveErrors(), 10000);
+setTimeout(() => RemoveErrors(), 10000);
 /* Triggers end here */
 
 // this function updates the date of the footer every year .
