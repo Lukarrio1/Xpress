@@ -39,8 +39,8 @@ class DeliveryController extends Controller
       return json_encode($allsd);
     }
   
-    public function DeliveryUpdate(){
-      $user = Auth::user()->id;
+    public function DeliveryUpdate(Request $request){
+      $user =htmlentities($request->id);
       DB::table('sdnotifies')
       ->where('user_id','=',$user)
       ->where('clicked','=','false')

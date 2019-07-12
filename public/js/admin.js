@@ -648,7 +648,7 @@ DeliveryView = delId => {
   let id = delivery.substring(4);
   $.ajax({
     url: '/admin/delivery/view',
-    type: 'POST',
+    type: 'Post',
     data: {
       _token: CSRF_TOKEN,
       id: id
