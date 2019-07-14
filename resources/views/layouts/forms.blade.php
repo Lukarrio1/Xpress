@@ -15,8 +15,8 @@
      <!-- Scripts -->
 <!-- Compiled and minified JavaScript -->
 <script
-  src="http://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
   <!-- Argon JS -->
   <script src="{{ asset('js/forms.js') }}"></script>
