@@ -41,7 +41,7 @@ class NewsController extends Controller
     }
 
     public function allnews(){
-        $news = News::all();
+        $news = News::orderby('created_at','desc')->get();
         return json_encode($news);
     }
 

@@ -54,7 +54,7 @@ class AdminController extends Controller
    public function update(Request $request){
        $this->validate($request,[
            'email'=>'required|email|max:200',
-           'name'=>'required|max:20'
+           'name'=>'required'
        ]);
        $name = htmlentities($request->name);
        $email =htmlentities($request->email);
@@ -90,7 +90,6 @@ class AdminController extends Controller
        ]);
        $password = Admin::find(Auth::user()->id);
        $password->password = Hash::make(htmlentities($request->newpass));
-    //    $this->PasswordEmailNotification();
        $password->save();
        return json_encode(["status"=>200]);
 
