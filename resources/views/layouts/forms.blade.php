@@ -20,25 +20,6 @@
   crossorigin="anonymous"></script>
   <!-- Argon JS -->
   <script src="{{ asset('js/forms.js') }}"></script>
-  <script>
-  $('#showpasswords').on('click', () => ShowPassword());
-  ShowPassword = () => {
-    let type =$("#regpassword").attr('type')
-  switch(type){
-      case "password":
-      $("#regpassword").attr('type','text')
-      $("#regconfpassword").attr('type','text')
-      $('#showpasswords').removeClass("fa-eye")
-      $('#showpasswords').addClass("fa-eye-slash")
-        break
-      case "text":
-      $("#regpassword").attr('type','password')
-      $("#regconfpassword").attr('type','password')
-      $('#showpasswords').removeClass("fa-eye-slash")
-      $('#showpasswords').addClass("fa-eye")
-        break 
-    }
-};
-  </script>
+<script src="{{asset('js/env.js')}}"></script>
 </body>
 </html>
