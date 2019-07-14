@@ -97,14 +97,15 @@ $('#calculateair').on('click', () => AirFreightCalculator());
 $('#calculatesea').on('click', () => SeaFreightCalculator());
 
 setTimeout(() => RemoveErrors(), 10000);
+
 /* Triggers end here */
 
 // this function updates the date of the footer every year .
-footerDate = () => {
-  var date = new Date();
-  var year = date.getFullYear();
-  $('#footerdate').html(`${year}`);
-};
+// footerDate = () => {
+//   var date = new Date();
+//   var year = date.getFullYear();
+//   $('#footerdate').html(`${year}`);
+// };
 
 // this message removes the Success message from the prealerts page after 5000 milliseconds
 SuccesMessageRemove = () => {
@@ -123,6 +124,7 @@ RemoveErrors = () => {
   let errors = document.querySelectorAll('.pre-error');
   errors.forEach(err => err.remove());
 };
+
 // checks to see if the user verified there email ('/','NotificationController@Token')
 TokenCheck = () => {
   $.get('/Notifications', data => {

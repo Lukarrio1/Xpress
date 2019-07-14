@@ -8,6 +8,7 @@
         <!-- Argon CSS -->
 <link href="{{asset('css/argone209.css')}}" rel="stylesheet">
 <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/env.css')}}">
  </head>  
 <body class="bg-danger">
     @yield('content')
@@ -19,5 +20,25 @@
   crossorigin="anonymous"></script>
   <!-- Argon JS -->
   <script src="{{ asset('js/forms.js') }}"></script>
+  <script>
+  $('#showpasswords').on('click', () => ShowPassword());
+  ShowPassword = () => {
+    let type =$("#regpassword").attr('type')
+  switch(type){
+      case "password":
+      $("#regpassword").attr('type','text')
+      $("#regconfpassword").attr('type','text')
+      $('#showpasswords').removeClass("fa-eye")
+      $('#showpasswords').addClass("fa-eye-slash")
+        break
+      case "text":
+      $("#regpassword").attr('type','password')
+      $("#regconfpassword").attr('type','password')
+      $('#showpasswords').removeClass("fa-eye-slash")
+      $('#showpasswords').addClass("fa-eye")
+        break 
+    }
+};
+  </script>
 </body>
 </html>

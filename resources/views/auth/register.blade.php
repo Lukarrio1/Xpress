@@ -40,17 +40,17 @@
                             <div class="form-group">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                        
+                                        <i class="fa fa-eye cursor" id="showpasswords" title="view passwords"></i>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password" name="password" required>
+                                    <input class="form-control" placeholder="Password" type="password" name="password" required id="regpassword">
                                 </div>
-                                                            </div>
+                                 </div>
                             <div class="form-group">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                        
                                     </div>
-                                    <input class="form-control" placeholder="Confirm Password" type="password" name="password_confirmation" required>
+                                    <input class="form-control" placeholder="Confirm Password" type="password" name="password_confirmation" required id="regconfpassword">
                                 </div>
                             </div>
                               <div class="form-group">
