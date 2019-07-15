@@ -9,7 +9,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="appurl" content="{{ config('app.url') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{url('storage/xpress.png')}}"/>
     <title>{{ config('app.name') }}</title>
+   
 
     <link rel="stylesheet" href="{{ asset('css/all.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/iziToast.css') }}" />
@@ -21,12 +23,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{{ asset('css/env.css') }}" />
-    {{--
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-    />
-    --}}
     <script>
       window.Laravel = {!! json_encode([
           'csrfToken' => csrf_token(),
@@ -42,11 +38,6 @@
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
-    {{--
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-jvectormap-world-mill.js') }}"></script>
-    <script src="{{ asset('js/jquery-jvectormap-2.0.3.min.js') }}"></script>
-    --}}
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

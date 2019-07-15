@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@yield('title')</title>
+        <link rel="shortcut icon" type="image/png" href="{{url('storage/xpress.png')}}"/>
+    <title>{{config('app.name')}}</title>
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <!-- Argon CSS -->
 <link href="{{asset('css/argone209.css')}}" rel="stylesheet">
