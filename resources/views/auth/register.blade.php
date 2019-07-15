@@ -40,9 +40,9 @@
                             <div class="form-group">
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                        <i class="fa fa-eye cursor" id="showpasswords" title="view passwords"></i>
+                                          <input class="form-control" placeholder="Password" type="password" name="password" required id="regpassword">
+                                        <i class="fa fa-eye cursor pt-3" id="showpasswords" title="view passwords"></i>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password" name="password" required id="regpassword">
                                 </div>
                                  </div>
                             <div class="form-group">
