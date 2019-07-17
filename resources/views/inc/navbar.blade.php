@@ -99,7 +99,7 @@
 
             <li><a href="{{route('scheduledelivery.home')}}" class="collapsible-header waves-effect">
                     <i class="fas fa-truck"></i>
-                Schedule Delivery</a></li>
+                Schedule Delivery/Florida Pickup</a></li>
 
 
 

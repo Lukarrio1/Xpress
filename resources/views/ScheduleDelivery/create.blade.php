@@ -4,7 +4,7 @@
 <div class="card mt-4">
 
     <h5 class="card-header bg-danger white-text text-center py-4">
-        <strong>Schedule Delivery Form</strong>
+        <strong>Schedule Delivery / Florida Pickup</strong>
     </h5>
 
     <!--Card content-->
@@ -35,7 +35,7 @@
             <!-- E-mail -->
             <div class="md-form mt-0">
                 <input type="text" id="deliveryaddress" class="form-control">
-                <label for="deliveryaddress">Delivery Address</label>
+                <label for="deliveryaddress">Delivery Address/Florida Pickup Address</label>
                 <span class="text-danger" id="errordelivery"></span>
             </div>
             
