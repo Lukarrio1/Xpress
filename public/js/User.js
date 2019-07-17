@@ -135,7 +135,7 @@ TokenCheck = () => {
       spnotification(verify);
     } else {
       $('#emailnotify').html(
-        `<a  class='dropdown-item' href='#'>${
+        `<a class='dropdown-item' href='#'>${
           notification.notification
         }<span class='float-right'>${notification.icon}</span></a>`
       );
@@ -151,6 +151,8 @@ Modaltimer = () => {
     var modal = token.token;
     $('#modalname').html(`${token.name}`);
     $('#modalxl').html(`${token.xl}`);
+    $('#modalxlair').html(`${token.xl}`);
+    $('#modalnameair').html(`${token.name}`);
     if (modal == '') {
     } else {
       $('#tutmodal').click();

@@ -88,8 +88,8 @@
             Xl number:<span id="modalxl"></span><br>
              
             <h3>Air Freight Address</h3><br>
-              Xl number:<span id="modalxl"></span><br>
-            Name : <span id="modalname"></span><br>
+              Xl number:<span id="modalxlair"></span><br>
+            Name : <span id="modalnameair"></span><br>
             Address line 1: 10901 N.W. 146th Street,<br>
             Address line 2: 8 Hialeah Gardens,<br>
             City / State : Florida<br>
