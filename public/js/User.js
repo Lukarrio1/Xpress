@@ -6,7 +6,7 @@ $(document).ready(() => {
   spnotification();
   task();
   News();
-  footerDate();
+  // footerDate();
   SuccesMessageRemove();
   ScheduleRec();
   PreAlertsRec();
