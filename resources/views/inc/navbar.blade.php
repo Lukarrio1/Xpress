@@ -343,23 +343,18 @@
         </li>
 
       </ul>
-      <!--/Navbar links-->
     </nav>
-    <!-- /.Navbar -->
-
-    <!-- Fixed button -->
     <div class="fixed-action-btn clearfix d-none d-xl-block" style="bottom: 45px; right: 24px;">
       <a class="btn-floating btn-lg bg-danger">
         <i class="fas fa-pencil-alt"></i>
       </a>
 
       <ul class="list-unstyled">
-         <li><a class="btn-floating green" href="{{route('home')}}"><i class="fas fa-tachometer-alt"></i></a></li>
+         <li><a class="btn-floating green" data-toggle="modal"
+          data-target="#centralModalLGInfoDemo"><i class="fas fa-address-book"></i></a></li>
       <li><a class="btn-floating red" href="{{route('shippingCalculator.home')}}"><i class="fas fa-calculator"></i></a></li>
       <li><a class="btn-floating yellow darken-1" href="{{route('account.edit')}}"><i class="fas fa-user"></i></a></li>
       <li><a class="btn-floating blue" href="{{route('shipments.home')}}"><i class="fas fa-ship"></i></a></li>
       </ul>
     </div>
-    <!-- Fixed button -->
-
   </header>
