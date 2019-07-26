@@ -98,15 +98,6 @@ $('#calculatesea').on('click', () => SeaFreightCalculator());
 
 setTimeout(() => RemoveErrors(), 10000);
 
-/* Triggers end here */
-
-// this function updates the date of the footer every year .
-// footerDate = () => {
-//   var date = new Date();
-//   var year = date.getFullYear();
-//   $('#footerdate').html(`${year}`);
-// };
-
 // this message removes the Success message from the prealerts page after 5000 milliseconds
 SuccesMessageRemove = () => {
   let timeout = setInterval(() => {
@@ -210,7 +201,7 @@ ProfileUpdate = () => {
   } else if (address.length < 3) {
     $('#erroraddress').html('Address is too short');
   } else {
-    // empties the error messages if validate is successfull
+    // empties the error messages if validate is successfully
     $('#update').removeClass('btn btn-success');
     $('#updatebtn').html(
       "<div class='spinner-grow text-success' role='status'></div>"

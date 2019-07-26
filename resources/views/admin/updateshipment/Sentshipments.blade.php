@@ -46,6 +46,7 @@
           <tr>
             <th></th>
             <th>XL#</th>
+            <th>Name</th>
             <th>Tracking No.</th>
             <th>Reference No.</th>
             <th>Description</th>

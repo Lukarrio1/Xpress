@@ -1248,6 +1248,7 @@ Allshipments = () => {
     ${_class}
       <td>${ischeck}</td>
       <td>${n.xl}</td>
+      <td>${n.name}</td>
       <td>${n.tracking_no}</td>
       <td>${n.reference_no}</td>
       <td>${n.description}</td>
@@ -1325,6 +1326,7 @@ SearchShipments = () => {
         ${_class}
           <td>${ischeck}</td>
           <td>${n.xl}</td>
+          <td>${n.name}</td>
           <td>${n.tracking_no}</td>
           <td>${n.reference_no}</td>
           <td>${n.description}</td>

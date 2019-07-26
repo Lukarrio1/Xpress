@@ -100,6 +100,7 @@ class ShipmentsController extends Controller
             $ship[] =[
             'id'=>$shipment->id,
             'xl'=>$user->xl,
+            'name'=>$user->name,
             'tracking_no'=>$shipment->tracking_no,
             'reference_no'=>$shipment->reference_no,
             'description'=>$shipment->description,
@@ -130,26 +131,39 @@ class ShipmentsController extends Controller
         switch($request->status){
             case "dw":
             $shp->status ="Delivered to Warehouse";
-            $status =" was delivered to the Warehouse";
+            $status =" We are happy to say your package have arrived at our facility,
+            please stand by for all deliveries and pickup schedules.
+
+            Ensure all invoices are upload to your XpressPortals to prevent delays. 
+
+            If you have done so already or if we had ordered
+            your item(s) on your behalf please disregard. 
+
+            Thank You for your Cooperation.
+            Regards,
+            Xpresslogistics";
+            $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             break;
             case "Ij" :
             $shp->status ="In transit to Jamaica";
             $status= "is in transit to jamaica";
+            $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             break;
             case "ac" : 
             $shp->status ="At Customs";
             $status = "is at customs";
+            $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             break;
             case "ru": 
             $shp->status ="Ready for Pick Up";
             $status="is ready for pick up";
+            $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             $notify = spnotify::where("user_id",$shp->user_id)->first();
             $notify->completed=1;
             $notify->save();
             break;
         }
             $shp->save();
-            $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             
         return json_encode(["status"=>200]);
     }
@@ -170,12 +184,13 @@ class ShipmentsController extends Controller
         ]);
         $result = array();
         $search = htmlentities($request->search);
-          $shipments=  Shipments::where('tracking_no', 'LIKE', '%'.$search.'%')
+        $shipments=  Shipments::where('tracking_no', 'LIKE', '%'.$search.'%')
         ->orWhere('reference_no', 'LIKE', '%'.$search.'%')
         ->orWhere('status', 'LIKE', '%'.$search.'%')
         ->orderby('created_at', 'desc')
         ->get();
         $users = User::where('xl','like','%'.$search.'%')
+        ->orWhere('name', 'LIKE', '%'.$search.'%')
         ->get();
         if(count($users)>0){
             foreach($users as $user){
@@ -185,6 +200,7 @@ class ShipmentsController extends Controller
                 foreach($shipments as $shipment){
                     $result[]=[
                         'id'=>$shipment->id,
+                        'name'=>$user->name,
                         'xl'=>$user->xl,
                         'tracking_no'=>$shipment->tracking_no,
                         'reference_no'=>$shipment->reference_no,
@@ -204,6 +220,7 @@ class ShipmentsController extends Controller
                 $result[]=[
                     'id'=>$shipment->id,
                     'xl'=>$xl->xl,
+                    'name'=>$user->name,
                     'tracking_no'=>$shipment->tracking_no,
                     'reference_no'=>$shipment->reference_no,
                     'description'=>$shipment->description,
