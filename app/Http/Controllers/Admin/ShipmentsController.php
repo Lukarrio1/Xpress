@@ -131,16 +131,17 @@ class ShipmentsController extends Controller
         switch($request->status){
             case "dw":
             $shp->status ="Delivered to Warehouse";
-            $status =" We are happy to say your package have arrived at our facility,
-            please stand by for all deliveries and pickup schedules.
-
-            Ensure all invoices are upload to your XpressPortals to prevent delays. 
-
-            If you have done so already or if we had ordered
-            your item(s) on your behalf please disregard. 
-
-            Thank You for your Cooperation.
-            Regards,
+            $status =" 
+            We are happy to say your package have arrived at our facility,<br>
+            please stand by for all deliveries and pickup schedules.<br><br>
+        
+            Ensure all invoices are uploaded to your XpressPortals to prevent delays.<br><br>
+        
+            If you have done so already or if we had ordered<br>
+            your item(s) on your behalf please disregard.<br>
+        
+            Thank You for your Cooperation.<br>
+            Regards,<br>
             Xpresslogistics";
             $this->ShipmentStatusMail($status,$shp->user_id,$shp->reference_no);
             break;
