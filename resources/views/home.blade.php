@@ -80,7 +80,8 @@
             <i class="fas fa-globe-americas fa-5x danger-text"></i><br>
             <h2>Overseas Address</h2><br>
             <h4>Sea Freight Address</h4>
-            Name : <span id="modalname"></span><br>
+            First name: <span>Xpress Logistics C/O</span><br> 
+            Last name : <span id="modalname"></span><br>
             Address line 1: 2736 NW 29th Terrace,<br>
             Address line 2: Bldg 13 Lauderdale Lakes,<br>
             City / State : Oakland, Florida<br>
@@ -88,10 +89,11 @@
             Xl number:<span id="modalxl"></span><br><br>
 
             <h4>Air Freight Address</h4>
-              Xl number:<span id="modalxlair"></span><br>
-            Name : <span id="modalnameair"></span><br>
-            Address line 1: 10901 N.W. 146th Street,<br>
-            Address line 2: 8 Hialeah Gardens,<br>
+            Xl number:<span id="modalxlair"></span><br>
+            First name :XPRLOG1 <span id="modalnameair"></span><br>
+            Last name : <span> C/O PasCargo</span> <br>
+            Address line 1: 10901 N.W. 146th Street Suite 8,<br>
+            Address line 2: Hialeah Gardens, FL 33018 USA<br>
             City / State : Florida<br>
             Zipcode : 33018 <br>
           </div> <br>
