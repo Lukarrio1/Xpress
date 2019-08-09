@@ -13,13 +13,13 @@ $(document).ready(() => {
   AirFreightData();
   Pdata();
   AllNews();
-  $('#invloading').css('display', 'none');
+  $("#invloading").css("display", "none");
 });
 
 initcalculator = () => {
   $.ajax({
-    type: 'POST',
-    url: '/admin/shipmentcalculator/air',
+    type: "POST",
+    url: "/admin/shipmentcalculator/air",
     data: {
       _token: CSRF_TOKEN,
       exrate: 0,
@@ -36,131 +36,130 @@ initcalculator = () => {
       shw2: 0,
       shw1: 0
     },
-    dataType: 'text',
+    dataType: "text",
     success: function(response) {
       AirFreightData();
     }
   });
   $.ajax({
-    type: 'POST',
-    url: '/admin/shipmentcalculator',
+    type: "POST",
+    url: "/admin/shipmentcalculator",
     data: {
       _token: CSRF_TOKEN,
       exrate: 0,
       percentage: 0
     },
-    dataType: 'text',
+    dataType: "text",
     success: function(response) {
       SeaFreightData();
     }
   });
 };
-
 // global declaration
-let shipmentuserid = '';
-let shipmentbtn = '';
+let shipmentuserid = "";
+let shipmentbtn = "";
 /* Triggers. these call function when the respective part of the dom is manipulated .. 
  This trigger calls the UserSearch()*/
-$('#usersearch').on('keyup', () => UserSearch());
+$("#usersearch").on("keyup", () => UserSearch());
 // this trigger calls the UserCard()
-$(document).on('click', '.userid', function() {
+$(document).on("click", ".userid", function() {
   var userID = this;
   UserCard(userID);
 });
 // this trigger calls the UserDelete()
-$(document).on('click', '.userdel', function() {
+$(document).on("click", ".userdel", function() {
   var userID = this;
   UserDelete(userID);
 });
 // this trigger calls the invoiceFile()
-$(document).on('click', '.invoice', function() {
+$(document).on("click", ".invoice", function() {
   var invId = this;
   InvoiceComplete(invId);
 });
 // this trigger calls the InvoiceFile()
-$(document).on('click', '.invfile', function() {
+$(document).on("click", ".invfile", function() {
   var invoicefileID = this;
   InvoiceFile(invoicefileID);
 });
 // this trigger calls the InvoiceNotificationUpate()
-$(document).on('click', '.nt', function() {
+$(document).on("click", ".nt", function() {
   var ntid = this;
   InvoiceNotificationUpdate(ntid);
 });
 // this trigger calls the NewsCreate()
-$('#newsendbtn').on('click', () => {
+$("#newsendbtn").on("click", () => {
   NewsCreate();
 });
 // this trigger calls the InvoiceView()
-$(document).on('click', '.searchin', function() {
+$(document).on("click", ".searchin", function() {
   var invId = this;
   InvoiceView(invId);
 });
 // this trigger calls the DeliveryView()
-$(document).on('click', '.sdnt', function() {
+$(document).on("click", ".sdnt", function() {
   let delId = this;
   DeliveryView(delId);
 });
 // this trigger calls the DeliveryComplete()
-$(document).on('click', '.devcheck', function() {
+$(document).on("click", ".devcheck", function() {
   var delId = this;
   DeliveryComplete(delId);
 });
 
-$(document).on('click', '.adminshipcollected', function() {
-  let shipmentid = $(this).attr('id');
+$(document).on("click", ".adminshipcollected", function() {
+  let shipmentid = $(this).attr("id");
   let id = shipmentid.substring(9);
   ShipmentCompleted(id);
 });
-$(document).on('click', '.updatestatusbtn', function() {
-  shipmentbtn = $(this).attr('id');
+$(document).on("click", ".updatestatusbtn", function() {
+  shipmentbtn = $(this).attr("id");
 });
-$('#updateshipmentbtn').click(() => ViewStatusChange());
+$("#updateshipmentbtn").click(() => ViewStatusChange());
 
-$('#seaupdatebtn').on('click', () => SeaFreight());
+$("#seaupdatebtn").on("click", () => SeaFreight());
 
-$('#adminupdate').on('click', () => Adminupdate());
+$("#adminupdate").on("click", () => Adminupdate());
 
-$('#airupdatebtn').on('click', () => AirFreight());
+$("#airupdatebtn").on("click", () => AirFreight());
 
-$(document).on('click', '.addshipment', function() {
+$(document).on("click", ".addshipment", function() {
   shipmentuserid = this;
-  $('#errortracking').html(' ');
-  $('#errorstatus').html(' ');
-  $('#errorcharge').html(' ');
-  $('#errordescription').html(' ');
-  $('#errordate').html(' ');
-  $('#errorrefrence').html(' ');
-  $('#upstatus').val('Status');
-  $('#upshipping').val('');
-  $('#updescription').val('');
-  $('#updeliverydate').val('');
-  $('#upreference').val('');
-  $('#uptracting').val('');
+  $("#errortracking").html(" ");
+  $("#errorstatus").html(" ");
+  $("#errorcharge").html(" ");
+  $("#errordescription").html(" ");
+  $("#errordate").html(" ");
+  $("#errorrefrence").html(" ");
+  $("#upstatus").val("Status");
+  $("#upshipping").val("");
+  $("#updescription").val("");
+  $("#updeliverydate").val("");
+  $("#upreference").val("");
+  $("#uptracting").val("");
 });
 // This trigger calls the CreateShipment()
-$('#sendshipment').on('click', () => CreateShipment());
+$("#sendshipment").on("click", () => CreateShipment());
 // This trigger calls the UpdateShipmentSearch()
-$('#updatesearchuser').on('keyup', () => UpdateShipmentSearch());
+$("#updatesearchuser").on("keyup", () => UpdateShipmentSearch());
 
-$('#adminsearchshipments').on('keyup', () => SearchShipments());
+$("#adminsearchshipments").on("keyup", () => SearchShipments());
 
-$(document).on('click', '.adminviewnews', function() {
-  let uiid = $(this).attr('id');
+$(document).on("click", ".adminviewnews", function() {
+  let uiid = $(this).attr("id");
   let id = uiid.substring(8);
-  $('#adminnewsmodaltype').removeClass('modal-fluid');
-  $('#adminnewsmodaltype').removeClass('modal-lg');
+  $("#adminnewsmodaltype").removeClass("modal-fluid");
+  $("#adminnewsmodaltype").removeClass("modal-lg");
   ViewNews(id);
 });
 
-$(document).on('click', '.admindeletenews', function() {
-  let uiid = $(this).attr('id');
+$(document).on("click", ".admindeletenews", function() {
+  let uiid = $(this).attr("id");
   let id = uiid.substring(10);
   DeleteNews(id);
 });
 
-$('#adminnewssearch').on('keyup', () => {
-  let search = $('#adminnewssearch').val();
+$("#adminnewssearch").on("keyup", () => {
+  let search = $("#adminnewssearch").val();
   NewsSearch(search);
 });
 // End of triggers
@@ -168,24 +167,24 @@ $('#adminnewssearch').on('keyup', () => {
 footerDate = () => {
   var date = new Date();
   var year = date.getFullYear();
-  $('#footerdate').html(`${year}`);
+  $("#footerdate").html(`${year}`);
 };
 // this function returns all of the users
 Allusers = () => {
-  $.get('/admin/allusers', data => {
+  $.get("/admin/allusers", data => {
     var user = jQuery.parseJSON(data);
     AdminVerifiedUser(user);
     UsersShipment(user);
     AdminDeletedUsers(user);
-    let text = '';
+    let text = "";
     let amount = user.length;
-    $('#allusercount').html(`${amount}`);
+    $("#allusercount").html(`${amount}`);
     window.setInterval(() => {
       UserCheck(amount);
     }, 10000);
     for (let i = 0; i < amount; i++) {
       let deleted = user[i].deleted
-        ? ''
+        ? ""
         : `<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
             user[i].id
           }"><i class="fas fa-times" ></i></a>`;
@@ -205,24 +204,24 @@ Allusers = () => {
           </tr>`;
       // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
     }
-    $('#usercount').html(`${user.length}`);
-    $('#alluserbody').html(`${text}`);
+    $("#usercount").html(`${user.length}`);
+    $("#alluserbody").html(`${text}`);
   });
 };
 
 AdminVerifiedUser = users => {
-  let verified = users.filter(n => n.verified === '').length;
-  $('#verifieduserscount').html(`${verified}`);
-  $('#totalusercount').html(`${users.length}`);
+  let verified = users.filter(n => n.verified === "").length;
+  $("#verifieduserscount").html(`${verified}`);
+  $("#totalusercount").html(`${users.length}`);
 };
 
 AdminDeletedUsers = users => {
   let deletedusers = users.filter(n => n.deleted).length;
-  $('#deleteduserscount').html(`${deletedusers}`);
+  $("#deleteduserscount").html(`${deletedusers}`);
 };
 
 UserCheck = amount => {
-  $.get('/admin/allusers', data => {
+  $.get("/admin/allusers", data => {
     var user = jQuery.parseJSON(data);
     if (amount != user.length) {
       Allusers();
@@ -231,22 +230,22 @@ UserCheck = amount => {
 };
 
 UserSearch = () => {
-  if ($('#usersearch').val().length > 3) {
-    $('#alluserbody').html('');
+  if ($("#usersearch").val().length > 3) {
+    $("#alluserbody").html("");
     $.ajax({
-      url: '/admin/search',
-      type: 'POST',
+      url: "/admin/search",
+      type: "POST",
       data: {
         _token: CSRF_TOKEN,
-        search: $('#usersearch').val()
+        search: $("#usersearch").val()
       },
-      dataType: 'text',
+      dataType: "text",
       success: data => {
         let users = jQuery.parseJSON(data);
-        let searches = '';
+        let searches = "";
         for (let i = 0; i < users.length; i++) {
           let deleted = users[i].deleted
-            ? ''
+            ? ""
             : `<a class="red-text userdel" data-toggle="tooltip" data-placement="top" title="Remove" id="use${
                 users[i].id
               }"><i class="fas fa-times" ></i></a>`;
@@ -267,7 +266,7 @@ UserSearch = () => {
           // <a class="teal-text" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
         }
 
-        $('#alluserbody').html(`${searches}`);
+        $("#alluserbody").html(`${searches}`);
       }
     });
   } else {
@@ -276,19 +275,19 @@ UserSearch = () => {
 };
 
 UserCard = userID => {
-  let data = $(userID).attr('id');
+  let data = $(userID).attr("id");
   let id = data.substring(4);
   $.ajax({
-    url: '/admin/allusers',
-    type: 'POST',
+    url: "/admin/allusers",
+    type: "POST",
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: 'text',
+    dataType: "text",
     success: data => {
       let user = jQuery.parseJSON(data);
-      let deleted = user.deleted == 1 ? 'Account Deleted' : 'Account Active';
+      let deleted = user.deleted == 1 ? "Account Deleted" : "Account Active";
       let usercard = `<!-- Card -->
 				<div class="card profile-card">
 				<div class="avatar z-depth-1-half mb-4">
@@ -314,48 +313,48 @@ UserCard = userID => {
 				</ul>
 				</div>
 				</div>`;
-      $('#usercardbody').html(`${usercard}`);
+      $("#usercardbody").html(`${usercard}`);
     }
   });
 };
 
 UserDelete = UserID => {
-  let del = $(UserID).attr('id');
+  let del = $(UserID).attr("id");
   let id = del.substring(3);
   iziToast.question({
-    backgroundColor: 'red',
-    messageColor: 'white',
-    titleColor: 'white',
+    backgroundColor: "red",
+    messageColor: "white",
+    titleColor: "white",
     timeout: 10000,
     close: false,
     overlay: true,
-    displayMode: 'once',
-    id: 'question',
+    displayMode: "once",
+    id: "question",
     zindex: 999,
-    message: 'Are you sure you want to delete this user?',
-    position: 'center',
+    message: "Are you sure you want to delete this user?",
+    position: "center",
     buttons: [
       [
         '<button style="color:white;"><b>YES</b></button>',
         function(instance, toast) {
           $.ajax({
-            type: 'Post',
-            url: '/admin/user/delete',
+            type: "Post",
+            url: "/admin/user/delete",
             data: {
               _token: CSRF_TOKEN,
               delete: id
             },
-            dataType: 'text',
+            dataType: "text",
             success: function(response) {
               Allusers();
             }
           });
           instance.hide(
             {
-              transitionOut: 'fadeOut'
+              transitionOut: "fadeOut"
             },
             toast,
-            'button'
+            "button"
           );
         },
         true
@@ -365,10 +364,10 @@ UserDelete = UserID => {
         function(instance, toast) {
           instance.hide(
             {
-              transitionOut: 'fadeOut'
+              transitionOut: "fadeOut"
             },
             toast,
-            'button'
+            "button"
           );
         }
       ]
@@ -377,16 +376,16 @@ UserDelete = UserID => {
 };
 
 Allinvoice = () => {
-  $.get('/admin/invoices/all', data => {
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
+  $.get("/admin/invoices/all", data => {
+    var formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
     });
     let inv = jQuery.parseJSON(data);
     AdminInvoiceIncompleted(inv);
     AdminCountInvoice(inv);
     AdmininvoiceValue(inv);
-    let invoice = '';
+    let invoice = "";
     let maxinv = 0;
     window.setInterval(() => {
       InCheck(inv.length);
@@ -396,14 +395,14 @@ Allinvoice = () => {
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${inv[i].updated_at}`);
       updated = updated_at.toString().slice(0, 24);
-      if (inv[i].token == 'true') {
+      if (inv[i].token == "true") {
         _class = "<tr class='table-info'>";
-        updated = '';
-        check = '';
+        updated = "";
+        check = "";
         maxinv = maxinv + 1;
       } else {
         _class = '<tr class="">';
-        check = 'checked';
+        check = "checked";
       }
       invoice += `
 		${_class}
@@ -433,94 +432,94 @@ Allinvoice = () => {
     }
     // changes made here
     if (maxinv == inv.length) {
-      $('#completedinvcount').removeClass('green');
-      $('#completedinvcount').addClass('badge blue');
+      $("#completedinvcount").removeClass("green");
+      $("#completedinvcount").addClass("badge blue");
     } else {
-      $('#completedinvcount').removeClass('blue');
-      $('#completedinvcount').addClass('badge green');
+      $("#completedinvcount").removeClass("blue");
+      $("#completedinvcount").addClass("badge green");
     }
-    $('#completedinvcount').html(`${maxinv}`);
-    $('#invoicebody1').html(`${invoice}`);
-    $('#invcount').html(`${inv.length}`);
+    $("#completedinvcount").html(`${maxinv}`);
+    $("#invoicebody1").html(`${invoice}`);
+    $("#invcount").html(`${inv.length}`);
   });
 };
 
 AdminInvoiceIncompleted = invoice => {
-  let incompleted = invoice.filter(n => n.token == 'true').length;
-  $('#adminincompletedinvoice').html(`${incompleted}`);
+  let incompleted = invoice.filter(n => n.token == "true").length;
+  $("#adminincompletedinvoice").html(`${incompleted}`);
 };
 
 AdminCountInvoice = invoices => {
-  $('#admintotalinvoices').html(`${invoices.length}`);
+  $("#admintotalinvoices").html(`${invoices.length}`);
 };
 
 AdmininvoiceValue = invoices => {
   let money = invoices.reduce((total, val) => total + parseInt(val.value), 0);
-  var formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD"
   });
   let formatmoney = formatter.format(money);
-  $('#adminInvoiceValue').html(formatmoney);
+  $("#adminInvoiceValue").html(formatmoney);
 };
 
 InvoiceFile = invoicefileID => {
-  let invc = $(invoicefileID).attr('id');
+  let invc = $(invoicefileID).attr("id");
   let id = invc.substring(7);
   $.ajax({
-    url: '/admin/invoice/file',
-    type: 'POST',
+    url: "/admin/invoice/file",
+    type: "POST",
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: 'text',
+    dataType: "text",
     success: data => {
       let file = jQuery.parseJSON(data);
       let ext = file.ext;
       if (ext < 1) {
-        $('#invfile').html(
+        $("#invfile").html(
           `<img src="/storage/Invoice/${file.file}" style="width:100%">`
         );
       } else {
-        $('#invfile').html(
+        $("#invfile").html(
           `<embed src="/storage/Invoice/${
             file.file
           }" frameborder="0" width="100%" height="450px">`
         );
       }
-      $('#modalinv').click();
+      $("#modalinv").click();
     }
   });
 };
 
 InvoiceComplete = invId => {
-  let invoice = $(invId).attr('id');
+  let invoice = $(invId).attr("id");
   let inval = $(invId).val();
   let id = invoice.substring(3);
   $.ajax({
-    url: '/admin/invoice/update',
-    type: 'POST',
+    url: "/admin/invoice/update",
+    type: "POST",
     data: {
       _token: CSRF_TOKEN,
       id: id,
       inv: inval
     },
-    dataType: 'text',
+    dataType: "text",
     success: data => {
       Allinvoice();
       iziToast.success({
-        position: 'topCenter',
-        message: 'Invoice viewed'
+        position: "topCenter",
+        message: "Invoice viewed"
       });
     }
   });
 };
 
 InvoiceNt = () => {
-  $.get('/admin/invoice/notification', data => {
+  $.get("/admin/invoice/notification", data => {
     let notify = jQuery.parseJSON(data);
-    let text = '';
+    let text = "";
     let invoice = notify.length;
     DeliveryNt(invoice);
     for (let i = 0; i < invoice; i++) {
@@ -531,35 +530,35 @@ InvoiceNt = () => {
     </a>
 	`;
     }
-    $('#invoicent').html(`${text}`);
+    $("#invoicent").html(`${text}`);
   });
 };
 
 InvoiceSearch = () => {
-  $('#invoicesearch').on('keyup', function() {
-    let search = $('#invoicesearch').val();
+  $("#invoicesearch").on("keyup", function() {
+    let search = $("#invoicesearch").val();
     if (search.length > 0) {
       $.ajax({
-        url: '/admin/invoice/search',
-        type: 'POST',
+        url: "/admin/invoice/search",
+        type: "POST",
         data: {
           _token: CSRF_TOKEN,
           search: search
         },
-        dataType: 'text',
+        dataType: "text",
         success: data => {
           let inv = jQuery.parseJSON(data);
-          let invoice = '';
+          let invoice = "";
           let maxinv = 0;
-          $('#searchcount').html(`${inv.length}`);
+          $("#searchcount").html(`${inv.length}`);
           for (let i = 0; i < inv.length; i++) {
-            if (inv[i].token == 'true') {
+            if (inv[i].token == "true") {
               _class = "<tr class='table-info'>";
               maxinv = maxinv + 1;
-              check = '';
+              check = "";
             } else {
               _class = '<tr class="">';
-              check = 'checked';
+              check = "checked";
             }
             created_at = new Date(`${inv[i].created_at}`);
             created = created_at.toString().slice(0, 24);
@@ -591,44 +590,44 @@ InvoiceSearch = () => {
 				</tr>`;
           }
           if (maxinv == inv.length) {
-            $('#completedinvcount').removeClass('green');
-            $('#completedinvcount').addClass('badge red');
+            $("#completedinvcount").removeClass("green");
+            $("#completedinvcount").addClass("badge red");
           } else {
-            $('#completedinvcount').removeClass('red');
-            $('#completedinvcount').addClass('badge green');
+            $("#completedinvcount").removeClass("red");
+            $("#completedinvcount").addClass("badge green");
           }
-          $('#completedinvcount').html(`${maxinv}`);
-          $('#invoicebody1').html(`${invoice}`);
-          $('#invcount').html(`${inv.length}`);
-          $('#invoicebody1').html(`${invoice}`);
+          $("#completedinvcount").html(`${maxinv}`);
+          $("#invoicebody1").html(`${invoice}`);
+          $("#invcount").html(`${inv.length}`);
+          $("#invoicebody1").html(`${invoice}`);
         }
       });
     } else {
-      $('#searchcount').html(0);
+      $("#searchcount").html(0);
       Allinvoice();
     }
   });
 };
 
 InvoiceNotificationUpdate = ntid => {
-  let invoice = $(ntid).attr('id');
+  let invoice = $(ntid).attr("id");
   let id = invoice.substring(2);
   $.ajax({
-    url: '/admin/invoice/notification',
-    type: 'POST',
+    url: "/admin/invoice/notification",
+    type: "POST",
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: 'text',
+    dataType: "text",
     success: data => {}
   });
 };
 
 DeliveryNt = invoice => {
-  $.get('/admin/sheduledelivery/notification', data => {
+  $.get("/admin/sheduledelivery/notification", data => {
     let notify = jQuery.parseJSON(data);
-    let text = '';
+    let text = "";
     let sdnotify = notify.length;
     NotificationCount(invoice, sdnotify);
     notify.forEach(not => {
@@ -639,55 +638,55 @@ DeliveryNt = invoice => {
     </a>
 	`;
     });
-    $('#deliverynt').html(`${text}`);
+    $("#deliverynt").html(`${text}`);
   });
 };
 
 DeliveryView = delId => {
-  let delivery = $(delId).attr('id');
+  let delivery = $(delId).attr("id");
   let id = delivery.substring(4);
   $.ajax({
-    url: '/admin/delivery/view',
-    type: 'Post',
+    url: "/admin/delivery/view",
+    type: "Post",
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: 'text',
+    dataType: "text",
     success: data => {}
   });
 };
 
 Alldeliveries = () => {
-  $.get('/admin/all/delivery', data => {
+  $.get("/admin/all/delivery", data => {
     let dev = jQuery.parseJSON(data);
     AdminDisplayDelivery(dev);
     AdminDeliveryCount(dev);
     window.setInterval(() => {
       DevCheck(dev.length);
     }, 10000);
-    let check = '';
+    let check = "";
     let mindev = 0;
-    let express = '';
-    let text = '';
+    let express = "";
+    let text = "";
     for (i = 0; i < dev.length; i++) {
       created_at = new Date(`${dev[i].created_at}`);
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${dev[i].updated_at}`);
       updated = updated_at.toString().slice(0, 24);
-      if (dev[i].token == 'true') {
+      if (dev[i].token == "true") {
         _class = "<tr class='table-info'>";
-        updated = '';
-        check = '';
+        updated = "";
+        check = "";
         mindev = mindev + 1;
       } else {
         _class = '<tr class="">';
-        check = 'checked';
+        check = "checked";
       }
-      if (dev[i].express == 'true') {
-        express = 'Yes';
+      if (dev[i].express == "true") {
+        express = "Yes";
       } else {
-        express = 'No';
+        express = "No";
       }
       text += `
       ${_class}
@@ -709,20 +708,20 @@ Alldeliveries = () => {
 	  </tr>`;
     }
     if (mindev == dev.length) {
-      $('#mindev').removeClass('green');
-      $('#mindev').addClass('badge blue');
+      $("#mindev").removeClass("green");
+      $("#mindev").addClass("badge blue");
     } else {
-      $('#mindev').removeClass('blue');
-      $('#mindev').addClass('badge green');
+      $("#mindev").removeClass("blue");
+      $("#mindev").addClass("badge green");
     }
-    $('#deliverytb').html(`${text}`);
-    $('#mindev').html(`${mindev}`);
-    $('#maxdev').html(`${dev.length}`);
+    $("#deliverytb").html(`${text}`);
+    $("#mindev").html(`${mindev}`);
+    $("#maxdev").html(`${dev.length}`);
   });
 };
 
 AdminDisplayDelivery = delivery => {
-  let output = '';
+  let output = "";
   delivery.forEach((n, index) => {
     if (index < 2) {
       created_at = new Date(`${n.created_at}`);
@@ -740,40 +739,40 @@ AdminDisplayDelivery = delivery => {
     `;
     }
   });
-  $('#adminincomedeliveries').html(`${output}`);
+  $("#adminincomedeliveries").html(`${output}`);
 };
 
 AdminDeliveryCount = deliveries => {
-  let delcount = deliveries.filter(n => n.token == 'true').length;
-  $('#undelivereddeliveries').html(`${delcount}`);
+  let delcount = deliveries.filter(n => n.token == "true").length;
+  $("#undelivereddeliveries").html(`${delcount}`);
 };
 
 DeliveryComplete = delId => {
-  let devid = $(delId).attr('id');
+  let devid = $(delId).attr("id");
   let dev = $(delId).val();
   let id = devid.substring(3);
-  $('#devsearchcount').html(0);
+  $("#devsearchcount").html(0);
   $.ajax({
-    url: '/admin/delivery/update',
-    type: 'POST',
+    url: "/admin/delivery/update",
+    type: "POST",
     data: {
       _token: CSRF_TOKEN,
       id: id,
       value: dev
     },
-    dataType: 'text',
+    dataType: "text",
     success: data => {
       Alldeliveries();
       iziToast.success({
-        position: 'topCenter',
-        message: 'Schedule delivery delivered.'
+        position: "topCenter",
+        message: "Schedule delivery delivered."
       });
     }
   });
 };
 
 InCheck = invlen => {
-  $.get('/admin/invoices/all', data => {
+  $.get("/admin/invoices/all", data => {
     let inv = jQuery.parseJSON(data);
     if (invlen != inv.length) {
       Allinvoice();
@@ -782,7 +781,7 @@ InCheck = invlen => {
 };
 
 DevCheck = devlen => {
-  $.get('/admin/all/delivery', data => {
+  $.get("/admin/all/delivery", data => {
     let dev = jQuery.parseJSON(data);
     if (devlen != dev.length) {
       Alldeliveries();
@@ -791,61 +790,61 @@ DevCheck = devlen => {
 };
 
 InvoiceView = invId => {
-  let invoice = $(invId).attr('id');
+  let invoice = $(invId).attr("id");
   let inval = $(invId).val();
   let id = invoice.substring(3);
   $.ajax({
-    url: '/admin/invoice/update',
-    type: 'POST',
+    url: "/admin/invoice/update",
+    type: "POST",
     data: {
       _token: CSRF_TOKEN,
       id: id,
       inv: inval
     },
-    dataType: 'text',
+    dataType: "text",
     success: data => {
       Allinvoice();
       iziToast.success({
-        position: 'topCenter',
-        message: 'Invoice viewed'
+        position: "topCenter",
+        message: "Invoice viewed"
       });
     }
   });
 };
 
 DeliverySearch = () => {
-  $('#deliverysearch').on('keyup', function() {
-    let search = $('#deliverysearch').val();
+  $("#deliverysearch").on("keyup", function() {
+    let search = $("#deliverysearch").val();
     if (search.length > 0) {
       $.ajax({
-        url: '/admin/delivery/search',
-        type: 'POST',
+        url: "/admin/delivery/search",
+        type: "POST",
         data: {
           _token: CSRF_TOKEN,
           search: search
         },
-        dataType: 'text',
+        dataType: "text",
         success: data => {
           let dev = jQuery.parseJSON(data);
-          $('#devsearchcount').html(`${dev.length}`);
-          let check = '';
+          $("#devsearchcount").html(`${dev.length}`);
+          let check = "";
           let mindev = 0;
-          let express = '';
-          let text = '';
+          let express = "";
+          let text = "";
           for (i = 0; i < dev.length; i++) {
-            if (dev[i].token == 'true') {
+            if (dev[i].token == "true") {
               _class = "<tr class='table-info'>";
-              check = '';
+              check = "";
               mindev = mindev + 1;
             } else {
               _class = '<tr class="">';
-              check = 'checked';
+              check = "checked";
             }
 
-            if (dev[i].express == 'true') {
-              express = 'Yes';
+            if (dev[i].express == "true") {
+              express = "Yes";
             } else {
-              express = 'No';
+              express = "No";
             }
             created_at = new Date(`${dev[i].created_at}`);
             created = created_at.toString().slice(0, 24);
@@ -871,49 +870,49 @@ DeliverySearch = () => {
           </tr>`;
           }
           if (mindev == dev.length) {
-            $('#mindev').removeClass('green');
-            $('#mindev').addClass('badge red');
+            $("#mindev").removeClass("green");
+            $("#mindev").addClass("badge red");
           } else {
-            $('#mindev').removeClass('red');
-            $('#mindev').addClass('badge green');
+            $("#mindev").removeClass("red");
+            $("#mindev").addClass("badge green");
           }
-          $('#deliverytb').html(`${text}`);
-          $('#mindev').html(`${mindev}`);
-          $('#maxdev').html(`${dev.length}`);
+          $("#deliverytb").html(`${text}`);
+          $("#mindev").html(`${mindev}`);
+          $("#maxdev").html(`${dev.length}`);
         }
       });
     } else {
       Alldeliveries();
-      $('#devsearchcount').html(0);
+      $("#devsearchcount").html(0);
     }
   });
 };
 
 NewsCreate = () => {
-  let subject = $('#newsubject').val();
-  let body = $('#newsbody').val();
+  let subject = $("#newsubject").val();
+  let body = $("#newsbody").val();
   if (subject.length < 3) {
-    $('#errorsubject').html(`Error subject must be at least 3 character.`);
+    $("#errorsubject").html(`Error subject must be at least 3 character.`);
   } else if (body.length < 3) {
-    $('#errorbody').html(`Error body must be at least 3 character.`);
+    $("#errorbody").html(`Error body must be at least 3 character.`);
   } else {
-    $('#newsubject').val('');
-    $('#newsbody').val('');
-    $('#errorsubject').html(``);
-    $('#errorbody').html(``);
+    $("#newsubject").val("");
+    $("#newsbody").val("");
+    $("#errorsubject").html(``);
+    $("#errorbody").html(``);
     iziToast.success({
-      position: 'topCenter',
-      message: 'New news posted'
+      position: "topCenter",
+      message: "New news posted"
     });
     $.ajax({
-      url: '/admin/news',
-      type: 'POST',
+      url: "/admin/news",
+      type: "POST",
       data: {
         _token: CSRF_TOKEN,
         subject: subject,
         body: body
       },
-      dataType: 'text',
+      dataType: "text",
       success: data => {
         AllNews();
       }
@@ -922,21 +921,21 @@ NewsCreate = () => {
 };
 
 AllNews = () => {
-  $.get('/admin/news/all', data => {
+  $.get("/admin/news/all", data => {
     let news = jQuery.parseJSON(data);
-    $('#admintotalnews').html(`${news.length}`);
-    $('#allnewscount').html(`${news.length}`);
-    let output = '';
+    $("#admintotalnews").html(`${news.length}`);
+    $("#allnewscount").html(`${news.length}`);
+    let output = "";
     news.forEach(n => {
       created_at = new Date(`${n.created_at}`);
       created = created_at.toString().slice(0, 24);
       output += `
       <tr>
       <th scope="row">${
-        n.subject.length > 10 ? n.subject.slice(0, 10) + '...' : n.subject
+        n.subject.length > 10 ? n.subject.slice(0, 10) + "..." : n.subject
       }</th>
       <td>
-      ${n.body.length > 80 ? n.body.slice(0, 80) + '...' : n.body}
+      ${n.body.length > 80 ? n.body.slice(0, 80) + "..." : n.body}
       </td>
       <td class="text-center">
       ${created}
@@ -954,7 +953,7 @@ AllNews = () => {
       </tr>
       `;
     });
-    $('#allnewstable').html(`${output}`);
+    $("#allnewstable").html(`${output}`);
   });
 };
 
@@ -963,58 +962,58 @@ ViewNews = id => {
     let res = jQuery.parseJSON(data);
     created_at = new Date(`${res.created_at}`);
     created = created_at.toString().slice(0, 24);
-    let modal = res.subject.length > 40 ? 'modal-fluid' : 'modal-lg';
-    $('#newssubject').html(`${res.subject}`);
-    $('#newsbody').html(`${res.body}`);
-    $('#newstime').html(`${created}`);
-    $('#adminnewsmodaltype').addClass(`${modal}`);
-    $('#viewadminnews').click();
+    let modal = res.subject.length > 40 ? "modal-fluid" : "modal-lg";
+    $("#newssubject").html(`${res.subject}`);
+    $("#newsbody").html(`${res.body}`);
+    $("#newstime").html(`${created}`);
+    $("#adminnewsmodaltype").addClass(`${modal}`);
+    $("#viewadminnews").click();
   });
 };
 
 DeleteNews = id => {
   $.ajax({
-    type: 'Delete',
-    url: '/admin/delete/new',
+    type: "Delete",
+    url: "/admin/delete/new",
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: 'text',
+    dataType: "text",
     success: function(response) {
       AllNews();
       iziToast.error({
-        position: 'topCenter',
-        message: 'News deleted.'
+        position: "topCenter",
+        message: "News deleted."
       });
     }
   });
 };
 
 NewsSearch = search => {
-  if(search.length>0){
-  $.ajax({
-    type: 'Post',
-    url: '/admin/news/search',
-    data: {
-      search: search,
-      _token: CSRF_TOKEN
-    },
-    dataType: 'text',
-    success: function(response) {
-      let res = jQuery.parseJSON(response);
-      $('#allnewscount').html(`${res.length}`);
-      let output = '';
-      res.forEach(n => {
-        created_at = new Date(`${n.created_at}`);
-        created = created_at.toString().slice(0, 24);
-        output += `
+  if (search.length > 0) {
+    $.ajax({
+      type: "Post",
+      url: "/admin/news/search",
+      data: {
+        search: search,
+        _token: CSRF_TOKEN
+      },
+      dataType: "text",
+      success: function(response) {
+        let res = jQuery.parseJSON(response);
+        $("#allnewscount").html(`${res.length}`);
+        let output = "";
+        res.forEach(n => {
+          created_at = new Date(`${n.created_at}`);
+          created = created_at.toString().slice(0, 24);
+          output += `
         <tr>
         <th scope="row">${
-          n.subject.length > 10 ? n.subject.slice(0, 10) + '...' : n.subject
+          n.subject.length > 10 ? n.subject.slice(0, 10) + "..." : n.subject
         }</th>
         <td>
-        ${n.body.length > 80 ? n.body.slice(0, 80) + '...' : n.body}
+        ${n.body.length > 80 ? n.body.slice(0, 80) + "..." : n.body}
         </td>
         <td class="text-center">
         ${created}
@@ -1031,64 +1030,64 @@ NewsSearch = search => {
         </td>
         </tr>
         `;
-      });
-      $('#allnewstable').html(`${output}`);
-    }
-  });
-}else{
-  AllNews()
-}
+        });
+        $("#allnewstable").html(`${output}`);
+      }
+    });
+  } else {
+    AllNews();
+  }
 };
 
 AdminData = () => {
-  $.get('/admin/edit/data', data => {
+  $.get("/admin/edit/data", data => {
     admin = jQuery.parseJSON(data);
-    $('#adminname').val(`${admin.name}`);
-    $('#adminemail').val(`${admin.email}`);
-    $('#admincardname').html(`${admin.name}`);
-    $('#admincardemail').html(`${admin.email}`);
-    $('#adminMainname').html(`${admin.name}`);
+    $("#adminname").val(`${admin.name}`);
+    $("#adminemail").val(`${admin.email}`);
+    $("#admincardname").html(`${admin.name}`);
+    $("#admincardemail").html(`${admin.email}`);
+    $("#adminMainname").html(`${admin.name}`);
   });
 };
 
 CreateShipment = () => {
-  let uid = $(shipmentuserid).attr('id');
+  let uid = $(shipmentuserid).attr("id");
   let id = uid.substring(4);
-  let tracking = $('#uptracting').val();
-  let reference = $('#upreference').val();
-  let date = $('#updeliverydate').val();
-  let description = $('#updescription').val();
-  let charge = $('#upshipping').val();
-  let status = $('#upstatus').val();
+  let tracking = $("#uptracting").val();
+  let reference = $("#upreference").val();
+  let date = $("#updeliverydate").val();
+  let description = $("#updescription").val();
+  let charge = $("#upshipping").val();
+  let status = $("#upstatus").val();
   if (tracking.length < 3) {
-    $('#errortracking').html('Error, Invalid tracking number.');
+    $("#errortracking").html("Error, Invalid tracking number.");
   } else if (reference.length < 3) {
-    $('#errorrefrence').html('Error, Invalid reference number.');
+    $("#errorrefrence").html("Error, Invalid reference number.");
   } else if (date.length < 1) {
-    $('#errordate').html('Error, Invalid date.');
+    $("#errordate").html("Error, Invalid date.");
   } else if (description.length < 3) {
-    $('#errordescription').html('Error, Invalid description.');
+    $("#errordescription").html("Error, Invalid description.");
   } else if (charge.length < 1) {
-    $('#errorcharge').html('Error, Invalid charge.');
-  } else if (status == 'status') {
-    $('#errorstatus').html('Error, Invalid status.');
+    $("#errorcharge").html("Error, Invalid charge.");
+  } else if (status == "status") {
+    $("#errorstatus").html("Error, Invalid status.");
   } else {
-    $('#errortracking').html(' ');
-    $('#errorstatus').html(' ');
-    $('#errorcharge').html(' ');
-    $('#errordescription').html(' ');
-    $('#errordate').html(' ');
-    $('#errorrefrence').html(' ');
-    $('#upstatus').val('Status');
-    $('#upshipping').val('');
-    $('#updescription').val('');
-    $('#updeliverydate').val('');
-    $('#upreference').val('');
-    $('#uptracting').val('');
-    $('#closespup').click();
+    $("#errortracking").html(" ");
+    $("#errorstatus").html(" ");
+    $("#errorcharge").html(" ");
+    $("#errordescription").html(" ");
+    $("#errordate").html(" ");
+    $("#errorrefrence").html(" ");
+    $("#upstatus").val("Status");
+    $("#upshipping").val("");
+    $("#updescription").val("");
+    $("#updeliverydate").val("");
+    $("#upreference").val("");
+    $("#uptracting").val("");
+    $("#closespup").click();
     $.ajax({
-      type: 'POST',
-      url: '/admin/add/shipment',
+      type: "POST",
+      url: "/admin/add/shipment",
       data: {
         _token: CSRF_TOKEN,
         id: id,
@@ -1099,11 +1098,11 @@ CreateShipment = () => {
         charge: charge,
         status: status
       },
-      dataType: 'text',
+      dataType: "text",
       success: function(response) {
         iziToast.success({
-          position: 'topCenter',
-          message: 'Shipment Added'
+          position: "topCenter",
+          message: "Shipment Added"
         });
       }
     });
@@ -1111,7 +1110,7 @@ CreateShipment = () => {
 };
 
 UsersShipment = users => {
-  let output = '';
+  let output = "";
   users.forEach(user => {
     if (user.deleted) {
     } else {
@@ -1140,25 +1139,25 @@ UsersShipment = users => {
   `;
     }
   });
-  $('#addshipments').html(`${output}`);
+  $("#addshipments").html(`${output}`);
 };
 
 UpdateShipmentSearch = () => {
-  let search = $('#updatesearchuser').val();
+  let search = $("#updatesearchuser").val();
   if (search.length > 0) {
     $.ajax({
-      type: 'POST',
-      url: '/admin/search',
+      type: "POST",
+      url: "/admin/search",
       data: {
         _token: CSRF_TOKEN,
         search: search
       },
-      dataType: 'text',
+      dataType: "text",
       success: function(response) {
         let users = jQuery.parseJSON(response);
         let count = users.filter(n => n.deleted == false);
-        $('#updatesearchresult').html(`${count.length}`);
-        let output = '';
+        $("#updatesearchresult").html(`${count.length}`);
+        let output = "";
         users.forEach(user => {
           if (user.deleted) {
           } else {
@@ -1185,46 +1184,46 @@ UpdateShipmentSearch = () => {
     `;
           }
         });
-        $('#addshipments').html(`${output}`);
+        $("#addshipments").html(`${output}`);
       }
     });
   } else {
     Allusers();
-    $('#updatesearchresult').html('0');
+    $("#updatesearchresult").html("0");
   }
 };
 
 Allshipments = () => {
-  $.get('/admin/shipments/all', data => {
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
+  $.get("/admin/shipments/all", data => {
+    var formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
     });
     let shipment = jQuery.parseJSON(data);
     AdminCountShipments(shipment);
     AdminShipmentValue(shipment);
     let shipp = shipment.filter(n => n.collected == 0);
-    $('#shipp').html(`${shipp.length}`);
-    $('#shipa').html(`${shipment.length}`);
+    $("#shipp").html(`${shipp.length}`);
+    $("#shipa").html(`${shipment.length}`);
     if (shipp.length == shipment.length) {
-      $('#shipp').removeClass('badge-success');
-      $('#shipp').addClass('badge-primary');
+      $("#shipp").removeClass("badge-success");
+      $("#shipp").addClass("badge-primary");
     } else {
-      $('#shipp').removeClass('badge-primary');
-      $('#shipp').addClass('badge-success');
+      $("#shipp").removeClass("badge-primary");
+      $("#shipp").addClass("badge-success");
     }
-    let output = '';
+    let output = "";
     shipment.forEach(n => {
       created_at = new Date(`${n.created_at.date}`);
       created = created_at.toString().slice(0, 24);
       updated_at = new Date(`${n.updated_at.date}`);
       updated = updated_at.toString().slice(0, 24);
-      let collected = n.collected == 1 ? updated : '';
-      let check = n.collected == 1 ? 'checked' : '';
-      let _class = n.collected == 1 ? '<tr>' : " <tr class='table-info'>";
+      let collected = n.collected == 1 ? updated : "";
+      let check = n.collected == 1 ? "checked" : "";
+      let _class = n.collected == 1 ? "<tr>" : " <tr class='table-info'>";
       let ischeck =
-        n.status != 'Ready for Pick Up'
-          ? ''
+        n.status != "Ready for Pick Up"
+          ? ""
           : `<input class="form-check-input adminshipcollected" type="checkbox" ${check} id="adminship${
               n.id
             }" value="true">
@@ -1232,8 +1231,8 @@ Allshipments = () => {
         n.id
       }" class="label-table"></label>`;
       let action =
-        n.status == 'Ready for Pick Up'
-          ? ''
+        n.status == "Ready for Pick Up"
+          ? ""
           : `
           <button
               id="shipstat${n.id}"
@@ -1260,49 +1259,49 @@ Allshipments = () => {
       <td>${action}</td>
       </tr>`;
     });
-    $('#adminshipments').html(`${output}`);
+    $("#adminshipments").html(`${output}`);
   });
 };
 
 SearchShipments = () => {
-  let search = $('#adminsearchshipments').val();
+  let search = $("#adminsearchshipments").val();
   if (search.length > 0) {
     $.ajax({
-      type: 'POST',
-      url: '/admin/search/shipments',
+      type: "POST",
+      url: "/admin/search/shipments",
       data: {
         _token: CSRF_TOKEN,
         search: search
       },
-      dataType: 'text',
+      dataType: "text",
       success: function(response) {
-        var formatter = new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD'
+        var formatter = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD"
         });
         let shipment = jQuery.parseJSON(response);
         let shipp = shipment.filter(n => n.collected == 0);
-        $('#shipp').html(`${shipp.length}`);
-        $('#shipa').html(`${shipment.length}`);
+        $("#shipp").html(`${shipp.length}`);
+        $("#shipa").html(`${shipment.length}`);
         if (shipp.length == shipment.length) {
-          $('#shipp').removeClass('badge-success');
-          $('#shipp').addClass('badge-primary');
+          $("#shipp").removeClass("badge-success");
+          $("#shipp").addClass("badge-primary");
         } else {
-          $('#shipp').removeClass('badge-primary');
-          $('#shipp').addClass('badge-success');
+          $("#shipp").removeClass("badge-primary");
+          $("#shipp").addClass("badge-success");
         }
-        let output = '';
+        let output = "";
         shipment.forEach(n => {
           created_at = new Date(`${n.created_at.date}`);
           created = created_at.toString().slice(0, 24);
           updated_at = new Date(`${n.updated_at.date}`);
           updated = updated_at.toString().slice(0, 24);
-          let collected = n.collected == 1 ? updated : '';
-          let check = n.collected == 1 ? 'checked' : '';
-          let _class = n.collected == 1 ? '<tr>' : " <tr class='table-info'>";
+          let collected = n.collected == 1 ? updated : "";
+          let check = n.collected == 1 ? "checked" : "";
+          let _class = n.collected == 1 ? "<tr>" : " <tr class='table-info'>";
           let ischeck =
-            n.status != 'Ready for Pick Up'
-              ? ''
+            n.status != "Ready for Pick Up"
+              ? ""
               : `<input class="form-check-input adminshipcollected" type="checkbox" ${check} id="adminship${
                   n.id
                 }" value="true">
@@ -1310,8 +1309,8 @@ SearchShipments = () => {
             n.id
           }" class="label-table"></label>`;
           let action =
-            n.status == 'Ready for Pick Up'
-              ? ''
+            n.status == "Ready for Pick Up"
+              ? ""
               : `
               <button
                   id="shipstat${n.id}"
@@ -1338,7 +1337,7 @@ SearchShipments = () => {
           <td>${action}</td>
           </tr>`;
         });
-        $('#adminshipments').html(`${output}`);
+        $("#adminshipments").html(`${output}`);
       }
     });
   } else {
@@ -1348,36 +1347,36 @@ SearchShipments = () => {
 
 AdminCountShipments = shipments => {
   let shipmentcount = shipments.length;
-  $('#admintotalshipment').html(`${shipmentcount}`);
+  $("#admintotalshipment").html(`${shipmentcount}`);
 };
 
 AdminShipmentValue = shipments => {
-  var formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD'
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD"
   });
   let money = shipments.reduce(
     (total, val) => total + parseInt(val.spcharge),
     0
   );
   let formatmoney = formatter.format(money);
-  $('#adminshipmentvalue').html(formatmoney);
+  $("#adminshipmentvalue").html(formatmoney);
 };
 
 ShipmentCompleted = id => {
   $.ajax({
-    type: 'Post',
-    url: '/admin/shipment/completed',
+    type: "Post",
+    url: "/admin/shipment/completed",
     data: {
       _token: CSRF_TOKEN,
       id: id
     },
-    dataType: 'text',
+    dataType: "text",
     success: function(response) {
       Allshipments();
       iziToast.success({
-        position: 'topCenter',
-        message: 'Shipment Delivered'
+        position: "topCenter",
+        message: "Shipment Delivered"
       });
     }
   });
@@ -1385,24 +1384,24 @@ ShipmentCompleted = id => {
 
 SeaFreight = () => {
   let exrate =
-    $('#exchangerate').val().length < 1 ? 0 : $('#exchangerate').val();
+    $("#exchangerate").val().length < 1 ? 0 : $("#exchangerate").val();
   let percentage =
-    $('#percentage').val().length < 1 ? 0 : $('#percentage').val();
+    $("#percentage").val().length < 1 ? 0 : $("#percentage").val();
   $.ajax({
-    type: 'POST',
-    url: '/admin/shipmentcalculator',
+    type: "POST",
+    url: "/admin/shipmentcalculator",
     data: {
       _token: CSRF_TOKEN,
       exrate: parseFloat(exrate),
       percentage: parseInt(percentage)
     },
-    dataType: 'text',
+    dataType: "text",
     success: function(response) {
-      $('#exchangerate').val('');
-      $('#percentage').val('');
+      $("#exchangerate").val("");
+      $("#percentage").val("");
       iziToast.success({
-        position: 'topCenter',
-        message: 'Rates Updated'
+        position: "topCenter",
+        message: "Rates Updated"
       });
       SeaFreightData();
     }
@@ -1411,39 +1410,39 @@ SeaFreight = () => {
 
 AirFreight = () => {
   let exchange =
-    $('#Aexchangerate').val().length > 0 ? $('#Aexchangerate').val() : 0;
+    $("#Aexchangerate").val().length > 0 ? $("#Aexchangerate").val() : 0;
   let shw1 =
-    $('#shippingweight1').val().length > 0 ? $('#shippingweight1').val() : 0;
+    $("#shippingweight1").val().length > 0 ? $("#shippingweight1").val() : 0;
   let shw2 =
-    $('#shippingweight2').val().length > 0 ? $('#shippingweight2').val() : 0;
+    $("#shippingweight2").val().length > 0 ? $("#shippingweight2").val() : 0;
   let shw3 =
-    $('#shippingweight3').val().length > 0 ? $('#shippingweight3').val() : 0;
+    $("#shippingweight3").val().length > 0 ? $("#shippingweight3").val() : 0;
   let shw4 =
-    $('#shippingweight4').val().length > 0 ? $('#shippingweight4').val() : 0;
+    $("#shippingweight4").val().length > 0 ? $("#shippingweight4").val() : 0;
   let shw5 =
-    $('#shippingweight5').val().length > 0 ? $('#shippingweight5').val() : 0;
+    $("#shippingweight5").val().length > 0 ? $("#shippingweight5").val() : 0;
   let shw6 =
-    $('#shippingweight6').val().length > 0 ? $('#shippingweight6').val() : 0;
+    $("#shippingweight6").val().length > 0 ? $("#shippingweight6").val() : 0;
   let shw7 =
-    $('#shippingweight7').val().length > 0 ? $('#shippingweight7').val() : 0;
+    $("#shippingweight7").val().length > 0 ? $("#shippingweight7").val() : 0;
   let shw8 =
-    $('#shippingweight8').val().length > 0 ? $('#shippingweight8').val() : 0;
+    $("#shippingweight8").val().length > 0 ? $("#shippingweight8").val() : 0;
   let shw9 =
-    $('#shippingweight9').val().length > 0 ? $('#shippingweight9').val() : 0;
+    $("#shippingweight9").val().length > 0 ? $("#shippingweight9").val() : 0;
   let shw10 =
-    $('#shippingweight10').val().length > 0 ? $('#shippingweight10').val() : 0;
+    $("#shippingweight10").val().length > 0 ? $("#shippingweight10").val() : 0;
   let shw11up =
-    $('#shippingweight10up').val().length > 0
-      ? $('#shippingweight10up').val()
+    $("#shippingweight10up").val().length > 0
+      ? $("#shippingweight10up").val()
       : 0;
   let shw21up =
-    $('#shippingweight21up').val().length > 0
-      ? $('#shippingweight21up').val()
+    $("#shippingweight21up").val().length > 0
+      ? $("#shippingweight21up").val()
       : 0;
 
   $.ajax({
-    type: 'POST',
-    url: '/admin/shipmentcalculator/air',
+    type: "POST",
+    url: "/admin/shipmentcalculator/air",
     data: {
       _token: CSRF_TOKEN,
       exrate: exchange,
@@ -1460,67 +1459,67 @@ AirFreight = () => {
       shw2: shw2,
       shw1: shw1
     },
-    dataType: 'text',
+    dataType: "text",
     success: function(response) {
       AirFreightData();
       iziToast.success({
-        position: 'topCenter',
-        message: 'Air freight rates updated'
+        position: "topCenter",
+        message: "Air freight rates updated"
       });
     }
   });
 };
 
 AirFreightData = () => {
-  $.get('/admin/air/data', data => {
+  $.get("/admin/air/data", data => {
     let res = jQuery.parseJSON(data);
-    $('#Aexchangerate').val(`${res.exrate}`);
-    $('#shippingweight1').val(`${res.w1lb}`);
-    $('#shippingweight2').val(`${res.w2lb}`);
-    $('#shippingweight3').val(`${res.w3lb}`);
-    $('#shippingweight4').val(`${res.w4lb}`);
-    $('#shippingweight5').val(`${res.w5lb}`);
-    $('#shippingweight6').val(`${res.w6lb}`);
-    $('#shippingweight7').val(`${res.w7lb}`);
-    $('#shippingweight8').val(`${res.w8lb}`);
-    $('#shippingweight9').val(`${res.w9lb}`);
-    $('#shippingweight10').val(`${res.w10lb}`);
-    $('#shippingweight10up').val(`${res.w11lbup}`);
-    $('#shippingweight21up').val(`${res.w21lbup}`);
+    $("#Aexchangerate").val(`${res.exrate}`);
+    $("#shippingweight1").val(`${res.w1lb}`);
+    $("#shippingweight2").val(`${res.w2lb}`);
+    $("#shippingweight3").val(`${res.w3lb}`);
+    $("#shippingweight4").val(`${res.w4lb}`);
+    $("#shippingweight5").val(`${res.w5lb}`);
+    $("#shippingweight6").val(`${res.w6lb}`);
+    $("#shippingweight7").val(`${res.w7lb}`);
+    $("#shippingweight8").val(`${res.w8lb}`);
+    $("#shippingweight9").val(`${res.w9lb}`);
+    $("#shippingweight10").val(`${res.w10lb}`);
+    $("#shippingweight10up").val(`${res.w11lbup}`);
+    $("#shippingweight21up").val(`${res.w21lbup}`);
   });
 };
 
 SeaFreightData = () => {
-  $.get('/admin/sea/data', data => {
+  $.get("/admin/sea/data", data => {
     let res = jQuery.parseJSON(data);
-    $('#exchangerate').val(`${res.exrate}`);
-    $('#percentage').val(`${res.prerate}`);
+    $("#exchangerate").val(`${res.exrate}`);
+    $("#percentage").val(`${res.prerate}`);
   });
 };
 
 ViewStatusChange = () => {
-  let status = $('#updatesentstatus').val();
+  let status = $("#updatesentstatus").val();
   let id = shipmentbtn.substring(8);
-  if (status == 'status') {
+  if (status == "status") {
     iziToast.error({
-      position: 'topCenter',
-      message: 'Error, Invalid status.'
+      position: "topCenter",
+      message: "Error, Invalid status."
     });
   } else {
     $.ajax({
-      type: 'Post',
-      url: '/admin/shipment/status',
+      type: "Post",
+      url: "/admin/shipment/status",
       data: {
         _token: CSRF_TOKEN,
         id: id,
         status: status
       },
-      dataType: 'text',
+      dataType: "text",
       success: function(response) {
         Allshipments();
         iziToast.success({
-          position: 'topCenter',
-          message: 'Status Changed.'
+          position: "topCenter",
+          message: "Status Changed."
         });
       }
     });
@@ -1528,29 +1527,29 @@ ViewStatusChange = () => {
 };
 
 Adminupdate = () => {
-  let name = $('#adminname').val();
-  let email = $('#adminemail').val();
+  let name = $("#adminname").val();
+  let email = $("#adminemail").val();
   if (name.length < 3) {
-    $('#adminerrorname').html('Error, invalid name.');
+    $("#adminerrorname").html("Error, invalid name.");
   } else if (!validateEmail(email)) {
-    $('#adminerroremail').html('Error, Invalid Email');
+    $("#adminerroremail").html("Error, Invalid Email");
   } else {
     $.ajax({
-      type: 'POST',
-      url: '/admin/update/admin',
+      type: "POST",
+      url: "/admin/update/admin",
       data: {
         name: name,
         email: email,
         _token: CSRF_TOKEN
       },
-      dataType: 'text',
+      dataType: "text",
       success: function(response) {
-        $('#adminerrorname').html(' ');
-        $('#adminerroremail').html(' ');
+        $("#adminerrorname").html(" ");
+        $("#adminerroremail").html(" ");
         AdminData();
         iziToast.success({
-          position: 'topCenter',
-          message: 'Admin account updated.'
+          position: "topCenter",
+          message: "Admin account updated."
         });
       }
     });
@@ -1558,51 +1557,51 @@ Adminupdate = () => {
 };
 
 Pdata = () => {
-  $('#adminoldpass').val('');
-  $('#adminpschbtn').click(() => {
-    if ($('#adminoldpass').val().length < 6) {
-      $('#erroroldpassword').html('Must be at least 6 characters');
+  $("#adminoldpass").val("");
+  $("#adminpschbtn").click(() => {
+    if ($("#adminoldpass").val().length < 6) {
+      $("#erroroldpassword").html("Must be at least 6 characters");
     } else {
       $.ajax({
-        type: 'POST',
-        url: '/admin/pdata',
+        type: "POST",
+        url: "/admin/pdata",
         data: {
           _token: CSRF_TOKEN,
-          data: $('#adminoldpass').val()
+          data: $("#adminoldpass").val()
         },
-        dataType: 'text',
+        dataType: "text",
         success: function(response) {
           var something = jQuery.parseJSON(response);
           if (something.passed == 0) {
-            $('#erroroldpassword').html('Password doesn`t match');
-          } else if ($('#adminnewpass').val().length < 6) {
-            $('#adminnewpassword').html('Must be at least 6 characters');
-          } else if ($('#adminconfirmpass').val().length < 6) {
-            $('#errorconfirmpassword').html('Must be at least 6 characters');
-          } else if ($('#adminnewpass').val() != $('#adminconfirmpass').val()) {
-            $('#erroroldpassword').html('Password dont match');
+            $("#erroroldpassword").html("Password doesn`t match");
+          } else if ($("#adminnewpass").val().length < 6) {
+            $("#adminnewpassword").html("Must be at least 6 characters");
+          } else if ($("#adminconfirmpass").val().length < 6) {
+            $("#errorconfirmpassword").html("Must be at least 6 characters");
+          } else if ($("#adminnewpass").val() != $("#adminconfirmpass").val()) {
+            $("#erroroldpassword").html("Password dont match");
           } else {
-            $('#adminpschbtn').addClass('disabled');
+            $("#adminpschbtn").addClass("disabled");
             $.ajax({
-              type: 'POST',
-              url: '/admin/passwordUpdate',
+              type: "POST",
+              url: "/admin/passwordUpdate",
               data: {
                 _token: CSRF_TOKEN,
-                newpass: $('#adminnewpass').val()
+                newpass: $("#adminnewpass").val()
               },
-              dataType: 'text',
+              dataType: "text",
               success: function(response) {
-                $('#pschbtn').removeClass('disabled');
-                $('#erroroldpassword').html('');
-                $('#adminnewpassword').html('');
-                $('#errorconfirmpassword').html('');
-                $('#adminoldpass').val('');
-                $('#adminnewpass').val('');
-                $('#adminconfirmpass').val('');
-                $('#adminclosepasswordmodal').click();
+                $("#pschbtn").removeClass("disabled");
+                $("#erroroldpassword").html("");
+                $("#adminnewpassword").html("");
+                $("#errorconfirmpassword").html("");
+                $("#adminoldpass").val("");
+                $("#adminnewpass").val("");
+                $("#adminconfirmpass").val("");
+                $("#adminclosepasswordmodal").click();
                 iziToast.success({
-                  position: 'topCenter',
-                  message: 'Password Changed ..'
+                  position: "topCenter",
+                  message: "Password Changed .."
                 });
               }
             });
@@ -1616,7 +1615,7 @@ Pdata = () => {
 NotificationCount = (invoice = 0, delivery = 0) => {
   let sum = 0;
   sum = parseInt(invoice) + parseInt(delivery);
-  $('#invoicentc').html(`${sum}`);
+  $("#invoicentc").html(`${sum}`);
 };
 
 window.setInterval(() => {
