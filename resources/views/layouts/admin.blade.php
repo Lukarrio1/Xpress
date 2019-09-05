@@ -48,14 +48,10 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    {{-- do not touch here wihout asking me  --}}
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/iziToast.js') }}"></script>
     <script src="{{ asset('js/env.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
-    <script>
-      var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    </script>
   </body>
 </html>

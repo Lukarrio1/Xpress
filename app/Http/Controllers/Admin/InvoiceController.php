@@ -8,86 +8,93 @@ use App\Prealerts;
 use App\User;
 use App\invoicenf as Notify;
 use Illuminate\Support\Facades\DB;
+
 class InvoiceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin',['except'=>['']]);
+        $this->middleware('auth:admin', ['except' => ['']]);
     }
 
-    public function index(){
+    public function index()
+    {
         return view('admin.Invoices');
     }
 
-    public function Allinvoices(){
-    $inv=Prealerts::orderBy('updated_at', 'ASC')->get();
-        return json_encode($inv); 
-    }
-    
-    public function UpdateInvoice(Request $request){
-        $this->validate($request,[
-            'id'=>'required',
-            'inv'=>'required',
-        ]); 
-       $inv = $request->inv;
-       $id = $request->id;     
-       $invoice = Prealerts::find($id);
-       $user =$invoice->user_id;
-       $update= Notify::where('user_id',$user)->first();
-       $update->clicked = "true";
-       $update->save();
-       if($inv==$invoice->token){
-        $invoice->token ="false";
-        $invoice->save();
-        return 1;
-       }else if($inv!=$invoice->token){
-        $invoice->token ="true";
-        $invoice->save();
-        return 0;
-       }
+    public function Allinvoices()
+    {
+        $inv = Prealerts::orderBy('updated_at', 'ASC')->get();
+        return json_encode($inv);
     }
 
-    public function InvoiceNotification(){
-    $notify = Notify::where('clicked','false')->orderBy('created_at','DESC')->get();
-    return json_encode($notify);
-    }
-
-    public function InvoiceNotificationUpdate(Request $request){
-        $this->validate($request,[
-        'id'=>'required',
+    public function UpdateInvoice(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required',
+            'inv' => 'required',
         ]);
-        $update= Notify::find($request->id);
+        $inv = $request->inv;
+        $id = $request->id;
+        $invoice = Prealerts::find($id);
+        $user = $invoice->user_id;
+        $update = Notify::where('user_id', $user)->first();
         $update->clicked = "true";
         $update->save();
-        return json_encode(["status"=>200]);
+        if ($inv == $invoice->token) {
+            $invoice->token = "false";
+            $invoice->save();
+            return 1;
+        } else if ($inv != $invoice->token) {
+            $invoice->token = "true";
+            $invoice->save();
+            return 0;
+        }
     }
 
-    public function InvoiceSearch(Request $request){
-        $this->validate($request,[
-        'search'=>'required'
+    public function InvoiceNotification()
+    {
+        $notify = Notify::where('clicked', 'false')->orderBy('created_at', 'DESC')->get();
+        return json_encode($notify);
+    }
+
+    public function InvoiceNotificationUpdate(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required',
         ]);
-        $search =htmlentities($request->search);
-        $result =Prealerts::where('xl', 'LIKE', '%'.$search.'%')
-        ->orwhere('email','like','%'.$search.'%')
-        ->orwhere('courier','like','%'.$search.'%')
-        ->orwhere('tracking','like','%'.$search.'%')
-        ->orwhere('name','like','%'.$search.'%')
-        ->orderBy('created_at','DESC')
-        ->get();
-        return json_encode($result);
+        $update = Notify::find($request->id);
+        $update->clicked = "true";
+        $update->save();
+        return json_encode(["status" => 200]);
+    }
 
+    public function InvoiceSearch(Request $request)
+    {
+        $this->validate($request, [
+            'search' => 'required'
+        ]);
+        $search = htmlentities($request->search);
+        $result = Prealerts::where('xl', 'LIKE', '%' . $search . '%')
+            ->orwhere('email', 'like', '%' . $search . '%')
+            ->orwhere('courier', 'like', '%' . $search . '%')
+            ->orwhere('tracking', 'like', '%' . $search . '%')
+            ->orwhere('name', 'like', '%' . $search . '%')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        return json_encode($result);
     }
 
 
-    public function InvFile(Request $request){
-        $this->validate($request,[
-            'id'=>'required'
+    public function InvFile(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required'
         ]);
         $inv = Prealerts::find($request->id);
-        $ext = substr_count($inv->invoice,".pdf");
+        $ext = substr_count($inv->invoice, ".pdf");
         return json_encode([
-            'file'=>$inv->invoice,
-            'ext'=>$ext
+            'file' => $inv->invoice,
+            'ext' => $ext
         ]);
     }
 }
