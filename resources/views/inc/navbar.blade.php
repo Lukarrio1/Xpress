@@ -348,9 +348,8 @@
       <a class="btn-floating btn-lg bg-danger">
         <i class="fas fa-pencil-alt"></i>
       </a>
-
       <ul class="list-unstyled">
-         <li><a class="btn-floating green" data-toggle="modal"
+       <li id="addressbook"><a class="btn-floating green" data-toggle="modal"
           data-target="#centralModalLGInfoDemo"><i class="fas fa-address-book"></i></a></li>
       <li><a class="btn-floating red" href="{{route('shippingCalculator.home')}}"><i class="fas fa-calculator"></i></a></li>
       <li><a class="btn-floating yellow darken-1" href="{{route('account.edit')}}"><i class="fas fa-user"></i></a></li>

@@ -92,10 +92,10 @@
             Xl number:<span id="modalxlair"></span><br>
             First name :XPRLOG1 <span id="modalnameair"></span><br>
             Last name : <span> C/O PasCargo</span> <br>
-            Address line 1: 10901 N.W. 146th Street Suite 8,<br>
+            Address line 1: 7185 NW 87th Avenue<br>
             Address line 2: Hialeah Gardens, FL 33018 USA<br>
-            City / State : Florida<br>
-            Zipcode : 33018 <br>
+            City / State : Miami,Florida<br>
+            Zipcode : 33178 <br>
           </div> <br>
           <div>N.B. Please ensure that when you are ordering your items u place 
             Xpress Logistics in the first name field and place your first and 
