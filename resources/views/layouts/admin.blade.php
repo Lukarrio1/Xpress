@@ -50,8 +50,13 @@
     ></script>
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script>
+      var id ={{ Auth::user()->id }};
+      var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    </script>
     <script src="{{ asset('js/iziToast.js') }}"></script>
     <script src="{{ asset('js/env.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
+
   </body>
 </html>
