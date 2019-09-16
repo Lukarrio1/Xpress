@@ -90,10 +90,8 @@
 
             <h4>Air Freight Address</h4>
             Xl number:<span id="modalxlair"></span><br>
-            First name :XPRLOG1 <span id="modalnameair"></span><br>
-            Last name : <span> C/O PasCargo</span> <br>
+            Name :Xl AIR C/O <span id="modalnameair"></span><br>
             Address line 1: 7185 NW 87th Avenue<br>
-            Address line 2: Hialeah Gardens, FL 33018 USA<br>
             City / State : Miami,Florida<br>
             Zipcode : 33178 <br>
           </div> <br>
