@@ -95,7 +95,7 @@
             City / State : Miami,Florida<br>
             Zipcode : 33178 <br>
           </div> <br>
-          <div>N.B. Please ensure that when you are ordering your items u place 
+          <div>N.B. Please ensure that when you are ordering your items you place 
             Xpress Logistics in the first name field and place your first and 
             last name in the last name field to ensure you do not have any delays 
             with your packages.</div>
