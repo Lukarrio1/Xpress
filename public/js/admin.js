@@ -455,6 +455,7 @@ AdminCountInvoice = invoices => {
 
 AdmininvoiceValue = invoices => {
   let money = invoices.reduce((total, val) => total + parseInt(val.value), 0);
+  // this piece of code formates numbers to us currency.
   var formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD"

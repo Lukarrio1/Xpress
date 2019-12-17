@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Prealerts;
-use App\User;
 use App\invoicenf as Notify;
-use Illuminate\Support\Facades\DB;
+use App\Prealerts;
+use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
@@ -71,7 +69,7 @@ class InvoiceController extends Controller
     public function InvoiceSearch(Request $request)
     {
         $this->validate($request, [
-            'search' => 'required'
+            'search' => 'required',
         ]);
         $search = htmlentities($request->search);
         $result = Prealerts::where('xl', 'LIKE', '%' . $search . '%')
@@ -84,17 +82,16 @@ class InvoiceController extends Controller
         return json_encode($result);
     }
 
-
     public function InvFile(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required'
+            'id' => 'required',
         ]);
         $inv = Prealerts::find($request->id);
         $ext = substr_count($inv->invoice, ".pdf");
         return json_encode([
             'file' => $inv->invoice,
-            'ext' => $ext
+            'ext' => $ext,
         ]);
     }
 }

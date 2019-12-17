@@ -90,10 +90,10 @@
 
             <h4>Air Freight Address</h4>
             Xl number:<span id="modalxlair"></span><br>
-            Name :Xl AIR C/O <span id="modalnameair"></span><br>
-            Address line 1: 7185 NW 87th Avenue<br>
+            Name :XLAir <span id="modalnameair"></span><br>
+            Address line 1: 5845 SW 21st Street West park<br>
             City / State : Miami,Florida<br>
-            Zipcode : 33178 <br>
+            Zipcode : 33023<br>
           </div> <br>
           <div>N.B. Please ensure that when you are ordering your items you place 
             Xpress Logistics in the first name field and place your first and 
