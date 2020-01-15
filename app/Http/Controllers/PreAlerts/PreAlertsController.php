@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\PreAlerts;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Prealerts;
-use Illuminate\Support\Facades\Auth;
-use App\invoicenf as nt;
-use App\Sheduledelivery as sd;
-use App\Mail\Newprealert;
-use Illuminate\Support\Facades\Mail;
 use App\Admin;
+use App\Http\Controllers\Controller;
+use App\invoicenf as nt;
+use App\Mail\Newprealert;
+use App\Prealerts;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 class PreAlertsController extends Controller
 {
     public function __construct()
@@ -24,7 +24,7 @@ class PreAlertsController extends Controller
      */
     public function index()
     {
-        $pre = Prealerts::Where('user_id',Auth::user()->id)->OrderBy('created_at','desc')->get();
+        $pre = Prealerts::Where('user_id', Auth::user()->id)->OrderBy('created_at', 'desc')->get();
         return json_encode($pre);
     }
 
@@ -55,9 +55,8 @@ class PreAlertsController extends Controller
             'value' => 'required|max:100|min:1',
             'weight' => 'required|max:100',
             'invoice' => 'mimes:pdf,jpeg,jpg,png|max:1999|required',
-            'expected_date'=>'required'
+            'expected_date' => 'required',
         ]);
-
         //gets the image name with extension.
         $filenameWithExt = $request->file('invoice')->getClientOriginalName();
         //gets the just the file name
@@ -68,26 +67,26 @@ class PreAlertsController extends Controller
         $filenametostore = $filename . '_' . time() . '.' . $extension;
         $store = new Prealerts;
         $store->user_id = Auth::user()->id;
-        $store->name= Auth::user()->name;
-        $store->email= Auth::user()->email;
-        $store->xl= Auth::user()->first()->xl;
-        $notify = nt::where('user_id',Auth::user()->id)->first();
-        if(empty($notify->user_id)){
-        $notify = New nt;
-        $notify->user_id = Auth::user()->id;
-        $notify->notification = "New invoice from ".Auth::user()->name."";
-        $notify->save();
-        }else{
-        $notify->clicked="false";
-        $notify->save();
+        $store->name = Auth::user()->name;
+        $store->email = Auth::user()->email;
+        $store->xl = Auth::user()->xl;
+        $notify = nt::where('user_id', Auth::user()->id)->first();
+        if (empty($notify->user_id)) {
+            $notify = new nt;
+            $notify->user_id = Auth::user()->id;
+            $notify->notification = "New invoice from " . Auth::user()->name . "";
+            $notify->save();
+        } else {
+            $notify->clicked = "false";
+            $notify->save();
         }
         $store->vender = htmlentities($request->vender);
         $store->tracking = htmlentities($request->tracking);
         $store->courier = htmlentities($request->courier);
         $store->pkgname = htmlentities($request->pkgname);
-        $store->description= htmlentities($request->description);
-        $store->value =  htmlentities($request->value);
-        $store->weight =  htmlentities($request->weight);
+        $store->description = htmlentities($request->description);
+        $store->value = htmlentities($request->value);
+        $store->weight = htmlentities($request->weight);
         $path = $request->file('invoice')->storeAs('public/Invoice', $filenametostore);
         $store->invoice = $filenametostore;
         $store->expected_date = htmlentities($request->expected_date);
@@ -96,13 +95,15 @@ class PreAlertsController extends Controller
         return redirect()->back()->with('success', 'Pre alert sent..');
 
     }
-    public function single($id){
-        $pre = Prealerts::Where('user_id',Auth::user()->id)->where('id',$id)->first();
+    public function single($id)
+    {
+        $pre = Prealerts::Where('user_id', Auth::user()->id)->where('id', $id)->first();
         return json_encode($pre);
     }
 
-    public function PreAlertCreated(){
-        $user =Auth::user()->name;
+    public function PreAlertCreated()
+    {
+        $user = Auth::user()->name;
         $admin = Admin::find(1);
         Mail::to($admin->email)->send(new Newprealert($user));
     }
