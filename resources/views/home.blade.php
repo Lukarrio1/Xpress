@@ -2,25 +2,6 @@
 
 @section('content')
 <div class= "pt-4">
-{{--  <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading text-center">User Dashboard</div>
-                <div class="panel-body">
-                  <p class="lead">{{auth()->user()->verified() ? ' ' : 'Your account is not verified check your email to verify..'}}
-</p>
-</div>
-</div>
-</div>
-</div>
-</div> --}}
-
-<!--/Pagination -->
-
-<!--Section: Main panel-->
-
-<!-- Central Modal Large Info -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#todomodalview" style="display: none" id="viewTASK">
 </button>
 
@@ -90,10 +71,12 @@
 
             <h4>Air Freight Address</h4>
             Xl number:<span id="modalxlair"></span><br>
-            Name :XLAir <span id="modalnameair"></span><br>
-            Address line 1: 5845 SW 21st Street West park<br>
-            City / State : Miami,Florida<br>
-            Zipcode : 33023<br>
+            Name :<span id="modalnameair"></span><br>
+            Address 1: 3750 W. OAKLAND PARK ROAD<br>
+            Address 2: LOCXL <br>
+            City : LAUDERDALE LAKES<br>
+            State : FLOARIDA <br>
+            Zipcode : 33311<br>
           </div> <br>
           <div>N.B. Please ensure that when you are ordering your items you place 
             Xpress Logistics in the first name field and place your first and 
