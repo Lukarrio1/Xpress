@@ -72,10 +72,10 @@
             <h4>Air Freight Address</h4>
             Xl number:<span id="modalxlair"></span><br>
             Name :<span id="modalnameair"></span><br>
-            Address 1: 3750 W. OAKLAND PARK ROAD<br>
+            Address 1: 3750 W. Oakland Park Road<br>
             Address 2: LOCXL <br>
-            City : LAUDERDALE LAKES<br>
-            State : FLOARIDA <br>
+            City : Lauderdale Lakes<br>
+            State : Florida <br>
             Zipcode : 33311<br>
           </div> <br>
           <div>N.B. Please ensure that when you are ordering your items you place 
