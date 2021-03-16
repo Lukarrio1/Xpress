@@ -2,6 +2,7 @@
 /public/hot
 /vendor
 /.idea
+/dock
 Homestead.json
 Homestead.yaml
 .env
