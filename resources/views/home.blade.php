@@ -57,20 +57,19 @@
                             <h4>Sea Freight Address</h4>
                             First name: <span>Xpress Logistics C/O</span><br>
                             Last name : <span id="modalname"></span><br>
-                            Address line 1: 2736 NW 29th Terrace,<br>
-                            Address line 2: Bldg 13 Lauderdale Lakes,<br>
-                            City / State : Oakland, Florida<br>
-                            Zipcode : 33311 <br>
+                            Address line 1: 4981 N State Road 7,<br>
+                            Address line 2: Xpresslogistic,<br>
+                            City / State : Tamarac<br>
+                            Zipcode : 33319 <br>
                             Xl number:<span id="modalxl"></span><br><br>
 
                             <h4>Air Freight Address</h4>
                             Xl number:<span id="modalxlair"></span><br>
                             Name :<span id="modalnameair"></span><br>
-                            Address 1: 3750 W. Oakland Park Road<br>
-                            Address 2: LOCXL <br>
-                            City : Lauderdale Lakes<br>
-                            State : Florida <br>
-                            Zipcode : 33311<br>
+                            Address line 1: 4981 N State Road 7,<br>
+                            Address line 2: Xpresslogistic,<br>
+                            City / State : Tamarac<br>
+                            Zipcode : 33319 <br>
                         </div> <br>
                         <div>N.B. Please ensure that when you are ordering your items you place
                             Xpress Logistics in the first name field and place your first and
